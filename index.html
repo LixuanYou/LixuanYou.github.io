@@ -146,6 +146,127 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-简历" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/07/简历/">CV</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/07/简历/" class="archive-article-date">
+  	<time datetime="2019-11-07T12:20:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h1><ul>
+<li>游理轩/男/1997</li>
+<li>本科应届毕业生/泉州师范学院信息管理与信息系统</li>
+<li>技术博客：<a href="https://lixuanyou.github.io" target="_blank" rel="noopener">https://lixuanyou.github.io</a></li>
+<li>Github ：<a href="https://github.com/LixuanYou" target="_blank" rel="noopener">https://github.com/LixuanYou</a></li>
+<li>期望职位：Java后端开发工程师</li>
+</ul>
+<h1 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h1><ul>
+<li>手机：13055959293 </li>
+<li>Email：<a href="mailto:ylxyeah@gmail.com" target="_blank" rel="noopener">ylxyeah@gmail.com</a> </li>
+<li>QQ/微信号：80928786/ylxyeah</li>
+</ul>
+<h1 id="技能清单"><a href="#技能清单" class="headerlink" title="技能清单"></a>技能清单</h1><p>以下均为我熟练使用的技能</p>
+<ul>
+<li>Java基础编程</li>
+<li>JavaSE常用类库、异常、集合、多线程、IO、Lambda、Stream API</li>
+<li>JavaEE中Servlet、Filter、Listener、Json</li>
+<li>HTML、CSS、JavaScript、Ajax、JQuery技术</li>
+<li>MySQL、Mybatis、Redis等数据库相关知识及其运用</li>
+<li>Spring、SpringMVC框架的应用及其原理</li>
+<li>SpringBoot、SpringCould、RabbitMQ中间件的应用</li>
+<li>Junit单元测试、Maven项目构建、Gradle项目构建</li>
+</ul>
+<h1 id="个人项目"><a href="#个人项目" class="headerlink" title="个人项目"></a>个人项目</h1><h2 id="电子商城-（-2019年9月-2019年10月-）"><a href="#电子商城-（-2019年9月-2019年10月-）" class="headerlink" title="电子商城 （ 2019年9月 ~ 2019年10月 ）"></a>电子商城 （ 2019年9月 ~ 2019年10月 ）</h2><h3 id="秒杀业务"><a href="#秒杀业务" class="headerlink" title="秒杀业务"></a>秒杀业务</h3><h4 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h4><p>秒杀不是为了卖东西而是为了引流，秒杀采用的方式是限时限量限价，特点是高并发、库存少、业务流程短</p>
+<h4 id="技术选型：IDEA、SpringCloud-Eureka、Zuul-、MySQL、Redis、RabbitMQ"><a href="#技术选型：IDEA、SpringCloud-Eureka、Zuul-、MySQL、Redis、RabbitMQ" class="headerlink" title="技术选型：IDEA、SpringCloud(Eureka、Zuul)、MySQL、Redis、RabbitMQ"></a>技术选型：IDEA、SpringCloud(Eureka、Zuul)、MySQL、Redis、RabbitMQ</h4><h4 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h4><h5 id="SpringCloud的应用"><a href="#SpringCloud的应用" class="headerlink" title="SpringCloud的应用"></a>SpringCloud的应用</h5><ul>
+<li>订单服务：产生订单ID，监听队列，生成订单。</li>
+<li>库存服务：监听队列， 与Redis交互减少库存。</li>
+<li>商品服务：为前端页面服务提供商品列表数据用于展示。创建秒杀政策并将政策写入Redis缓存。</li>
+<li>用户服务：为页面服务提供用户数据API接口，会员的添加、修改、登录。</li>
+<li>页面服务：为前端页面提供数据API接口，如：登录页面，支付页面等</li>
+<li>网关服务：提供统一对外的API接口给前端，屏蔽内部服务的细节。</li>
+<li>时间服务：为页面服务提供统一的时间。</li>
+<li>注册中心：所有服务都要在注册中心注册。</li>
+<li>配置中心：提供所有服务需要的配置。</li>
+</ul>
+<h5 id="Redis的应用"><a href="#Redis的应用" class="headerlink" title="Redis的应用"></a>Redis的应用</h5><ul>
+<li>秒杀限制:将商品、秒杀时间、限购数量写到Redis缓存中</li>
+<li>缓存商品数量：消费者访问商品详情，提交订单之后，从Redis中减少商品数量。</li>
+</ul>
+<h5 id="RabbitMQ的应用"><a href="#RabbitMQ的应用" class="headerlink" title="RabbitMQ的应用"></a>RabbitMQ的应用</h5><ul>
+<li>订单队列：订单服务监听订单队列，接收到消息之后将队列信息写入数据库订单表。消费者付款之后更新订单状态，更新成功之后写入库存队列</li>
+<li>库存队列：库存服务监听库存队列，接收到消息之后将库存信息写入数据库减少库存。</li>
+<li>业务解耦：用RabbitMQ解决业务模块相互调用的关系</li>
+</ul>
+<h4 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h4><ol>
+<li>商城展示页面分为两层，通过商品列表页链接进入商品详情页，秒杀开始前，展示商品秒杀倒计时，允许查看商品详情但不许操作提交订单；秒杀开始时，展示商品秒杀到期时间。</li>
+<li>在前端有一个页面用于注册、登录。登录调用后台的Controller层的login(username，password)方法这返回的是Json数据，再调用Service层getUser方法返回Map，再调用Dao层getUser方法返回Map，Map容器存放的是用户信息。注册时Controller层的login方法没有获得用户信息调用Service的insertUser方法再到Dao层的insertUser方法注册用户。</li>
+<li>通过Redis计数器来筛选用户 没有通过筛选的用户直接返回一个商品售罄的页面；通过筛选的用户提交订单（createOrder）到订单服务产生一个唯一的orderID（按毫秒产生）。</li>
+<li>订单服务将订单信息写入订单队列，同时将订单信息写入Redis，这个过程耗时很短，用户感觉是直接跳转到支付。</li>
+<li>到达支付页面后通过Redis把订单消息查出来，再调用多种支付接口给用户多种支付方式，用户提交支付后（payOrder），这时的订单服务要写两个队列，第一个是更新订单的状态队列（updateOrderStatus），第二个是库存队列，这也是瞬间返回一个页面告诉用户支付成功等待收货， 直到这里都是内存操作避免订单服务直接操作数据库造成不友好的用户体验。</li>
+<li>订单服务监听订单队列（insertOrder），库存服务监听库存队列（insertStorage）再写到数据库中。</li>
+</ol>
+<h4 id="项目总结"><a href="#项目总结" class="headerlink" title="项目总结"></a>项目总结</h4><p>整个项目的核心是订单业务要求实现高并发用户无感知体验，用户下完订单到完成支付所有的数据可能都还在消息队列中还没开始和操作数据库。最难的是库存服务，由于库存是敏感数据， 操作都要非常谨慎。</p>
+<h2 id="技术文章"><a href="#技术文章" class="headerlink" title="技术文章"></a>技术文章</h2><ul>
+<li><a href="https://lixuanyou.github.io/2019/10/30/2019年微服务趋势报告/" target="_blank" rel="noopener">来自DZone的《2019年微服务趋势报告，以了解微服务的未来影响》(翻译文章)</a></li>
+<li><a href="https://lixuanyou.github.io/2019/10/31/语音识别/" target="_blank" rel="noopener">基于卷积神经网络的语音识别</a></li>
+</ul>
+<hr>
+<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p>感谢您花时间阅读我的简历，期待能有机会和您共事。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/07/简历/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-语音识别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
