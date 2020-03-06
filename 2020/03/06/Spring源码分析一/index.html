@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 游理轩的博客</title>
+  <title>Spring源码分析一 | 游理轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="游理轩的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="Spring Bean 的生命周期（实例化-初始化-使用-销毁）实例化Bean的流程-1）在context.supprot.ApplicationContext#getBean方法doGetBean-2）解析Bean的别名  尝试去缓存池中获取对象（第一次创建Bean缓存池中没有对象） 如果出现循环依赖再判断Bean是不是单例的，不是就抛出异常 判断容器是否有父工厂如果存在就由父工厂加载 合并Be">
+<meta name="keywords" content="spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring源码分析一">
+<meta property="og:url" content="http://yoursite.com/2020/03/06/Spring源码分析一/index.html">
 <meta property="og:site_name" content="游理轩的博客">
+<meta property="og:description" content="Spring Bean 的生命周期（实例化-初始化-使用-销毁）实例化Bean的流程-1）在context.supprot.ApplicationContext#getBean方法doGetBean-2）解析Bean的别名  尝试去缓存池中获取对象（第一次创建Bean缓存池中没有对象） 如果出现循环依赖再判断Bean是不是单例的，不是就抛出异常 判断容器是否有父工厂如果存在就由父工厂加载 合并Be">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-03-06T03:30:35.009Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="游理轩的博客">
+<meta name="twitter:title" content="Spring源码分析一">
+<meta name="twitter:description" content="Spring Bean 的生命周期（实例化-初始化-使用-销毁）实例化Bean的流程-1）在context.supprot.ApplicationContext#getBean方法doGetBean-2）解析Bean的别名  尝试去缓存池中获取对象（第一次创建Bean缓存池中没有对象） 如果出现循环依赖再判断Bean是不是单例的，不是就抛出异常 判断容器是否有父工厂如果存在就由父工厂加载 合并Be">
   
     <link rel="alternative" href="/atom.xml" title="游理轩的博客" type="application/atom+xml">
   
@@ -144,112 +149,71 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Spring源码分析一" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/Spring源码分析三/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:28:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/Spring源码分析三/">Spring源码分析三</a>
+    <h1 class="article-title" itemprop="name">
+      Spring源码分析一
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/Spring源码分析二/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:28:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/Spring源码分析二/">Spring源码分析二</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/Spring源码分析一/" class="archive-article-date">
+        
+        <a href="/2020/03/06/Spring源码分析一/" class="archive-article-date">
   	<time datetime="2020-03-06T03:28:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/Spring源码分析一/">Spring源码分析一</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Spring-Bean-的生命周期（实例化-初始化-使用-销毁）"><a href="#Spring-Bean-的生命周期（实例化-初始化-使用-销毁）" class="headerlink" title="Spring Bean 的生命周期（实例化-初始化-使用-销毁）"></a>Spring Bean 的生命周期（实例化-初始化-使用-销毁）</h1><h2 id="实例化Bean的流程"><a href="#实例化Bean的流程" class="headerlink" title="实例化Bean的流程"></a>实例化Bean的流程</h2><p>-1）在context.supprot.ApplicationContext#getBean方法<br>doGetBean<br>-2）解析Bean的别名</p>
+<ul>
+<li>尝试去缓存池中获取对象（第一次创建Bean缓存池中没有对象）</li>
+<li>如果出现循环依赖再判断Bean是不是单例的，不是就抛出异常</li>
+<li>判断容器是否有父工厂如果存在就由父工厂加载</li>
+<li>合并Bean定义</li>
+<li>检查Bean定义是否是抽象的</li>
+<li>做dependsOn的依赖检查</li>
+<li>调用getSingleton()方法再用beforeSigletonCreation标识当前Bean正在被创建</li>
+<li>3) createBean创建Bean的流程</li>
+</ul>
+<h2 id="初始化流程"><a href="#初始化流程" class="headerlink" title="初始化流程"></a>初始化流程</h2><h2 id="Bean销毁流程"><a href="#Bean销毁流程" class="headerlink" title="Bean销毁流程"></a>Bean销毁流程</h2><h1 id="IOC容器如何解决循环依赖的-那种循环依赖不能被解决-为什么？"><a href="#IOC容器如何解决循环依赖的-那种循环依赖不能被解决-为什么？" class="headerlink" title="IOC容器如何解决循环依赖的/那种循环依赖不能被解决/为什么？/"></a>IOC容器如何解决循环依赖的/那种循环依赖不能被解决/为什么？/</h1><h2 id="1-什么是循环依赖"><a href="#1-什么是循环依赖" class="headerlink" title="(1)什么是循环依赖?"></a>(1)什么是循环依赖?</h2><p>bean的实例化有如下三个步骤：<br>    1、createBeanInstance ，生成原始对象<br>    2、popoulateBean，进行属性注入<br>    3、instantiateBean ，进行init-method初始化和后置处理<br>由此，当生成A对象之后，此时还未进行属性注入，检测到A有B属性，调用getBean(B b)获取B，<br>开始进行B的实例化，B生成对象之后，进行属性注入，检测到B有A属性，这个时候，就产生了循环依赖。</p>
+<p>(2)什么样的循环依赖不能被解决？<br>循环依赖分为单例的、构造方法的、原型的<br>构造器的循环依赖<br>    由于此循环依赖是在对象实例化的时候进行的，也就是说这种依赖是无法像单例一样生成对象，那么这种循环依赖也只能通过抛出异常处理<br>原型模式的循环依赖<br>    由于原型模式不像单例一样会提供缓存来进行辅助存储未完整实例化的bean，故spring的处理也是直接抛出异常<br>(3)为什么这样的循环依赖不能被解决？<br>单例的循环依赖用的是三级缓存解决<br>这三级缓存分别是：<br>    singletonObjects：单例对象工厂的cache，这里存储的是完整实例化之后的bean<br>    singletonFactories：单例对象的ObjectFactory，该ObjectFactory返回的对象就是还未进行popoulateBean属性注入的原始Bean对象<br>    earlySingletonObjects：提前曝光的单例bean，就是已经本身还未进行属性注入的bean，已经作为其他的bean的属性注入到该bean中了，比如A还未进行属性注入，但是被B引用到了，注入到B中，此时就将A放到提前曝光的单例bean缓存earlySingletonObjects中。<br>在循环依赖产生的过程中会调用getBean()方法再调用AbstractBeanFactory#doGetBean<br>doGetBean一共做了这么几件事：<br>    1、在创建实例之前，记录正在创建状态，singletonsCurrentlyInCreation.add(beanName)<br>    2、创建实例，调用singletonFactory.getObject();<br>    3、移除正在创建状态，this.singletonsCurrentlyInCreation.remove(beanName)<br>    4、将该bean缓存到单例缓存容器， this.singletonObjects.put(beanName, singletonObject);并且从相关的辅助容器删除，如singletonFactories和earlySingletonObjects</p>
+<pre><code>第2步中的：singletonFactory.getObject(),这里调用的是AbstractAutowireCapableBeanFactory.doCreateBean</code></pre><p>doCreateBean做了<br>1、实例化bean（实例包装器）<br>    if (instanceWrapper == null) {<br>              instanceWrapper = createBeanInstance(beanName, mbd, args);<br>           }<br>2、如果当前允许循环依赖且当前bean是单例而且处于创建状态，将此单例的ObjectFactory加入到singletonFactories，且此factory返回的bean对象就是当前实例化好的bean<br>3、进行属性注入<br>    populateBean(beanName, mbd, instanceWrapper);<br>4、instantiateBean ，进行init-method初始化和后置处理</p>
+<p>从这里可以看出来，在pupulateBean之前，singletonFactories存储了该bean的factory，然后进行pupulateBean，发现B是A的属性，然后调用getBean(B)对B进行实例化，重复上面的步骤到B的属性注入环节，发现A是B的属性，这个时候，再次调用getBean(A),此时缓存中已经有了A了</p>
+<h2 id="Bean的实例化过程"><a href="#Bean的实例化过程" class="headerlink" title="Bean的实例化过程"></a>Bean的实例化过程</h2><p>spring产生的Bean和自己创建的类没有直接关系<br>因为设置BeanDefinition可以修改</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -261,288 +225,114 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/06/Spring源码分析一/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/List-extends与supertT的区别/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:25:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/03/06/Spring源码分析二/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Spring源码分析二
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/06/List-extends与supertT的区别/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">List extends与supertT的区别</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/List-extends与supertT的区别/">List extends与supertT的区别</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/redis客户端/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:23:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/redis客户端/">redis客户端</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/redis服务器/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:23:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/redis服务器/">redis服务器</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/redis复制/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:22:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/redis复制/">redis复制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/redis集群/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:19:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/redis集群/">redis集群</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/redis-Sentinel模式/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:18:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/redis-Sentinel模式/">redis Sentinel模式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/幂等性问题/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:15:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/幂等性问题/">幂等性问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -566,8 +356,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

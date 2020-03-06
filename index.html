@@ -146,613 +146,210 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-简历" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Spring源码分析三" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/07/简历/">CV</a>
+      <a class="article-title" href="/2020/03/06/Spring源码分析三/">Spring源码分析三</a>
     </h1>
   
 
         
-        <a href="/2019/11/07/简历/" class="archive-article-date">
-  	<time datetime="2019-11-07T12:20:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-07</time>
+        <a href="/2020/03/06/Spring源码分析三/" class="archive-article-date">
+  	<time datetime="2020-03-06T03:28:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h1><ul>
-<li>游理轩/男/1997</li>
-<li>本科应届毕业生/泉州师范学院信息管理与信息系统</li>
-<li>技术博客：<a href="https://lixuanyou.github.io" target="_blank" rel="noopener">https://lixuanyou.github.io</a></li>
-<li>Github ：<a href="https://github.com/LixuanYou" target="_blank" rel="noopener">https://github.com/LixuanYou</a></li>
-<li>期望职位：Java后端开发工程师</li>
-</ul>
-<h1 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h1><ul>
-<li>手机：13055959293 </li>
-<li>Email：<a href="mailto:ylxyeah@gmail.com" target="_blank" rel="noopener">ylxyeah@gmail.com</a> </li>
-<li>QQ/微信号：806928786/ylxyeah</li>
-</ul>
-<h1 id="技能清单"><a href="#技能清单" class="headerlink" title="技能清单"></a>技能清单</h1><p>以下均为我熟练使用的技能</p>
-<ul>
-<li>Java基础编程</li>
-<li>JavaSE常用类库、异常、集合、多线程、IO、Lambda、Stream API</li>
-<li>JavaEE中Servlet、Filter、Listener、Json</li>
-<li>HTML、CSS、JavaScript、Ajax、JQuery技术</li>
-<li>MySQL、Mybatis、Redis等数据库相关知识及其运用</li>
-<li>Spring、SpringMVC框架的应用及其原理</li>
-<li>SpringBoot、SpringCould、RabbitMQ中间件的应用</li>
-<li>Junit单元测试、Maven项目构建、Gradle项目构建</li>
-</ul>
-<h1 id="个人项目"><a href="#个人项目" class="headerlink" title="个人项目"></a>个人项目</h1><h2 id="电子商城-（-2019年9月-2019年10月-）"><a href="#电子商城-（-2019年9月-2019年10月-）" class="headerlink" title="电子商城 （ 2019年9月 ~ 2019年10月 ）"></a>电子商城 （ 2019年9月 ~ 2019年10月 ）</h2><h3 id="秒杀业务"><a href="#秒杀业务" class="headerlink" title="秒杀业务"></a>秒杀业务</h3><h4 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h4><p>秒杀不是为了卖东西而是为了引流，秒杀采用的方式是限时限量限价，特点是高并发、库存少、业务流程短</p>
-<h4 id="技术选型：IDEA、SpringCloud-Eureka、Zuul-、MySQL、Redis、RabbitMQ"><a href="#技术选型：IDEA、SpringCloud-Eureka、Zuul-、MySQL、Redis、RabbitMQ" class="headerlink" title="技术选型：IDEA、SpringCloud(Eureka、Zuul)、MySQL、Redis、RabbitMQ"></a>技术选型：IDEA、SpringCloud(Eureka、Zuul)、MySQL、Redis、RabbitMQ</h4><h4 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h4><h5 id="SpringCloud的应用"><a href="#SpringCloud的应用" class="headerlink" title="SpringCloud的应用"></a>SpringCloud的应用</h5><ul>
-<li>订单服务：产生订单ID，监听队列，生成订单。</li>
-<li>库存服务：监听队列， 与Redis交互减少库存。</li>
-<li>商品服务：为前端页面服务提供商品列表数据用于展示。创建秒杀政策并将政策写入Redis缓存。</li>
-<li>用户服务：为页面服务提供用户数据API接口，会员的添加、修改、登录。</li>
-<li>页面服务：为前端页面提供数据API接口，如：登录页面，支付页面等</li>
-<li>网关服务：提供统一对外的API接口给前端，屏蔽内部服务的细节。</li>
-<li>时间服务：为页面服务提供统一的时间。</li>
-<li>注册中心：所有服务都要在注册中心注册。</li>
-<li>配置中心：提供所有服务需要的配置。</li>
-</ul>
-<h5 id="Redis的应用"><a href="#Redis的应用" class="headerlink" title="Redis的应用"></a>Redis的应用</h5><ul>
-<li>秒杀限制:将商品、秒杀时间、限购数量写到Redis缓存中</li>
-<li>缓存商品数量：消费者访问商品详情，提交订单之后，从Redis中减少商品数量。</li>
-</ul>
-<h5 id="RabbitMQ的应用"><a href="#RabbitMQ的应用" class="headerlink" title="RabbitMQ的应用"></a>RabbitMQ的应用</h5><ul>
-<li>订单队列：订单服务监听订单队列，接收到消息之后将队列信息写入数据库订单表。消费者付款之后更新订单状态，更新成功之后写入库存队列</li>
-<li>库存队列：库存服务监听库存队列，接收到消息之后将库存信息写入数据库减少库存。</li>
-<li>业务解耦：用RabbitMQ解决业务模块相互调用的关系</li>
-</ul>
-<h4 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h4><ol>
-<li>商城展示页面分为两层，通过商品列表页链接进入商品详情页，秒杀开始前，展示商品秒杀倒计时，允许查看商品详情但不许操作提交订单；秒杀开始时，展示商品秒杀到期时间。</li>
-<li>在前端有一个页面用于注册、登录。登录调用后台的Controller层的login(username，password)方法这返回的是Json数据，再调用Service层getUser方法返回Map，再调用Dao层getUser方法返回Map，Map容器存放的是用户信息。注册时Controller层的login方法没有获得用户信息调用Service的insertUser方法再到Dao层的insertUser方法注册用户。</li>
-<li>通过Redis计数器来筛选用户 没有通过筛选的用户直接返回一个商品售罄的页面；通过筛选的用户提交订单（createOrder）到订单服务产生一个唯一的orderID（按毫秒产生）。</li>
-<li>订单服务将订单信息写入订单队列，同时将订单信息写入Redis，这个过程耗时很短，用户感觉是直接跳转到支付。</li>
-<li>到达支付页面后通过Redis把订单消息查出来，再调用多种支付接口给用户多种支付方式，用户提交支付后（payOrder），这时的订单服务要写两个队列，第一个是更新订单的状态队列（updateOrderStatus），第二个是库存队列，这也是瞬间返回一个页面告诉用户支付成功等待收货， 直到这里都是内存操作避免订单服务直接操作数据库造成不友好的用户体验。</li>
-<li>订单服务监听订单队列（insertOrder），库存服务监听库存队列（insertStorage）再写到数据库中。</li>
-</ol>
-<h4 id="项目总结"><a href="#项目总结" class="headerlink" title="项目总结"></a>项目总结</h4><p>整个项目的核心是订单业务要求实现高并发用户无感知体验，用户下完订单到完成支付所有的数据可能都还在消息队列中还没开始和操作数据库。最难的是库存服务，由于库存是敏感数据， 操作都要非常谨慎。</p>
-<h2 id="技术文章"><a href="#技术文章" class="headerlink" title="技术文章"></a>技术文章</h2><ul>
-<li><a href="https://lixuanyou.github.io/2019/10/30/2019年微服务趋势报告/" target="_blank" rel="noopener">来自DZone的《2019年微服务趋势报告，以了解微服务的未来影响》(翻译文章)</a></li>
-<li><a href="https://lixuanyou.github.io/2019/10/31/语音识别/" target="_blank" rel="noopener">基于卷积神经网络的语音识别</a></li>
-</ul>
-<hr>
-<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p>感谢您花时间阅读我的简历，期待能有机会和您共事。</p>
+        <h1 id="在AbstractBeanFactory中的doGetBean-方法分析"><a href="#在AbstractBeanFactory中的doGetBean-方法分析" class="headerlink" title="在AbstractBeanFactory中的doGetBean()方法分析"></a>在AbstractBeanFactory中的doGetBean()方法分析</h1><pre><code>    protected &lt;T&gt; T doGetBean(final String name, @Nullable final Class&lt;T&gt; requiredType,
+        @Nullable final Object[] args, boolean typeCheckOnly) throws BeansException {
+    //FactoryBean获取自身实例时要加一个&amp;符号，这行代码是去除&amp;符号
+    final String beanName = transformedBeanName(name);
+    Object bean;
 
-      
+    // Eagerly check singleton cache for manually registered singletons.
+    /**
+     * @author: LixuanYou
+     * @date: 15:56 2019/12/17
+     * 这个在getSingleton方法在初始化的时候会调用，在getBean的时候也会调用
+     * 也就是说Spring在初始化的时候先获取这个对象
+     * 判断这个对象是否被实例化好了（与一般情况下为空）
+     *
+     * 检查缓存中或者实例工厂中是否有对应实例
+     * 为什么首先会用这段代码
+     * 因为在创建单例bean的时候会存在依赖注入的情况，而且创建依赖的时候要避免循环依赖
+     * Spring创建bean的原则是不会等bean创建完成就会将创建bean的ObjectFactory提早曝光
+     * 就是将ObjectFactory加入缓存中，一旦有下一个bean创建时候需要依赖上一个bean则直接使用ObjectFactory
+     */
+    //直接尝试从缓存中或者singletonFactory中的ObjectFactory中获取
+    Object sharedInstance = getSingleton(beanName);
+    if (sharedInstance != null &amp;&amp; args == null) {
+        if (logger.isTraceEnabled()) {
+            if (isSingletonCurrentlyInCreation(beanName)) {
+                logger.trace(&quot;Returning eagerly cached instance of singleton bean &apos;&quot; + beanName +
+                        &quot;&apos; that is not fully initialized yet - a consequence of a circular reference&quot;);
+            }
+            else {
+                logger.trace(&quot;Returning cached instance of singleton bean &apos;&quot; + beanName + &quot;&apos;&quot;);
+            }
+        }
+        //返回对应的实例，有的时候存在诸如BeanFactory的情况并不是直接返回实例本身而是返回指定方法返回实例
+        bean = getObjectForBeanInstance(sharedInstance, name, beanName, null);
+    }
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+    else {
+        // Fail if we&apos;re already creating this bean instance:
+        // We&apos;re assumably within a circular reference.
+        //只有在单例情况下才会解决循环依赖
+        if (isPrototypeCurrentlyInCreation(beanName)) {
+            throw new BeanCurrentlyInCreationException(beanName);
+        }
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/07/简历/">展开全文 >></a>
-        </p>
-      
+        // Check if bean definition exists in this factory.
+        BeanFactory parentBeanFactory = getParentBeanFactory();
+        //如果BeanDefinitionMap中也就是在所有已经加载的类中不包括beanName则尝试从parentBeanFactory中检测
+        if (parentBeanFactory != null &amp;&amp; !containsBeanDefinition(beanName)) {
+            // Not found -&gt; check parent.
+            String nameToLookup = originalBeanName(name);
+            if (parentBeanFactory instanceof AbstractBeanFactory) {
+                return ((AbstractBeanFactory) parentBeanFactory).doGetBean(
+                        nameToLookup, requiredType, args, typeCheckOnly);
+            }
+            //到BeanFactory中去寻找
+            else if (args != null) {
+                // Delegation to parent with explicit args.
+                return (T) parentBeanFactory.getBean(nameToLookup, args);
+            }
+            else if (requiredType != null) {
+                // No args -&gt; delegate to standard getBean method.
+                return parentBeanFactory.getBean(nameToLookup, requiredType);
+            }
+            else {
+                return (T) parentBeanFactory.getBean(nameToLookup);
+            }
+        }
+        //如果不仅仅是做类型检测则是创建bean，这里要进行记录
+        if (!typeCheckOnly) {
+            markBeanAsCreated(beanName);
+        }
+        //将存储XML文件的GenericBeanDefinition转化为RootBeanDefinition
+        //如果指定BeanName是子Bean的话同时会合并父类Bean的相关属性
 
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+        try {
+            final RootBeanDefinition mbd = getMergedLocalBeanDefinition(beanName);
+            checkMergedBeanDefinition(mbd, beanName, args);
 
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
+            // 确保当前bean依赖的bean的初始化。
+            String[] dependsOn = mbd.getDependsOn();
+            //如果存在依赖则需要递归实例化依赖的Bean
+            if (dependsOn != null) {
+                for (String dep : dependsOn) {
+                    if (isDependent(beanName, dep)) {
+                        throw new BeanCreationException(mbd.getResourceDescription(), beanName,
+                                &quot;Circular depends-on relationship between &apos;&quot; + beanName + &quot;&apos; and &apos;&quot; + dep + &quot;&apos;&quot;);
+                    }
+                    //将依赖调用缓存
+                    registerDependentBean(dep, beanName);
+                    try {
+                        getBean(dep);
+                    }
+                    catch (NoSuchBeanDefinitionException ex) {
+                        throw new BeanCreationException(mbd.getResourceDescription(), beanName,
+                                &quot;&apos;&quot; + beanName + &quot;&apos; depends on missing bean &apos;&quot; + dep + &quot;&apos;&quot;, ex);
+                    }
+                }
+            }
 
+            //实例化依赖的Bean以后可以mbd本身（MergedLocalBeanDefinition）
+            if (mbd.isSingleton()) {
+                sharedInstance = getSingleton(beanName, () -&gt; {
+                    try {
+                        return createBean(beanName, mbd, args);
+                    }
+                    catch (BeansException ex) {
+                        // Explicitly remove instance from singleton cache: It might have been put there
+                        // eagerly by the creation process, to allow for circular reference resolution.
+                        // Also remove any beans that received a temporary reference to the bean.
+                        destroySingleton(beanName);
+                        throw ex;
+                    }
+                });
+                bean = getObjectForBeanInstance(sharedInstance, name, beanName, mbd);
+            }
 
+            else if (mbd.isPrototype()) {
+                // It&apos;s a prototype -&gt; create a new instance.
+                Object prototypeInstance = null;
+                try {
+                    beforePrototypeCreation(beanName);
+                    prototypeInstance = createBean(beanName, mbd, args);
+                }
+                finally {
+                    afterPrototypeCreation(beanName);
+                }
+                bean = getObjectForBeanInstance(prototypeInstance, name, beanName, mbd);
+            }
 
+            else {
+                //指定Socope上实例化Bean
+                String scopeName = mbd.getScope();
+                final Scope scope = this.scopes.get(scopeName);
+                if (scope == null) {
+                    throw new IllegalStateException(&quot;No Scope registered for scope name &apos;&quot; + scopeName + &quot;&apos;&quot;);
+                }
+                try {
+                    /*这里用Lambda指代new ObjectFactory&lt;Object&gt;(){
+                        public Object getObject()throws BeanException
+                     }*/
+                    Object scopedInstance = scope.get(beanName, () -&gt; {
+                        beforePrototypeCreation(beanName);
+                        try {
+                            return createBean(beanName, mbd, args);
+                        }
+                        finally {
+                            afterPrototypeCreation(beanName);
+                        }
+                    });
+                    bean = getObjectForBeanInstance(scopedInstance, name, beanName, mbd);
+                }
+                catch (IllegalStateException ex) {
+                    throw new BeanCreationException(beanName,
+                            &quot;Scope &apos;&quot; + scopeName + &quot;&apos; is not active for the current thread; consider &quot; +
+                            &quot;defining a scoped proxy for this bean if you intend to refer to it from a singleton&quot;,
+                            ex);
+                }
+            }
+        }
+        catch (BeansException ex) {
+            cleanupAfterBeanCreationFailure(beanName);
+            throw ex;
+        }
+    }
 
-  
-    <article id="post-语音识别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/31/语音识别/">基于卷积神经网络的南平方言语音识别研究</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/31/语音识别/" class="archive-article-date">
-  	<time datetime="2019-10-31T10:06:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>随着计算机技术的迅速发展，深度学习在各个领域取得广泛的运用。深度学习算法拥有强大的提取数据特征吸引着许多学者进行深入研究。成果，但到现在为止为止该项技术还没有运用到南平方言等地方性方言的语音识别中，此处在南平方言的应用深度学习算法，创建了有补充意义的南平方言语料库再分别应用传统神经网络模型和卷积神经网络模型进行训练与识别。此处主要工作和创新如下：</p>
-<ol>
-<li>在对比了南平方言与普通话的最佳特点后本文采用《建州八音》选取有代表性的南平方言作为文本语料，通过田野调查获得14位实验参与者的语音录音共计6068条数据样本。</li>
-<li>从语音识别的理论出发，以声学特征为着手点，然后分别采用卷积神经网络模型和传统神经网络模型进行训练与识别之后交叉相对两个实验的结果转化模型的规律和语音识别正确率的摘要。</li>
-<li>以较高的正确率完成南平方言语语音识别，实验结果表明在此处建立的语料库测试集中，卷积神经网络模型与传统神经网络模型正确率有17.5％的相对提高，基于卷积神经网络的语音识别实验的正确率可以稳定地达到98％。</li>
-</ol>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="1-1-课题研究背景及研究目的与意义"><a href="#1-1-课题研究背景及研究目的与意义" class="headerlink" title="1.1 课题研究背景及研究目的与意义"></a>1.1 课题研究背景及研究目的与意义</h3><p>随着互联网的蓬勃发展人们的生活愈发便利，人们运用语言对机器下达命令并完成相应任务是很多科研人员多年来的夙愿。近些年随着语音识别技术的迅速发展，涌现出了科大讯飞、苹果Siri、微软Cortana等优秀的语音识别系统，相较于其他的交互方式，语音技术不需要对说话人进行计算机相关的培训而达到方便快捷的目的，这是一件有意义的事情。</p>
-<p>语音识别的发展主要得益于隐马尔科夫模型，在20世纪80年代高斯混合模型与隐马尔科夫模型的结合使得语音识别技术取得较大的突破[1]，如今深度学习的出现使得语音识别领域出现质的飞跃，优势在于深度学习提取声学特征的强大能力，其次深度学习的输入特性更加的多样且具有融合性；与此同时深度学习可以有效利用相邻语音结构中所包含的信息，解决了语音数据连续性问题。</p>
-<p>本文的主要研究内容为：在获取实验数据并做数据预处理后，利用Python程序语言提取梅尔频率倒谱系数（Mel-scale Frequency Cepstral Coefficients，MFCC），分别使用传统神经网络和卷积神经网络（Convolution Neural Network，CNN）训练并输出语音识别正确率的结果，然后分析和比较两个模型准确性测试的差异，最后对研究结果进行分析总结并对未来的研究方向进行展望。</p>
-<h3 id="1-2-南平方言的研究现状"><a href="#1-2-南平方言的研究现状" class="headerlink" title="1.2 南平方言的研究现状"></a>1.2 南平方言的研究现状</h3><p>随着计算机技术的蓬勃发展，特别是GPU计算能力的提高，深度学习算法使需要提取大量数据的特征为基础的实验不再困难，节约了此过程中研究人员宝贵的时间。国内外大部分的主流语言的语音识别系统取得了举世瞩目的成果，但是方言作为非物质文化遗产，在这一方面没有获得长足的进步。现存的方言中保留着许多古韵和特殊语法，蕴含着各个地方的文化；在汉语发展史上，方言先于普通话，普通话的基础和蓝本就是各地的方言，从这一方面看，普通话和方言并不是是对立的，相反它们是相辅相成的。</p>
-<p>南平地区人口达三百二十万，对于南平地区方言的研究可以保护和传承南平文化，对于了解古籍人文变迁有积极作用，同时服务于当地的人民群众，但是迄今为止对于南平方言的研究停留在传统的手法，没有形成标准的数据库设计与标注，在此之上的计算机相关领域的研究也近趋于零，这不得不说是一种遗憾。</p>
-<h2 id="2-语音识别基础理论"><a href="#2-语音识别基础理论" class="headerlink" title="2 语音识别基础理论"></a>2 语音识别基础理论</h2><h3 id="2-1-语音识别的过程"><a href="#2-1-语音识别的过程" class="headerlink" title="2.1 语音识别的过程"></a>2.1 语音识别的过程</h3><p>语音识别是指机器对说话人用发声器官产生的语音信号进行处理，由此产生对应的语音文本信息。语音识别的具体过程如下：由于录音环境的限制，语音信号是“有用信号”和“噪声”的结合，因此提取输入语音当中的有用信息至关重要。在语音识别阶段和训练阶段需要对输入的语音信号进行处理。语音处理可以从输入语音中提取有用的信息并减少模型识别的难度。之后从语音信号中提取具有代表性的特征，这样会进一步简化语音的复杂度，接着声学模型将计算每一个特征向量在声学特征上的得分；最后将整体得分最高的词作为最有可能的识别结果输出[2]。</p>
-<h3 id="2-2-语音特征的提取"><a href="#2-2-语音特征的提取" class="headerlink" title="2.2 语音特征的提取"></a>2.2 语音特征的提取</h3><p>通过录音的到的时域的波形图对于机器来说过于复杂，声音作为一种波，频率在20 Hz~20 kHz之间的声音是可以被人耳识别的，因此提取梅尔频率倒谱系数成为普遍的方法。</p>
-<p><img src="/2019/10/31/语音识别/%E6%97%B6%E5%9F%9F%E6%B3%A2%E5%BD%A2%E5%9B%BE.png" alt></p>
-<p>图2-1时域的波形图</p>
-<p>如图2-1所示的时域的波形图实际上可以用经过一系列的梅尔滤波器组来进行降维，利用三角滤波组可以得到图2-2所示：</p>
-<p><img src="/2019/10/31/语音识别/Mel%E6%BB%A4%E6%B3%A2%E5%99%A8%E7%BB%84.png" alt></p>
-<p>图2-2 Mel滤波器组</p>
-<p>其中各f(m)之间的间隔随着m值的减小而缩小，随着m值的增大而增宽[3]，这组三角带通滤波器的表达式如式（2-1）所示：</p>
-<p><img src="/2019/10/31/语音识别/%E5%85%AC%E5%BC%8F2-1.png" alt></p>
-<p>式（2-1）中，m表示滤波器的编号，f(m-1) ，f(m) ,f(m-1) 分别表示该滤波器的下限频率、中心频率和上限频率 。</p>
-<p><img src="/2019/10/31/语音识别/%E5%85%AC%E5%BC%8F2-2.png" alt></p>
-<p>三角带通滤波器组的作用是平滑频谱，消除谐波影响，有效地减少特征数据量，有利于计算。求出滤波器组中每个滤波器的对数能量即 刻度下的子带能量 ，后对其做离散余弦变换，离散余弦变换的表达式如式（2-4）所示：</p>
-<p><img src="/2019/10/31/语音识别/%E5%85%AC%E5%BC%8F2-3%E4%B8%8E2-4.png" alt></p>
-<p>式（2-4）中， M表示滤波器的总数， D对应Mel倒谱系数的阶数，这里做离散余弦变换的目的就是为了去除不同阶数之间的相关性。在语音识别中最有效的特征在C1到C2之间，通常还会对这些分量做一阶和二阶差分计算以获取语音的动态属性。差分参数的计算可以采用下面的公式：</p>
-<p><img src="/2019/10/31/语音识别/%E5%85%AC%E5%BC%8F2-5.png" alt></p>
-<p>式(2-5)中， dt表示第t个一阶差分， Ct表示第t个倒谱系数，D表示倒谱系数的阶数，K表示一阶导数的时间差，可取1或2。</p>
-<h3 id="2-3-神经网络模型"><a href="#2-3-神经网络模型" class="headerlink" title="2.3 神经网络模型"></a>2.3 神经网络模型</h3><p>神经网络模型受生物学中的神经元启发而来，是一种能够有效解决分类任务的数学模型，在现代生物学研究中一个神经细胞通常由细胞核、树突、轴突以及突触构成[4]。树突接受其他神经元产生的信息，细胞核会对接受的信息分析处理，轴突会将细胞核处理后的信息传递至突触。</p>
-<p>与生物学上的神经结构类似，人工神经网络（Artificial Neural Network，ANN），它的第一层为输入层用于接收网络的输入，最后一层为输出层激活函数一般为SoftMax也称SoftMax层，中间为隐藏层。除了输出层，每层神经元都是全连接到下一层，神经元是人工神经网络的基本处理单元，神经元通常会收到多个输入信息，这些信息会被赋予权值的连接传递至神经元中，最终利用输出函数来判定是否激活该神经元。人工神经网络拥有两个或以上隐藏层称为深度神经网络（Deep Neural Network，DNN），只有一层隐藏层称为多层神经网络也称多层感知机（Multi-Layer Perception）。</p>
-<p>在隐藏层中，每个神经元汇总之前神经元的全部信息，但只是作若干赋予权值与每个数据输入相乘之后再相加的线性变换，这并不符合对某些输出的信息需要增强或抑制的实际需求，这时可以采用sigmoid函数处理，sigmoid函数对中间区域的信息有增益，而对两侧信息有抑制[5]。</p>
-<p>人工神经网络中最常用的训练算法是反向传播算法（Back Propagation，BP）与梯度下降算法（Gradient Descent，GD ）结合使用，作用是更新整个网络的权值。BP算法主要包括两个部分：激励传递与权值更新，。</p>
-<p>1、前向传递阶段</p>
-<p>假设网络的第l-1层有m个神经元，则对于第l层第j个神经元的输出alj有：</p>
-<p><img src="/2019/10/31/语音识别/%E5%85%AC%E5%BC%8F2-6.png" alt></p>
-<p>可将其转换成矩阵表达形式：</p>
-<p><img src="/2019/10/31/语音识别/%E5%85%AC%E5%BC%8F2-7.png" alt></p>
-<p>式（2-7）中， 表示第al层的输出向量， zl表示第l层未激活线性输出向量，Ｗ表示第l层与第l-1层之间的权值矩阵， bij表示第l层的偏置向量。有了式（2-7），便可以获取每一层的输入和输出，对于一个l层网络的最终输出有：</p>
-<p><img src="/2019/10/31/语音识别/%E5%85%AC%E5%BC%8F2-8.png" alt></p>
-<p>2、误差反向传播阶段</p>
-<p>损失函数是衡量模型预测结果的优劣的重要指标，实验开始时拿某一个数据来测试，进行前向传播，我们希望损失函数尽可能低，如果达不到期望，则进行误差反向传播，反向传播的目的是优化权重矩阵，在实验开始时的权重W是随机的，如此迭代直到损失函数值满足期望。</p>
-<p>损失函数的种类有很多，这里以常见的均方误差来度量损失。对于单个样本{x,y} 其损失函数为：</p>
-<p><img src="/2019/10/31/语音识别/%E5%85%AC%E5%BC%8F2-9%E4%B8%8E2-10.png" alt></p>
-<p>式（2-10）中，⨀表示Hadamard乘积。式中存在公共部分 ，可以将其提取出来记为 ：</p>
-<p><img src="/2019/10/31/语音识别/%E5%85%AC%E5%BC%8F2-11.png" alt></p>
-<p>下梯度算法是在寻找损失函数的极小值，对于某点的导数不为零肯定不是极值点，所以沿函数方向移动一个步长（学习率），最终达到极小值附近，为什么说附近，因为是移动一定的步长，刚好达到极小值可能性很小。在多维函数中要对各个方向的分量分别求导最终得到方向就是梯度的形状。它的梯度可以表示为：</p>
-<p><img src="/2019/10/31/语音识别/%E5%85%AC%E5%BC%8F2-12.png" alt></p>
-<p>第l层的Wl和bl以的梯度表示为：</p>
-<p><img src="/2019/10/31/语音识别/%E5%85%AC%E5%BC%8F2-13.png" alt></p>
-<p>这里关键是要求出δ^l的值，假设第l+1层的 已经求出则有：</p>
-<p><img src="/2019/10/31/语音识别/%E5%85%AC%E5%BC%8F2-14.png" alt></p>
-<p>又 z^(l+1)=W^(l+1) f(z^l )+b^(l+1)，所以式（2-13）可以写为：</p>
-<p><img src="/2019/10/31/语音识别/%E5%85%AC%E5%BC%8F2-15.png" alt></p>
-<p>由于第L层的δ^l能够求解，那么利用式（2-15）可以求得以δ^(l-1)这也是误差反向传播算法的内涵所在。接着用式（2-13）就可以求每一层的W^l和b^l的梯度。</p>
-<p>3、权值更新阶段</p>
-<p>在误差反向传递阶段，定义了一个中间变量δl，通过这个中间变量可以分别求得每一层和的梯度，进而对Wl和bl的值进行更新，更新公式如下：</p>
-<p><img src="/2019/10/31/语音识别/%E5%85%AC%E5%BC%8F2-16.png" alt></p>
-<p>式（2-16）中α表示学习率，m表示总体的训练样本数{(x1,y1),(x2,_2),⋯,(xm,ym)} 。 表示在第i个训练样本的第l层的误差， a^(i,l-1)表示第i个训练样本的第l-1层的输出，这里是对所有训练样本进行权值和偏置进行更新[6]。</p>
-<h3 id="2-4-卷积神经网络模型"><a href="#2-4-卷积神经网络模型" class="headerlink" title="2.4 卷积神经网络模型"></a>2.4 卷积神经网络模型</h3><p>声学模型是语音信号和文字内容间的关系的建模，是整个语音识别系统中最为重要的部分，它在一定程度上决定了整个语音识别系统的优劣。通常的声学模型是基于语音信号的时域和频域图谱分析完成的，而其中语音时频谱是具有结构特点的，要想提高语音识别正确率，就是需要克服语音信号本身的复杂性；包括说话人的多样性，这包括语速、声调、口音等；环境的多样性，这包括低噪、混响以及环境的空间大小等。由于卷积神经网络的局部连接和权重共享的特点，声学模型将拥有良好的平移不变性[7]。一个典型的CNN结构如图2-5所示。</p>
-<p>![](语音识别/图2-5 卷积神经网络结构图.png)</p>
-<p>图2-5 卷积神经网络结构图</p>
-<p>CNN模型一共包括3部分：</p>
-<p>1、卷积层：</p>
-<p>卷积层中包含多个卷积核用以获取局部特征。通常大多数特征图都不与特定的卷积核相连，这之间存在一定的组合关系。与全连接网络不同，卷积层中包含的卷积核只会与输入中的某些局部区域相连接，这样不仅有效地降低了网络的连接数量而且也可以获取丰富的结构化特征。此外，通过学习得到的权重参数在卷积过程中不会改变，这样就巧妙地避免了大量的网络参数。</p>
-<p>2、池化层：</p>
-<p>池化层又名下采样层，该层主要对上一层得到的特征图进行压缩。通常池化层的卷积核为只会对相应位置作最大值或平均值处理，并且不会因为反向传播而修改权值。引入池化层的目的是当实验数据量太大时我们需要减少训练参数的数量，同时可以忽略目标的倾斜、旋转之类的相对位置的变化。</p>
-<p>3、全连接+Softmax层：</p>
-<p>对于人脸识别、文本识别这类任务，输出层一般采用SoftMax函数，SoftMax函数输出每个元素值在0与1之间，并且所有元素之和为1。为了解决过拟合问题一种方式就是在Cost函数对数据集整体的误差描述中加入正则化项，减小模型的复杂度；另一种方式是DropOut函数，与第一种不同DropOut函数不是针对Cost函数而是改变神经网络本身的结构。每次训练随机忽视一半的隐藏层神经元，这样如同在不同的神经网络上进行训练，间接减少了神经元之间的依赖性，解决过拟合问题的同时还可以提高正确率。第三种引入非线性激活函数ReLu，它会使一部分神经元的输出为0，这样就造成了网络的稀疏性这就减少了神经元之间的依赖性，缓解了过拟合问题的发生。</p>
-<h2 id="3实验过程"><a href="#3实验过程" class="headerlink" title="3实验过程"></a>3实验过程</h2><p>本章首先对南平方言所使用的语料库建立方法进行了说明，其次介绍了本文的具体工作：对设计的语料库进行了录制、切分与标注。将得到的共计6068条南平方言数据进行语音预处理后提取出 13维 MFCC特征，再以7:3的比例划分训练集（4247条）和测试集（1821条），实验了基于神经网络和卷积神经网络的语音实验，重点研究了卷积神经网络模型，包括训练和识别的算法与具体过程，最后对实验结果进行了总结。</p>
-<h3 id="3-1-语音样本库的建立"><a href="#3-1-语音样本库的建立" class="headerlink" title="3.1 语音样本库的建立"></a>3.1 语音样本库的建立</h3><p>由于互联网上没有开源的南平方言语料库，所有的语音数据都需要自行准备。1957 年，黄典诚所著作的《建瓯方言初探》指出闽北方言的代表点应是建瓯方言[8]。在对比了南平方言与普通话的发音特点后本文采用《建州八音》所记载的三十六字韵母作为样本，，其中第3“秾”韵和第10“种”韵拟音相同为第11“茄”韵和第21“厝”韵拟音相同[9]。与普通话类似南平方言属于单音节的有调语言，每个南平方言的单字都是声母与韵母的组合，所以选取韵母对应的字作为实验语料具有代表意义。图3-1为南平方言韵母系统比较表。</p>
-<p><img src="/2019/10/31/语音识别/%E9%9F%B5%E6%AF%8D%E7%B3%BB%E7%BB%9F%E6%AF%94%E8%BE%83%E8%A1%A8.png" alt></p>
-<p>图3-1 韵母系统比较表</p>
-<h4 id="3-1-1-语音数据采集方法"><a href="#3-1-1-语音数据采集方法" class="headerlink" title="3.1.1 语音数据采集方法"></a>3.1.1 语音数据采集方法</h4><p>在录制语音数据时，说话人选择一定要有代表性，说话人的选择使用随机选择和抽样选择，要满足如下条件：必须在当地出生和长大，家庭语言环境单纯，未在外地长期居住，能说地道的当地方言，受普通话或其他语言影响较小[10]。本文聘请了14个人对36个韵母进行朗读，其中7人为女性7人为男性，年龄在22-60周岁之间，年龄跨度为老中青三代。数据的采集是基于手机和录音笔设备录制的，录音环境包括安静的室内和低噪的室外。录音尽可能包括快速、中速、慢速三种方式。在录音过程有以下注意事项：</p>
-<p>（1）录音环境。为了避免回声和混响一般以十几平方米的房间为宜 ；录音过程中在场人员手机必须关机防止出现干扰噪音。</p>
-<p>（2）说话人的基本训练。发音人音量要保持基本一致 ；语料文本要提前让发音人提前熟悉和练习，避免连读这会导致语音数据无法剪辑。</p>
-<p>（3）为了保证录音质量，我们对录制好的的语音信号进行监听，防止混入电脑散热器风扇和鼠标“哒哒”声，如果语音漏读或者读错，我们将会进行补录。</p>
-<h4 id="3-1-2数据剪辑和标注"><a href="#3-1-2数据剪辑和标注" class="headerlink" title="3.1.2数据剪辑和标注"></a>3.1.2数据剪辑和标注</h4><p>首先将语音文件预处理，处理手法为将文件统一为WAV格式，格式采样率为44100赫兹，音频声道为单声道。优秀的剪辑手法可以提升实验识别的成功率，因此在剪辑过程中应该尽可能避免剪辑入杂音，同时监听剪辑结果，如果读错或者漏读我们将会进行补录。被剪辑数据的大小要尽可能相似，剪辑之后首先要区分男性声音和女性声音，因为本文选择了36个孤立韵母所以归类数据时就需要再分36个类。图3-2为使用Cool Edit Pro剪辑“时”字录音的工作界面。</p>
-<p>![](语音识别/使用Cool Edit Pro剪辑“时”字录音的工作界面.png)</p>
-<p>图3-2为使用Cool Edit Pro剪辑“时”字录音的工作界面</p>
-<h3 id="3-2-基于传统神经网络的语音识别实验"><a href="#3-2-基于传统神经网络的语音识别实验" class="headerlink" title="3.2 基于传统神经网络的语音识别实验"></a>3.2 基于传统神经网络的语音识别实验</h3><p>1、首先自定义一个数据集函数，其中的labels和 testlabels 存放的值是相应标签的下标，下标对应的名字在labsInd中，运用os.listdir函数拼接训练集和测试集的路径；再批处理语音数据，得到语音数据与标签、测试集数据与测试集标签、训练集标签与测试集标签。</p>
-<p><img src="/2019/10/31/语音识别/%E4%BB%A3%E7%A0%811.png" alt></p>
-<p><img src="/2019/10/31/语音识别/%E4%BB%A3%E7%A0%812.png" alt></p>
-<p>2、在读取语音数据后自定义一个提取MFCC特征值的函数，使用的参数为单个文件在磁盘中的位置，最终获得的MFCC特征值是由正数与负数组成的数组，考虑到避免损失函数为负数以至于输出得分相差太大，需要把原始的MFCC全部转为正数，采取的方式是将平方之后开平方得到的值为正数并且值的范围在 0-1之间，图3-3为函数输出的MFCC特征值数组。具体代码如下所示：</p>
-<p><img src="/2019/10/31/语音识别/%E4%BB%A3%E7%A0%813.png" alt></p>
-<p><img src="/2019/10/31/语音识别/%E5%9B%BE3-3%E5%87%BD%E6%95%B0%E8%BE%93%E5%87%BA%E7%9A%84MFCC%E7%89%B9%E5%BE%81%E5%80%BC%E6%95%B0%E7%BB%84.png" alt></p>
-<p>图3-3函数输出的MFCC特征值数组</p>
-<p>3、全连接层模型。前三层激活函数采用ReLu函数，最后输出64维的全局特征；最后一个全连接层用于分类，输出为36类，激活函数用Softmax函数最终输出当前特征所属的类别。网络结构代码如下图所示：</p>
-<p><img src="/2019/10/31/语音识别/%E4%BB%A3%E7%A0%814.png" alt></p>
-<p>4、配置模型。配置模型的Loss函数采用交叉熵的方式，优化采用Adadelta，将最终的得分作为评价模型的标准。</p>
-<p><img src="/2019/10/31/语音识别/%E4%BB%A3%E7%A0%815.png" alt></p>
-<p>5、训练模型。设置输入数据为wavs，标签为labels，指定进行梯度下降时每个batch包含的样本数为124,训练时一个batch的样本会被计算一次梯度下降，使目标函数优化一步，迭代次数epoch为10当训练达到该epoch值时停止，代表训练的总轮数，验证为(testwavs, testlabels)。<br><img src="/2019/10/31/语音识别/%E4%BB%A3%E7%A0%816.png" alt><br>6、训练结果为对于4247条训练集和1821条验证集，输入的模型训练误差为0.3518，精度为91%，损失交叉熵为 1.0165，验证精度为81%，如图3-4所示。</p>
-<p>![](语音识别/图3-4 神经网络模型训练结果.png)</p>
-<p>图3-4 神经网络模型训练结果</p>
-<h3 id="3-3基于卷积神经网络的语音识别实验"><a href="#3-3基于卷积神经网络的语音识别实验" class="headerlink" title="3.3基于卷积神经网络的语音识别实验"></a>3.3基于卷积神经网络的语音识别实验</h3><h4 id="3-3-1-提取语音特征"><a href="#3-3-1-提取语音特征" class="headerlink" title="3.3.1 提取语音特征"></a>3.3.1 提取语音特征</h4><p>首先读取14个人共计6068条语音数据文件，通过python_speech_features模块来抽取每个语音文件的13维特征。具体代码如下所示：</p>
-<p><img src="/2019/10/31/语音识别/%E4%BB%A3%E7%A0%817.png" alt></p>
-<h4 id="3-3-2-划分训练集和测试集"><a href="#3-3-2-划分训练集和测试集" class="headerlink" title="3.3.2 划分训练集和测试集"></a>3.3.2 划分训练集和测试集</h4><p>采用LabelBinarizer方法对标签进行二值化处理，即是将对应的数据转换为二进制型，再以7:3的比例划分训练集（4247条）和测试集（1821条），由此可得训练集和测试集的维度分别为：(6068, 1821, 13) (4247, 1821,13) (4247, 36) (1821, 36)，其中4247是训练集中的语音文件个数，1821是测试集中的语音文件个数，13是上一步中抽取出的特征的维数，36是指最终分类个数，具体代码如下：</p>
-<p><img src="/2019/10/31/语音识别/%E4%BB%A3%E7%A0%818.png" alt></p>
-<h4 id="3-3-3-建立CNN模型"><a href="#3-3-3-建立CNN模型" class="headerlink" title="3.3.3 建立CNN模型"></a>3.3.3 建立CNN模型</h4><p>根据图3-5的结构对CNN模型进行设计。整个模型的首部由卷积层和池化层组成，卷积层的作用是卷积核获取语音帧内各维数与各语音帧之间的有效信息并输出为特征图，之后再交由池化层处理，池化层的实质是进行特征图的压缩，实验采用的是最大池化会提取最大的特征点，经过两次轮换处理语音特征中的局部信息可以很好地提取，后部由全连接层组成，全连接层的实质是进行全局上的信息整合，将分割开的局部信息整合成为完整的全局信息，整个网络最终输出当前特征所属的类别。</p>
-<p>![](语音识别/图3-5 CNN模块设计.png)</p>
-<p>图3-5 CNN模块设计</p>
-<ul>
-<li>CNN模型首先包含一个1维卷积层，共有32个卷积核，每个卷积核大小为4，输入为训练集语音文件的形状，即(1821,13)；第二层是一个池化层，采样核大小为4；第三层也是1维卷积层，共有64个卷积核 ，每个卷积核大小也为4；第四层也是池化层，采样核大小同样为4；接下来的扁平化通常用于卷积层和全连接层之间，作用是将多维的输入一维化。网络结构如下所示：</li>
-</ul>
-<p><img src="/2019/10/31/语音识别/%E4%BB%A3%E7%A0%819.png" alt><br>2、建立全连接层，对上一层的神经元进行全部连接，实现全局特征的非线性组合。定义Dense层，设置该层的输出维数为32，激活函数选用ReLu。最后建立输出层，激活函数使用Softmax，将多个神经元输出，起到分类的作用。<br><img src="/2019/10/31/语音识别/%E4%BB%A3%E7%A0%8110.png" alt><br>3、定义模型并查看CNN输入下模型的各层信息</p>
-<p><img src="/2019/10/31/语音识别/%E4%BB%A3%E7%A0%8111.png" alt></p>
-<p>4，配置模型。设置损失函数为categorical_crossentropy，优化器为RMSprop，指标列表设置为准确度categorical_accuracy。</p>
-<p><img src="/2019/10/31/语音识别/%E4%BB%A3%E7%A0%8112.png" alt></p>
-<p>5，训练结果为关于4247条训练集和1821条验证集，使用CNN输入的模型训练误差为1.27％，精度为99.73％，验证误差为1.98％，验证精度为98.02％，例如3-6所示。</p>
-<p>![](语音识别/图3-6 CNN输入下的模型训练结果.png)</p>
-<p>图3-6 CNN输入下的模型训练结果</p>
-<p>经过14轮训练后得到了98.02％的准确率，这样可以重新命名，模型终于能以很高的准确率定语音所对应的汉字。</p>
-<h3 id="3-4训练结果与分析"><a href="#3-4训练结果与分析" class="headerlink" title="3.4训练结果与分析"></a>3.4训练结果与分析</h3><p>本文使用Python语言建立了两种声学模型，其中卷积神经网络通过调整参数结果也稳定地保持在98％的正确率以上，结果表明网络层数增加，语音识别的正确率会上升。神经网络模型与卷积神经网络模型排名有的17.50％相对降低。</p>
-<p><img src="/2019/10/31/语音识别/%E8%A1%A81%E5%AE%9E%E9%AA%8C%E6%A8%A1%E5%9E%8B%E5%AF%B9%E6%AF%94.png" alt></p>
-<p>表1实验模型对比</p>
-<p>从模型结构上来看，卷积神经网络比传统神经网络更合理，传统神经网络切换所有语音特征都连接到每一个神经元上，这样的方式是会分离对语音帧之间的有效信息提取能力，而卷积神经网络基于局部感受野机制能利用许多的卷积核提取不同层次的局部特征，通过池化层对特征进行下采样可以无视目标的相应位置的变化，从而提高容错能力，降低还降低了网络的数据量。</p>
-<h2 id="4总结与展望"><a href="#4总结与展望" class="headerlink" title="4总结与展望"></a>4总结与展望</h2><p>随着计算机的不断发展，深度学习算法使需要增加大量数据的特征为基础的实验不再困难，深度学习在诸如人脸识别，文本处理，文字识别等领域获得非凡成果，相信逐步技术仍会更普遍地应用。南平地区的人口达三百二十万，对于南平方言的研究不但可以服务于当地人民还可以保护当地文化，保持海丝文化的多样性。此处的主要的研究工作如下：</p>
-<ol>
-<li>目前是互联网上没有开源的南平方言语料库，实验所需数据需要自行准备，此处在对比了南平方言与普通话的最佳特点后本文采用《建州八音》选取有替代的南平方言作为文本语料，通过田野调查获得14位实验参与者的语音录音共计6080条数据样本。</li>
-<li>从语音识别的理论出发，以声学特征为着手点，然后分别采用卷积神经网络模型和传统神经网络模型进行训练与识别之后交叉相对两个实验的结果转化模型的规律和语音识别正确率的摘要。</li>
-<li>本文主要对比研究了基于传统神经网络的声学模型与基于卷积神经网络的声学模型的模型结构，网络特征，识别正确率。重点研究了卷积神经网络模型，包括训练和识别的算法与具体过程。然后对深度学习算法的研究现况和基本原理进行了探究。</li>
-<li>以较高的正确率完成南平方言语语音识别，实验结果表明在此处建立的语料库测试集中，卷积神经网络模型与传统神经网络模型正确率有17.5％的相对提高，基于卷积神经网络的语音识别实验的正确率可以稳定地达到98％。</li>
-</ol>
-<p>在这里研究的基础上将来的改进和研究的工作主要分为以下几个部分：</p>
-<ol>
-<li>因此本工作料应该考虑扩大语料库，从而连续语音，噪声语音进行设计与录制。</li>
-<li>本文使用了神经网络和卷积神经网络进行声学建模，以后可以采用LSTM网络进行再次建模，CNN负责特征提取LSTM负责时序信息捕获，则可以进行语句上的识别。</li>
-<li>在这里实验过程中，模型的训练消耗增量的时间，未来的发展方向必定是基于大量语音数据量和更深层次的网络模型，目前构建GPU可以减少训练时间。</li>
-<li>优秀的声学特征提取手法以提高语音识别准确率，然后可以从语音的时－频谱中获取到的声学特征。</li>
-</ol>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1]施仁杰。马尔科夫链基础及其研究应用[M]。西安：西安电子科技大学出版社，1992。</p>
-<p>[2]包叶波，胡郁，刘聪，江辉，戴礼荣，刘庆峰。中文连续语音识别系统音素建模单元集的构建[J]。清华大学学报（自然科学版），2011,51（9）：1288-1292。</p>
-<p>[3] Tiwari V.MFCC及其在说话人识别中的应用[J]。国际新兴技术杂志，2010，27（5）：144-145。</p>
-<p>[4]欧阳楷，邹睿。基于生物的神经网络的理论框架[J]。北京生物医学工程，1997，（2）：1002-3208。</p>
-<p>[5] Glorot X，Bordes A，Bengio Y.深度稀疏整流神经网络[J]。机器学习研究，2011,30（8）：15-16。</p>
-<p>[6]梅俊杰。基于卷积神经网络的语音识别研究[D]。北京交通大学，2017。</p>
-<p>[7]帅波，刘涛，王庚。改进的全卷积网络语义分割[J]。2016,78（9）：121-122。</p>
-<p>[8]黄典诚。建瓯方言初探[J]。厦门大学学报（社会科学版），1957（01）：438-460。</p>
-<p>[9]潘渭水。《建州八音》剖析[J]。辞书研究，1986，（5）1000-6125。</p>
-<p>[10]许彬彬，洪青阳，李柏翰，郑大伟，李琳，肖乐。第十四届全国人机语音通讯学术会议论文集[C]。北京：清华大学出版社，2017。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/31/语音识别/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2019年微服务趋势报告" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/30/2019年微服务趋势报告/">来自DZone的《2019年微服务趋势报告，以了解微服务的未来影响》(翻译文章)</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/30/2019年微服务趋势报告/" class="archive-article-date">
-  	<time datetime="2019-10-30T13:48:34.425Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
-<li>摘要和介绍</li>
-<li>《微服务的一致性》</li>
-<li>《何时以及如何迁移到微服务》</li>
-<li>《在企业中采用服务网格的挑战》</li>
-<li>主要研究成果</li>
-<li>深入研究迁移到微服务</li>
-<li>微服务迁移状态执行力的观察<h3 id="摘要和介绍"><a href="#摘要和介绍" class="headerlink" title="摘要和介绍"></a>摘要和介绍</h3>过去的几年里，可扩展性和可用性是软件开发领域中最一致的需求。得益于云计算和物联网等创新，我们希望软件完成比以往更复杂的任务，处理更多的数据，应用程序也能够像我们要求的那样快速增长<br>微服务在这一转变中起主要作用。它允许开发人员将复杂的服务分解成彼此独立的操作特定组件。如果(或当)某个东西坏了，它不会导致整个服务崩溃，如果开发人员想要尝试更改，他们可以自由和灵活地进行更改。<br>微服务的概念不是什么新鲜事，可以肯定是组织变革需要时间，迁移到微服务仍然是一个个复杂且激烈的挑战。我们没有平稳切换整个组织的方式，而且并不是所有程序都需要用到微服务。如何区分差异？ 企业如何建立其第一个微服务以获得未来的成功？一旦组织将一些应用程序转移到微服务，它如何随着时间的推移维持其可靠性？ 对于迁移到在微服务趋势报告中，我们就如何回答这些问题以及更多问题寻求了多人的不同观点。<br>科林·布雷克在《微服务的一致性》一文指出，在处理大量微服务的工作时，一致性变得越来越重要。他概述了挑战以及某些组织如何应对这些挑战，并呼吁提供更好的工具来跟踪微服务系统之间的关系。</li>
-</ol>
-<p>Daniel“ Spoons” Spoonhower在他的文章《何时以及如何迁移到微服务》中提供了迁移到微服务的路线图，他强调微服务的进程不仅仅是扩展现有工具。 这是一种文化上的转变，他认为微服务团队应通过定义明确的SLO相互负责。</p>
-<p>在克里斯蒂安·波斯塔的文章，《在企业中采用服务网格的挑战》中，他介绍了在采用服务网格时经常遇到的某些障碍。 这是一个与微服务采用紧密相关的复杂问题。 与微服务一样，最好在继续之前确保服务网格适合您的组织。</p>
-<h5 id="趋势预测"><a href="#趋势预测" class="headerlink" title="趋势预测"></a>趋势预测</h5><ul>
-<li>随着企业采用率的提高，微服务将继续使软件开发转型，从而企业的应用程序在可扩展性和可用性方面取得长足进步。</li>
-<li>开发人员可以灵活地使用微服务时加快迁移速度，而组织需要相应的文化转变才能充分利用。</li>
-<li>尽管微服务可能并不适合每种用例，但微服务正逐渐成为构建、部署和维护应用程序的默认方法。</li>
-</ul>
-<h4 id="DZone的调查"><a href="#DZone的调查" class="headerlink" title="DZone的调查"></a>DZone的调查</h4><p>在对DZone读者和社区成员的调查中，我们要求受访者分享他们对微服务所带来的机遇和挑战的想法以及用于构建微服务的语言和工具。 我们还问为什么（以及如何）我们受访者的组织正在采用和使用微服务。调查显示他们的组织未考虑微服务的受访者比例急剧下降，从2018年的31％下降到2019年的9％。组织了解微服务的价值，如果他们尚未使用微服务，则许多人计划使用微服务。 有关调查结果的摘要，请参阅本报告后面的“关键研究发现”。</p>
-<p>DZone的研究分析师汤姆·史密斯（Tom Smith）还分享了他对微服务迁移状态执行力的观察，这来自与18家科技公司的IT主管和C级人员的对话。这些高管提供了在有关企业微服务中使用微服务的建议以及他们对未来微服务的预测</p>
-<p>汇总这些趋势调查使我们提出了许多关于大规模基础架构变更的有趣问题。我们希望您也能从中得到一些启发，甚至可以考虑一两个行动。 感谢您下载报告。 祝您阅读愉快！</p>
-<h4 id="《微服务的一致性》-科林·布雷克"><a href="#《微服务的一致性》-科林·布雷克" class="headerlink" title="《微服务的一致性》-科林·布雷克"></a>《微服务的一致性》-科林·布雷克</h4><p>许多组织已经接受微服务作为组织和扩展软件服务以及开发和操作它们的团队的一种模式。在过渡到微服务之后，主要的挑战是随着库的成熟、不断变化的最佳实践、安全漏洞的确定或客户需求的扩展而更新和发展这些服务。了解事物的部署位置，它们的依赖关系，正在使用的内容以及未使用的内容，这对组织来说是一个非常困难的挑战。它会大大减慢进度并降低由微服务组成的软件系统的可靠性。</p>
-<p>一致性是对工作主体中主要单词的字母索引并参考其直接上下文。 我们需要将一致性的概念引入微服务，以便我们更高效更积极地调整它们。当使用单体应用或少量微服务时，协调性就可以忽略。 但是对于数十或数百个微服务，一致性成为解决组织是否要保持对客户响应的关键问题。 本文扩展了微服务一致性的挑战，探讨了一些组织为应对挑战所做的工作，并反思了缺失的事物，特别是对于中小型组织。</p>
-<h3 id="问题是什么"><a href="#问题是什么" class="headerlink" title="问题是什么"></a>问题是什么</h3><p>尽管它受到了广泛的关注，但是设计，开发和部署微服务的过程只是整个生命周期中的很小一部分。随着时间的流逝，操作性问题（如监听，日志记录，警报，可用性，鲁棒性和服务级别目标）以及转换性问题（如更新库，应用安全补丁或不断发展的服务以满足新需求）变得更加重要。例如在更新共享库或架构后，如何找到使用它的所有服务，并对其进行更新、测试和重新部署？您如何知道哪些服务之间有相关性以及哪些服务可以分开部署？类似的问题也会出现在构建一个新的项目、部署服务、安全身份标识的传播或处理错误时。<br>一致性是一个远远超出每个微服务源代码范围的问题。例如，由服务定义的度量可以通过一个单独的报警服务来让人们关注面向客户的问题。</p>
-<h5 id="科林·布雷克对微服务的趋势预测"><a href="#科林·布雷克对微服务的趋势预测" class="headerlink" title="科林·布雷克对微服务的趋势预测"></a>科林·布雷克对微服务的趋势预测</h5><ul>
-<li>激增微服务的工具已经发生了一步变化。 为了构建可持续发展的系统并响应客户的需求，需要对工具进行类似的步骤更改以可靠地进行更新和发展微服务。</li>
-<li>科林·布雷克希望这种工具能够继续围绕特定的编程语言、平台和供应商进行开发，但是这种工具之后会变得更加孤立和片面。</li>
-<li>总的来说，科林·布雷克希望微服务能够发展为包含更多的“无服务器”技术，并且在此过程中越来越像分布式的参与者模型编程。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/30/2019年微服务趋势报告/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Servlet概念笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/12/Servlet概念笔记/">Servlet概念笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/12/Servlet概念笔记/" class="archive-article-date">
-  	<time datetime="2019-09-12T11:18:26.511Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Servlet："><a href="#Servlet：" class="headerlink" title="Servlet："></a>Servlet：</h2><pre><code>1. 概念： Servlet是一种独立于平台和协议的服务器端Java应用程序，通用Servlet可以生成动态Web页面。Servlet还可以在服务器端对客户端的请求进行处理控制程序的执行。
-2. 步骤
-    服务器接收从客户端发送的请求。
-     服务器将请求信息发送至Servlet。
-      Servlet经过处理后，生成响应的内容。
-     服务器将响应的内容返回客户端。
-3. 执行原理
-4. 生命周期
-     加载和实例化：当Servlet容器启动或者容器检测到客户端请求时。
-     初始化：Servlet容器调用init()方法初始化对象
-     处理请求：得到客户端请求并做出处理时，容器调用servlet()方法
-     销毁：当程序中的Servlet对象不再使用的时候，或者Web服务器停止运行的时候
-5. Servlet3.0 注解配置
-6. Servlet的体系结构    
-    Servlet -- 接口
-        |
-    GenericServlet -- 抽象类
-        |
-    HttpServlet  -- 抽象类
-
-    * GenericServlet：将Servlet接口中其他的方法做了默认空实现，只将service()方法作为抽象
-        * 将来定义Servlet类时，可以继承GenericServlet，实现service()方法即可
-
-    * HttpServlet：对http协议的一种封装，简化操作
-        1. 定义类继承HttpServlet
-        2. 复写doGet/doPost方法
-
-7. Servlet相关配置
-    1. urlpartten:Servlet访问路径
-        1. 一个Servlet可以定义多个访问路径 
-        2. 路径定义规则：
-            1. /xxx：路径匹配
-            2. /xxx/xxx:多层路径，目录结构
-            3. *.do：扩展名匹配</code></pre><h2 id="HTTP："><a href="#HTTP：" class="headerlink" title="HTTP："></a>HTTP：</h2><pre><code>* 概念：Hyper Text Transfer Protocol 超文本传输协议
-    * 传输协议：定义了，客户端和服务器端通信时，发送数据的格式
-    * 特点：
-        1. 基于TCP/IP的高级协议
-        2. 默认端口号:80
-        3. 基于请求/响应模型的:一次请求对应一次响应
-        4. 无状态的：每次请求之间相互独立，不能交互数据
-
-    * 历史版本：
-        * 1.0：每一次请求响应都会建立新的连接
-        * 1.1：复用连接
-
-* 请求消息数据格式
-    1. 请求行
-        请求方式 请求url 请求协议/版本
-        GET /login.html    HTTP/1.1
-
-        * 请求方式：
-            * HTTP协议有7中请求方式，常用的有2种
-                * GET：
-                    1. 请求参数在请求行中，在url后。
-                    2. 请求的url长度有限制的
-                    3. 不太安全
-                * POST：
-                    1. 请求参数在请求体中
-                    2. 请求的url长度没有限制的
-                    3. 相对安全
-    2. 请求头：客户端浏览器告诉服务器一些信息
-        请求头名称: 请求头值
-        * 常见的请求头：
-            1. User-Agent：浏览器告诉服务器，我访问你使用的浏览器版本信息
-                * 可以在服务器端获取该头的信息，解决浏览器的兼容性问题
-
-            2. Referer：http://localhost/login.html
-                * 告诉服务器，我(当前请求)从哪里来？
-                    * 作用：
-                        1. 防盗链：
-                        2. 统计工作：
-    3. 请求空行
-        空行，就是用于分割POST请求的请求头，和请求体的。
-    4. 请求体(正文)：
-        * 封装POST请求消息的请求参数的
-
-    * 字符串格式：
-        POST /login.html    HTTP/1.1
-        Host: localhost
-        User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0
-        Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-        Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
-        Accept-Encoding: gzip, deflate
-        Referer: http://localhost/login.html
-        Connection: keep-alive
-        Upgrade-Insecure-Requests: 1
-
-        username=zhangsan    
-
-
-* 响应消息数据格式</code></pre><h2 id="Request："><a href="#Request：" class="headerlink" title="Request："></a>Request：</h2><pre><code>1. request对象和response对象的原理
-    1. request和response对象是由服务器创建的。我们来使用它们
-    2. request对象是来获取请求消息，response对象是来设置响应消息
-
-2. request对象继承体系结构：    
-    ServletRequest        --    接口
-        |    继承
-    HttpServletRequest    -- 接口
-        |    实现
-    org.apache.catalina.connector.RequestFacade 类(tomcat)
-
-3. request功能：
-    1. 获取请求消息数据
-        1. 获取请求行数据
-            * GET
-            * 方法：
-                1. 获取请求方式 ：GET
-                    * String getMethod()  
-                2. (*)获取虚拟目录：/XXX
-                    * String getContextPath()
-                3. 获取Servlet路径: /demo1
-                    * String getServletPath()
-                4. 获取get方式请求参数：name=zhangsan
-                    * String getQueryString()
-                5. (*)获取请求URI：/XXX/demo1
-                    * String getRequestURI():        /XXX/demo1
-                    * StringBuffer getRequestURL()  :http://localhost/XXX/demo1
-
-                    * URL:统一资源定位符 ： http://localhost/XXX/demo1    
-                    * URI：统一资源标识符 : /XXX/demo1                    
-
-                6. 获取协议及版本：HTTP/1.1
-                    * String getProtocol()
-
-                7. 获取客户机的IP地址：
-                    * String getRemoteAddr()
-
-        2. 获取请求头数据
-            * 方法：
-                * (*)String getHeader(String name):通过请求头的名称获取请求头的值
-                * Enumeration&lt;String&gt; getHeaderNames():获取所有的请求头名称
-
-        3. 获取请求体数据:
-            * 请求体：只有POST请求方式，才有请求体，在请求体中封装了POST请求的请求参数
-            * 步骤：
-                1. 获取流对象
-                    *  BufferedReader getReader()：获取字符输入流，只能操作字符数据
-                    *  ServletInputStream getInputStream()：获取字节输入流，可以操作所有类型数据
-                        * 在文件上传知识点后讲解
-
-                2. 再从流对象中拿数据
-
-
-    2. 其他功能：
-        1. 获取请求参数通用方式：不论get还是post请求方式都可以使用下列方法来获取请求参数
-            1. String getParameter(String name):根据参数名称获取参数值    username=zs&amp;password=123
-            2. String[] getParameterValues(String name):根据参数名称获取参数值的数组  hobby=xx&amp;hobby=game
-            3. Enumeration&lt;String&gt; getParameterNames():获取所有请求的参数名称
-            4. Map&lt;String,String[]&gt; getParameterMap():获取所有参数的map集合
-
-            * 中文乱码问题：
-                * get方式：tomcat 8 已经将get方式乱码问题解决了
-                * post方式：会乱码
-                    * 解决：在获取参数前，设置request的编码request.setCharacterEncoding(&quot;utf-8&quot;);
-
-
-        2. 请求转发：一种在服务器内部的资源跳转方式
-            1. 步骤：
-                1. 通过request对象获取请求转发器对象：RequestDispatcher getRequestDispatcher(String path)
-                2. 使用RequestDispatcher对象来进行转发：forward(ServletRequest request, ServletResponse response) 
-
-            2. 特点：
-                1. 浏览器地址栏路径不发生变化
-                2. 只能转发到当前服务器内部资源中。
-                3. 转发是一次请求
-
-
-        3. 共享数据：
-            * 域对象：一个有作用范围的对象，可以在范围内共享数据
-            * request域：代表一次请求的范围，一般用于请求转发的多个资源中共享数据
-            * 方法：
-                1. void setAttribute(String name,Object obj):存储数据
-                2. Object getAttitude(String name):通过键获取值
-                3. void removeAttribute(String name):通过键移除键值对
-
-        4. 获取ServletContext：
-            * ServletContext getServletContext()</code></pre>
+    // 检查所需的类型是否与实际bean实例的类型匹配。
+    if (requiredType != null &amp;&amp; !requiredType.isInstance(bean)) {
+        try {
+            T convertedBean = getTypeConverter().convertIfNecessary(bean, requiredType);
+            if (convertedBean == null) {
+                throw new BeanNotOfRequiredTypeException(name, requiredType, bean.getClass());
+            }
+            return convertedBean;
+        }
+        catch (TypeMismatchException ex) {
+            if (logger.isTraceEnabled()) {
+                logger.trace(&quot;Failed to convert bean &apos;&quot; + name + &quot;&apos; to required type &apos;&quot; +
+                        ClassUtils.getQualifiedName(requiredType) + &quot;&apos;&quot;, ex);
+            }
+            throw new BeanNotOfRequiredTypeException(name, requiredType, bean.getClass());
+        }
+    }
+    return (T) bean;
+}</code></pre>
       
 
       
@@ -765,7 +362,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaWeb</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
         		</li>
       		
 		</ul>
@@ -775,7 +372,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/12/Servlet概念笔记/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/03/06/Spring源码分析三/">展开全文 >></a>
         </p>
       
 
@@ -805,31 +402,126 @@
 
 
   
-    <article id="post-第一篇博客文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Spring源码分析二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/26/第一篇博客文章/">第一篇博客文章</a>
+      <a class="article-title" href="/2020/03/06/Spring源码分析二/">Spring源码分析二</a>
     </h1>
   
 
         
-        <a href="/2019/08/26/第一篇博客文章/" class="archive-article-date">
-  	<time datetime="2019-08-26T08:40:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
+        <a href="/2020/03/06/Spring源码分析二/" class="archive-article-date">
+  	<time datetime="2020-03-06T03:28:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##第一章</p>
-<p>内容</p>
-<hr>
-<p>##参考文献</p>
-<p><a href="http://www.github.com/LixuanYou" target="_blank" rel="noopener">www.github.com/LixuanYou</a></p>
+        <h2 id="DefaultListableBeanFactory：主要对bean注册后的处理"><a href="#DefaultListableBeanFactory：主要对bean注册后的处理" class="headerlink" title="DefaultListableBeanFactory：主要对bean注册后的处理"></a>DefaultListableBeanFactory：主要对bean注册后的处理</h2><p>这个类被XMLBeanFactory继承，大学第一次接触Spring的Demo用的</p>
+<h3 id="继承类AbstractAutowireCapableBeanFactory：还实现AutowireCapableBeanFactory接口、bean初始化的九次后处理器在这个类中"><a href="#继承类AbstractAutowireCapableBeanFactory：还实现AutowireCapableBeanFactory接口、bean初始化的九次后处理器在这个类中" class="headerlink" title="继承类AbstractAutowireCapableBeanFactory：还实现AutowireCapableBeanFactory接口、bean初始化的九次后处理器在这个类中"></a>继承类AbstractAutowireCapableBeanFactory：还实现AutowireCapableBeanFactory接口、bean初始化的九次后处理器在这个类中</h3><pre><code>继承类AbstractBeanFactory：还实现ConfigurableBeanFactory接口
+    继承类FactoryBeanRegistrySupport:对特殊的FactoryBean提供方法支持
+        继承类DefaultSingletonBeanRegistry:单例Bean注册和获取
+            继承类SimpleAlisaRegistry：用Map存储Alisa
+                实现接口AlisaRegistry：对Bean取的别名提供增删改</code></pre><h3 id="实现接口BeanDefinitionRegistry-定义对BeanDefinition的各种增删改操作"><a href="#实现接口BeanDefinitionRegistry-定义对BeanDefinition的各种增删改操作" class="headerlink" title="实现接口BeanDefinitionRegistry:定义对BeanDefinition的各种增删改操作"></a>实现接口BeanDefinitionRegistry:定义对BeanDefinition的各种增删改操作</h3><h3 id="实现接口：ConfigurableListableBeanFatory-BeanFactory的配置清单，指定忽略类型及接口"><a href="#实现接口：ConfigurableListableBeanFatory-BeanFactory的配置清单，指定忽略类型及接口" class="headerlink" title="实现接口：ConfigurableListableBeanFatory:BeanFactory的配置清单，指定忽略类型及接口"></a>实现接口：ConfigurableListableBeanFatory:BeanFactory的配置清单，指定忽略类型及接口</h3><pre><code>实现接口：ListableBeanFactory    ：根据条件获取bean的配置清单
+    实现接口：BeanFactory：
+实现接口：AutowireCapableBeanFactory:提供创建bean，自动注入、初始化、后置处理器
+    实现接口：BeanFactory：
+实现接口：ConfigurableBeanFactory:配置Factory的方法
+    实现接口：HierarchicalBeanFactory：增加了对parentFactory的支持
+        实现接口：BeanFactory：定义获取bean及bean的各种属性</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/06/Spring源码分析二/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Spring源码分析一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/Spring源码分析一/">Spring源码分析一</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/06/Spring源码分析一/" class="archive-article-date">
+  	<time datetime="2020-03-06T03:28:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Spring-Bean-的生命周期（实例化-初始化-使用-销毁）"><a href="#Spring-Bean-的生命周期（实例化-初始化-使用-销毁）" class="headerlink" title="Spring Bean 的生命周期（实例化-初始化-使用-销毁）"></a>Spring Bean 的生命周期（实例化-初始化-使用-销毁）</h1><h2 id="实例化Bean的流程"><a href="#实例化Bean的流程" class="headerlink" title="实例化Bean的流程"></a>实例化Bean的流程</h2><p>-1）在context.supprot.ApplicationContext#getBean方法<br>doGetBean<br>-2）解析Bean的别名</p>
+<ul>
+<li>尝试去缓存池中获取对象（第一次创建Bean缓存池中没有对象）</li>
+<li>如果出现循环依赖再判断Bean是不是单例的，不是就抛出异常</li>
+<li>判断容器是否有父工厂如果存在就由父工厂加载</li>
+<li>合并Bean定义</li>
+<li>检查Bean定义是否是抽象的</li>
+<li>做dependsOn的依赖检查</li>
+<li>调用getSingleton()方法再用beforeSigletonCreation标识当前Bean正在被创建</li>
+<li>3) createBean创建Bean的流程</li>
+</ul>
+<h2 id="初始化流程"><a href="#初始化流程" class="headerlink" title="初始化流程"></a>初始化流程</h2><h2 id="Bean销毁流程"><a href="#Bean销毁流程" class="headerlink" title="Bean销毁流程"></a>Bean销毁流程</h2><h1 id="IOC容器如何解决循环依赖的-那种循环依赖不能被解决-为什么？"><a href="#IOC容器如何解决循环依赖的-那种循环依赖不能被解决-为什么？" class="headerlink" title="IOC容器如何解决循环依赖的/那种循环依赖不能被解决/为什么？/"></a>IOC容器如何解决循环依赖的/那种循环依赖不能被解决/为什么？/</h1><h2 id="1-什么是循环依赖"><a href="#1-什么是循环依赖" class="headerlink" title="(1)什么是循环依赖?"></a>(1)什么是循环依赖?</h2><p>bean的实例化有如下三个步骤：<br>    1、createBeanInstance ，生成原始对象<br>    2、popoulateBean，进行属性注入<br>    3、instantiateBean ，进行init-method初始化和后置处理<br>由此，当生成A对象之后，此时还未进行属性注入，检测到A有B属性，调用getBean(B b)获取B，<br>开始进行B的实例化，B生成对象之后，进行属性注入，检测到B有A属性，这个时候，就产生了循环依赖。</p>
+<p>(2)什么样的循环依赖不能被解决？<br>循环依赖分为单例的、构造方法的、原型的<br>构造器的循环依赖<br>    由于此循环依赖是在对象实例化的时候进行的，也就是说这种依赖是无法像单例一样生成对象，那么这种循环依赖也只能通过抛出异常处理<br>原型模式的循环依赖<br>    由于原型模式不像单例一样会提供缓存来进行辅助存储未完整实例化的bean，故spring的处理也是直接抛出异常<br>(3)为什么这样的循环依赖不能被解决？<br>单例的循环依赖用的是三级缓存解决<br>这三级缓存分别是：<br>    singletonObjects：单例对象工厂的cache，这里存储的是完整实例化之后的bean<br>    singletonFactories：单例对象的ObjectFactory，该ObjectFactory返回的对象就是还未进行popoulateBean属性注入的原始Bean对象<br>    earlySingletonObjects：提前曝光的单例bean，就是已经本身还未进行属性注入的bean，已经作为其他的bean的属性注入到该bean中了，比如A还未进行属性注入，但是被B引用到了，注入到B中，此时就将A放到提前曝光的单例bean缓存earlySingletonObjects中。<br>在循环依赖产生的过程中会调用getBean()方法再调用AbstractBeanFactory#doGetBean<br>doGetBean一共做了这么几件事：<br>    1、在创建实例之前，记录正在创建状态，singletonsCurrentlyInCreation.add(beanName)<br>    2、创建实例，调用singletonFactory.getObject();<br>    3、移除正在创建状态，this.singletonsCurrentlyInCreation.remove(beanName)<br>    4、将该bean缓存到单例缓存容器， this.singletonObjects.put(beanName, singletonObject);并且从相关的辅助容器删除，如singletonFactories和earlySingletonObjects</p>
+<pre><code>第2步中的：singletonFactory.getObject(),这里调用的是AbstractAutowireCapableBeanFactory.doCreateBean</code></pre><p>doCreateBean做了<br>1、实例化bean（实例包装器）<br>    if (instanceWrapper == null) {<br>              instanceWrapper = createBeanInstance(beanName, mbd, args);<br>           }<br>2、如果当前允许循环依赖且当前bean是单例而且处于创建状态，将此单例的ObjectFactory加入到singletonFactories，且此factory返回的bean对象就是当前实例化好的bean<br>3、进行属性注入<br>    populateBean(beanName, mbd, instanceWrapper);<br>4、instantiateBean ，进行init-method初始化和后置处理</p>
+<p>从这里可以看出来，在pupulateBean之前，singletonFactories存储了该bean的factory，然后进行pupulateBean，发现B是A的属性，然后调用getBean(B)对B进行实例化，重复上面的步骤到B的属性注入环节，发现A是B的属性，这个时候，再次调用getBean(A),此时缓存中已经有了A了</p>
+<h2 id="Bean的实例化过程"><a href="#Bean的实例化过程" class="headerlink" title="Bean的实例化过程"></a>Bean的实例化过程</h2><p>spring产生的Bean和自己创建的类没有直接关系<br>因为设置BeanDefinition可以修改</p>
 
       
 
@@ -838,11 +530,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/26/第一篇博客文章/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/03/06/Spring源码分析一/">展开全文 >></a>
         </p>
       
 
@@ -872,39 +575,27 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-List-extends与supertT的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/26/hello-world/">Hello World</a>
+      <a class="article-title" href="/2020/03/06/List-extends与supertT的区别/">List extends与supertT的区别</a>
     </h1>
   
 
         
-        <a href="/2019/08/26/hello-world/" class="archive-article-date">
-  	<time datetime="2019-08-26T08:34:43.669Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
+        <a href="/2020/03/06/List-extends与supertT的区别/" class="archive-article-date">
+  	<time datetime="2020-03-06T03:25:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>List&lt;? extends T&gt;与List&lt;? super T&gt;的区别？<br>List&lt;? extends T&gt;:表示赋值（=）的数据可以是T类型或者T类型的子类，T表示类型的上界，适用于获取（get）数据并且获取的数据都会转化为T类型<br>List&lt;? super T&gt;:表示赋值(=)的数据可以是T类型或者T类型的父类直至Object类，T表示类型的下界，适用于添加(add)数据，并且添加(add)的数据只能是T类型或T类型的子类</p>
 
       
 
@@ -913,11 +604,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">java基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/26/hello-world/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/03/06/List-extends与supertT的区别/">展开全文 >></a>
         </p>
       
 
@@ -947,6 +649,580 @@
 
 
   
+    <article id="post-redis客户端" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/redis客户端/">redis客户端</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/06/redis客户端/" class="archive-article-date">
+  	<time datetime="2020-03-06T03:23:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Redis客户端"><a href="#Redis客户端" class="headerlink" title="Redis客户端"></a>Redis客户端</h1><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ul>
+<li>套接字描述符</li>
+<li>客户端的名字</li>
+<li>客户端的标志值flag</li>
+<li>正在使用数据库的指针和数据库的号码</li>
+<li>客户端要执行的命令、参数、参数的个数、实现命令函数的指针</li>
+<li>客户端的输入、输出缓冲区</li>
+<li>客户端的复制状态信息，复制需要的数据结构</li>
+<li>客户端执行BRPOP、BLPOP等列表阻塞命令时使用的数据结构</li>
+<li>客户端的事务状态，以及执行WATCH命令时使用的数据结构</li>
+<li>客户端的身份验证标志</li>
+<li>客户端创建时间，客户端和服务器最后一次通信的时间、输出缓冲区大小超出软性限制的时间<h2 id="客户端属性的具体描述"><a href="#客户端属性的具体描述" class="headerlink" title="客户端属性的具体描述"></a>客户端属性的具体描述</h2> 套接字描述符：用fd属性记录，伪客户端为-1，普通客户端为&gt;-1的整数<br> 名字：Client setname设置<br> flag：记录客户端的角色以及客户端当前的状态</li>
+</ul>
+<ol>
+<li>REDIS_MASTER/SLAVE分别表示客户端代表的是主从服务器（以为在复制的时候，主从服务器分别成为对方的客户端）</li>
+<li>REDIS_PRE_PSYNC表示客户端是一个版本低于Redis2.8的从服务器</li>
+<li>REDIS_LUA_CLIENT表示客户端是专门处理Lua脚本的伪客户端</li>
+<li>REDIS_MONITOR表示客户端正在执行MNONITOR命令</li>
+<li>REDIS_UNIX_SOCKET表示服务器使用UNXI套接字来连接客户端</li>
+<li>REDIS_BLOCKED表示客户端正在被BRPOP、BLPOP等命令阻塞 REDIS_UNBLOCKED相反</li>
+<li>REDIS_MULTI表示客户端正在执行事务</li>
+<li>REDIS_DIRTY_CAS表示事务使用WATCH命令监视的数据库已经被修改REDIS_DIRTY_EXEC表示事务在命令入队时出现错误，这两个标识都代表事务的安全性被破坏，任意一个被打开执行EXEC命令都会失败，以上命令只有在客户端打开REDIS_MULTI标识的情况下使用、</li>
+<li>REDIS_CLOSE_ASAP标识表示客户端的输出缓冲区超出服务器允许的大小，服务器在下一次执行serverCron函数就会关闭这个客户端，积存在输出缓冲区的数据会被直接释放</li>
+<li>REDIS_CLOSE_AFTER_REPLY表示有用户对这个客户端执行了CLIENT KILL命令，或者客户端发送给服务器的命令请求包含错误的协议内容。服务器会将客户端积存在输出缓冲区的所有内容发送给客户端，然后关闭客户端</li>
+<li>REDIS_ASKING表示客户端向集群节点发送ASKING命令</li>
+<li>REDIS_FORCE_AOF表示强制服务器将当前执行的命令写入到AOF文件里，REDIS_FORCE_REPL表示强制主服务器将当前执行的命令复制给所有从服务器。执行PUBSUB命令会使客户端打开REDIS_FORCE_AOF标志，执行script LOAD命令会使客户端打开REDIS_FORCE_AOF和REDIS_FORCE_REPL标识</li>
+<li>在主从服务器进行命令传播期间，从服务器需要向主服务器发送REPLICATION ACK命令在发送这个命令之前，从服务器必须打开主服务器对应客户端的REDIS_MASTER_FORCE_REPLY标志，否则发送操作会被拒绝执行<br>输入缓冲区：用于保存客户端发送的命令请求，大小不会超过1GB否则服务器将关闭整个客户端<br>命令与命令参数：服务器会对querybuf（这是一个客户端状态）进行分析，参数和个数会分别保存在argv属性和argc属性中<br>命令的实现函数：根据argv[0]的值在命令表中查找命令所对应的命令实现函数<br>输出缓冲区：命令回复会被保存在客户端状态的输出缓冲区里，每个客户端都有两个缓冲区，一个大小固定（16KB）另一个大小可变(reply链表和一个或多个字符串对象组成)<br>身份验证：用于记录客户端是否通过了身份验证authenticated=0/1分别表示未通过和通过 </li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/06/redis客户端/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-redis服务器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/redis服务器/">redis服务器</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/06/redis服务器/" class="archive-article-date">
+  	<time datetime="2020-03-06T03:23:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="redis服务器"><a href="#redis服务器" class="headerlink" title="redis服务器"></a>redis服务器</h1><h2 id="服务器处理命令请求的执行过程"><a href="#服务器处理命令请求的执行过程" class="headerlink" title="服务器处理命令请求的执行过程"></a>服务器处理命令请求的执行过程</h2><p>命令请求的执行过程：<br>发送、读取命令请求</p>
+<ol start="3">
+<li>命令执行器<br> 查找命令实现<br> 执行预备操作（单机模式下的10种服务器向客户端返回错误的情况）<br> 调用命令的实现函数：执行的命令在cmd，参数在argv[0],参数个数在argc中，所以实现命令函数只需要一个指向客户端状态的指针作为参数即可<br> 执行后续工作：四种情况</li>
+<li>将命令回复发送给客户端</li>
+<li>客户端接收并打印命令回复</li>
+</ol>
+<h2 id="ServerCron函数"><a href="#ServerCron函数" class="headerlink" title="ServerCron函数"></a>ServerCron函数</h2><p>这个函数默认每隔100毫秒执行一次，负责管理服务器资源、保存服务器良好运转</p>
+<ol>
+<li><p>更新服务器时间缓存<br> unixtime/mstime用于对时间精度要求不高的功能上</p>
+</li>
+<li><p>更新LRU时钟<br> lru属性保存了对象最后一次被访问的时间，可用于计算数据库键的空转时间（lruclock-lru）</p>
+</li>
+<li><p>更新服务器每秒执行命令次数<br> 通过INFO Status#instantaneous_ops_per_sec可以查看估计的服务器在一秒钟时间内处理的命令请求数量<br> trackOperationsPerSecond:包含四种ops_sec_last_sample_time、ops_sec_last_sample_ops、ops_sec_sample、ops_sec_idx</p>
+</li>
+<li><p>更新服务器内存峰值记录：stat_peak_memory</p>
+</li>
+<li><p>处理Sigterm信号<br> 在启动服务器时，redis为服务器进程的Singterm信号关联singtermHandle函数，负责服务器在接收到SINGTERM信号时，打开服务器状态的shutdowm_asap标识（1标识关闭服务器，0表示没有动作）</p>
+</li>
+<li><p>管理客户端资源<br> clientCron函数会对一定数量的客户端进行两项检查</p>
+<pre><code>1.释放很长时间内客户端与服务器没有互动的客户端
+2.客户端输入缓冲区超出一定大小，那么程序自动释放当前缓冲区并重建一个默认大小的输入缓冲区</code></pre></li>
+<li><p>管理数据库资源<br> serverCron会调用databaseCron函数，删除数据库中的过期键有需要还会对字典进行收缩操作</p>
+</li>
+<li><p>执行被延迟的bgrewriteAOF<br> 当服务器在执行BGSAVE命令期间，客户端向服务器发来bgrewriteAOF，此命令会延迟到BGSAVE之后执行</p>
+</li>
+<li><p>检测持久化操作的运行状态<br> 服务器状态使用rdb_child_pid和aof_child_pid记入执行BGSAVE和BGRewriteAOF命令的子进程的ID，这两个child也可以用于检测命令是否正在执行（child≠-1表示正在进行持久化操作）</p>
+</li>
+<li><p>将AOF缓冲区的内容写入到AOF文件<br>将AOF缓冲区里的数据写入到AOF文件</p>
+</li>
+<li><p>关闭异步客户端<br>关闭缓冲区大小超出限制的客户端</p>
+</li>
+<li><p>增加cronloops计数器的值<br>cronloop：记录了serverCron的执行次数。（复制模块中实现每执行serverCron函数N次就会执行一次指定代码）</p>
+</li>
+</ol>
+<h2 id="初始化服务器"><a href="#初始化服务器" class="headerlink" title="初始化服务器"></a>初始化服务器</h2><p>比如：初始化服务器状态、接收用户指定的服务器配置、创建相应的数据结构和网络连接</p>
+<ol>
+<li><p>初始化服务器状态结构<br> （1）创建Struct redisServer类型的实例变量server作为服务器的状态并为其中的属性设置默认值，这项工作由initServerConfig函数完成<br> （2）</p>
+</li>
+<li><p>载入配置选项<br> 如设置服务器端口号、数据库dbnum</p>
+</li>
+<li><p>初始化服务器数据结构<br> 在用initServerConfig函数初始化（一般属性）server状态时，这只是创建命令表，还要其他的数据结构<br> 比如：<br> server.clients:<br> server.db:<br> server.pubsub_channels字典:<br> server.lua：<br> server.slowlog:<br>完成到这里再调用initServer函数（数据结构），为以上数据结构分配内存并关联初始化值<br>原因是：服务器必须先载入用户指定的配置选项，如果在执行initServerConfig函数就进行数据结构初始化，那么用户通过修改了与数据结构有关的服务器状态，服务器就要重新调整和修改已经创建的数据结构<br> initServer函数还进行了一下六种操作：<br> 为服务器设置进程信号处理器<br> 创建共享对象（OK/error/1~10000）<br> 打开服务器监听端口并关联监听套接字与连接应答事件处理器<br> 为serverCron创建时间事件<br> 为AOF写入准备（AOF打开与否？）<br> 初始化服务器的后台I/O模块</p>
+</li>
+<li><p>还原数据库状态(AOF持久化功能？ AOF:RDB)</p>
+</li>
+<li><p>执行事件循环(loop)</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/06/redis服务器/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-redis复制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/redis复制/">redis复制</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/06/redis复制/" class="archive-article-date">
+  	<time datetime="2020-03-06T03:22:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#redis复制</p>
+<h2 id="旧版复制功能实现"><a href="#旧版复制功能实现" class="headerlink" title="旧版复制功能实现"></a>旧版复制功能实现</h2><pre><code>(1)同步（sync）
+将从服务器的数据库状态更新至主服务器当前所处的数据库状态
+步骤：
+    1)从向主发送SYNC命令
+    2)收到命令的主服务器执行BGSAVE命令，在后台生成一个RDB文件，并使用一个缓冲区记入从现在开始执行的所有写命令
+    3）主服务器执行完BGSAVE后，会将RDB文件发送给从服务器，从服务器接收并开始载入RDB文件。将自己的数据库状态更新至主服务器执行BGSAVE命令时一致
+    4）主服务器将记录在缓冲区里的所有写命令发送给从服务器，从服务器执行这些写命令，从服务器更新至主服务器当前所处状态
+(2)命令传播（command propagate）
+当主服务器的数据库状态被修改导致主从服务器的数据库状态不一致，让主从服务器数据库状态回到一致的操作
+因为SYNC命令存在空挡期
+每当主服务器执行客户端发送的写命令，主服务器的数据库状态就有可能被修改，导致主从服务器状态不一致</code></pre><h2 id="新版复制功能的实现"><a href="#新版复制功能的实现" class="headerlink" title="新版复制功能的实现"></a>新版复制功能的实现</h2><pre><code>PSYNC有完整重同步和部分重同步（用于处理断线后重复制的情况）两种模式
+    部分重同步：从服务器上线后向主服务器发送PSYNC命令，主服务器向从服务器发送Continue回复表示开始执行部分重同步，主服务器发送“断线期间主服务器执行的写命令”</code></pre><h2 id="部分重同步的实现"><a href="#部分重同步的实现" class="headerlink" title="部分重同步的实现"></a>部分重同步的实现</h2><pre><code>由三个部分构成：
+    (1)主从服务器的 复制偏移量
+    (2)主服务器的 复制积压缓冲区（replication backLog）
+    (3)服务器运行ID
+（1）主从服务器都会维护一个复制偏移量，主服务器发送N个字节那么有（offset+N），从服务器同样有一个（offset+N）通过对比偏移量可以知道主从服务器状态是否一致
+（2）积压缓冲区由主服务器维护的固定大小的队列，默认大小为1MB
+传播命令的时候，主服务器除了给从服务器发送命令，还会将命令放在复制积压缓冲区，所以复制积压缓冲区有一部分近期的传播的写命令
+offset偏移量之后的数据还在复制积压缓冲区里就进行部分重同步        
+（3）服务器运行ID：
+    用于断线后确定重新连接的主服务器是否是上一次连接的主服务器
+    ID相同尝试进行部分重同步，不相同则进行完整重同步</code></pre><h2 id="复制到具体实现"><a href="#复制到具体实现" class="headerlink" title="复制到具体实现"></a>复制到具体实现</h2><pre><code>（1）保存设置
+SlaveOF 192.168.1.1:6379
+从服务器会在masterIp和masterport保存
+（2）建立套接字连接
+创建套接字连接之后，从服务器将专门为这个套接字关联一个用于处理复制工作的文件事件处理器
+，这个事件处理器用于：接收RDB文件，接收主服务器传播来的写命令
+（3）发送PING命令
+连接成功以后第一件事就是发送一个PING给主服务器，如果收到“PONG”回复正常进行复制，其他的回复则从服务器断开并重新创建连向主服务器的套接字
+（4）身份验证</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/06/redis复制/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-redis集群" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/redis集群/">redis集群</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/06/redis集群/" class="archive-article-date">
+  	<time datetime="2020-03-06T03:19:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="redis集群"><a href="#redis集群" class="headerlink" title="redis集群"></a>redis集群</h1><pre><code>定义：是redis提供的分布式数据库方案，集群通过分片来进行数据共享，并提供复制和故障转移功能</code></pre><h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><pre><code>命令： Cluster Meet &lt;ip&gt;&lt;port&gt; 添加指定节点到node节点所在集群中
+（1）启动节点：通过cluster-enabled判断是否开启集群模式
+    运行在集群模式下的Redis服务器会继续使用所有单机模式中的服务器组件：
+    文件处理器、时间处理器、两种持久化、发布订阅、复制、Lua脚本
+（2）集群的数据结构
+    clusterNode：保存节点状态（创建时间、name、配置纪元、ip/port）
+    clusterLink:保存*连接节点*所需的有关信息，比如套接字描述符、输入输出缓冲区
+    clusterState：保存当前节点视角下，集群目前所处状态，如：集群是否在线、集群包含多少个节点、配置纪元
+（3）Cluster Meet 命令实现
+    客户端发送Cluster Meet给节点A，节点A在节点字典里创建一个集群节点结构保存节点B，A向B发送Meet命令，节点B在节点字典里创建一个集群节点结构保存节点A,B向A发送Pong命令，A收到以后发送一个PING命令给B，B由此知道节点A已经成功接收到自己发送的PONG消息。节点A通过Gossip协议将节点B的信息传播给集群中的其他节点</code></pre><h2 id="槽指派"><a href="#槽指派" class="headerlink" title="槽指派"></a>槽指派</h2><pre><code>集群中的整个数据库分为16384个槽，所有槽都有节点在处理代表集群在上线状态，只要一个槽没处理那么集群处于下线状态
+命令：Cluster Addslots 可以指派（1-16384）个槽给节点
+除了在每个节点的ClusterNodes.slots保存当前节点指派槽信息以外，还会在clusterState。slots保存所有槽的指派信息</code></pre><h2 id="在集群中执行命令"><a href="#在集群中执行命令" class="headerlink" title="在集群中执行命令"></a>在集群中执行命令</h2><pre><code>当客户端向节点发送与数据库有关的命令的时候，节点会计算出该命令要处理的数据库键属于哪一个槽，并检查这个槽是否属于自己</code></pre><h2 id="从新分片"><a href="#从新分片" class="headerlink" title="从新分片"></a>从新分片</h2><h2 id="ASK错误"><a href="#ASK错误" class="headerlink" title="ASK错误"></a>ASK错误</h2><h2 id="复制与故障转移"><a href="#复制与故障转移" class="headerlink" title="复制与故障转移"></a>复制与故障转移</h2><h2 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/06/redis集群/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-redis-Sentinel模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/redis-Sentinel模式/">redis Sentinel模式</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/06/redis-Sentinel模式/" class="archive-article-date">
+  	<time datetime="2020-03-06T03:18:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="启动并初始化Sentinel"><a href="#启动并初始化Sentinel" class="headerlink" title="启动并初始化Sentinel"></a>启动并初始化Sentinel</h2><pre><code>命令是 redis-sentinel/path/to/your/sentinel.conf
+      redis-server/path/to/your/sentinel.conf--sentinel
+（1）初始化服务器：sentinel不需要数据库结构实际上sentinel可以执行的命令只有七种
+（2）替换成sentinel专用代码：服务器端口（26736）、命令表（七种）
+（3）初始化sentinel状态
+        用sentinelState结构保存Sentinel功能有关的状态
+        服务器的一般状态用RedisServer结构保存
+（4）初始化sentinel的监视主服务器列表
+        在sentinel状态的master字典中保存被监视的主服务器信息
+        master字典：    键=主服务器名字 值=sentinelRedisInstance（被sentinel监视的redis服务器实例）
+（5）创建连向主服务器的网络连接
+    sentinel成为主服务器的客服端，分别创建命令连接和订阅连接（发布和订阅功能相关的信息不会保存在redis服务器里）</code></pre><h2 id="获取主服务器信息"><a href="#获取主服务器信息" class="headerlink" title="获取主服务器信息"></a>获取主服务器信息</h2><pre><code>频率：十秒一次给主服务器发送INFO命令</code></pre><h2 id="获取从服务器信息"><a href="#获取从服务器信息" class="headerlink" title="获取从服务器信息"></a>获取从服务器信息</h2><h2 id="向主服务器和从服务器发送信息"><a href="#向主服务器和从服务器发送信息" class="headerlink" title="向主服务器和从服务器发送信息"></a>向主服务器和从服务器发送信息</h2><h2 id="接收来自主服务器和从从服务器的频道信息"><a href="#接收来自主服务器和从从服务器的频道信息" class="headerlink" title="接收来自主服务器和从从服务器的频道信息"></a>接收来自主服务器和从从服务器的频道信息</h2><pre><code>sentinel之间没有订阅连接，只有命令连接</code></pre><h2 id="检测主观下线状态"><a href="#检测主观下线状态" class="headerlink" title="检测主观下线状态"></a>检测主观下线状态</h2><h2 id="检测客观下线状态"><a href="#检测客观下线状态" class="headerlink" title="检测客观下线状态"></a>检测客观下线状态</h2><h2 id="选举领头Sentinel"><a href="#选举领头Sentinel" class="headerlink" title="选举领头Sentinel"></a>选举领头Sentinel</h2><pre><code>在主服务器被判断为客观下线之后，选举领头Sentinel
+选举规则：每个Sentinel都会发送命令要求其他sentinel选自己为领头Sentinel，每个Sentinel在收到命令（is master down by addr）后采取先到先得的方式，选择第一个发送命令给自己的Sentinel为领头Sentinel，当某个Sentinel得票超过半数，就会成为领头Sentinel，如果选举超时，会在一段时间后再次选举，直到出现领头sentinel</code></pre><h2 id="故障转移"><a href="#故障转移" class="headerlink" title="故障转移"></a>故障转移</h2><pre><code>(1)挑选主服务器属下的从服务器，使他成为主服务器（任命）
+(2)所有从服务器复制新的主服务器（公示）
+(3)旧的主服务器再次上线成为新的主服务器的的从服务器（不给机会）</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/06/redis-Sentinel模式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-幂等性问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/幂等性问题/">幂等性问题</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/06/幂等性问题/" class="archive-article-date">
+  	<time datetime="2020-03-06T03:15:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>幂等性问题<br>定义幂等性：同样的参数和值，不管调用接口多少次，响应结果都和调用一次是一样的<br>比如：支付宝支付，多次支付只能扣一笔钱。<br>又比如：微信回调接口的多次回调（回调频率15/15/30/180/1800/1800/1800/3600），要保证响应结果一样的<br>处理方式<br>方式一：redis+token<br>方式二：数据库建立唯一索引，防止脏数据<br>乐观锁：直到最后一刻才会更新数据<br>分布式锁：</p>
+<p>微信支付回调<br>1：签名校验，防止伪造回调<br>2：查询订单是否已经更新<br>3：若没有更新则更新订单状态<br>4：回应微信，SUCCESS或者FAIL</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/06/幂等性问题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -957,7 +1233,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 游理轩
+    		&copy; 2020 游理轩
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1040,7 +1316,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaWeb</a>
+                <a href="javascript:void(0)" class="js-tag color2">java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
             
             <div class="clearfix"></div>
