@@ -555,7 +555,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/06/DefaultListableBeanFactory/">Spring源码分析二</a>
+      <a class="article-title" href="/2020/03/06/DefaultListableBeanFactory/">DefaultListableBeanFactory继承结构</a>
     </h1>
   
 
@@ -592,7 +592,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
         		</li>
       		
 		</ul>
@@ -668,9 +668,11 @@
 <ul>
 <li>（1）根据设置的class属性或者根据className来解析Class。</li>
 <li>（2）对override属性进行标记及验证。<br>  在 Spring 的配置里面根本就没有诸如override-method之类的配置，但是在Spring配置中是存在lookup-method和replace-method的，而这两个配置的加载其实就是将配置统一存放在BeanDefinition中的methodOverrides属性里，而这个函数的操作其实也就是针对于这两个配置的。</li>
-<li>（3）resolveBeforeInstantiation(beanName, mbd)在这个方法中应用了两种后处理器<pre><code>1)应用实例化前的后处理器applyBeanPostProcessorsBeforeInstantiation
+<li>（3）resolveBeforeInstantiation(beanName, mbd)在这个方法中应用了两种后处理器、</li>
+</ul>
+<pre><code>1)应用实例化前的后处理器applyBeanPostProcessorsBeforeInstantiation
     将AbsractBeanDefinition转换为BeanWrapper前的处理。给子类一个修改BeanDefinition的机会，也就是说当程序经过这个方法后，bean可能已经不是我们认为的bean了，而是或许成为了一个经过处理的代理bean，可能是通过cglib生成的，也可能是通过其它技术生成的
-2)应用初始化后的后处理器applyBeanPostProcessorsAfterInitialization</code></pre></li>
+2)应用初始化后的后处理器applyBeanPostProcessorsAfterInitialization</code></pre><ul>
 <li>（4）创建bean交给doGetBean处理</li>
 </ul>
 <p>当经历过 resolveBeforeInstantiation 方法后，程序有两个选择，如果创建了代理或者说重写了InstantiationAwareBeanPostProcessor 的 postProcessBeforeInstantiation 方法并在方法 postProcess BeforeInstantiation中改变了bean，则直接返回就可以了，否则需要进行常规bean的创建。而这常规bean的创建就是在doCreateBean中完成的。<br>org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#doCreateBean<br>这个函数主要做了一下工作：</p>
@@ -1380,19 +1382,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">java基础</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
               </li>
              
               <li class="article-tag-list-item">
