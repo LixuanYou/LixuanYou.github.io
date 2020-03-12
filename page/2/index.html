@@ -146,6 +146,168 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-redisSentinel模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/redisSentinel模式/">redis Sentinel模式</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/06/redisSentinel模式/" class="archive-article-date">
+  	<time datetime="2020-03-06T03:18:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="启动并初始化Sentinel"><a href="#启动并初始化Sentinel" class="headerlink" title="启动并初始化Sentinel"></a>启动并初始化Sentinel</h2><pre><code>命令是 redis-sentinel/path/to/your/sentinel.conf
+      redis-server/path/to/your/sentinel.conf--sentinel
+（1）初始化服务器：sentinel不需要数据库结构实际上sentinel可以执行的命令只有七种
+（2）替换成sentinel专用代码：服务器端口（26736）、命令表（七种）
+（3）初始化sentinel状态
+        用sentinelState结构保存Sentinel功能有关的状态
+        服务器的一般状态用RedisServer结构保存
+（4）初始化sentinel的监视主服务器列表
+        在sentinel状态的master字典中保存被监视的主服务器信息
+        master字典：    键=主服务器名字 值=sentinelRedisInstance（被sentinel监视的redis服务器实例）
+（5）创建连向主服务器的网络连接
+    sentinel成为主服务器的客服端，分别创建命令连接和订阅连接（发布和订阅功能相关的信息不会保存在redis服务器里）</code></pre><h2 id="获取主服务器信息"><a href="#获取主服务器信息" class="headerlink" title="获取主服务器信息"></a>获取主服务器信息</h2><pre><code>频率：十秒一次给主服务器发送INFO命令</code></pre><h2 id="获取从服务器信息"><a href="#获取从服务器信息" class="headerlink" title="获取从服务器信息"></a>获取从服务器信息</h2><h2 id="向主服务器和从服务器发送信息"><a href="#向主服务器和从服务器发送信息" class="headerlink" title="向主服务器和从服务器发送信息"></a>向主服务器和从服务器发送信息</h2><h2 id="接收来自主服务器和从从服务器的频道信息"><a href="#接收来自主服务器和从从服务器的频道信息" class="headerlink" title="接收来自主服务器和从从服务器的频道信息"></a>接收来自主服务器和从从服务器的频道信息</h2><pre><code>sentinel之间没有订阅连接，只有命令连接</code></pre><h2 id="检测主观下线状态"><a href="#检测主观下线状态" class="headerlink" title="检测主观下线状态"></a>检测主观下线状态</h2><h2 id="检测客观下线状态"><a href="#检测客观下线状态" class="headerlink" title="检测客观下线状态"></a>检测客观下线状态</h2><h2 id="选举领头Sentinel"><a href="#选举领头Sentinel" class="headerlink" title="选举领头Sentinel"></a>选举领头Sentinel</h2><pre><code>在主服务器被判断为客观下线之后，选举领头Sentinel
+选举规则：每个Sentinel都会发送命令要求其他sentinel选自己为领头Sentinel，每个Sentinel在收到命令（is master down by addr）后采取先到先得的方式，选择第一个发送命令给自己的Sentinel为领头Sentinel，当某个Sentinel得票超过半数，就会成为领头Sentinel，如果选举超时，会在一段时间后再次选举，直到出现领头sentinel</code></pre><h2 id="故障转移"><a href="#故障转移" class="headerlink" title="故障转移"></a>故障转移</h2><pre><code>(1)挑选主服务器属下的从服务器，使他成为主服务器（任命）
+(2)所有从服务器复制新的主服务器（公示）
+(3)旧的主服务器再次上线成为新的主服务器的的从服务器（不给机会）</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/06/redisSentinel模式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-幂等性问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/幂等性问题/">幂等性问题</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/06/幂等性问题/" class="archive-article-date">
+  	<time datetime="2020-03-06T03:15:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>幂等性问题<br>定义幂等性：同样的参数和值，不管调用接口多少次，响应结果都和调用一次是一样的<br>比如：支付宝支付，多次支付只能扣一笔钱。<br>又比如：微信回调接口的多次回调（回调频率15/15/30/180/1800/1800/1800/3600），要保证响应结果一样的<br>处理方式<br>方式一：redis+token<br>方式二：数据库建立唯一索引，防止脏数据<br>乐观锁：直到最后一刻才会更新数据<br>分布式锁：</p>
+<p>微信支付回调<br>1：签名校验，防止伪造回调<br>2：查询订单是否已经更新<br>3：若没有更新则更新订单状态<br>4：回应微信，SUCCESS或者FAIL</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/06/幂等性问题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-关于random" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -644,6 +806,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
               </li>
             
             <div class="clearfix"></div>

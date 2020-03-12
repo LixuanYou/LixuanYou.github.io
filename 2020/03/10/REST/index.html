@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/3 | 游理轩的博客</title>
+  <title>REST | 游理轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="游理轩的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/03/index.html">
+  <meta name="description" content="Request—&amp;gt;DispatcherServlet—&amp;gt;ControllerMapping—&amp;gt;Controller&amp;lt;—&amp;gt;ViewResolver&amp;lt;—&amp;gt;View&amp;lt;—&amp;gt;Cilent REST定义Rest就是将资源的状态以最适合服务端或者客户端的形式从服务器端转移到客户端REST资源通过URL进行识别和定位。REST的动作有CRUD分别为POST、G">
+<meta name="keywords" content="SpringMVC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="REST">
+<meta property="og:url" content="http://yoursite.com/2020/03/10/REST/index.html">
 <meta property="og:site_name" content="游理轩的博客">
+<meta property="og:description" content="Request—&amp;gt;DispatcherServlet—&amp;gt;ControllerMapping—&amp;gt;Controller&amp;lt;—&amp;gt;ViewResolver&amp;lt;—&amp;gt;View&amp;lt;—&amp;gt;Cilent REST定义Rest就是将资源的状态以最适合服务端或者客户端的形式从服务器端转移到客户端REST资源通过URL进行识别和定位。REST的动作有CRUD分别为POST、G">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-03-11T02:53:17.690Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="游理轩的博客">
+<meta name="twitter:title" content="REST">
+<meta name="twitter:description" content="Request—&amp;gt;DispatcherServlet—&amp;gt;ControllerMapping—&amp;gt;Controller&amp;lt;—&amp;gt;ViewResolver&amp;lt;—&amp;gt;View&amp;lt;—&amp;gt;Cilent REST定义Rest就是将资源的状态以最适合服务端或者客户端的形式从服务器端转移到客户端REST资源通过URL进行识别和定位。REST的动作有CRUD分别为POST、G">
   
     <link rel="alternative" href="/atom.xml" title="游理轩的博客" type="application/atom+xml">
   
@@ -144,36 +149,66 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-REST" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/10/REST/" class="archive-article-date">
-  	<time datetime="2020-03-10T00:17:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/10/REST/">REST</a>
+    <h1 class="article-title" itemprop="name">
+      REST
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/03/10/REST/" class="archive-article-date">
+  	<time datetime="2020-03-10T00:17:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Request—&gt;DispatcherServlet—&gt;ControllerMapping—&gt;Controller&lt;—&gt;ViewResolver&lt;—&gt;View&lt;—&gt;Cilent</p>
+<h1 id="REST定义"><a href="#REST定义" class="headerlink" title="REST定义"></a>REST定义</h1><p>Rest就是将资源的状态以最适合服务端或者客户端的形式从服务器端转移到客户端<br>REST资源通过URL进行识别和定位。REST的动作有CRUD分别为POST、GET、PUT或PATCH、DELETE</p>
+<p>内容协商（Content negotiation）：选择一个视图，它能够将模型渲染为呈现给客户端的表述形式；<br>消息转换器（Message conversion）：通过一个消息转换器将控制器所返回的对象转换为呈现给客户端的表述形式。</p>
+<h1 id="内容协商"><a href="#内容协商" class="headerlink" title="内容协商"></a>内容协商</h1><h2 id="确定请求的媒体类型"><a href="#确定请求的媒体类型" class="headerlink" title="确定请求的媒体类型"></a>确定请求的媒体类型</h2><p>在控制器的处理方法完成时，通常会返回一个逻辑视图名。DispatcherServlet接下来会将视图的名字传递给一个视图解析器，要求它来帮助确定应该用哪个视图来渲染请求结果。<br>当要将视图名解析为能够产生资源表述的视图时，我们就有另外一个维度需要考虑了。视图不仅要匹配视图名，而且所选择的视图要适合客户端。如果客户端想要JSON，那么渲染HTML的视图就不行了——尽管视图名可能匹配。<br>客户端要什么样的表达方式可以通过内容协商视图解析器ContentNegotiatingViewResolver在Spring3.2之后推荐使用内容协商管理ContentNegotiationManager<br>使用内容协商管理ContentNegotiationManager方式有两种<br>        1.在XML中配置bean，ContentNegotiationManagerFactoryBean。例如，我们可能希望在XML中配置ContentNegotiationManager使用“application/json”作为默认的内容类型<br>        2.Java配置：继承WebMvcConfigurerAdapter并重载configureContentNegotiation()方法<br>ContentNegotiatingViewResolver的优劣<br>优势：它在Spring MVC之上构建了REST资源表述层，控制器代码无需修改<br>劣势：它只能决定资源该如何渲染到客户端，并没有涉及到客户端要发送什么样的表述给控制器使用</p>
+<h1 id="消息转换器"><a href="#消息转换器" class="headerlink" title="消息转换器"></a>消息转换器</h1><p>DispatcherServlet不再需要那么麻烦地将模型数据传送到视图中。实际上，这里根本就没有模型，也没有视图，只有Controller产生的数据，以及消息转换器（message converter）转换数据之后所产生的资源表述。</p>
+<p>@ResponseBody注解会告知Spring，我们要将返回的对象作为资源发送给客户端，并将其转换为客户端可接受的表述形式。更具体地讲，DispatcherServlet将会考虑到请求中Accept头部信息，并查找能够为客户端提供所需表述形式的消息转换器。<br>     @RequestMapping(method=RequestMethod.GET, produces=”application/json”)<br>  public <code>@ResponseBody</code> List<spittle> spittles(@RequestParam(value=”max”, defaultValue=MAX_LONG_AS_STRING) long max,@RequestParam(value=”count”, defaultValue=”20”) int count) {<br>    return spittleRepository.findSpittles(max, count);<br>  }</spittle></p>
+<p>当处理请求时，@ResponseBody和@RequestBody是启用消息转换的一种简洁和强大方式。但是，如果你所编写的控制器有多个方法，并且每个方法都需要信息转换功能的话，那么这些注解就会带来一定程度的重复性。Spring 4.0引入了@RestController注解，能够在这个方面给我们提供帮助。如果在控制器类上使用@RestController来代替@Controller的话，Spring将会为该控制器的所有处理方法应用消息转换功能。我们不必为每个方法都添加@ResponseBody了。</p>
+<h1 id="RestTemplate的常用方法"><a href="#RestTemplate的常用方法" class="headerlink" title="RestTemplate的常用方法"></a>RestTemplate的常用方法</h1><p>RestTemplate定义了11个独立的操作，而每一个都有重载，这样一共是36个方法<br>getForEntity()方法和getForObject()都是执行URL检索资源的GET请求，都根据responseType参数将资源匹配为一定的类型。唯一的区别在于getForObject()只返回所请求类型的对象，而getForEntity()方法会返回请求的对象以及响应相关的额外信息比如Accept头信息和http状态码<br>getForEntity()方法适合是检索资源，getForObject()方法适合抽取响应的元数据（携带HTTP状态码和响应头）</p>
+<p>关于put方法</p>
+<p>put（uri,java对象,可替换uri占位符的可变大小的参数）<br>postForObject(url,java对象,返回的java类型，指定了URL中的变量，可以是可变参数列表或者Map)。postForObject()方法将要创建的对象发送到服务器端，在响应中，它接收这个对象并将其返回给调用者。<br>与getForEntity()方法一样，postForEntity()返回一个ResponseEntity<t>对象。你可以调用这个ResponseEntity<t>对象的getBody()方法以获取资源对象<br>如果需要的是Location头信息的值，那么使用RestTemplate的postForLocation()方法会更简单。<br>delete()唯一要提供的就是要删除资源的URI<br>如果你想在发送给服务端的请求中设置头信息，可以用RestTemplate的exchange()方法，可以将第二个参数改成HttpMethod.GET与getForEntity()方法实现一样效果</t></t></p>
+<h1 id="REST风格的URL请求"><a href="#REST风格的URL请求" class="headerlink" title="REST风格的URL请求"></a>REST风格的URL请求</h1><p>例如<br>请求路径        请求方法          实现<br>-/user/1        HTTP GET        得到id为1的user<br>-/user/1        HTTP DELETE     删除id为1的user<br>-/user/1        HTTP PUT        更新id为1的user<br>-/user          HTTP POST       新增user</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -185,353 +220,105 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/10/REST/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/08/日志与异常统一管理/" class="archive-article-date">
-  	<time datetime="2020-03-08T02:04:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/08/日志与异常统一管理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">日志与异常统一管理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/08/日志与异常统一管理/">日志与异常统一管理</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/doGetBean()方法分析/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:28:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/doGetBean()方法分析/">doGetBean()方法分析</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/DefaultListableBeanFactory/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:28:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/DefaultListableBeanFactory/">Spring源码分析二</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/SpringBean生命周期与循环依赖/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:28:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/SpringBean生命周期与循环依赖/">SpringBean生命周期与循环依赖</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/Listextends与supertT的区别/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:25:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/Listextends与supertT的区别/">List extends与supertT的区别</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/redis客户端/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:23:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/redis客户端/">redis客户端</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/redis服务器/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:23:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/redis服务器/">redis服务器</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/redis复制/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:22:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/redis复制/">redis复制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/redis集群/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:19:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/redis集群/">redis集群</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/03/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/03/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -555,8 +342,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

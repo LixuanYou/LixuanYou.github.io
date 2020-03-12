@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>List extends与supertT的区别 | 游理轩的博客</title>
+  <title>doGetBean()方法分析 | 游理轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="List&amp;lt;? extends T&amp;gt;与List&amp;lt;? super T&amp;gt;的区别？List&amp;lt;? extends T&amp;gt;:表示赋值（=）的数据可以是T类型或者T类型的子类，T表示类型的上界，适用于获取（get）数据并且获取的数据都会转化为T类型List&amp;lt;? super T&amp;gt;:表示赋值(=)的数据可以是T类型或者T类型的父类直至Object类，T表示类型的下界，适">
-<meta name="keywords" content="java基础">
+  <meta name="description" content="在AbstractBeanFactory中的doGetBean()方法分析    protected &amp;lt;T&amp;gt; T doGetBean(final String name, @Nullable final Class&amp;lt;T&amp;gt; requiredType,         @Nullable final Object[] args, boolean typeCheckOnly) t">
+<meta name="keywords" content="spring源码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="List extends与supertT的区别">
-<meta property="og:url" content="http://yoursite.com/2020/03/06/List-extends与supertT的区别/index.html">
+<meta property="og:title" content="doGetBean()方法分析">
+<meta property="og:url" content="http://yoursite.com/2020/03/06/doGetBean()方法分析/index.html">
 <meta property="og:site_name" content="游理轩的博客">
-<meta property="og:description" content="List&amp;lt;? extends T&amp;gt;与List&amp;lt;? super T&amp;gt;的区别？List&amp;lt;? extends T&amp;gt;:表示赋值（=）的数据可以是T类型或者T类型的子类，T表示类型的上界，适用于获取（get）数据并且获取的数据都会转化为T类型List&amp;lt;? super T&amp;gt;:表示赋值(=)的数据可以是T类型或者T类型的父类直至Object类，T表示类型的下界，适">
+<meta property="og:description" content="在AbstractBeanFactory中的doGetBean()方法分析    protected &amp;lt;T&amp;gt; T doGetBean(final String name, @Nullable final Class&amp;lt;T&amp;gt; requiredType,         @Nullable final Object[] args, boolean typeCheckOnly) t">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-06T03:26:08.248Z">
+<meta property="og:updated_time" content="2020-03-11T03:09:48.102Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="List extends与supertT的区别">
-<meta name="twitter:description" content="List&amp;lt;? extends T&amp;gt;与List&amp;lt;? super T&amp;gt;的区别？List&amp;lt;? extends T&amp;gt;:表示赋值（=）的数据可以是T类型或者T类型的子类，T表示类型的上界，适用于获取（get）数据并且获取的数据都会转化为T类型List&amp;lt;? super T&amp;gt;:表示赋值(=)的数据可以是T类型或者T类型的父类直至Object类，T表示类型的下界，适">
+<meta name="twitter:title" content="doGetBean()方法分析">
+<meta name="twitter:description" content="在AbstractBeanFactory中的doGetBean()方法分析    protected &amp;lt;T&amp;gt; T doGetBean(final String name, @Nullable final Class&amp;lt;T&amp;gt; requiredType,         @Nullable final Object[] args, boolean typeCheckOnly) t">
   
     <link rel="alternative" href="/atom.xml" title="游理轩的博客" type="application/atom+xml">
   
@@ -149,28 +149,210 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-List-extends与supertT的区别" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-doGetBean()方法分析" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      List extends与supertT的区别
+      doGetBean()方法分析
     </h1>
   
 
         
-        <a href="/2020/03/06/List-extends与supertT的区别/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:25:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+        <a href="/2020/03/06/doGetBean()方法分析/" class="archive-article-date">
+  	<time datetime="2020-03-06T03:28:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>List&lt;? extends T&gt;与List&lt;? super T&gt;的区别？<br>List&lt;? extends T&gt;:表示赋值（=）的数据可以是T类型或者T类型的子类，T表示类型的上界，适用于获取（get）数据并且获取的数据都会转化为T类型<br>List&lt;? super T&gt;:表示赋值(=)的数据可以是T类型或者T类型的父类直至Object类，T表示类型的下界，适用于添加(add)数据，并且添加(add)的数据只能是T类型或T类型的子类</p>
+        <h1 id="在AbstractBeanFactory中的doGetBean-方法分析"><a href="#在AbstractBeanFactory中的doGetBean-方法分析" class="headerlink" title="在AbstractBeanFactory中的doGetBean()方法分析"></a>在AbstractBeanFactory中的doGetBean()方法分析</h1><pre><code>    protected &lt;T&gt; T doGetBean(final String name, @Nullable final Class&lt;T&gt; requiredType,
+        @Nullable final Object[] args, boolean typeCheckOnly) throws BeansException {
+    //FactoryBean获取自身实例时要加一个&amp;符号，这行代码是去除&amp;符号
+    final String beanName = transformedBeanName(name);
+    Object bean;
 
+    // Eagerly check singleton cache for manually registered singletons.
+    /**
+     * @author: LixuanYou
+     * @date: 15:56 2019/12/17
+     * 这个在getSingleton方法在初始化的时候会调用，在getBean的时候也会调用
+     * 也就是说Spring在初始化的时候先获取这个对象
+     * 判断这个对象是否被实例化好了（与一般情况下为空）
+     *
+     * 检查缓存中或者实例工厂中是否有对应实例
+     * 为什么首先会用这段代码
+     * 因为在创建单例bean的时候会存在依赖注入的情况，而且创建依赖的时候要避免循环依赖
+     * Spring创建bean的原则是不会等bean创建完成就会将创建bean的ObjectFactory提早曝光
+     * 就是将ObjectFactory加入缓存中，一旦有下一个bean创建时候需要依赖上一个bean则直接使用ObjectFactory
+     */
+    //直接尝试从缓存中或者singletonFactory中的ObjectFactory中获取
+    Object sharedInstance = getSingleton(beanName);
+    if (sharedInstance != null &amp;&amp; args == null) {
+        if (logger.isTraceEnabled()) {
+            if (isSingletonCurrentlyInCreation(beanName)) {
+                logger.trace(&quot;Returning eagerly cached instance of singleton bean &apos;&quot; + beanName +
+                        &quot;&apos; that is not fully initialized yet - a consequence of a circular reference&quot;);
+            }
+            else {
+                logger.trace(&quot;Returning cached instance of singleton bean &apos;&quot; + beanName + &quot;&apos;&quot;);
+            }
+        }
+        //返回对应的实例，有的时候存在诸如BeanFactory的情况并不是直接返回实例本身而是返回指定方法返回实例
+        bean = getObjectForBeanInstance(sharedInstance, name, beanName, null);
+    }
+
+    else {
+        // Fail if we&apos;re already creating this bean instance:
+        // We&apos;re assumably within a circular reference.
+        //只有在单例情况下才会解决循环依赖
+        if (isPrototypeCurrentlyInCreation(beanName)) {
+            throw new BeanCurrentlyInCreationException(beanName);
+        }
+
+        // Check if bean definition exists in this factory.
+        BeanFactory parentBeanFactory = getParentBeanFactory();
+        //如果BeanDefinitionMap中也就是在所有已经加载的类中不包括beanName则尝试从parentBeanFactory中检测
+        if (parentBeanFactory != null &amp;&amp; !containsBeanDefinition(beanName)) {
+            // Not found -&gt; check parent.
+            String nameToLookup = originalBeanName(name);
+            if (parentBeanFactory instanceof AbstractBeanFactory) {
+                return ((AbstractBeanFactory) parentBeanFactory).doGetBean(
+                        nameToLookup, requiredType, args, typeCheckOnly);
+            }
+            //到BeanFactory中去寻找
+            else if (args != null) {
+                // Delegation to parent with explicit args.
+                return (T) parentBeanFactory.getBean(nameToLookup, args);
+            }
+            else if (requiredType != null) {
+                // No args -&gt; delegate to standard getBean method.
+                return parentBeanFactory.getBean(nameToLookup, requiredType);
+            }
+            else {
+                return (T) parentBeanFactory.getBean(nameToLookup);
+            }
+        }
+        //如果不仅仅是做类型检测则是创建bean，这里要进行记录
+        if (!typeCheckOnly) {
+            markBeanAsCreated(beanName);
+        }
+        //将存储XML文件的GenericBeanDefinition转化为RootBeanDefinition
+        //如果指定BeanName是子Bean的话同时会合并父类Bean的相关属性
+
+        try {
+            final RootBeanDefinition mbd = getMergedLocalBeanDefinition(beanName);
+            checkMergedBeanDefinition(mbd, beanName, args);
+
+            // 确保当前bean依赖的bean的初始化。
+            String[] dependsOn = mbd.getDependsOn();
+            //如果存在依赖则需要递归实例化依赖的Bean
+            if (dependsOn != null) {
+                for (String dep : dependsOn) {
+                    if (isDependent(beanName, dep)) {
+                        throw new BeanCreationException(mbd.getResourceDescription(), beanName,
+                                &quot;Circular depends-on relationship between &apos;&quot; + beanName + &quot;&apos; and &apos;&quot; + dep + &quot;&apos;&quot;);
+                    }
+                    //将依赖调用缓存
+                    registerDependentBean(dep, beanName);
+                    try {
+                        getBean(dep);
+                    }
+                    catch (NoSuchBeanDefinitionException ex) {
+                        throw new BeanCreationException(mbd.getResourceDescription(), beanName,
+                                &quot;&apos;&quot; + beanName + &quot;&apos; depends on missing bean &apos;&quot; + dep + &quot;&apos;&quot;, ex);
+                    }
+                }
+            }
+
+            //实例化依赖的Bean以后可以mbd本身（MergedLocalBeanDefinition）
+            if (mbd.isSingleton()) {
+                sharedInstance = getSingleton(beanName, () -&gt; {
+                    try {
+                        return createBean(beanName, mbd, args);
+                    }
+                    catch (BeansException ex) {
+                        // Explicitly remove instance from singleton cache: It might have been put there
+                        // eagerly by the creation process, to allow for circular reference resolution.
+                        // Also remove any beans that received a temporary reference to the bean.
+                        destroySingleton(beanName);
+                        throw ex;
+                    }
+                });
+                bean = getObjectForBeanInstance(sharedInstance, name, beanName, mbd);
+            }
+
+            else if (mbd.isPrototype()) {
+                // It&apos;s a prototype -&gt; create a new instance.
+                Object prototypeInstance = null;
+                try {
+                    beforePrototypeCreation(beanName);
+                    prototypeInstance = createBean(beanName, mbd, args);
+                }
+                finally {
+                    afterPrototypeCreation(beanName);
+                }
+                bean = getObjectForBeanInstance(prototypeInstance, name, beanName, mbd);
+            }
+
+            else {
+                //指定Socope上实例化Bean
+                String scopeName = mbd.getScope();
+                final Scope scope = this.scopes.get(scopeName);
+                if (scope == null) {
+                    throw new IllegalStateException(&quot;No Scope registered for scope name &apos;&quot; + scopeName + &quot;&apos;&quot;);
+                }
+                try {
+                    /*这里用Lambda指代new ObjectFactory&lt;Object&gt;(){
+                        public Object getObject()throws BeanException
+                     }*/
+                    Object scopedInstance = scope.get(beanName, () -&gt; {
+                        beforePrototypeCreation(beanName);
+                        try {
+                            return createBean(beanName, mbd, args);
+                        }
+                        finally {
+                            afterPrototypeCreation(beanName);
+                        }
+                    });
+                    bean = getObjectForBeanInstance(scopedInstance, name, beanName, mbd);
+                }
+                catch (IllegalStateException ex) {
+                    throw new BeanCreationException(beanName,
+                            &quot;Scope &apos;&quot; + scopeName + &quot;&apos; is not active for the current thread; consider &quot; +
+                            &quot;defining a scoped proxy for this bean if you intend to refer to it from a singleton&quot;,
+                            ex);
+                }
+            }
+        }
+        catch (BeansException ex) {
+            cleanupAfterBeanCreationFailure(beanName);
+            throw ex;
+        }
+    }
+
+    // 检查所需的类型是否与实际bean实例的类型匹配。
+    if (requiredType != null &amp;&amp; !requiredType.isInstance(bean)) {
+        try {
+            T convertedBean = getTypeConverter().convertIfNecessary(bean, requiredType);
+            if (convertedBean == null) {
+                throw new BeanNotOfRequiredTypeException(name, requiredType, bean.getClass());
+            }
+            return convertedBean;
+        }
+        catch (TypeMismatchException ex) {
+            if (logger.isTraceEnabled()) {
+                logger.trace(&quot;Failed to convert bean &apos;&quot; + name + &quot;&apos; to required type &apos;&quot; +
+                        ClassUtils.getQualifiedName(requiredType) + &quot;&apos;&quot;, ex);
+            }
+            throw new BeanNotOfRequiredTypeException(name, requiredType, bean.getClass());
+        }
+    }
+    return (T) bean;
+}</code></pre>
       
 
       
@@ -204,7 +386,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">java基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
         		</li>
       		
 		</ul>
@@ -260,7 +442,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/06/List-extends与supertT的区别/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/06/doGetBean()方法分析/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -274,18 +456,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/06/Spring源码分析一/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/03/08/日志与异常统一管理/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Spring源码分析一
+          日志与异常统一管理
         
       </div>
     </a>
   
   
-    <a href="/2020/03/06/redis客户端/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">redis客户端</div>
+    <a href="/2020/03/06/DefaultListableBeanFactory/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring源码分析二</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -424,6 +606,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
               </li>
             
             <div class="clearfix"></div>
