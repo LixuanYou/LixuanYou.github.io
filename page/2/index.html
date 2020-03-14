@@ -146,6 +146,90 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-redis集群" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/redis集群/">redis集群</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/06/redis集群/" class="archive-article-date">
+  	<time datetime="2020-03-06T03:19:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="redis集群"><a href="#redis集群" class="headerlink" title="redis集群"></a>redis集群</h1><pre><code>定义：是redis提供的分布式数据库方案，集群通过分片来进行数据共享，并提供复制和故障转移功能</code></pre><h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><pre><code>命令： Cluster Meet &lt;ip&gt;&lt;port&gt; 添加指定节点到node节点所在集群中
+（1）启动节点：通过cluster-enabled判断是否开启集群模式
+    运行在集群模式下的Redis服务器会继续使用所有单机模式中的服务器组件：
+    文件处理器、时间处理器、两种持久化、发布订阅、复制、Lua脚本
+（2）集群的数据结构
+    clusterNode：保存节点状态（创建时间、name、配置纪元、ip/port）
+    clusterLink:保存*连接节点*所需的有关信息，比如套接字描述符、输入输出缓冲区
+    clusterState：保存当前节点视角下，集群目前所处状态，如：集群是否在线、集群包含多少个节点、配置纪元
+（3）Cluster Meet 命令实现
+    客户端发送Cluster Meet给节点A，节点A在节点字典里创建一个集群节点结构保存节点B，A向B发送Meet命令，节点B在节点字典里创建一个集群节点结构保存节点A,B向A发送Pong命令，A收到以后发送一个PING命令给B，B由此知道节点A已经成功接收到自己发送的PONG消息。节点A通过Gossip协议将节点B的信息传播给集群中的其他节点</code></pre><h2 id="槽指派"><a href="#槽指派" class="headerlink" title="槽指派"></a>槽指派</h2><pre><code>集群中的整个数据库分为16384个槽，所有槽都有节点在处理代表集群在上线状态，只要一个槽没处理那么集群处于下线状态
+命令：Cluster Addslots 可以指派（1-16384）个槽给节点
+除了在每个节点的ClusterNodes.slots保存当前节点指派槽信息以外，还会在clusterState。slots保存所有槽的指派信息</code></pre><h2 id="在集群中执行命令"><a href="#在集群中执行命令" class="headerlink" title="在集群中执行命令"></a>在集群中执行命令</h2><pre><code>当客户端向节点发送与数据库有关的命令的时候，节点会计算出该命令要处理的数据库键属于哪一个槽，并检查这个槽是否属于自己</code></pre><h2 id="从新分片"><a href="#从新分片" class="headerlink" title="从新分片"></a>从新分片</h2><h2 id="ASK错误"><a href="#ASK错误" class="headerlink" title="ASK错误"></a>ASK错误</h2><h2 id="复制与故障转移"><a href="#复制与故障转移" class="headerlink" title="复制与故障转移"></a>复制与故障转移</h2><h2 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/06/redis集群/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-redisSentinel模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
