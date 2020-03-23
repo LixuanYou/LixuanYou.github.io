@@ -9,14 +9,14 @@
   <title>redis服务器 | 游理轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="redis服务器服务器处理命令请求的执行过程命令请求的执行过程：发送、读取命令请求  命令执行器 查找命令实现 执行预备操作（单机模式下的10种服务器向客户端返回错误的情况） 调用命令的实现函数：执行的命令在cmd，参数在argv[0],参数个数在argc中，所以实现命令函数只需要一个指向客户端状态的指针作为参数即可 执行后续工作：四种情况 将命令回复发送给客户端 客户端接收并打印命令回复  Se">
-<meta name="keywords" content="redis">
+<meta name="keywords" content="redis,技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis服务器">
 <meta property="og:url" content="http://yoursite.com/2020/03/06/redis服务器/index.html">
 <meta property="og:site_name" content="游理轩的博客">
 <meta property="og:description" content="redis服务器服务器处理命令请求的执行过程命令请求的执行过程：发送、读取命令请求  命令执行器 查找命令实现 执行预备操作（单机模式下的10种服务器向客户端返回错误的情况） 调用命令的实现函数：执行的命令在cmd，参数在argv[0],参数个数在argc中，所以实现命令函数只需要一个指向客户端状态的指针作为参数即可 执行后续工作：四种情况 将命令回复发送给客户端 客户端接收并打印命令回复  Se">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-06T03:24:13.952Z">
+<meta property="og:updated_time" content="2020-03-23T11:50:51.919Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis服务器">
 <meta name="twitter:description" content="redis服务器服务器处理命令请求的执行过程命令请求的执行过程：发送、读取命令请求  命令执行器 查找命令实现 执行预备操作（单机模式下的10种服务器向客户端返回错误的情况） 调用命令的实现函数：执行的命令在cmd，参数在argv[0],参数个数在argc中，所以实现命令函数只需要一个指向客户端状态的指针作为参数即可 执行后续工作：四种情况 将命令回复发送给客户端 客户端接收并打印命令回复  Se">
@@ -60,7 +60,9 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
+				<li><a href="/tags/技术/">技术文章</a></li>
+	        
+				<li><a href="/tags/随笔/">心情随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -116,6 +118,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -134,7 +138,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/tags/技术/">技术文章</a></li>
+		        
+					<li style="width: 50%"><a href="/tags/随笔/">心情随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -175,7 +181,8 @@
 <li>将命令回复发送给客户端</li>
 <li>客户端接收并打印命令回复</li>
 </ol>
-<h2 id="ServerCron函数"><a href="#ServerCron函数" class="headerlink" title="ServerCron函数"></a>ServerCron函数</h2><p>这个函数默认每隔100毫秒执行一次，负责管理服务器资源、保存服务器良好运转</p>
+<h2 id="ServerCron函数"><a href="#ServerCron函数" class="headerlink" title="ServerCron函数"></a>ServerCron函数</h2><a id="more"></a>
+<p>这个函数默认每隔100毫秒执行一次，负责管理服务器资源、保存服务器良好运转</p>
 <ol>
 <li><p>更新服务器时间缓存<br> unixtime/mstime用于对时间精度要求不高的功能上</p>
 </li>
@@ -251,6 +258,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		
 		</ul>
@@ -474,6 +485,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">心情随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">技术文章/redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">技术文章</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
             
             <div class="clearfix"></div>

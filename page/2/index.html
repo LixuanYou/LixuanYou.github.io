@@ -55,7 +55,9 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
+				<li><a href="/tags/技术/">技术文章</a></li>
+	        
+				<li><a href="/tags/随笔/">心情随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -111,6 +113,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -129,7 +133,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/tags/技术/">技术文章</a></li>
+		        
+					<li style="width: 50%"><a href="/tags/随笔/">心情随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -145,6 +151,97 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-redis复制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/redis复制/">redis复制</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/06/redis复制/" class="archive-article-date">
+  	<time datetime="2020-03-06T03:22:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#redis复制</p>
+<h2 id="旧版复制功能实现"><a href="#旧版复制功能实现" class="headerlink" title="旧版复制功能实现"></a>旧版复制功能实现</h2><pre><code>(1)同步（sync）
+将从服务器的数据库状态更新至主服务器当前所处的数据库状态
+步骤：
+    1)从向主发送SYNC命令
+    2)收到命令的主服务器执行BGSAVE命令，在后台生成一个RDB文件，并使用一个缓冲区记入从现在开始执行的所有写命令
+    3）主服务器执行完BGSAVE后，会将RDB文件发送给从服务器，从服务器接收并开始载入RDB文件。将自己的数据库状态更新至主服务器执行BGSAVE命令时一致
+    4）主服务器将记录在缓冲区里的所有写命令发送给从服务器，从服务器执行这些写命令，从服务器更新至主服务器当前所处状态
+(2)命令传播（command propagate）
+当主服务器的数据库状态被修改导致主从服务器的数据库状态不一致，让主从服务器数据库状态回到一致的操作
+因为SYNC命令存在空挡期
+每当主服务器执行客户端发送的写命令，主服务器的数据库状态就有可能被修改，导致主从服务器状态不一致</code></pre><h2 id="新版复制功能的实现"><a href="#新版复制功能的实现" class="headerlink" title="新版复制功能的实现"></a>新版复制功能的实现</h2>
+        
+          <a class="article-more-a" href="/2020/03/06/redis复制/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/06/redis复制/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-redis集群" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -175,9 +272,10 @@
     clusterLink:保存*连接节点*所需的有关信息，比如套接字描述符、输入输出缓冲区
     clusterState：保存当前节点视角下，集群目前所处状态，如：集群是否在线、集群包含多少个节点、配置纪元
 （3）Cluster Meet 命令实现
-    客户端发送Cluster Meet给节点A，节点A在节点字典里创建一个集群节点结构保存节点B，A向B发送Meet命令，节点B在节点字典里创建一个集群节点结构保存节点A,B向A发送Pong命令，A收到以后发送一个PING命令给B，B由此知道节点A已经成功接收到自己发送的PONG消息。节点A通过Gossip协议将节点B的信息传播给集群中的其他节点</code></pre><h2 id="槽指派"><a href="#槽指派" class="headerlink" title="槽指派"></a>槽指派</h2><pre><code>集群中的整个数据库分为16384个槽，所有槽都有节点在处理代表集群在上线状态，只要一个槽没处理那么集群处于下线状态
-命令：Cluster Addslots 可以指派（1-16384）个槽给节点
-除了在每个节点的ClusterNodes.slots保存当前节点指派槽信息以外，还会在clusterState。slots保存所有槽的指派信息</code></pre><h2 id="在集群中执行命令"><a href="#在集群中执行命令" class="headerlink" title="在集群中执行命令"></a>在集群中执行命令</h2><pre><code>当客户端向节点发送与数据库有关的命令的时候，节点会计算出该命令要处理的数据库键属于哪一个槽，并检查这个槽是否属于自己</code></pre><h2 id="从新分片"><a href="#从新分片" class="headerlink" title="从新分片"></a>从新分片</h2><h2 id="ASK错误"><a href="#ASK错误" class="headerlink" title="ASK错误"></a>ASK错误</h2><h2 id="复制与故障转移"><a href="#复制与故障转移" class="headerlink" title="复制与故障转移"></a>复制与故障转移</h2><h2 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h2>
+    客户端发送Cluster Meet给节点A，节点A在节点字典里创建一个集群节点结构保存节点B，A向B发送Meet命令，节点B在节点字典里创建一个集群节点结构保存节点A,B向A发送Pong命令，A收到以后发送一个PING命令给B，B由此知道节点A已经成功接收到自己发送的PONG消息。节点A通过Gossip协议将节点B的信息传播给集群中的其他节点</code></pre><h2 id="槽指派"><a href="#槽指派" class="headerlink" title="槽指派"></a>槽指派</h2>
+        
+          <a class="article-more-a" href="/2020/03/06/redis集群/#more">more >></a>
+        
       
 
       
@@ -191,6 +289,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		
 		</ul>
@@ -261,10 +363,10 @@
         在sentinel状态的master字典中保存被监视的主服务器信息
         master字典：    键=主服务器名字 值=sentinelRedisInstance（被sentinel监视的redis服务器实例）
 （5）创建连向主服务器的网络连接
-    sentinel成为主服务器的客服端，分别创建命令连接和订阅连接（发布和订阅功能相关的信息不会保存在redis服务器里）</code></pre><h2 id="获取主服务器信息"><a href="#获取主服务器信息" class="headerlink" title="获取主服务器信息"></a>获取主服务器信息</h2><pre><code>频率：十秒一次给主服务器发送INFO命令</code></pre><h2 id="获取从服务器信息"><a href="#获取从服务器信息" class="headerlink" title="获取从服务器信息"></a>获取从服务器信息</h2><h2 id="向主服务器和从服务器发送信息"><a href="#向主服务器和从服务器发送信息" class="headerlink" title="向主服务器和从服务器发送信息"></a>向主服务器和从服务器发送信息</h2><h2 id="接收来自主服务器和从从服务器的频道信息"><a href="#接收来自主服务器和从从服务器的频道信息" class="headerlink" title="接收来自主服务器和从从服务器的频道信息"></a>接收来自主服务器和从从服务器的频道信息</h2><pre><code>sentinel之间没有订阅连接，只有命令连接</code></pre><h2 id="检测主观下线状态"><a href="#检测主观下线状态" class="headerlink" title="检测主观下线状态"></a>检测主观下线状态</h2><h2 id="检测客观下线状态"><a href="#检测客观下线状态" class="headerlink" title="检测客观下线状态"></a>检测客观下线状态</h2><h2 id="选举领头Sentinel"><a href="#选举领头Sentinel" class="headerlink" title="选举领头Sentinel"></a>选举领头Sentinel</h2><pre><code>在主服务器被判断为客观下线之后，选举领头Sentinel
-选举规则：每个Sentinel都会发送命令要求其他sentinel选自己为领头Sentinel，每个Sentinel在收到命令（is master down by addr）后采取先到先得的方式，选择第一个发送命令给自己的Sentinel为领头Sentinel，当某个Sentinel得票超过半数，就会成为领头Sentinel，如果选举超时，会在一段时间后再次选举，直到出现领头sentinel</code></pre><h2 id="故障转移"><a href="#故障转移" class="headerlink" title="故障转移"></a>故障转移</h2><pre><code>(1)挑选主服务器属下的从服务器，使他成为主服务器（任命）
-(2)所有从服务器复制新的主服务器（公示）
-(3)旧的主服务器再次上线成为新的主服务器的的从服务器（不给机会）</code></pre>
+    sentinel成为主服务器的客服端，分别创建命令连接和订阅连接（发布和订阅功能相关的信息不会保存在redis服务器里）</code></pre><h2 id="获取主服务器信息"><a href="#获取主服务器信息" class="headerlink" title="获取主服务器信息"></a>获取主服务器信息</h2>
+        
+          <a class="article-more-a" href="/2020/03/06/redisSentinel模式/#more">more >></a>
+        
       
 
       
@@ -278,6 +380,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		
 		</ul>
@@ -337,9 +443,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>幂等性问题<br>定义幂等性：同样的参数和值，不管调用接口多少次，响应结果都和调用一次是一样的<br>比如：支付宝支付，多次支付只能扣一笔钱。<br>又比如：微信回调接口的多次回调（回调频率15/15/30/180/1800/1800/1800/3600），要保证响应结果一样的<br>处理方式<br>方式一：redis+token<br>方式二：数据库建立唯一索引，防止脏数据<br>乐观锁：直到最后一刻才会更新数据<br>分布式锁：</p>
-<p>微信支付回调<br>1：签名校验，防止伪造回调<br>2：查询订单是否已经更新<br>3：若没有更新则更新订单状态<br>4：回应微信，SUCCESS或者FAIL</p>
-
+        <p>幂等性问题<br>定义幂等性：同样的参数和值，不管调用接口多少次，响应结果都和调用一次是一样的<br>比如：支付宝支付，多次支付只能扣一笔钱。<br>又比如：微信回调接口的多次回调（回调频率15/15/30/180/1800/1800/1800/3600），要保证响应结果一样的</p>
+        
+          <a class="article-more-a" href="/2020/03/06/幂等性问题/#more">more >></a>
+        
       
 
       
@@ -353,6 +460,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		
 		</ul>
@@ -480,65 +591,15 @@ System.out.print(20 + (int) (rand.nextDouble() * 10));</code></pre>
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h1><ul>
-<li>游理轩/男/1997</li>
+<li>游理轩/男</li>
 <li>本科应届毕业生</li>
 <li>技术博客：<a href="https://lixuanyou.github.io" target="_blank" rel="noopener">https://lixuanyou.github.io</a></li>
-<li>Github ：<a href="https://github.com/LixuanYou" target="_blank" rel="noopener">https://github.com/LixuanYou</a></li>
-<li>期望职位：Java后端开发工程师</li>
+<li>GitHub ：<a href="https://github.com/LixuanYou" target="_blank" rel="noopener">https://github.com/LixuanYou</a></li>
+<li>期望职位：Java后端工程师</li>
 </ul>
-<h1 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h1><ul>
-<li>手机：13055959293 </li>
-<li>Email：<a href="mailto:ylxyeah@gmail.com" target="_blank" rel="noopener">ylxyeah@gmail.com</a> </li>
-<li>QQ/微信号：806928786/ylxyeah</li>
-</ul>
-<h1 id="技能清单"><a href="#技能清单" class="headerlink" title="技能清单"></a>技能清单</h1><p>以下均为我熟练使用的技能</p>
-<ul>
-<li>Java基础编程</li>
-<li>JavaSE常用类库、异常、集合、多线程、IO、Lambda、Stream API</li>
-<li>JavaEE中Servlet、Filter、Listener、Json</li>
-<li>HTML、CSS、JavaScript、Ajax、JQuery技术</li>
-<li>MySQL、Mybatis、Redis等数据库相关知识及其运用</li>
-<li>Spring、SpringMVC框架的应用及其原理</li>
-<li>SpringBoot、SpringCould、RabbitMQ中间件的应用</li>
-<li>Junit单元测试、Maven项目构建、Gradle项目构建</li>
-</ul>
-<h1 id="个人项目"><a href="#个人项目" class="headerlink" title="个人项目"></a>个人项目</h1><h2 id="电子商城-（-2019年9月-2019年10月-）"><a href="#电子商城-（-2019年9月-2019年10月-）" class="headerlink" title="电子商城 （ 2019年9月 ~ 2019年10月 ）"></a>电子商城 （ 2019年9月 ~ 2019年10月 ）</h2><h3 id="秒杀业务"><a href="#秒杀业务" class="headerlink" title="秒杀业务"></a>秒杀业务</h3><h4 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h4><p>秒杀不是为了卖东西而是为了引流，秒杀采用的方式是限时限量限价，特点是高并发、库存少、业务流程短</p>
-<h4 id="技术选型：IDEA、SpringCloud-Eureka、Zuul-、MySQL、Redis、RabbitMQ"><a href="#技术选型：IDEA、SpringCloud-Eureka、Zuul-、MySQL、Redis、RabbitMQ" class="headerlink" title="技术选型：IDEA、SpringCloud(Eureka、Zuul)、MySQL、Redis、RabbitMQ"></a>技术选型：IDEA、SpringCloud(Eureka、Zuul)、MySQL、Redis、RabbitMQ</h4><h4 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h4><h5 id="SpringCloud的应用"><a href="#SpringCloud的应用" class="headerlink" title="SpringCloud的应用"></a>SpringCloud的应用</h5><ul>
-<li>订单服务：产生订单ID，监听队列，生成订单。</li>
-<li>库存服务：监听队列， 与Redis交互减少库存。</li>
-<li>商品服务：为前端页面服务提供商品列表数据用于展示。创建秒杀政策并将政策写入Redis缓存。</li>
-<li>用户服务：为页面服务提供用户数据API接口，会员的添加、修改、登录。</li>
-<li>页面服务：为前端页面提供数据API接口，如：登录页面，支付页面等</li>
-<li>网关服务：提供统一对外的API接口给前端，屏蔽内部服务的细节。</li>
-<li>时间服务：为页面服务提供统一的时间。</li>
-<li>注册中心：所有服务都要在注册中心注册。</li>
-<li>配置中心：提供所有服务需要的配置。</li>
-</ul>
-<h5 id="Redis的应用"><a href="#Redis的应用" class="headerlink" title="Redis的应用"></a>Redis的应用</h5><ul>
-<li>秒杀限制:将商品、秒杀时间、限购数量写到Redis缓存中</li>
-<li>缓存商品数量：消费者访问商品详情，提交订单之后，从Redis中减少商品数量。</li>
-</ul>
-<h5 id="RabbitMQ的应用"><a href="#RabbitMQ的应用" class="headerlink" title="RabbitMQ的应用"></a>RabbitMQ的应用</h5><ul>
-<li>订单队列：订单服务监听订单队列，接收到消息之后将队列信息写入数据库订单表。消费者付款之后更新订单状态，更新成功之后写入库存队列</li>
-<li>库存队列：库存服务监听库存队列，接收到消息之后将库存信息写入数据库减少库存。</li>
-<li>业务解耦：用RabbitMQ解决业务模块相互调用的关系</li>
-</ul>
-<h4 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h4><ol>
-<li>商城展示页面分为两层，通过商品列表页链接进入商品详情页，秒杀开始前，展示商品秒杀倒计时，允许查看商品详情但不许操作提交订单；秒杀开始时，展示商品秒杀到期时间。</li>
-<li>在前端有一个页面用于注册、登录。登录调用后台的Controller层的login(username，password)方法这返回的是Json数据，再调用Service层getUser方法返回Map，再调用Dao层getUser方法返回Map，Map容器存放的是用户信息。注册时Controller层的login方法没有获得用户信息调用Service的insertUser方法再到Dao层的insertUser方法注册用户。</li>
-<li>通过Redis计数器来筛选用户 没有通过筛选的用户直接返回一个商品售罄的页面；通过筛选的用户提交订单（createOrder）到订单服务产生一个唯一的orderID（按毫秒产生）。</li>
-<li>订单服务将订单信息写入订单队列，同时将订单信息写入Redis，这个过程耗时很短，用户感觉是直接跳转到支付。</li>
-<li>到达支付页面后通过Redis把订单消息查出来，再调用多种支付接口给用户多种支付方式，用户提交支付后（payOrder），这时的订单服务要写两个队列，第一个是更新订单的状态队列（updateOrderStatus），第二个是库存队列，这也是瞬间返回一个页面告诉用户支付成功等待收货， 直到这里都是内存操作避免订单服务直接操作数据库造成不友好的用户体验。</li>
-<li>订单服务监听订单队列（insertOrder），库存服务监听库存队列（insertStorage）再写到数据库中。</li>
-</ol>
-<h4 id="项目总结"><a href="#项目总结" class="headerlink" title="项目总结"></a>项目总结</h4><p>整个项目的核心是订单业务要求实现高并发用户无感知体验，用户下完订单到完成支付所有的数据可能都还在消息队列中还没开始和操作数据库。最难的是库存服务，由于库存是敏感数据， 操作都要非常谨慎。</p>
-<h2 id="技术文章"><a href="#技术文章" class="headerlink" title="技术文章"></a>技术文章</h2><ul>
-<li><a href="https://lixuanyou.github.io/2019/10/30/2019年微服务趋势报告/" target="_blank" rel="noopener">来自DZone的《2019年微服务趋势报告，以了解微服务的未来影响》(翻译文章)</a></li>
-<li><a href="https://lixuanyou.github.io/2019/10/31/语音识别/" target="_blank" rel="noopener">基于卷积神经网络的语音识别</a></li>
-</ul>
-<hr>
-<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p>感谢您花时间阅读我的简历，期待能有机会和您共事。</p>
-
+        
+          <a class="article-more-a" href="/2019/11/07/简历/#more">more >></a>
+        
       
 
       
@@ -746,6 +807,17 @@ System.out.print(20 + (int) (rand.nextDouble() * 10));</code></pre>
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -894,6 +966,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">心情随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">技术文章/redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">技术文章</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
             
             <div class="clearfix"></div>

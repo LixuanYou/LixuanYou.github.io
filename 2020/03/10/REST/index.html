@@ -9,14 +9,14 @@
   <title>REST | 游理轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Request—&amp;gt;DispatcherServlet—&amp;gt;ControllerMapping—&amp;gt;Controller&amp;lt;—&amp;gt;ViewResolver&amp;lt;—&amp;gt;View&amp;lt;—&amp;gt;Cilent REST定义Rest就是将资源的状态以最适合服务端或者客户端的形式从服务器端转移到客户端REST资源通过URL进行识别和定位。REST的动作有CRUD分别为POST、G">
-<meta name="keywords" content="SpringMVC">
+<meta name="keywords" content="SpringMVC,技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="REST">
 <meta property="og:url" content="http://yoursite.com/2020/03/10/REST/index.html">
 <meta property="og:site_name" content="游理轩的博客">
 <meta property="og:description" content="Request—&amp;gt;DispatcherServlet—&amp;gt;ControllerMapping—&amp;gt;Controller&amp;lt;—&amp;gt;ViewResolver&amp;lt;—&amp;gt;View&amp;lt;—&amp;gt;Cilent REST定义Rest就是将资源的状态以最适合服务端或者客户端的形式从服务器端转移到客户端REST资源通过URL进行识别和定位。REST的动作有CRUD分别为POST、G">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-11T02:53:17.690Z">
+<meta property="og:updated_time" content="2020-03-23T11:49:17.602Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="REST">
 <meta name="twitter:description" content="Request—&amp;gt;DispatcherServlet—&amp;gt;ControllerMapping—&amp;gt;Controller&amp;lt;—&amp;gt;ViewResolver&amp;lt;—&amp;gt;View&amp;lt;—&amp;gt;Cilent REST定义Rest就是将资源的状态以最适合服务端或者客户端的形式从服务器端转移到客户端REST资源通过URL进行识别和定位。REST的动作有CRUD分别为POST、G">
@@ -60,7 +60,9 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
+				<li><a href="/tags/技术/">技术文章</a></li>
+	        
+				<li><a href="/tags/随笔/">心情随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -116,6 +118,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -134,7 +138,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/tags/技术/">技术文章</a></li>
+		        
+					<li style="width: 50%"><a href="/tags/随笔/">心情随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -172,7 +178,8 @@
         <p>Request—&gt;DispatcherServlet—&gt;ControllerMapping—&gt;Controller&lt;—&gt;ViewResolver&lt;—&gt;View&lt;—&gt;Cilent</p>
 <h1 id="REST定义"><a href="#REST定义" class="headerlink" title="REST定义"></a>REST定义</h1><p>Rest就是将资源的状态以最适合服务端或者客户端的形式从服务器端转移到客户端<br>REST资源通过URL进行识别和定位。REST的动作有CRUD分别为POST、GET、PUT或PATCH、DELETE</p>
 <p>内容协商（Content negotiation）：选择一个视图，它能够将模型渲染为呈现给客户端的表述形式；<br>消息转换器（Message conversion）：通过一个消息转换器将控制器所返回的对象转换为呈现给客户端的表述形式。</p>
-<h1 id="内容协商"><a href="#内容协商" class="headerlink" title="内容协商"></a>内容协商</h1><h2 id="确定请求的媒体类型"><a href="#确定请求的媒体类型" class="headerlink" title="确定请求的媒体类型"></a>确定请求的媒体类型</h2><p>在控制器的处理方法完成时，通常会返回一个逻辑视图名。DispatcherServlet接下来会将视图的名字传递给一个视图解析器，要求它来帮助确定应该用哪个视图来渲染请求结果。<br>当要将视图名解析为能够产生资源表述的视图时，我们就有另外一个维度需要考虑了。视图不仅要匹配视图名，而且所选择的视图要适合客户端。如果客户端想要JSON，那么渲染HTML的视图就不行了——尽管视图名可能匹配。<br>客户端要什么样的表达方式可以通过内容协商视图解析器ContentNegotiatingViewResolver在Spring3.2之后推荐使用内容协商管理ContentNegotiationManager<br>使用内容协商管理ContentNegotiationManager方式有两种<br>        1.在XML中配置bean，ContentNegotiationManagerFactoryBean。例如，我们可能希望在XML中配置ContentNegotiationManager使用“application/json”作为默认的内容类型<br>        2.Java配置：继承WebMvcConfigurerAdapter并重载configureContentNegotiation()方法<br>ContentNegotiatingViewResolver的优劣<br>优势：它在Spring MVC之上构建了REST资源表述层，控制器代码无需修改<br>劣势：它只能决定资源该如何渲染到客户端，并没有涉及到客户端要发送什么样的表述给控制器使用</p>
+<h1 id="内容协商"><a href="#内容协商" class="headerlink" title="内容协商"></a>内容协商</h1><h2 id="确定请求的媒体类型"><a href="#确定请求的媒体类型" class="headerlink" title="确定请求的媒体类型"></a>确定请求的媒体类型</h2><a id="more"></a>
+<p>在控制器的处理方法完成时，通常会返回一个逻辑视图名。DispatcherServlet接下来会将视图的名字传递给一个视图解析器，要求它来帮助确定应该用哪个视图来渲染请求结果。<br>当要将视图名解析为能够产生资源表述的视图时，我们就有另外一个维度需要考虑了。视图不仅要匹配视图名，而且所选择的视图要适合客户端。如果客户端想要JSON，那么渲染HTML的视图就不行了——尽管视图名可能匹配。<br>客户端要什么样的表达方式可以通过内容协商视图解析器ContentNegotiatingViewResolver在Spring3.2之后推荐使用内容协商管理ContentNegotiationManager<br>使用内容协商管理ContentNegotiationManager方式有两种<br>        1.在XML中配置bean，ContentNegotiationManagerFactoryBean。例如，我们可能希望在XML中配置ContentNegotiationManager使用“application/json”作为默认的内容类型<br>        2.Java配置：继承WebMvcConfigurerAdapter并重载configureContentNegotiation()方法<br>ContentNegotiatingViewResolver的优劣<br>优势：它在Spring MVC之上构建了REST资源表述层，控制器代码无需修改<br>劣势：它只能决定资源该如何渲染到客户端，并没有涉及到客户端要发送什么样的表述给控制器使用</p>
 <h1 id="消息转换器"><a href="#消息转换器" class="headerlink" title="消息转换器"></a>消息转换器</h1><p>DispatcherServlet不再需要那么麻烦地将模型数据传送到视图中。实际上，这里根本就没有模型，也没有视图，只有Controller产生的数据，以及消息转换器（message converter）转换数据之后所产生的资源表述。</p>
 <p>@ResponseBody注解会告知Spring，我们要将返回的对象作为资源发送给客户端，并将其转换为客户端可接受的表述形式。更具体地讲，DispatcherServlet将会考虑到请求中Accept头部信息，并查找能够为客户端提供所需表述形式的消息转换器。<br>     @RequestMapping(method=RequestMethod.GET, produces=”application/json”)<br>  public <code>@ResponseBody</code> List<spittle> spittles(@RequestParam(value=”max”, defaultValue=MAX_LONG_AS_STRING) long max,@RequestParam(value=”count”, defaultValue=”20”) int count) {<br>    return spittleRepository.findSpittles(max, count);<br>  }</spittle></p>
 <p>当处理请求时，@ResponseBody和@RequestBody是启用消息转换的一种简洁和强大方式。但是，如果你所编写的控制器有多个方法，并且每个方法都需要信息转换功能的话，那么这些注解就会带来一定程度的重复性。Spring 4.0引入了@RestController注解，能够在这个方面给我们提供帮助。如果在控制器类上使用@RestController来代替@Controller的话，Spring将会为该控制器的所有处理方法应用消息转换功能。我们不必为每个方法都添加@ResponseBody了。</p>
@@ -215,6 +222,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		
 		</ul>
@@ -294,8 +305,8 @@
     </a>
   
   
-    <a href="/2020/03/08/日志与异常统一管理/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">日志与异常统一管理</div>
+    <a href="/2020/03/06/doGetBean()方法分析/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">doGetBean()方法分析</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -438,6 +449,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">心情随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">技术文章/redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">技术文章</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
             
             <div class="clearfix"></div>

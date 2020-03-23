@@ -9,7 +9,7 @@
   <title>SpringBean生命周期与循环依赖 | 游理轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Spring Bean 的生命周期（实例化-初始化-使用-销毁）在《Spring源码深度分析》一书中实例化Bean的流程在org.springframework.beans.factory.support.AbstractBeanFactory#getBean方法他其实是空壳方法真正干活的是org.springframework.beans.factory.support.AbstractBean">
-<meta name="keywords" content="spring源码">
+<meta name="keywords" content="spring源码,技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBean生命周期与循环依赖">
 <meta property="og:url" content="http://yoursite.com/2020/03/12/SpringBean生命周期与循环依赖/index.html">
@@ -17,7 +17,7 @@
 <meta property="og:description" content="Spring Bean 的生命周期（实例化-初始化-使用-销毁）在《Spring源码深度分析》一书中实例化Bean的流程在org.springframework.beans.factory.support.AbstractBeanFactory#getBean方法他其实是空壳方法真正干活的是org.springframework.beans.factory.support.AbstractBean">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2020/03/12/SpringBean生命周期与循环依赖/SpringBean%E6%B5%81%E7%A8%8B.png">
-<meta property="og:updated_time" content="2020-03-12T08:16:35.752Z">
+<meta property="og:updated_time" content="2020-03-23T11:48:41.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBean生命周期与循环依赖">
 <meta name="twitter:description" content="Spring Bean 的生命周期（实例化-初始化-使用-销毁）在《Spring源码深度分析》一书中实例化Bean的流程在org.springframework.beans.factory.support.AbstractBeanFactory#getBean方法他其实是空壳方法真正干活的是org.springframework.beans.factory.support.AbstractBean">
@@ -62,7 +62,9 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
+				<li><a href="/tags/技术/">技术文章</a></li>
+	        
+				<li><a href="/tags/随笔/">心情随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -118,6 +120,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -136,7 +140,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/tags/技术/">技术文章</a></li>
+		        
+					<li style="width: 50%"><a href="/tags/随笔/">心情随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -180,9 +186,9 @@
 <li>6合并父类Bean定义检查Bean定义是否是抽象的</li>
 <li>7做dependsOn的依赖检查获取依赖的bean对象</li>
 <li>8针对不同的scope调用createbean()创建bean。调用getSingleton()方法再用beforeSigletonCreation标识当前Bean正在被创建</li>
-<li>9类型转换。</li>
+<li>9类型转换。<a id="more"></a>
+第八步中针对不同Scope的bean调用 createBean()创建Bean的流程最为重要,</li>
 </ul>
-<p>第八步中针对不同Scope的bean调用 createBean()创建Bean的流程最为重要,</p>
 <p>createBean方法分为四步：</p>
 <ul>
 <li>（1）根据设置的class属性或者根据className来解析Class。</li>
@@ -304,6 +310,10 @@ earlySingletonObjects：提前曝光的单例bean，就是已经本身还未进�
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		
 		</ul>
@@ -527,6 +537,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">心情随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">技术文章/redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">技术文章</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
             
             <div class="clearfix"></div>

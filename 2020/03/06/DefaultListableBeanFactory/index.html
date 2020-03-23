@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>DefaultListableBeanFactory继承结构 | 游理轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="DefaultListableBeanFactory：主要对bean注册后的处理这个类被XMLBeanFactory继承，大学第一次接触Spring的Demo用的 继承类AbstractAutowireCapableBeanFactory：还实现AutowireCapableBeanFactory接口、bean初始化的九次后处理器在这个类中继承类AbstractBeanFactory：还实现Con">
-<meta name="keywords" content="spring源码">
+  <meta name="description" content="DefaultListableBeanFactory：主要对bean注册后的处理这个类被XMLBeanFactory继承，大学第一次接触Spring的Demo用的">
+<meta name="keywords" content="spring源码,技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DefaultListableBeanFactory继承结构">
 <meta property="og:url" content="http://yoursite.com/2020/03/06/DefaultListableBeanFactory/index.html">
 <meta property="og:site_name" content="游理轩的博客">
-<meta property="og:description" content="DefaultListableBeanFactory：主要对bean注册后的处理这个类被XMLBeanFactory继承，大学第一次接触Spring的Demo用的 继承类AbstractAutowireCapableBeanFactory：还实现AutowireCapableBeanFactory接口、bean初始化的九次后处理器在这个类中继承类AbstractBeanFactory：还实现Con">
+<meta property="og:description" content="DefaultListableBeanFactory：主要对bean注册后的处理这个类被XMLBeanFactory继承，大学第一次接触Spring的Demo用的">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-12T07:45:23.057Z">
+<meta property="og:updated_time" content="2020-03-23T11:52:34.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DefaultListableBeanFactory继承结构">
-<meta name="twitter:description" content="DefaultListableBeanFactory：主要对bean注册后的处理这个类被XMLBeanFactory继承，大学第一次接触Spring的Demo用的 继承类AbstractAutowireCapableBeanFactory：还实现AutowireCapableBeanFactory接口、bean初始化的九次后处理器在这个类中继承类AbstractBeanFactory：还实现Con">
+<meta name="twitter:description" content="DefaultListableBeanFactory：主要对bean注册后的处理这个类被XMLBeanFactory继承，大学第一次接触Spring的Demo用的">
   
     <link rel="alternative" href="/atom.xml" title="游理轩的博客" type="application/atom+xml">
   
@@ -60,7 +60,9 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
+				<li><a href="/tags/技术/">技术文章</a></li>
+	        
+				<li><a href="/tags/随笔/">心情随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -116,6 +118,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -134,7 +138,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/tags/技术/">技术文章</a></li>
+		        
+					<li style="width: 50%"><a href="/tags/随笔/">心情随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -170,6 +176,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="DefaultListableBeanFactory：主要对bean注册后的处理"><a href="#DefaultListableBeanFactory：主要对bean注册后的处理" class="headerlink" title="DefaultListableBeanFactory：主要对bean注册后的处理"></a>DefaultListableBeanFactory：主要对bean注册后的处理</h2><p>这个类被XMLBeanFactory继承，大学第一次接触Spring的Demo用的</p>
+<a id="more"></a>
 <h3 id="继承类AbstractAutowireCapableBeanFactory：还实现AutowireCapableBeanFactory接口、bean初始化的九次后处理器在这个类中"><a href="#继承类AbstractAutowireCapableBeanFactory：还实现AutowireCapableBeanFactory接口、bean初始化的九次后处理器在这个类中" class="headerlink" title="继承类AbstractAutowireCapableBeanFactory：还实现AutowireCapableBeanFactory接口、bean初始化的九次后处理器在这个类中"></a>继承类AbstractAutowireCapableBeanFactory：还实现AutowireCapableBeanFactory接口、bean初始化的九次后处理器在这个类中</h3><pre><code>继承类AbstractBeanFactory：还实现ConfigurableBeanFactory接口
     继承类FactoryBeanRegistrySupport:对特殊的FactoryBean提供方法支持
         继承类DefaultSingletonBeanRegistry:单例Bean注册和获取
@@ -215,6 +222,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		
 		</ul>
@@ -438,6 +449,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">心情随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">技术文章/redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">技术文章</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
             
             <div class="clearfix"></div>

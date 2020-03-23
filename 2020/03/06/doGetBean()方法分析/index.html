@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>doGetBean()方法分析 | 游理轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在AbstractBeanFactory中的doGetBean()方法分析    protected &amp;lt;T&amp;gt; T doGetBean(final String name, @Nullable final Class&amp;lt;T&amp;gt; requiredType,         @Nullable final Object[] args, boolean typeCheckOnly) t">
-<meta name="keywords" content="spring源码">
+  <meta name="description" content="在AbstractBeanFactory中的doGetBean()方法分析">
+<meta name="keywords" content="spring源码,技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="doGetBean()方法分析">
 <meta property="og:url" content="http://yoursite.com/2020/03/06/doGetBean()方法分析/index.html">
 <meta property="og:site_name" content="游理轩的博客">
-<meta property="og:description" content="在AbstractBeanFactory中的doGetBean()方法分析    protected &amp;lt;T&amp;gt; T doGetBean(final String name, @Nullable final Class&amp;lt;T&amp;gt; requiredType,         @Nullable final Object[] args, boolean typeCheckOnly) t">
+<meta property="og:description" content="在AbstractBeanFactory中的doGetBean()方法分析">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-11T03:09:48.102Z">
+<meta property="og:updated_time" content="2020-03-23T11:52:12.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="doGetBean()方法分析">
-<meta name="twitter:description" content="在AbstractBeanFactory中的doGetBean()方法分析    protected &amp;lt;T&amp;gt; T doGetBean(final String name, @Nullable final Class&amp;lt;T&amp;gt; requiredType,         @Nullable final Object[] args, boolean typeCheckOnly) t">
+<meta name="twitter:description" content="在AbstractBeanFactory中的doGetBean()方法分析">
   
     <link rel="alternative" href="/atom.xml" title="游理轩的博客" type="application/atom+xml">
   
@@ -60,7 +60,9 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
+				<li><a href="/tags/技术/">技术文章</a></li>
+	        
+				<li><a href="/tags/随笔/">心情随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -116,6 +118,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -134,7 +138,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/tags/技术/">技术文章</a></li>
+		        
+					<li style="width: 50%"><a href="/tags/随笔/">心情随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -169,7 +175,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="在AbstractBeanFactory中的doGetBean-方法分析"><a href="#在AbstractBeanFactory中的doGetBean-方法分析" class="headerlink" title="在AbstractBeanFactory中的doGetBean()方法分析"></a>在AbstractBeanFactory中的doGetBean()方法分析</h1><pre><code>    protected &lt;T&gt; T doGetBean(final String name, @Nullable final Class&lt;T&gt; requiredType,
+        <h1 id="在AbstractBeanFactory中的doGetBean-方法分析"><a href="#在AbstractBeanFactory中的doGetBean-方法分析" class="headerlink" title="在AbstractBeanFactory中的doGetBean()方法分析"></a>在AbstractBeanFactory中的doGetBean()方法分析</h1><a id="more"></a>
+<pre><code>    protected &lt;T&gt; T doGetBean(final String name, @Nullable final Class&lt;T&gt; requiredType,
         @Nullable final Object[] args, boolean typeCheckOnly) throws BeansException {
     //FactoryBean获取自身实例时要加一个&amp;符号，这行代码是去除&amp;符号
     final String beanName = transformedBeanName(name);
@@ -388,6 +395,10 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
         		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
       		
 		</ul>
 	</div>
@@ -456,11 +467,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/08/日志与异常统一管理/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/03/10/REST/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          日志与异常统一管理
+          REST
         
       </div>
     </a>
@@ -610,6 +621,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">心情随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">技术文章/redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">技术文章</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
             
             <div class="clearfix"></div>

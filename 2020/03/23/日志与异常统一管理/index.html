@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Spring容器的功能扩展 | 游理轩的博客</title>
+  <title>全局异常统一处理方案 | 游理轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文是《Spring源码深度解析》的阅读笔记ApplicationContext包含BeanFactory的所有功能。通常建议比 BeanFactory 优先，除非在一些限制的场合，比如字节长度对内存有很大的影响时（Applet）。refresh 函数中包含了几乎 ApplicationContext 中提供的全部功能，这12步是refresh函数的实现步骤：">
-<meta name="keywords" content="spring源码,技术">
+  <meta name="description" content="全局异常处理在spring 3.2中，新增了@ControllerAdvice 注解，可以用于定义@ExceptionHandler、@InitBinder、@ModelAttribute，并应用到所有@RequestMapping中基于@ControllerAdvice注解的全局异常统一处理只能针对于Controller层的异常，意思是只能捕获到Controller层的异常，在service层或">
+<meta name="keywords" content="springboot,技术">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring容器的功能扩展">
-<meta property="og:url" content="http://yoursite.com/2020/03/13/Spring容器的功能扩展/index.html">
+<meta property="og:title" content="全局异常统一处理方案">
+<meta property="og:url" content="http://yoursite.com/2020/03/23/日志与异常统一管理/index.html">
 <meta property="og:site_name" content="游理轩的博客">
-<meta property="og:description" content="本文是《Spring源码深度解析》的阅读笔记ApplicationContext包含BeanFactory的所有功能。通常建议比 BeanFactory 优先，除非在一些限制的场合，比如字节长度对内存有很大的影响时（Applet）。refresh 函数中包含了几乎 ApplicationContext 中提供的全部功能，这12步是refresh函数的实现步骤：">
+<meta property="og:description" content="全局异常处理在spring 3.2中，新增了@ControllerAdvice 注解，可以用于定义@ExceptionHandler、@InitBinder、@ModelAttribute，并应用到所有@RequestMapping中基于@ControllerAdvice注解的全局异常统一处理只能针对于Controller层的异常，意思是只能捕获到Controller层的异常，在service层或">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-23T11:53:15.575Z">
+<meta property="og:updated_time" content="2020-03-23T11:58:25.283Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring容器的功能扩展">
-<meta name="twitter:description" content="本文是《Spring源码深度解析》的阅读笔记ApplicationContext包含BeanFactory的所有功能。通常建议比 BeanFactory 优先，除非在一些限制的场合，比如字节长度对内存有很大的影响时（Applet）。refresh 函数中包含了几乎 ApplicationContext 中提供的全部功能，这12步是refresh函数的实现步骤：">
+<meta name="twitter:title" content="全局异常统一处理方案">
+<meta name="twitter:description" content="全局异常处理在spring 3.2中，新增了@ControllerAdvice 注解，可以用于定义@ExceptionHandler、@InitBinder、@ModelAttribute，并应用到所有@RequestMapping中基于@ControllerAdvice注解的全局异常统一处理只能针对于Controller层的异常，意思是只能捕获到Controller层的异常，在service层或">
   
     <link rel="alternative" href="/atom.xml" title="游理轩的博客" type="application/atom+xml">
   
@@ -155,93 +155,38 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Spring容器的功能扩展" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-日志与异常统一管理" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Spring容器的功能扩展
+      全局异常统一处理方案
     </h1>
   
 
         
-        <a href="/2020/03/13/Spring容器的功能扩展/" class="archive-article-date">
-  	<time datetime="2020-03-13T00:12:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
+        <a href="/2020/03/23/日志与异常统一管理/" class="archive-article-date">
+  	<time datetime="2020-03-23T02:04:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="本文是《Spring源码深度解析》的阅读笔记"><a href="#本文是《Spring源码深度解析》的阅读笔记" class="headerlink" title="本文是《Spring源码深度解析》的阅读笔记"></a>本文是《Spring源码深度解析》的阅读笔记</h1><p>ApplicationContext包含BeanFactory的所有功能。通常建议比 BeanFactory 优先，除非在一些限制的场合，比如字节长度对内存有很大的影响时（Applet）。refresh 函数中包含了几乎 ApplicationContext 中提供的全部功能，这12步是refresh函数的实现步骤：</p>
+        <h2 id="全局异常处理"><a href="#全局异常处理" class="headerlink" title="全局异常处理"></a>全局异常处理</h2><p>在spring 3.2中，新增了@ControllerAdvice 注解，可以用于定义@ExceptionHandler、@InitBinder、@ModelAttribute，并应用到所有@RequestMapping中基于@ControllerAdvice注解的全局异常统一处理只能针对于Controller层的异常，意思是只能捕获到Controller层的异常，在service层或者其他层面的异常都不能捕获。</p>
+<p>全局异常统一处理方案</p>
 <a id="more"></a>
-<ul>
-<li><p>（1）初始化前的准备工作，例如对系统属性或者环境变量进行准备及验证。在某种情况下项目的使用需要读取某些系统变量，而这个变量的设置很可能会影响着系统的正确性，那么ClassPathXmlApplicationContext为我们提供的这个准备函数就显得非常必要，它可以在Spring启动的时候提前对必须的变量进行存在性验证。</p>
-</li>
-<li><p>（2）初始化BeanFactory，obtainFreshBeanFactory 方法从字面理解是获取 BeanFactory。ApplicationContext是对BeanFactory的功能上的扩展，不但包含了BeanFactory的全部功能更在其基础上添加了大量的扩展应用，那么obtainFreshBeanFactory正是实现BeanFactory的地方，也就是经过了这个函数后ApplicationContext就已经拥有了BeanFactory的全部功能。ClassPathXmlApplicationContext包含着BeanFactory所提供的一切特征，那么在这一步骤中将会复用 BeanFactory 中的配置文件读取解析及其他功能，这一步之后， ClassPathXmlApplicationContext 实际上就已经包含了 BeanFactory 所提供的功能，也就是可以进行Bean的提取等基础操作了。</p>
-</li>
-<li><p>（3）对BeanFactory进行各种功能填充。@Qualifier与@Autowired应该是大家非常熟悉的注解，那么这两个注解正是在这一步骤中增加的支持。</p>
-</li>
-<li><p>（4）子类覆盖方法做额外的处理。Spring之所以强大，为世人所推崇，除了它功能上为大家提供了便例外，还有一方面是它的完美架构，开放式的架构让使用它的程序员很容易根据业务需要扩展已经存在的功能。这种开放式的设计在 Spring 中随处可见，例如在本例中就提供了一个空的函数实现 postProcess BeanFactory来方便程序员在业务上做进一步扩展。</p>
-</li>
-<li><p>（5）激活各种BeanFactory处理器。</p>
-</li>
-<li><p>（6）注册拦截bean创建的bean处理器，这里只是注册，真正的调用是在getBean时候。</p>
-</li>
-<li><p>（7）为上下文初始化Message源，即对不同语言的消息体进行国际化处理。</p>
-</li>
-<li><p>（8）初始化应用消息广播器，并放入“applicationEventMulticaster”bean中。</p>
-</li>
-<li><p>（9）留给子类来初始化其他的bean。</p>
-</li>
-<li><p>（10）在所有注册的bean中查找 listener bean，注册到消息广播器中。</p>
-</li>
-<li><p>（11）初始化剩下的非延迟加载单例单实例（非惰性的）。在finishBeanFactoryInitialization 中完成</p>
-</li>
-<li><p>（12）完成刷新过程，通知生命周期处理器lifecycleProcessor刷新过程，同时发出Context RefreshEvent通知别人。</p>
-<h2 id="BeanFactory容器的扩展"><a href="#BeanFactory容器的扩展" class="headerlink" title="BeanFactory容器的扩展"></a>BeanFactory容器的扩展</h2><p>可以在基本容器的基础上，增加了是否允许Override同名称的不同定义的对象、是否允许bean之间存在循环依赖并提供了注解@Qualifier和@Autowired的支持。</p>
-<h2 id="ApplicationContext容器在功能上的扩展"><a href="#ApplicationContext容器在功能上的扩展" class="headerlink" title="ApplicationContext容器在功能上的扩展"></a>ApplicationContext容器在功能上的扩展</h2></li>
-<li><p>增加对SPEL语言的支持。</p>
-</li>
-<li><p>增加对属性编辑器的支持。</p>
-</li>
-<li><p>增加对一些内置类，比如EnvironmentAware、MessageSourceAware的信息注入。</p>
-</li>
-<li><p>设置了依赖功能可忽略的接口。</p>
-</li>
-<li><p>注册一些固定依赖的属性。</p>
-</li>
-<li><p>增加AspectJ的支持</p>
-</li>
-<li><p>将相关环境变量及属性注册以单例模式注册</p>
-</li>
-</ul>
-<ul>
-<li><p>在refresh的prepareRefresh函数有initPropertySources()，用户可以根据自身的需要重写 initPropertySources 方法，并在方法中进行个性化的属性处理及设置。</p>
-</li>
-<li><p>BeanFactoryPostProcessor接口跟BeanPostProcessor类似，可以对bean的定义（配置元数据）进行处理。也就是说，Spring IoC容器允许BeanFactoryPostProcessor在容器实际实例化任何其他的 bean 之前读取配置元数据，并有可能修改它。如果你愿意，你可以配置多个BeanFactoryPostProcessor。你还能通过设置“order”属性来控制BeanFactoryPostProcessor的执行次序（仅当BeanFactoryPostProcessor 实现了Ordered 接口时你才可以设置此属性，因此在实现BeanFactoryPostProcessor 时，就应当考虑实现 Ordered 接口）。</p>
-</li>
-<li><p>如果你想改变实际的 bean 实例（例如从配置元数据创建的对象），那么你最好使用BeanPostProcessor。同样地，BeanFactoryPostProcessor 的作用域范围是容器级的。它只和你所使用的容器有关。如果你在容器中定义一个 BeanFactoryPostProcessor，它仅仅对此容器中的bean进行后置处理。BeanFactoryPostProcessor不会对定义在另一个容器中的bean进行后置处理，即使这两个容器都是在同一层次上。在 Spring 中存在对于 BeanFactoryPostProcessor 的典型应用，比如PropertyPlaceholderConfigurer。BeanFactory中其实并没有实现BeanPostProcessor自动注册，通过手动注册并且还要还要实现对后处理器的激活操作才可以在bean的实例化阶段进行调用后处理器</p>
-<ul>
-<li>BeanPostProcessor 的处理与 BeanFactoryPostProcessor 的处理极为相似，区别在于，对于 BeanFactoryPostProcessor的处理要区分两种情况，一种方式是通过硬编码方式的处理，另一种是通过配置文件方式的处理。原因是。对于 BeanFactoryPostProcessor的处理，不但要实现注册功能，而且还要实现对后处理器的激活操作，所以需要载入配置中的定义，并进行激活；而对于BeanPostProcessor并不需要马上调用，再说，硬编码的方式实现的功能是将后处理器提取并调用，这里并不需要调用，当然不需要考虑硬编码的方式了，这里的功能只需要将配置文件的BeanPostProcessor提取出来并注册进入beanFactory就可以了。</li>
-</ul>
-</li>
-</ul>
-<h2 id="函数执行顺序"><a href="#函数执行顺序" class="headerlink" title="函数执行顺序"></a>函数执行顺序</h2><ul>
-<li>1、init-method方法，初始化bean的时候执行，可以针对某个具体的bean进行配置。init-method需要在applicationContext.xml配置文档中bean的定义里头写明。例如：这样，当TestBean在初始化的时候会执行TestBean中定义的init方法。</li>
-</ul>
-<ul>
-<li>2、afterPropertiesSet方法，初始化bean的时候执行，可以针对某个具体的bean进行配置。afterPropertiesSet 必须实现 InitializingBean接口。实现 InitializingBean接口必须实现afterPropertiesSet方法。</li>
-</ul>
-<ul>
-<li>3、BeanPostProcessor，针对所有Spring上下文中所有的bean，可以在配置文档applicationContext.xml中配置一个BeanPostProcessor，然后对所有的bean进行一个初始化之前和之后的代理。BeanPostProcessor接口中有两个方法： postProcessBeforeInitialization和postProcessAfterInitialization。 postProcessBeforeInitialization方法在bean初始化之前执行， postProcessAfterInitialization方法在bean初始化之后执行。</li>
-</ul>
-<ul>
-<li>实例化                    -&gt;                                                初始化</li>
-<li>postProcessBeanFactory-&gt;postProcessBeforeInitialization -&gt;afterPropertiesSet -&gt; init-method -&gt; postProcessAfterInitialization</li>
-</ul>
+<p>1、基于@ControllerAdvice注解的Controller层的全局异常统一处理<br>经过测试发现可以捕获到Controller层的异常，当前前提是Controller层没有对异常进行catch处理，如果Controller层对异常进行了catch处理，那么在这里就不会捕获到Controller层的异常了，所以这一点要特别注意。在实际测试中还发现，如果在Controller中不做异常catch处理，在service中抛出异常（service中也不做异常的catch处理），那么也是可以在这里捕获到异常的。</p>
+<p>2、基于Springboot自身的全局异常统一处理，主要是实现ErrorController接口或者继承AbstractErrorController抽象类或者继承BasicErrorController类<br>可以捕获到所有层面上的异常，当前前提仍然是没有对异常进行catch处理，否则这里也是捕获不到<br>以上为网络上常用的两种全局异常统一处理方案，经过实际测试发现都可以实现满足要求。</p>
+<p>3、选用AOP的方式主要是因为AOP不只可以做全局异常统一处理还可以统一打印接口请求入参和返回结果日志，打印接口访问性能日志，处理sql注入攻击以及处理入参特殊字符等问题</p>
+<h2 id="日志打印"><a href="#日志打印" class="headerlink" title="日志打印"></a>日志打印</h2><p>生成日志并且分析日志统计数据可以避免操作数据库敏感数据，减少与数据库的交互<br>logback是SpringBoot的默认日志系统，在SpringBoot项目中加入依赖lombok</p>
+<h2 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h2><p>如果说通知定义了切面的“什么”和“何时”的话，那么切点就定义了“何处”。切点的定义会匹配通知所要织入的一个或多个连接点。我们通常使用明确的类和方法名称，或是利用正则表达式定义所匹配的类和方法名称来指定这些切点。有些AOP框架允许我们创建动态的切点，可以根据运行时的决策（比如方法的参数值）来决定是否应用通知。</p>
+<p>切面：切面提供了取代继承和委托的另一种可选方案，而且在很多场景下更清晰简洁。在使用面向切面编程时，我们仍然在一个地方定义通用功能，但是可以通过声明的方式定义这个功能要以何种方式在何处应用，而无需修改受影响的类。横切关注点可以被模块化为特殊的类，这些类被称为切面（aspect）。这样做有两个好处：首先，现在每个关注点都集中于一个地方，而不是分散到多处代码中；其次，服务模块更简洁，因为它们只包含主要关注点（或核心功能）的代码，而次要关注点的代码被转移到切面中了<br>切面是通知和切点的结合。通知和切点共同定义了切面的全部内容——它是什么，在何时和何处完成其功能<br>切面由通知和切点组成，通知定义了切面是什么样的以及何时使用切面，切点定义了何处使用切面<br>通知（advice）：通知定义了切面是什么样的以及何时使用切面<br>advisor：可以将advice包装为切面的装配器<br>织入：是把切面应用到目标对象<strong>并创建新的代理对象</strong>的过程<br>连接点：是在应用执行过程中能够插入切面的一个点。这个点可以是调用方法时、抛出异常时、甚至修改一个字段时<br>创建切点来确定切面所织入的连接点是AOP框架的基本功能。</p>
+<p>因为Spring基于动态代理，所以Spring只支持方法连接点。这与一些其他的AOP框架是不同的，例如AspectJ和JBoss，除了方法切点，它们还提供了字段和构造器接入点。Spring缺少对字段连接点的支持，无法让我们创建细粒度的通知，例如拦截对某对象字段的修改。而且它不支持构造器连接点，我们就无法在bean创建时应用通知。</p>
+<p>@Pointcut注解声明频繁使用的切点表达式</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>即便使用了AspectJ注解，但它并不会被视为切面，这些注解不会解析，也不会创建将其转换为切面的代理。<br>如果你使用JavaConfig的话，可以在配置类的类级别上通过使用EnableAspectJ-AutoProxy注解启用自动代理功能<br>不管你是使用JavaConfig还是XML，AspectJ自动代理都会为使用@Aspect注解的bean创建一个代理，这个代理会围绕着所有该切面的切点所匹配的bean。</p>
 
       
 
@@ -276,7 +221,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -336,7 +281,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/13/Spring容器的功能扩展/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/23/日志与异常统一管理/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -350,18 +295,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/21/3月21心情日记/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          3月21心情日记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/03/12/SpringBean生命周期与循环依赖/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SpringBean生命周期与循环依赖</div>
+    <a href="/2020/03/21/3月21心情日记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">3月21心情日记</div>
       <i class="icon-circle-right"></i>
     </a>
   
