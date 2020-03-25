@@ -172,12 +172,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="MySQL数据库存储引擎"><a href="#MySQL数据库存储引擎" class="headerlink" title="MySQL数据库存储引擎"></a>MySQL数据库存储引擎</h1><ul>
+        <h3 id="MySQL数据库存储引擎"><a href="#MySQL数据库存储引擎" class="headerlink" title="MySQL数据库存储引擎"></a>MySQL数据库存储引擎</h3><ul>
 <li>InnoDB（订单表 ）:支持事务、行锁（如果有人在使用某一条数据，其他人要用就必须等待）和外键约束，查询的性能比Myisam低。原数据格式存储，根据主键引用索引</li>
-<li>Myisam（商品表）:不支持事务，如果表的“读”操作比“写”操作多时，使用前缀压缩技术存储索引，使索引更小,通过物理位置引用索引<h1 id="索引（树的高度决定了与磁盘交互的频率）"><a href="#索引（树的高度决定了与磁盘交互的频率）" class="headerlink" title="索引（树的高度决定了与磁盘交互的频率）"></a>索引（树的高度决定了与磁盘交互的频率）</h1>MySQL先在索引上按值查找然后返回所有包含该值的数据行，索引包含一个或者多个列的值，多个值的时候顺序很重要，因为MySQL只能用索引的“最左前缀列”<br>创建</li>
+<li>Myisam（商品表）:不支持事务，如果表的“读”操作比“写”操作多时，使用前缀压缩技术存储索引，使索引更小,通过物理位置引用索引</li>
+</ul>
+<h3 id="索引（树的高度决定了与磁盘交互的频率）"><a href="#索引（树的高度决定了与磁盘交互的频率）" class="headerlink" title="索引（树的高度决定了与磁盘交互的频率）"></a>索引（树的高度决定了与磁盘交互的频率）</h3><p>MySQL先在索引上按值查找然后返回所有包含该值的数据行，索引包含一个或者多个列的值，多个值的时候顺序很重要，因为MySQL只能用索引的“最左前缀列”<br>  创建</p>
+<ul>
 <li>Btree：Balance Tree类似二叉树 存储的是（索引列值，指向子节点数据行的指针）<br>全键值键值范围或者键前缀查找（最左前缀查找）B+tree在叶子节点存储所有索引和数据，非叶子节点不存储数据，做叶子节点的索引的冗余。叶子节点之间还有指针连接提高区间访问的性能</li>
 </ul>
-<h1 id="Btree与B-Tree区别"><a href="#Btree与B-Tree区别" class="headerlink" title="Btree与B+Tree区别"></a>Btree与B+Tree区别</h1><p>B+ 树的特点:</p>
+<h3 id="Btree与B-Tree区别"><a href="#Btree与B-Tree区别" class="headerlink" title="Btree与B+Tree区别"></a>Btree与B+Tree区别</h3><p>B+ 树的特点:</p>
 <p>（1）所有关键字都出现在叶子结点的链表中(稠密索引)，且链表中的关键字恰好是有序的;</p>
 <p>（2）不可能在非叶子结点命中;</p>
 <p>（3）非叶子结点相当于是叶子结点的索引(稀疏索引)，叶子结点相当于是存储(关键字)数据的数据层;</p>
@@ -1078,11 +1081,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">技术，数据库</a>
+                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1090,7 +1089,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
+                <a href="javascript:void(0)" class="js-tag color2">java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">技术，数据库</a>
               </li>
              
               <li class="article-tag-list-item">
