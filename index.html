@@ -152,6 +152,264 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-MySQL索引" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/25/MySQL索引/">MySQL索引</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/25/MySQL索引/" class="archive-article-date">
+  	<time datetime="2020-03-25T11:45:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MySQL数据库存储引擎"><a href="#MySQL数据库存储引擎" class="headerlink" title="MySQL数据库存储引擎"></a>MySQL数据库存储引擎</h1><ul>
+<li>InnoDB（订单表 ）:支持事务、行锁（如果有人在使用某一条数据，其他人要用就必须等待）和外键约束，查询的性能比Myisam低。原数据格式存储，根据主键引用索引</li>
+<li>Myisam（商品表）:不支持事务，如果表的“读”操作比“写”操作多时，使用前缀压缩技术存储索引，使索引更小,通过物理位置引用索引<h1 id="索引（树的高度决定了与磁盘交互的频率）"><a href="#索引（树的高度决定了与磁盘交互的频率）" class="headerlink" title="索引（树的高度决定了与磁盘交互的频率）"></a>索引（树的高度决定了与磁盘交互的频率）</h1>MySQL先在索引上按值查找然后返回所有包含该值的数据行，索引包含一个或者多个列的值，多个值的时候顺序很重要，因为MySQL只能用索引的“最左前缀列”<br>创建</li>
+<li>Btree：Balance Tree类似二叉树 存储的是（索引列值，指向子节点数据行的指针）<br>全键值键值范围或者键前缀查找（最左前缀查找）B+tree在叶子节点存储所有索引和数据，非叶子节点不存储数据，做叶子节点的索引的冗余。叶子节点之间还有指针连接提高区间访问的性能</li>
+</ul>
+<h1 id="Btree与B-Tree区别"><a href="#Btree与B-Tree区别" class="headerlink" title="Btree与B+Tree区别"></a>Btree与B+Tree区别</h1><p>B+ 树的特点:</p>
+<p>（1）所有关键字都出现在叶子结点的链表中(稠密索引)，且链表中的关键字恰好是有序的;</p>
+<p>（2）不可能在非叶子结点命中;</p>
+<p>（3）非叶子结点相当于是叶子结点的索引(稀疏索引)，叶子结点相当于是存储(关键字)数据的数据层;</p>
+        
+          <a class="article-more-a" href="/2020/03/25/MySQL索引/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">技术，数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/25/MySQL索引/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java练习题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/24/Java练习题/">Java练习题</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/24/Java练习题/" class="archive-article-date">
+  	<time datetime="2020-03-24T08:29:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><ul>
+<li>Java中的几种基本类型，各占多少字节？</li>
+</ul>
+<p>byte:1字节 默认0 -128–127<br>short：2字节 默认0 取值-32758–32767<br>int：4字节 默认0 取值-2147483648-2147483647<br>long：8字节 默认0<br><em>char：2字节</em><br>float：4字节<br>double：8字节<br>boolean： 4字节</p>
+<ul>
+<li>抽象类和接口的区别？</li>
+</ul>
+<p>抽象类只能被继承一次，但是可以实现多个接口<br>接口和抽象类必须实现其中的所有方法。抽象类中可以有非抽象的方法。<br>接口中的常量必须用 public static final修饰，并且需要给出初始值。所以实现类不能重新定义，也不能改变其值。<br>接口中的方法只能用public abstract修饰<br><img src="/2020/03/24/Java练习题/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB.PNG" alt="抽象类和接口的区别"></p>
+        
+          <a class="article-more-a" href="/2020/03/24/Java练习题/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">练习题</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/24/Java练习题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-redisSDS字符串" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/24/redisSDS字符串/">redisSDS字符串</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/24/redisSDS字符串/" class="archive-article-date">
+  	<time datetime="2020-03-24T01:54:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SDS与C字符串的区别"><a href="#SDS与C字符串的区别" class="headerlink" title="SDS与C字符串的区别"></a>SDS与C字符串的区别</h2><ul>
+<li><p>SDS的属性</p>
+<p>  free: 表示SDS的未使用空间<br>  len: 表示这个SDS字符串的长度<br>  buf: 是一个char类型的数组</p>
+</li>
+</ul>
+<p>区别在于：</p>
+<ul>
+<li><p>获取字符串的复杂度：C字符串必须遍历整个字符串，对遇到的每个字符进行计数，直到遇到代表字符串结尾的空字符为止，SDS只要访问len属性，就可以立即知道SDS的长度。</p></li></ul>
+        
+          <a class="article-more-a" href="/2020/03/24/redisSDS字符串/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/24/redisSDS字符串/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-日志与异常统一管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -189,11 +447,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
         		</li>
       		
 		</ul>
@@ -343,11 +601,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
         		</li>
       		
 		</ul>
@@ -432,11 +690,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
         		</li>
       		
 		</ul>
@@ -515,11 +773,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
         		</li>
       		
 		</ul>
@@ -595,11 +853,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
         		</li>
       		
 		</ul>
@@ -675,11 +933,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
         		</li>
       		
 		</ul>
@@ -690,263 +948,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/06/DefaultListableBeanFactory/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Listextends与supertT的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/06/Listextends与supertT的区别/">List extends与supertT的区别</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/06/Listextends与supertT的区别/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:25:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>List&lt;? extends T&gt;与List&lt;? super T&gt;的区别？<br>List&lt;? extends T&gt;:表示赋值（=）的数据可以是T类型或者T类型的子类，T表示类型的上界，适用于获取（get）数据并且获取的数据都会转化为T类型<br>List&lt;? super T&gt;:表示赋值(=)的数据可以是T类型或者T类型的父类直至Object类，T表示类型的下界，适用于添加(add)数据，并且添加(add)的数据只能是T类型或T类型的子类</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">java基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/06/Listextends与supertT的区别/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-redis客户端" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/06/redis客户端/">redis客户端</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/06/redis客户端/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:23:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Redis客户端"><a href="#Redis客户端" class="headerlink" title="Redis客户端"></a>Redis客户端</h1><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ul>
-<li>套接字描述符</li>
-<li>客户端的名字</li>
-<li>客户端的标志值flag</li>
-<li>正在使用数据库的指针和数据库的号码</li>
-<li>客户端要执行的命令、参数、参数的个数、实现命令函数的指针</li>
-<li>客户端的输入、输出缓冲区</li>
-<li>客户端的复制状态信息，复制需要的数据结构</li>
-<li>客户端执行BRPOP、BLPOP等列表阻塞命令时使用的数据结构</li>
-<li>客户端的事务状态，以及执行WATCH命令时使用的数据结构</li>
-<li>客户端的身份验证标志</li>
-<li>客户端创建时间，客户端和服务器最后一次通信的时间、输出缓冲区大小超出软性限制的时间</li>
-</ul>
-<h2 id="客户端属性的具体描述"><a href="#客户端属性的具体描述" class="headerlink" title="客户端属性的具体描述"></a>客户端属性的具体描述</h2>
-        
-          <a class="article-more-a" href="/2020/03/06/redis客户端/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/06/redis客户端/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-redis服务器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/06/redis服务器/">redis服务器</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/06/redis服务器/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:23:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="redis服务器"><a href="#redis服务器" class="headerlink" title="redis服务器"></a>redis服务器</h1><h2 id="服务器处理命令请求的执行过程"><a href="#服务器处理命令请求的执行过程" class="headerlink" title="服务器处理命令请求的执行过程"></a>服务器处理命令请求的执行过程</h2><p>命令请求的执行过程：<br>发送、读取命令请求</p>
-<ol start="3">
-<li>命令执行器<br> 查找命令实现<br> 执行预备操作（单机模式下的10种服务器向客户端返回错误的情况）<br> 调用命令的实现函数：执行的命令在cmd，参数在argv[0],参数个数在argc中，所以实现命令函数只需要一个指向客户端状态的指针作为参数即可<br> 执行后续工作：四种情况</li>
-<li>将命令回复发送给客户端</li>
-<li>客户端接收并打印命令回复</li>
-</ol>
-<h2 id="ServerCron函数"><a href="#ServerCron函数" class="headerlink" title="ServerCron函数"></a>ServerCron函数</h2>
-        
-          <a class="article-more-a" href="/2020/03/06/redis服务器/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/06/redis服务器/">展开全文 >></a>
         </p>
       
 
@@ -1073,11 +1074,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">技术，数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1093,23 +1106,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">心情随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">技术文章/redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">技术文章</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+                <a href="javascript:void(0)" class="js-tag color4">练习题</a>
               </li>
             
             <div class="clearfix"></div>
