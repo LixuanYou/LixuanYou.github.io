@@ -17,7 +17,7 @@
 <meta property="og:description" content="第一部分 Java中的几种基本类型，各占多少字节？  byte:1字节 默认0 -128–127short：2字节 默认0 取值-32758–32767int：4字节 默认0 取值-2147483648-2147483647long：8字节 默认0char：2字节float：4字节double：8字节boolean： 4字节  抽象类和接口的区别？  抽象类只能被继承一次，但是可以实现多个接口接口">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2020/03/24/Java练习题/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB.PNG">
-<meta property="og:updated_time" content="2020-03-25T11:46:40.873Z">
+<meta property="og:updated_time" content="2020-03-28T21:47:42.889Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java练习题">
 <meta name="twitter:description" content="第一部分 Java中的几种基本类型，各占多少字节？  byte:1字节 默认0 -128–127short：2字节 默认0 取值-32758–32767int：4字节 默认0 取值-2147483648-2147483647long：8字节 默认0char：2字节float：4字节double：8字节boolean： 4字节  抽象类和接口的区别？  抽象类只能被继承一次，但是可以实现多个接口接口">
@@ -199,8 +199,11 @@
 </li>
 <li><p>什么是SpringIOC/DI<br>IOC叫做依赖反转原则，DI叫做依赖注入<br>如果相互关联的对象的引用或者依赖关系由具体对象来完成会导致代码的高度耦合和可测试性降低（通常表现在对数据和方法的依赖上），在Spring中，这些依赖关系可以利用IOC容器完成对象的依赖注入<br>，对象的依赖关系的管理被反转了，转到IOC容器中，这样对象之间的相互依赖关系由IOC容器进行管理，并且由IOC容器完成对象的依赖注入</p>
 </li>
-<li><p>spring 怎么实现数据库事务<br>首先数据库的引擎要支持事务比如Innodb，其次Spring并不直接管理事务，而是提供多种事务管理器，Spring事务管理器的接口是org.springframework.transaction.PlatformTransactionManager，通过这个接口，Spring为各个平台如JDBC、Hibernate等都提供了对应的事务管理器，但是具体的实现就是各个平台自己的事情了。PlatformTransactionManager接口主要定义了getTransaction(TransactionDefinition definition)、commit()、rollback()方法</p>
+<li><p>spring 怎么实现数据库事务</p>
 </li>
+</ul>
+<p>首先数据库的引擎要支持事务比如Innodb，其次Spring并不直接管理事务，而是提供多种事务管理器，Spring事务管理器的接口是org.springframework.transaction.PlatformTransactionManager，通过这个接口，Spring为各个平台如JDBC、Hibernate等都提供了对应的事务管理器，但是具体的实现就是各个平台自己的事情了。PlatformTransactionManager接口主要定义了getTransaction(TransactionDefinition definition)、commit()、rollback()方法</p>
+<ul>
 <li><p>讲一讲MySQL Innodb索引结构<br>MySQL Innodb索引的底层用的是B+树，MySQL先在索引上按值查找然后返回所有包含该值的数据行，索引包含一个或者多个列的值，多个值的时候顺序很重要，因为MySQL只能用索引的“最左前缀列”创建。 Btree：Balance Tree类似二叉树 存储的是（索引列值，指向子节点数据行的指针）全键值键值范围或者键前缀查找（最左前缀查找）B+tree在叶子节点存储所有索引和数据，非叶子节点不存储数据，做叶子节点的索引的冗余。叶子节点之间还有指针连接提高区间访问的性能</p>
 </li>
 <li><p>HTTP报文由那几部分组成？GET和POST有什么区别</p>
@@ -211,19 +214,71 @@
 <li>TCP的流量控制（滑动窗口）、拥塞控制是什么？<br>防止发送方发送得太快，耗尽接收方的缓存，导致接收方来不及处理。流量控制可以使用滑动窗口来实现。滑动窗口是类似于一个窗口一样的东西，是用来告诉发送端可以发送数据的大小或者说是窗口标记了接收端缓冲区的大小，这样就可以实现。窗口指的是一次批量的发送多少数据<br>拥塞控制：防止发送方发的太快，使得网络来不及处理，从而导致网络拥塞</li>
 <li>TCP三次握手，四次挥手</li>
 </ul>
+<p>tcp的三次握手是很有意思的，基本思想就是“让我知道你已经知道”了。服务器监听请求，客户端发起连接请求（第一次连接），请求在路上可能存在丢失的风险，所以当请求到了服务器后如果服务器同意建立连接会给客户端一个回信（第二次连接），告诉它：我已经收到请求，可以连接。但是回信也存在一个问题，那就是回信能不能到客户端？它需要客户端给他一个回信说我已经收到批准通知了，如果客户端一直不回复的话意味着客户端没有收到批准通知。因此客户端一收到批准通知就立马回复（第三次握手）：OK老铁我收到你的批准通知了。至此，三次握手结束。 一个很类似的例子就是投简历：先投简历，然后对方公司会通知你通过简历筛选，你收到这个通知后一般会回复一下我知道了。 这种“让我知道你已经知道了”的想法是一种约定俗成的可靠信息交互的基本方式，基于此想法构建的信息交互框架叫做协议。</p>
+<p>释放连接的时候也是如此：客户端发起关闭连接的请求，关闭连接意味着客户端结束了自己的工作即发送数据，但此时仍然处于数据传输的过程中，服务器可能未数据传输完毕，因此当请求到服务器时，服务器知道了这个请求，但服务器数据传输未完成无法关闭连接，因此服务器先发送一个ack告诉客户端关闭请求已收到，但老子正忙，一会再关，你再等一会。等服务器工作完成了，就把fin信号发送给客户端，此时服务器要等着客户端给他一个回信，让服务器知道客户端已经收到回信。因此客户端收到后就给服务器一个回信，为了防止回信丢失，客户端就再等2MSL个时间，之所以是2个，是因为涉及到来回，第一个MSL中是回信在路上的最大时间，第二个MSL是万一回信没到服务端，服务端重发的FIN确认在路上的时间。</p>
 <p>四次挥手：第三次挥手是发送FIN，表示要断开连接了 三次挥手：就是把四次挥手中的第二次挥手和第三次挥手合并到一起了，把发送ACK的包和发送FIN的包放到一个传输连接上了，这种情况的场景就是，可能服务器端也没有数据需要传送了，所以就把ACK和FIN一起发送了</p>
-<h2 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h2><p>String、StringBuilder、StringBuffer的区别？</p>
-<p>讲一讲你理解的nio和bio的区别</p>
-<p>volatile和synchronize的区别</p>
-<p>介绍一个你比较熟悉的GC算法，Java常用启动参数有哪些？</p>
-<p>java中实现线程池的方式，ThreadPoolExecutor类的主要</p>
-<p>SpringAOP是什么？有什么用？</p>
-<p>springcloud有哪些主要组件？讲一下用处</p>
-<p>MySQL聚集索引和覆盖索引是什么？</p>
-<p>讲一讲你比较熟悉的消息队列？有什么优缺点？</p>
-<p>谈一谈HTTP1.0、HTTP1.1与HTTP2.0的区别</p>
+<h2 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h2><ul>
+<li>String、StringBuilder、StringBuffer的区别？</li>
+</ul>
+<p>可变性<br>String 是final修饰的类，其中是使用final来修饰字符数组来保存字符串的，所以string是常量，值不可变的类。<br>stringbuffer和stringbuilder都是继承自abstractStringbuilder类，abstractStringbuilder也是使用字符数组来保存字符串的，但是没有使用final修饰，所以对象是可变的。<br>线程安全<br>而stringbuffer对方法加入了同步锁或者对调用的方法加入了同步锁，所以是线程安全的。而StringBuilder没有对方法加锁，所以是线程不安全的。<br>性能<br>String，对于string的操作，每次新增字符串，都是生成一个新的string对象，指针会指向新的string对象地址。<br>Stringbuffer每次操作都是对stringbuffer对象本身的操作，不会产生新的对象，相对会在性能上优于string，而stringbuilder在性能上，会比使用stringbuffer提升10-15%的性能的提升。<br>使用过程中：<br>对于少量字符的操作，string操作更方便。<br>对于单线程的字符串操作stringbuilder更快。<br>而对于多线程的字符串操作，stringbuffer更安全。</p>
+<ul>
+<li>讲一讲你理解的nio和bio的区别</li>
+</ul>
+<p>BIO：同步阻塞式IO，服务器实现模式为每一个<strong>连接</strong>都建立一个线程，即客户端有连接请求时，服务器端就需要启动一个线程进行处理，如果连接不做任何事情，会造成不必要的线程开销，可以通过线程池机制改善。<br>    BIO原理<br>    单线程：同步阻塞式IO在while循环中服务端会调用accept方法等待接收客户端的连接请求，一旦接收到一个连接请求，就可以建立通信套接字，在这个通信套接字上进行读写操作，此时不能接收其他客户端的连接请求，只能等待同当前连接的客户端的操作执行完成。</p>
+<pre><code>多线程：如果BIO要能够同时处理多个客户端请求，就必须使用多线程，即每次accept阻塞等待来自客户端请求，一旦受到连接请求就建立通信套接字，同时开启一个新的线程来出炉这个套接字的数据读写请求，然后又立刻继续accept等待其他客户端连接请求，即为每个客户端请求都单独创建一个线程来单独处理</code></pre><p>NIO：同步非阻塞式IO，服务器实现模式为一个<strong>请求</strong>一个线程，即客服端发送的连接请求都会注册到<strong>多路复用器</strong>上，多路复用器轮询到有IO请求时才启动一个线程进行处理。NIO和BIO最大的区别就是只需要开启一个线程就可以处理来自多个客户端的IO事件<br>AIO：异步非阻塞，服务器实现模式为一个有效请求一个线程，客户端的IO请求都是由OS先完成了再通知服务器应用区启动线程进行处理。</p>
+<ul>
+<li><p>volatile和synchronize的区别<br> 1）volatile本质是告诉JVM当前变量在寄存器中的值是不确定的，需要从主存中读取。synchronized则是锁定当前变量，只有当前线程可以访问该变量，其它线程被阻塞。</p>
+<p> 2）volatile仅能使用在变量级别，synchronized则可以使用在变量、方法。</p>
+<p> 3）volatile仅能实现变量修改的可见性，而synchronized则可以保证变量修改的可见性和原子性。《Java编程思想》上说，定义long或double时，如果使用volatile关键字(简单的赋值与返回操作)，就会获得原子性。(常规状态下，这两个变量由于其长度，其操作不是原子的)</p>
+<p> 4）volatile不会造成线程阻塞，synchronized会造成线程阻塞。</p>
+<p> 5）使用volatile而不是synchronized的唯一安全情况是类中只有一个可变的域。</p>
+</li>
+<li><p>介绍一个你比较熟悉的GC算法，Java常用启动参数有哪些？</p>
+</li>
+</ul>
+<p>GC：垃圾回收站，是将java的无用的堆对象进行清理，释放内存，以免发生内存泄露。在介绍java回收站前，首先介绍下几种回收机制</p>
+<p>　　1. 引用计数：</p>
+<p>　　当一个对象A被其他对象B引用时，对象A引用+1，断开引用则-1，GC工作时，会检查所有对象中的引用计数，如果为0则代表要清除，&gt;0则表示有其他对象引用不能清除。这种机制有一个致命缺点，就是当两个对象互引用时，在遍历时可能会发生这两个对象引数永远不为0，则永远不会被删除。此机制java从不使用。</p>
+<p>　　2. 停止-复制：</p>
+<p>　　程序暂停运行，启动GC，GC从堆或静态存储区开始遍历所有对象，判断对象是否“活”的对象，如果是活不删除，反之删除。判断是否“活”就是判断该对象是否有被其他对象引用，从链上去查找。当是活对象时，GC会从另外堆里开避一个大空间，然后将活对象复制一份到新空间里，在复制时按着紧密排列，同时更新所有引用地址为新的地址，不活对象原封不动。遍历完后，再遍历一次，这次是将不活的对象彻底给删除。</p>
+<p>　　优点：所有对象能够重新紧密排列，不会出现内存碎片，这对以后创建对象能提供更快的效率。</p>
+<p>　　缺点：占用的内存空间大，要原对象的2倍空间；这种模式无论如何所有活的对象都要复制一份，假设遍历到最后，对象很稳定，只出现少量垃圾对象或者根本没垃圾对象，这时已经做了复制工作，浪费了资源。</p>
+<p>　　3. 标记-删除：</p>
+<p>　　程序暂停运行，启动GC，GC从堆或静态存储区开始遍历所有对象，判断对象是否“活”的对象，如果是活不删除，反之删除。判断是否“活”就是判断该对象是否有被其他对象引用，从链上去查找。当是活对象时，会给对象给个标记符号，死对象则不标记，遍历完后，第二次遍历时，只保留标记的对象，把所有没标记的对象都删除。</p>
+<p>　　以上第2和第3种都是要遍历两次，而且都是最后一次才执行真正删除，比起第1种来说要慢很多，因为要遍历2次，尤其是第2种，还要复制动作，但这2种归避了第1种的致命缺点。</p>
+<p>　　早期的jvm采用的是标记-删除模式，继java5后，jvm采用自适应技术，就是根据自身状态情况，在”停止-复制“和”标记-删除“自动切换以达到最快效率。在第1遍历时，如果确定对象需要回收，则会先执行对象的finalize()方法。</p>
+<ul>
+<li>java中实现线程池的方式，ThreadPoolExecutor类的主要</li>
+</ul>
+<p>Executors 是一个Java中的工具类。提供工厂方法来创建不同类型的线程池。常用方法有以下几个：<br>newFiexedThreadPool(int Threads)：创建固定数目线程的线程池。<br>newCachedThreadPool()：创建一个可缓存的线程池，调用execute 将重用以前构造的线程（如果线程可用）。如果没有可用的线程，则创建一个新线程并添加到池中。终止并从缓存中移除那些已有 60 秒钟未被使用的线程。<br>newSingleThreadExecutor()创建一个单线程化的Executor。<br>newScheduledThreadPool(int corePoolSize)创建一个支持定时及周期性的任务执行的线程池，多数情况下可用来替代Timer类。</p>
+<pre><code>ExecutorService executor = Executors.newFixedThreadPool(nThreads) ;</code></pre><p>但是阿里巴巴Java开发手册中明确提到不允许使用Executors创建线程池，因为使用Executors创建线程池可能会导致OOM(Out Of Memory ,内存溢出)原因是Fix和Single允许队列长度为Integer.Max_value，可能会堆积大量请求。Cached与Schedule允许创建的线程数量为Integer.Max_value，可能会创建大量线程</p>
+<p>ThreadPoolExecutor是线程池的真正实现,通过构造方法的一系列参数,来构成不同配置的线程池在创建的同时，给BlockQueue指定容量就可以了。<br>    private static ExecutorService executor = new ThreadPoolExecutor(10, 10,<br>        60L, TimeUnit.SECONDS,new ArrayBlockingQueue(10));<br>还可以使用其他开源类库apache，guava提供的ThreadFactoryBuilder来创建线程池</p>
+<ul>
+<li><p>SpringAOP是什么？有什么用？<br>面向对象编程有一些弊端，比如当我们需要为多个不具有继承关系的对象引入一个公共行为，例如日志,权限验证,事务等功能时，只能在在每个对象里引用公共行为，这样做不便于维护，而且有大量重复代码。<br>AOP是面向切面编程的意思，在使用面向切面编程时，我们仍然在一个地方定义通用功能，但是可以通过声明的方式定义这个功能要以何种方式在何处应用，而无需修改受影响的类。比如在工作中用Spring做日志，事务，安全验证</p>
+</li>
+<li><p>springcloud有哪些主要组件？讲一下用处</p>
+</li>
+</ul>
+<p>5大常用组件<br>服务发现——Netflix Eureka<br>客服端负载均衡——Netflix Ribbon<br>断路器——Netflix Hystrix<br>服务网关——Netflix Zuul<br>分布式配置——Spring Cloud Config</p>
+<ul>
+<li>MySQL聚集索引和覆盖索引是什么？</li>
+</ul>
+<p>聚集索引：<br>给表加上主键，那么表在内存上的由整齐排列的结构转变成了树状结构，也就是「平衡树」结构，换句话说，就是整个表就变成了一个聚集索引。 这就是为什么一个表只能有一个主键， 一个表只能有一个「聚集索引」，因为主键的作用就是把「表」的数据格式转换成「索引（平衡树）」的格式放置。</p>
+<p>非聚集索引：<br>非聚集索引和聚集索引一样， 同样是采用平衡树作为索引的数据结构。索引树结构中各节点的值来自于表中的索引字段， 假如给user表的name字段加上索引 ， 那么索引就是由name字段中的值构成，在数据改变时， DBMS需要一直维护索引结构的正确性。如果给表中多个字段加上索引 ， 那么就会出现多个独立的索引结构，每个索引（非聚集索引）互相之间不存在关联。</p>
+<p>区别在于， 通过聚集索引可以查到需要数据， 而通过非聚集索引可以查到记录对应的主键值 ， 再使用主键值通过聚集索引查找到需要的数据。</p>
+<p>覆盖索引：<br>如果一个索引包含所有需要查询的字段的值，我们就称之为“覆盖索引”。因此不需要通过主键ID值的查找数据行的真实所在， 直接取得叶节点中name的值返回即可。</p>
+<p>个人理解：</p>
+<p>非聚集索引就是一般常用的索引，索引树的根节点是表的主键。</p>
+<p>聚集索引就是主键组成的树，根节点是数据库真实数据的位置。</p>
+<ul>
+<li>讲一讲你比较熟悉的消息队列？有什么优缺点？</li>
+</ul>
+<p>消息队列比较核心应用的有3个：解耦、异步、削峰。</p>
+<ul>
+<li>谈一谈HTTP1.0、HTTP1.1与HTTP2.0的区别</li>
+</ul>
 <h2 id="第三部分"><a href="#第三部分" class="headerlink" title="第三部分"></a>第三部分</h2><p>1、HashMap中key存整数123,和存字符串“123”，哪个更好？说明理由？</p>
-<p>HashMap只能引用类型</p>
+<p>HashMap只能是引用类型，所有是字符串“123”</p>
 <p>2、异常处理机制：throw和throws的区别？哪些异常适合抛出来？你是怎么处理异常的？比如IO异常和数据库异常是怎么处理的？</p>
 <p>3、泛型用过吗？说下你使用的场景？Java泛型是编译时还是运行时的特性？</p>
 <p>4、多线程使用场景？谈一下你对线程安全的理解？</p>
@@ -525,19 +580,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -549,7 +604,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">

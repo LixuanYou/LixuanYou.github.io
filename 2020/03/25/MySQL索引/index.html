@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>MySQL索引 | 游理轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MySQL数据库存储引擎 InnoDB（订单表 ）:支持事务、行锁（如果有人在使用某一条数据，其他人要用就必须等待）和外键约束，查询的性能比Myisam低。原数据格式存储，根据主键引用索引 Myisam（商品表）:不支持事务，如果表的“读”操作比“写”操作多时，使用前缀压缩技术存储索引，使索引更小,通过物理位置引用索引  索引（树的高度决定了与磁盘交互的频率）MySQL先在索引上按值查找然后返回所">
+  <meta name="description" content="本章博客是阅读《高性能MySQL》第三版的阅读笔记以及总结 索引MySQL官方文档：索引是帮助MySQL高效获取数据的数据结构 类型分类 B-Tree索引：给你一个参考中值，比这个值大靠右，比这个值小靠左，那么树的高度就代表与磁盘交互的维度 聚集索引，复合索引，前缀索引，唯一索引默认都是使用B+树索引 大多数MySQL引擎都支持这种索引。Archive引擎是一个例外：5.1之前Archive不支持">
 <meta name="keywords" content="技术，数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL索引">
 <meta property="og:url" content="http://yoursite.com/2020/03/25/MySQL索引/index.html">
 <meta property="og:site_name" content="游理轩的博客">
-<meta property="og:description" content="MySQL数据库存储引擎 InnoDB（订单表 ）:支持事务、行锁（如果有人在使用某一条数据，其他人要用就必须等待）和外键约束，查询的性能比Myisam低。原数据格式存储，根据主键引用索引 Myisam（商品表）:不支持事务，如果表的“读”操作比“写”操作多时，使用前缀压缩技术存储索引，使索引更小,通过物理位置引用索引  索引（树的高度决定了与磁盘交互的频率）MySQL先在索引上按值查找然后返回所">
+<meta property="og:description" content="本章博客是阅读《高性能MySQL》第三版的阅读笔记以及总结 索引MySQL官方文档：索引是帮助MySQL高效获取数据的数据结构 类型分类 B-Tree索引：给你一个参考中值，比这个值大靠右，比这个值小靠左，那么树的高度就代表与磁盘交互的维度 聚集索引，复合索引，前缀索引，唯一索引默认都是使用B+树索引 大多数MySQL引擎都支持这种索引。Archive引擎是一个例外：5.1之前Archive不支持">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-25T11:50:14.709Z">
+<meta property="og:updated_time" content="2020-03-28T21:47:42.891Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL索引">
-<meta name="twitter:description" content="MySQL数据库存储引擎 InnoDB（订单表 ）:支持事务、行锁（如果有人在使用某一条数据，其他人要用就必须等待）和外键约束，查询的性能比Myisam低。原数据格式存储，根据主键引用索引 Myisam（商品表）:不支持事务，如果表的“读”操作比“写”操作多时，使用前缀压缩技术存储索引，使索引更小,通过物理位置引用索引  索引（树的高度决定了与磁盘交互的频率）MySQL先在索引上按值查找然后返回所">
+<meta name="twitter:description" content="本章博客是阅读《高性能MySQL》第三版的阅读笔记以及总结 索引MySQL官方文档：索引是帮助MySQL高效获取数据的数据结构 类型分类 B-Tree索引：给你一个参考中值，比这个值大靠右，比这个值小靠左，那么树的高度就代表与磁盘交互的维度 聚集索引，复合索引，前缀索引，唯一索引默认都是使用B+树索引 大多数MySQL引擎都支持这种索引。Archive引擎是一个例外：5.1之前Archive不支持">
   
     <link rel="alternative" href="/atom.xml" title="游理轩的博客" type="application/atom+xml">
   
@@ -175,7 +175,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="MySQL数据库存储引擎"><a href="#MySQL数据库存储引擎" class="headerlink" title="MySQL数据库存储引擎"></a>MySQL数据库存储引擎</h3><ul>
+        <p>本章博客是阅读《高性能MySQL》第三版的阅读笔记以及总结</p>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p>MySQL官方文档：索引是帮助MySQL高效获取数据的数据结构</p>
+<h3 id="类型分类"><a href="#类型分类" class="headerlink" title="类型分类"></a>类型分类</h3><ol>
+<li>B-Tree索引：给你一个参考中值，比这个值大靠右，比这个值小靠左，那么树的高度就代表与磁盘交互的维度<br> 聚集索引，复合索引，前缀索引，唯一索引默认都是使用B+树索引<br> 大多数MySQL引擎都支持这种索引。Archive引擎是一个例外：5.1之前Archive不支持任何索引，直到5.1才开始支持单个自增列（AUTO_INCREMENT）的索引。<br> 所有值都是按顺序存储的，并且每一个叶子页到根的距离相同<br> 聚集索引是按表的主键构造的B+树，叶子节点存放的为整张表的行记录数据，每张表只能有一个聚集索引。优化器更倾向采用聚集索引。因为直接就能获取行数据。<a id="more"></a></li>
+<li>哈希索引<br> 在MySQL中，只有Memory引擎显式支持哈希索引。<br> 只有精确匹配索引所有列的查询才有效。对于每一行数据，存储引擎都会对所有的索引列计算一个哈希码（hash code），哈希码是一个较小的值，并且不同键值的行计算出来的哈希码也不一样。哈希索引将所有的哈希码存储在索引中，同时在哈希表中保存指向每个数据行的指针。</li>
+<li>空间数据索引R-Tree<br> MyISAM表支持空间索引，可以用作地理数据存储。和B-Tree索引不同，这类索引无须前缀查询。空间索引会从所有维度来索引数据。查询时，可以有效地使用任意维度来组合查询。必须使用MySQL的GIS相关函数如MBRCONTAINS()等来维护数据。MySQL的GIS支持并不完善，所以大部分人都不会使用这个特性。开源关系数据库系统中对GIS的解决方案做得比较好的是PostgreSQL的PostGIS。</li>
+<li>全文索引<br> 全文索引是一种特殊类型的索引，它查找的是文本中的关键词，而不是直接比较索引中的值。全文搜索和其他几类索引的匹配方式完全不一样。它有许多需要注意的细节，如停用词、词干和复数、布尔搜索等。全文索引更类似于搜索引擎做的事情，而不是简单的WHERE条件匹配。</li>
+</ol>
+<p>在相同的列上同时创建全文索引和基于值的B-Tree索引不会有冲突，全文索引适用于MATCH AGAINST操作，而不是普通的WHERE条件操作。</p>
+<h3 id="索引的数据存储方式"><a href="#索引的数据存储方式" class="headerlink" title="索引的数据存储方式"></a>索引的数据存储方式</h3><ol start="3">
+<li>单值索引：一个索引只包含单个列，一个表可以有多个单值索引</li>
+<li>唯一索引：索引的值必须是唯一，但允许有空值</li>
+<li>复合索引：一个索引包含多个列</li>
+<li>##总结<h3 id="MySQL数据库存储引擎"><a href="#MySQL数据库存储引擎" class="headerlink" title="MySQL数据库存储引擎"></a>MySQL数据库存储引擎</h3></li>
+</ol>
+<p>存储引擎以不同的方式使用B-Tree索引，性能也各有不同，各有优劣。例如，MyISAM使用前缀压缩技术使得索引更小，但InnoDB则按照原数据格式进行存储。再如MyISAM索引通过数据的物理位置引用被索引的行，而InnoDB则根据主键引用被索引的行。</p>
+<ul>
 <li>InnoDB（订单表 ）:支持事务、行锁（如果有人在使用某一条数据，其他人要用就必须等待）和外键约束，查询的性能比Myisam低。原数据格式存储，根据主键引用索引</li>
 <li>Myisam（商品表）:不支持事务，如果表的“读”操作比“写”操作多时，使用前缀压缩技术存储索引，使索引更小,通过物理位置引用索引</li>
 </ul>
@@ -187,7 +203,7 @@
 <p>（1）所有关键字都出现在叶子结点的链表中(稠密索引)，且链表中的关键字恰好是有序的;</p>
 <p>（2）不可能在非叶子结点命中;</p>
 <p>（3）非叶子结点相当于是叶子结点的索引(稀疏索引)，叶子结点相当于是存储(关键字)数据的数据层;</p>
-<a id="more"></a>
+<!--more-->
 <h3 id="为什么InnoDB要有主键并且推荐主键为整型而且要自增？"><a href="#为什么InnoDB要有主键并且推荐主键为整型而且要自增？" class="headerlink" title="为什么InnoDB要有主键并且推荐主键为整型而且要自增？"></a>为什么InnoDB要有主键并且推荐主键为整型而且要自增？</h3><p>如果我们定义了主键(PRIMARY KEY)，那么InnoDB会选择主键作为聚集索引、如果没有显式定义主键，则InnoDB会选择第一个不包含有NULL值的唯一索引作为主键索引，如果也没有这样的唯一索引，则InnoDB会选择内置6字节长的ROWID作为隐含的聚集索引(ROWID随着行记录的写入而主键递增，这个ROWID不像ORACLE的ROWID那样可引用，是隐含的)。</p>
 <p>因为B+Tree在增加数据的时候要做大量的值比较，整型比较最快，其他类型要转成ASCII码,第二点整型相比于其他类型如UUID占用的空间更小</p>
 <p>如果表使用自增主键，那么每次插入新的记录，记录就会顺序添加到当前索引节点的后续位置，当一页写满，就会自动开辟一个新的页<br>如果使用非自增主键（如果身份证号或学号等），由于每次插入主键的值近似于随机，因此每次新纪录都要被插到现有索引页得中间某个位置，此时MySQL不得不为了将新记录插到合适位置而移动数据，甚至目标页面可能已经被回写到磁盘上而从缓存中清掉，此时又要从磁盘上读回来，这增加了很多开销，同时频繁的移动、分页操作造成了大量的碎片，得到了不够紧凑的索引结构，后续不得不通过OPTIMIZE TABLE来重建表并优化填充页面。</p>
@@ -196,7 +212,26 @@
 </ul>
 <h3 id="数据库的垂直分表"><a href="#数据库的垂直分表" class="headerlink" title="数据库的垂直分表"></a>数据库的垂直分表</h3><pre><code>为什么要垂直分表/垂直分表的业务场景？
 数据库调优
-某张表的某个大字段不是必须的（比如商品表单的detail）但是根据id或者索引查询的时候还是会将大字段查出来，用单独用一张表来管理这个大字段</code></pre>
+某张表的某个大字段不是必须的（比如商品表单的detail）但是根据id或者索引查询的时候还是会将大字段查出来，用单独用一张表来管理这个大字段</code></pre><h3 id="索引的优点和缺点"><a href="#索引的优点和缺点" class="headerlink" title="索引的优点和缺点"></a>索引的优点和缺点</h3><ol>
+<li>提高数据的检索效率，降低数据库的IO成本</li>
+<li>索引会对数据进行排序，可以降低数据排序的时间，降低CPU成本。</li>
+<li>加快表与表之间的连接，特别是在维护数据完整性方面（一个表的外键必须是另一个表的主键）</li>
+<li>通过创建唯一性索引，可以保证数据的唯一性</li>
+</ol>
+<ol>
+<li>创建和维护索引消耗的时间随着数据量的增加而增加</li>
+<li>索引要占用物理磁盘空间，特别是聚簇索引</li>
+<li>对表数据进行插入、更新、删除的时候，索引也要动态维护，降低维护速度</li>
+</ol>
+<h3 id="什么样的字段适合索引"><a href="#什么样的字段适合索引" class="headerlink" title="什么样的字段适合索引"></a>什么样的字段适合索引</h3><ol>
+<li>在经常需要搜索的列上</li>
+<li>作为主键的列上，强制该列的唯一性和组织表中数据的排列结构</li>
+<li>在经常用在连接的列上，主要是外键，可以加快连接速度（表和表之间有外键，但是不会建立外键约束，为了做分库分表）</li>
+<li>在经常需要根据范围进行搜索的列上创建索引，索引已经排序，其指定的范围是连续的</li>
+<li>在经常需要排序的列上建立索引</li>
+<li>在经常使用WHERE子句的列上创建索引，可以加快条件的判断速度</li>
+</ol>
+
       
 
       
@@ -299,6 +334,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/03/26/volatile与synchronized的区别/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          volatile与synchronized的区别
+        
+      </div>
+    </a>
   
   
     <a href="/2020/03/24/Java练习题/" id="article-nav-older" class="article-nav-link-wrap">
@@ -428,19 +472,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -452,7 +496,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">

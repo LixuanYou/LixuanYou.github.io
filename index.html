@@ -152,6 +152,350 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-MySQL数据结构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/28/MySQL数据结构/">MySQL数据结构</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/28/MySQL数据结构/" class="archive-article-date">
+  	<time datetime="2020-03-28T01:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="基础结构"><a href="#基础结构" class="headerlink" title="基础结构"></a>基础结构</h3><p>Page是Innodb存储的最基本结构，也是Innodb磁盘管理的最小单位，与数据库相关的所有内容都存储在Page结构里。Page分为几种类型：数据页（B-Tree Node），Undo页（Undo Log Page），系统页（System Page），事务数据页（Transaction System Page）等；每个数据页的大小为16kb，每个Page使用一个32位（一位表示的就是0或1）的int值来表示，正好对应Innodb最大64TB的存储容量(16kb * 2^32=64tib)<br>一个Page的基本结构如下：</p>
+<p><img src="/2020/03/28/MySQL数据结构/page.png" alt></p>
+<p>每个page都有通用的头和尾，但是中部的内容根据page的类型不同而发生变化，page头部保存了两个指针，分别指向前一个Page和后一个Page，头部还有Page的类型信息和用来唯一标识Page的编号。根据这个指针分布可以想象到Page链接起来就是一个双向链表</p>
+<h3 id="主体数据"><a href="#主体数据" class="headerlink" title="主体数据"></a>主体数据</h3><p>在Page的主体部分，主要关注数据和索引的存储，他们都位于User Records部分，User Records占据Page的大部分空间，User Records由一条条的Record组成，每条记录代表索引树上的一个节点（非叶子节点和叶子节点）；在一个单链表的内部，单链表的头尾由两条记录来表示，字符串形式的“ Infimum”代表开头，“Supremum”表示结尾；System Record 和 User Record是两个平行的段；<br>Innodb中存在四种不同的Record，分别是</p>
+<ol>
+<li>主键索引树非叶子节点</li>
+<li>主键索引树叶子节点</li>
+<li>辅助键索引树非叶子节点</li>
+<li>辅助键索引树叶子节点</li>
+</ol>
+<p>这四种节点Record格式上有差异，但是内部都存储着Next指针指向下一个Record</p>
+<p><img src="/2020/03/28/MySQL数据结构/page%E8%AF%A6%E7%BB%86.png" alt></p>
+        
+          <a class="article-more-a" href="/2020/03/28/MySQL数据结构/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/28/MySQL数据结构/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-3月28日心情日记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/28/3月28日心情日记/">3月28日心情日记</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/28/3月28日心情日记/" class="archive-article-date">
+  	<time datetime="2020-03-28T00:26:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>You can’t connect the dots looking forward; you can only connect them looking backwards. So you have to trust that the dots will somehow connect in your future. You have to trust in something: your gut, destiny, life, karma, whatever. Because believing that the dots will connect down the road, will give you the confidence to follow your heart, even when it lead you off the well worn path. And that will make all the difference. Your time is limited, so don’t waste it living someone else’s life. Don’t be trapped by dogma, which is living with the results of other people’s thinking. Don’t let the noise of others’ opinions drown out your own inner voice. You’ve got to find what you love. And that is as true for your work as it is for your lovers. </p>
+        
+          <a class="article-more-a" href="/2020/03/28/3月28日心情日记/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/28/3月28日心情日记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-TCP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/26/TCP/">TCP</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/26/TCP/" class="archive-article-date">
+  	<time datetime="2020-03-26T09:52:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本章博客转载地址为：<a href="https://blog.csdn.net/qq_38950316/article/details/81087809" target="_blank" rel="noopener">https://blog.csdn.net/qq_38950316/article/details/81087809</a></p>
+<p><img src="/2020/03/26/TCP/TCP%E6%8A%A5%E6%96%87.jpg" alt="TCP报文格式"></p>
+        
+          <a class="article-more-a" href="/2020/03/26/TCP/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/26/TCP/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-volatile与synchronized的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/26/volatile与synchronized的区别/">volatile与synchronized的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/26/volatile与synchronized的区别/" class="archive-article-date">
+  	<time datetime="2020-03-26T07:49:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>volatile与synchronized的区别<br>1、锁提供了两种主要特性：互斥（mutual exclusion） 和可见性（visibility）。</p>
+<p>　　互斥即一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议，这样，一次就只有一个线程能够使用该共享数据。</p>
+<p>　　可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 —— 如果没有同步机制提供的这种可见性保证，线程看到的共享         变量可能是修改前的值或不一致的值，这将引发许多严重问题。（竞态条件）</p>
+<p>2、在Java中,为了保证多线程读写数据时保证数据的一致性,可以采用两种方式：</p>
+<p>　 同步：如用synchronized关键字,或者使用锁对象</p>
+<p>　 使用volatile关键字：用一句话概括volatile,它能够使变量在值发生改变时能尽快地让其他线程知道。</p>
+<p>3、volatile详解</p>
+<p>　当一个变量定义为volatile后，它将具备两种特性：1. 可见性，2. 禁止指令重排序。</p>
+<pre><code>首先，我们要意识到有这样的现象：编译器为了加快程序运行速度，对一些变量的写操作会现在寄存器或CPU缓存上进行，最后写入内存。而在这个过程中，变量的新值对其它线程是不可见的。
+
+可见性：当对volatile标记的变量进行修改时，会将其它缓存中存储的修改前的变量清除，然后重新读取。这里从哪读尚未明确，一般来说应该是先在进行修改的缓存A中修改为新值，然后通知其它缓存清除掉此变量，当其它缓存B中的线程读取此变量时，会向总线发送消息，这是存储新值的缓存A获取到消息，将新值传给B，最后将新值写入内存。</code></pre><p>volatile的作用是被其修饰的变量每次刷新时，都会刷新上述步骤。</p>
+<p>4、volatile与synchronized</p>
+<p>   1）volatile本质是告诉JVM当前变量在寄存器中的值是不确定的，需要从主存中读取。synchronized则是锁定当前变量，只有当前线程可以访问该变量，其它线程被阻塞。</p>
+<p>   2）volatile仅能使用在变量级别，synchronized则可以使用在变量、方法。</p>
+<p>   3）volatile仅能实现变量修改的可见性，而synchronized则可以保证变量修改的可见性和原子性。《Java编程思想》上说，定义long或double时，如果使用volatile关键字(简单的赋值与返回操作)，就会获得原子性。(常规状态下，这两个变量由于其长度，其操作不是原子的)</p>
+<p>   4）volatile不会造成线程阻塞，synchronized会造成线程阻塞。</p>
+<p>   5）使用volatile而不是synchronized的唯一安全情况是类中只有一个可变的域。</p>
+<p>5、当一个域的值依赖于它之前的值时，volatile就无法工作了，如n=n+1,n++等。如果某个域的值受到其他域的值的限制，那么volatile也无法工作，如Range类的lower和upper边界，必须遵循lower&lt;=upper的限制。</p>
+<p>6、使用volatile而不是synchronized的唯一安全的情况是类中只有一个可变的域。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/26/volatile与synchronized的区别/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-MySQL索引" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -172,18 +516,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="MySQL数据库存储引擎"><a href="#MySQL数据库存储引擎" class="headerlink" title="MySQL数据库存储引擎"></a>MySQL数据库存储引擎</h3><ul>
-<li>InnoDB（订单表 ）:支持事务、行锁（如果有人在使用某一条数据，其他人要用就必须等待）和外键约束，查询的性能比Myisam低。原数据格式存储，根据主键引用索引</li>
-<li>Myisam（商品表）:不支持事务，如果表的“读”操作比“写”操作多时，使用前缀压缩技术存储索引，使索引更小,通过物理位置引用索引</li>
-</ul>
-<h3 id="索引（树的高度决定了与磁盘交互的频率）"><a href="#索引（树的高度决定了与磁盘交互的频率）" class="headerlink" title="索引（树的高度决定了与磁盘交互的频率）"></a>索引（树的高度决定了与磁盘交互的频率）</h3><p>MySQL先在索引上按值查找然后返回所有包含该值的数据行，索引包含一个或者多个列的值，多个值的时候顺序很重要，因为MySQL只能用索引的“最左前缀列”<br>  创建</p>
-<ul>
-<li>Btree：Balance Tree类似二叉树 存储的是（索引列值，指向子节点数据行的指针）<br>全键值键值范围或者键前缀查找（最左前缀查找）B+tree在叶子节点存储所有索引和数据，非叶子节点不存储数据，做叶子节点的索引的冗余。叶子节点之间还有指针连接提高区间访问的性能</li>
-</ul>
-<h3 id="Btree与B-Tree区别"><a href="#Btree与B-Tree区别" class="headerlink" title="Btree与B+Tree区别"></a>Btree与B+Tree区别</h3><p>B+ 树的特点:</p>
-<p>（1）所有关键字都出现在叶子结点的链表中(稠密索引)，且链表中的关键字恰好是有序的;</p>
-<p>（2）不可能在非叶子结点命中;</p>
-<p>（3）非叶子结点相当于是叶子结点的索引(稀疏索引)，叶子结点相当于是存储(关键字)数据的数据层;</p>
+        <p>本章博客是阅读《高性能MySQL》第三版的阅读笔记以及总结</p>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p>MySQL官方文档：索引是帮助MySQL高效获取数据的数据结构</p>
+<h3 id="类型分类"><a href="#类型分类" class="headerlink" title="类型分类"></a>类型分类</h3><ol>
+<li>B-Tree索引：给你一个参考中值，比这个值大靠右，比这个值小靠左，那么树的高度就代表与磁盘交互的维度<br> 聚集索引，复合索引，前缀索引，唯一索引默认都是使用B+树索引<br> 大多数MySQL引擎都支持这种索引。Archive引擎是一个例外：5.1之前Archive不支持任何索引，直到5.1才开始支持单个自增列（AUTO_INCREMENT）的索引。<br> 所有值都是按顺序存储的，并且每一个叶子页到根的距离相同<br> 聚集索引是按表的主键构造的B+树，叶子节点存放的为整张表的行记录数据，每张表只能有一个聚集索引。优化器更倾向采用聚集索引。因为直接就能获取行数据。</li></ol>
         
           <a class="article-more-a" href="/2020/03/25/MySQL索引/#more">more >></a>
         
@@ -648,341 +984,9 @@
 
 
   
-    <article id="post-SpringBean生命周期与循环依赖" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/12/SpringBean生命周期与循环依赖/">SpringBean生命周期与循环依赖</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/12/SpringBean生命周期与循环依赖/" class="archive-article-date">
-  	<time datetime="2020-03-12T03:28:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Spring-Bean-的生命周期（实例化-初始化-使用-销毁）"><a href="#Spring-Bean-的生命周期（实例化-初始化-使用-销毁）" class="headerlink" title="Spring Bean 的生命周期（实例化-初始化-使用-销毁）"></a>Spring Bean 的生命周期（实例化-初始化-使用-销毁）</h2><h2 id="在《Spring源码深度分析》一书中"><a href="#在《Spring源码深度分析》一书中" class="headerlink" title="在《Spring源码深度分析》一书中"></a>在《Spring源码深度分析》一书中</h2><h3 id="实例化Bean的流程"><a href="#实例化Bean的流程" class="headerlink" title="实例化Bean的流程"></a>实例化Bean的流程</h3><p>在org.springframework.beans.factory.support.AbstractBeanFactory#getBean方法他其实是空壳方法真正干活的是<br>org.springframework.beans.factory.support.AbstractBeanFactory#doGetBean，这分为一下九个步骤</p>
-<ul>
-<li>1解析Bean的别名，例如FactoryBean获取自身实例时要加一个&amp;符号，transformedBeanName(name)可以去除&amp;符号</li>
-<li>2尝试去缓存池中获取对象（第一次创建Bean缓存池中没有对象），（3）如果存在就可以跳过以下步骤开始实例化bean，调用的是getObjectForBeanInstance()</li>
-<li>4如果出现循环依赖再判断Bean是不是单例的，原型的就抛出异常</li>
-<li>5判断容器是否有父工厂如果存在就由父工厂加载</li>
-<li>6合并父类Bean定义检查Bean定义是否是抽象的</li>
-<li>7做dependsOn的依赖检查获取依赖的bean对象</li>
-<li>8针对不同的scope调用createbean()创建bean。调用getSingleton()方法再用beforeSigletonCreation标识当前Bean正在被创建</li>
-<li>9类型转换。</li></ul>
-        
-          <a class="article-more-a" href="/2020/03/12/SpringBean生命周期与循环依赖/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/12/SpringBean生命周期与循环依赖/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-REST" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/10/REST/">REST</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/10/REST/" class="archive-article-date">
-  	<time datetime="2020-03-10T00:17:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Request—&gt;DispatcherServlet—&gt;ControllerMapping—&gt;Controller&lt;—&gt;ViewResolver&lt;—&gt;View&lt;—&gt;Cilent</p>
-<h1 id="REST定义"><a href="#REST定义" class="headerlink" title="REST定义"></a>REST定义</h1><p>Rest就是将资源的状态以最适合服务端或者客户端的形式从服务器端转移到客户端<br>REST资源通过URL进行识别和定位。REST的动作有CRUD分别为POST、GET、PUT或PATCH、DELETE</p>
-<p>内容协商（Content negotiation）：选择一个视图，它能够将模型渲染为呈现给客户端的表述形式；<br>消息转换器（Message conversion）：通过一个消息转换器将控制器所返回的对象转换为呈现给客户端的表述形式。</p>
-<h1 id="内容协商"><a href="#内容协商" class="headerlink" title="内容协商"></a>内容协商</h1><h2 id="确定请求的媒体类型"><a href="#确定请求的媒体类型" class="headerlink" title="确定请求的媒体类型"></a>确定请求的媒体类型</h2>
-        
-          <a class="article-more-a" href="/2020/03/10/REST/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/10/REST/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-doGetBean()方法分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/06/doGetBean()方法分析/">doGetBean()方法分析</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/06/doGetBean()方法分析/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:28:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="在AbstractBeanFactory中的doGetBean-方法分析"><a href="#在AbstractBeanFactory中的doGetBean-方法分析" class="headerlink" title="在AbstractBeanFactory中的doGetBean()方法分析"></a>在AbstractBeanFactory中的doGetBean()方法分析</h1>
-        
-          <a class="article-more-a" href="/2020/03/06/doGetBean()方法分析/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/06/doGetBean()方法分析/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-DefaultListableBeanFactory" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/06/DefaultListableBeanFactory/">DefaultListableBeanFactory继承结构</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/06/DefaultListableBeanFactory/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:28:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="DefaultListableBeanFactory：主要对bean注册后的处理"><a href="#DefaultListableBeanFactory：主要对bean注册后的处理" class="headerlink" title="DefaultListableBeanFactory：主要对bean注册后的处理"></a>DefaultListableBeanFactory：主要对bean注册后的处理</h2><p>这个类被XMLBeanFactory继承，大学第一次接触Spring的Demo用的</p>
-        
-          <a class="article-more-a" href="/2020/03/06/DefaultListableBeanFactory/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/06/DefaultListableBeanFactory/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1077,19 +1081,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1101,7 +1105,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
