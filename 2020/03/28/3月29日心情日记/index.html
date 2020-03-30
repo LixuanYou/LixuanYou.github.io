@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>volatile与synchronized的区别 | 游理轩的博客</title>
+  <title>心理画像分析 | 游理轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="volatile与synchronized的区别1、锁提供了两种主要特性：互斥（mutual exclusion） 和可见性（visibility）。 　　互斥即一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议，这样，一次就只有一个线程能够使用该共享数据。 　　可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 ——">
-<meta name="keywords" content="技术,Java基础">
+  <meta name="description" content="不会做没有准备的事情，但是任何成功率超过50%的事情又热衷于冒险；任何事情我都会做好最坏的打算，坚信人性本恶论，所以对于不熟悉的人以欺诈者心理去揣测，这应该是自我保护机制的一种。这导致如果在不熟悉的时候冒犯我，几乎就不会再交流，话不投机半句多；最近遇到一位就是YQ的姨妹。 不喜欢有人在我身后，在陌生的环境会有如芒在背的感觉，如果熟悉之后会好很多。这个习惯我很早就发现了，用心理学解释就是缺乏安全感，">
+<meta name="keywords" content="随笔">
 <meta property="og:type" content="article">
-<meta property="og:title" content="volatile与synchronized的区别">
-<meta property="og:url" content="http://yoursite.com/2020/03/26/volatile与synchronized的区别/index.html">
+<meta property="og:title" content="心理画像分析">
+<meta property="og:url" content="http://yoursite.com/2020/03/28/3月29日心情日记/index.html">
 <meta property="og:site_name" content="游理轩的博客">
-<meta property="og:description" content="volatile与synchronized的区别1、锁提供了两种主要特性：互斥（mutual exclusion） 和可见性（visibility）。 　　互斥即一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议，这样，一次就只有一个线程能够使用该共享数据。 　　可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 ——">
+<meta property="og:description" content="不会做没有准备的事情，但是任何成功率超过50%的事情又热衷于冒险；任何事情我都会做好最坏的打算，坚信人性本恶论，所以对于不熟悉的人以欺诈者心理去揣测，这应该是自我保护机制的一种。这导致如果在不熟悉的时候冒犯我，几乎就不会再交流，话不投机半句多；最近遇到一位就是YQ的姨妹。 不喜欢有人在我身后，在陌生的环境会有如芒在背的感觉，如果熟悉之后会好很多。这个习惯我很早就发现了，用心理学解释就是缺乏安全感，">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-26T07:51:01.442Z">
+<meta property="og:updated_time" content="2020-03-30T07:14:59.560Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="volatile与synchronized的区别">
-<meta name="twitter:description" content="volatile与synchronized的区别1、锁提供了两种主要特性：互斥（mutual exclusion） 和可见性（visibility）。 　　互斥即一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议，这样，一次就只有一个线程能够使用该共享数据。 　　可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 ——">
+<meta name="twitter:title" content="心理画像分析">
+<meta name="twitter:description" content="不会做没有准备的事情，但是任何成功率超过50%的事情又热衷于冒险；任何事情我都会做好最坏的打算，坚信人性本恶论，所以对于不熟悉的人以欺诈者心理去揣测，这应该是自我保护机制的一种。这导致如果在不熟悉的时候冒犯我，几乎就不会再交流，话不投机半句多；最近遇到一位就是YQ的姨妹。 不喜欢有人在我身后，在陌生的环境会有如芒在背的感觉，如果熟悉之后会好很多。这个习惯我很早就发现了，用心理学解释就是缺乏安全感，">
   
     <link rel="alternative" href="/atom.xml" title="游理轩的博客" type="application/atom+xml">
   
@@ -155,45 +155,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-volatile与synchronized的区别" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-3月29日心情日记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      volatile与synchronized的区别
+      心理画像分析
     </h1>
   
 
         
-        <a href="/2020/03/26/volatile与synchronized的区别/" class="archive-article-date">
-  	<time datetime="2020-03-26T07:49:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-26</time>
+        <a href="/2020/03/28/3月29日心情日记/" class="archive-article-date">
+  	<time datetime="2020-03-28T02:06:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>volatile与synchronized的区别<br>1、锁提供了两种主要特性：互斥（mutual exclusion） 和可见性（visibility）。</p>
-<p>　　互斥即一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议，这样，一次就只有一个线程能够使用该共享数据。</p>
-<p>　　可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 —— 如果没有同步机制提供的这种可见性保证，线程看到的共享         变量可能是修改前的值或不一致的值，这将引发许多严重问题。（竞态条件）</p>
-<p>2、在Java中,为了保证多线程读写数据时保证数据的一致性,可以采用两种方式：</p>
-<p>　 同步：如用synchronized关键字,或者使用锁对象</p>
-<p>　 使用volatile关键字：用一句话概括volatile,它能够使变量在值发生改变时能尽快地让其他线程知道。</p>
-<p>3、volatile详解</p>
-<p>　当一个变量定义为volatile后，它将具备两种特性：1. 可见性，2. 禁止指令重排序。</p>
-<pre><code>首先，我们要意识到有这样的现象：编译器为了加快程序运行速度，对一些变量的写操作会现在寄存器或CPU缓存上进行，最后写入内存。而在这个过程中，变量的新值对其它线程是不可见的。
-
-可见性：当对volatile标记的变量进行修改时，会将其它缓存中存储的修改前的变量清除，然后重新读取。这里从哪读尚未明确，一般来说应该是先在进行修改的缓存A中修改为新值，然后通知其它缓存清除掉此变量，当其它缓存B中的线程读取此变量时，会向总线发送消息，这是存储新值的缓存A获取到消息，将新值传给B，最后将新值写入内存。</code></pre><p>volatile的作用是被其修饰的变量每次刷新时，都会刷新上述步骤。</p>
-<p>4、volatile与synchronized</p>
-<p>   1）volatile本质是告诉JVM当前变量在寄存器中的值是不确定的，需要从主存中读取。synchronized则是锁定当前变量，只有当前线程可以访问该变量，其它线程被阻塞。</p>
-<p>   2）volatile仅能使用在变量级别，synchronized则可以使用在变量、方法。</p>
-<p>   3）volatile仅能实现变量修改的可见性，而synchronized则可以保证变量修改的可见性和原子性。《Java编程思想》上说，定义long或double时，如果使用volatile关键字(简单的赋值与返回操作)，就会获得原子性。(常规状态下，这两个变量由于其长度，其操作不是原子的)</p>
-<p>   4）volatile不会造成线程阻塞，synchronized会造成线程阻塞。</p>
-<p>   5）使用volatile而不是synchronized的唯一安全情况是类中只有一个可变的域。</p>
-<p>5、当一个域的值依赖于它之前的值时，volatile就无法工作了，如n=n+1,n++等。如果某个域的值受到其他域的值的限制，那么volatile也无法工作，如Range类的lower和upper边界，必须遵循lower&lt;=upper的限制。</p>
-<p>6、使用volatile而不是synchronized的唯一安全的情况是类中只有一个可变的域。</p>
+        <p>不会做没有准备的事情，但是任何成功率超过50%的事情又热衷于冒险；任何事情我都会做好最坏的打算，坚信人性本恶论，所以对于不熟悉的人以欺诈者心理去揣测，这应该是自我保护机制的一种。这导致如果在不熟悉的时候冒犯我，几乎就不会再交流，话不投机半句多；最近遇到一位就是YQ的姨妹。</p>
+<p>不喜欢有人在我身后，在陌生的环境会有如芒在背的感觉，如果熟悉之后会好很多。这个习惯我很早就发现了，用心理学解释就是缺乏安全感，这与原生家庭破裂有关，非常希望构建一个温馨的家庭，把我父亲没做好的做好。</p>
+<p>以后少用“沉没成本”绑架他人，虽然你是获利者但是别人与你相处是会不舒服的。错误归因，容易把成功的原因归结于内因，失败的原因归结于外因。</p>
 
       
 
@@ -228,11 +212,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
@@ -288,7 +268,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/26/volatile与synchronized的区别/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/28/3月29日心情日记/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -302,18 +282,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/26/TCP/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/03/30/消息队列的特点/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          TCP
+          消息队列的特点
         
       </div>
     </a>
   
   
-    <a href="/2020/03/25/MySQL索引/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">MySQL索引</div>
+    <a href="/2020/03/28/MySQL数据结构/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL数据结构</div>
       <i class="icon-circle-right"></i>
     </a>
   
