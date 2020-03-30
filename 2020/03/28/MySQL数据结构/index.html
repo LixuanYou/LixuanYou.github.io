@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/28/MySQL数据结构/Record%E8%8A%82%E7%82%B9%E7%9A%84%E9%81%8D%E5%8E%86.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/28/MySQL数据结构/%E6%95%B4%E4%BD%93%E7%9A%84%E6%9F%A5%E6%89%BE%E8%BF%87%E7%A8%8B.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/28/MySQL数据结构/%E6%A0%91%E5%BD%A2%E6%9F%A5%E6%89%BE%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:updated_time" content="2020-03-30T07:22:18.549Z">
+<meta property="og:updated_time" content="2020-03-30T07:24:22.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL数据结构">
 <meta name="twitter:description" content="基础结构Page是Innodb存储的最基本结构，也是Innodb磁盘管理的最小单位，与数据库相关的所有内容都存储在Page结构里。Page分为几种类型：数据页（B-Tree Node），Undo页（Undo Log Page），系统页（System Page），事务数据页（Transaction System Page）等；每个数据页的大小为16kb，每个Page使用一个32位（一位表示的就是0或">
@@ -196,7 +196,6 @@
 </ol>
 <p>这四种节点Record格式上有差异，但是内部都存储着Next指针指向下一个Record</p>
 <p><img src="/2020/03/28/MySQL数据结构/page%E8%AF%A6%E7%BB%86.png" alt></p>
-<!--more-->
 <h3 id="User-Record"><a href="#User-Record" class="headerlink" title="User Record"></a>User Record</h3><p>User Record在Page内以单链表的形式存在，最初数据是按照插入的先后顺序排列的，但是随着新数据的插入和旧数据的删除，数据物理顺序发生改变，但是他们依然保持着逻辑上的先后顺序：<br><img src="/2020/03/28/MySQL数据结构/Page%E9%A1%B5%E5%86%85%E6%95%B0%E6%8D%AE%E4%B9%B1%E5%BA%8F%E5%88%86%E5%B8%83.png" alt><br>把User Record组织形式和若干Page组织起来，就得到了稍微完整的形式：<br><img src="/2020/03/28/MySQL数据结构/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E5%92%8C%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8.png" alt><br>如何定位一个Record：<br>通过根节点开始遍历一个索引的B+树，通过各层非叶子节点达到底层的叶子节点的数据页（Page），这个Page内部存放的都是叶子节点</p>
 <p>在Page内部从“Infimum”节点开始遍历单链表（遍历一般会被优化），如果找到键则返回。如果遍历到了“Supremum”，说明当前Page里没有合适的键，这时借助Page页内部的next page指针，跳转到下一个page继续从“Infmum”开始逐个查找<br><img src="/2020/03/28/MySQL数据结构/Record%E8%8A%82%E7%82%B9%E7%9A%84%E9%81%8D%E5%8E%86.png" alt></p>
 <h3 id="User-Record内部的数据"><a href="#User-Record内部的数据" class="headerlink" title="User Record内部的数据"></a>User Record内部的数据</h3><p>User Record内部存储了四种格式的数据：</p>
@@ -479,7 +478,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
+                <a href="javascript:void(0)" class="js-tag color2">java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,7 +494,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java基础</a>
+                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
               </li>
              
               <li class="article-tag-list-item">
