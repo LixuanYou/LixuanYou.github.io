@@ -17,7 +17,8 @@
 <meta property="og:description" content="第一部分 Java中的几种基本类型，各占多少字节？  byte:1字节 默认0 -128–127short：2字节 默认0 取值-32758–32767int：4字节 默认0 取值-2147483648-2147483647long：8字节 默认0char：2字节float：4字节double：8字节boolean： 4字节  抽象类和接口的区别？  抽象类只能被继承一次，但是可以实现多个接口接口">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2020/03/24/Java练习题/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB.PNG">
-<meta property="og:updated_time" content="2020-03-30T02:08:31.870Z">
+<meta property="og:image" content="http://yoursite.com/2020/03/24/Java练习题/explain%E5%AD%97%E6%AE%B5.png">
+<meta property="og:updated_time" content="2020-03-31T03:08:00.427Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java练习题">
 <meta name="twitter:description" content="第一部分 Java中的几种基本类型，各占多少字节？  byte:1字节 默认0 -128–127short：2字节 默认0 取值-32758–32767int：4字节 默认0 取值-2147483648-2147483647long：8字节 默认0char：2字节float：4字节double：8字节boolean： 4字节  抽象类和接口的区别？  抽象类只能被继承一次，但是可以实现多个接口接口">
@@ -64,7 +65,7 @@
 			
 				<li><a href="/tags/技术/">技术文章</a></li>
 	        
-				<li><a href="/tags/随笔/">心情随笔</a></li>
+				<li><a href="/tags/随笔/">随笔与诗集</a></li>
 	        
 			</ul>
 		</nav>
@@ -142,7 +143,7 @@
 				
 					<li style="width: 50%"><a href="/tags/技术/">技术文章</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">心情随笔</a></li>
+					<li style="width: 50%"><a href="/tags/随笔/">随笔与诗集</a></li>
 		        
 				</ul>
 			</nav>
@@ -269,7 +270,22 @@
 <ul>
 <li>讲一讲你比较熟悉的消息队列？有什么优缺点？</li>
 </ul>
-<p>消息队列比较核心应用的有3个：解耦、异步、削峰。</p>
+<p>消息队列比较核心应用的有3个：解耦、异步、削峰。<br>优点：</p>
+<ul>
+<li><p>1、对结构复杂、设计系统多的操作进行解耦操作，降低系统的操作复杂度、降低系统的维护成本。</p>
+</li>
+<li><p>2、对一个可以进行异步操作的一些系统操作进行异步，减小操作的响应时间，提供更好的用户体验。</p>
+</li>
+<li><p>3、可对高流量进行削峰，保证系统的平稳运行。<br>缺点：</p>
+</li>
+</ul>
+<ol>
+<li>系统可用性降低<br>系统引入的外部依赖越多,系统越脆弱。每一个依赖出问题都会导致整个系统的崩溃。</li>
+<li>系统复杂度提高<br>需要考虑MQ的各种情况，比如：消息的重复消费、消息丢失、保证消费顺序等等……</li>
+<li>一致性问题<br>A 系统处理完了直接返回成功了，人都以为你这个请求就成功了；但是问题是，要是 BCD 三个系统那里，BD 两个系统写库成功了，结果 C 系统写库失败了，咋整？你这数据就不一致了。</li>
+</ol>
+<p>rabbitMQ(延迟最低):性能极好、延时很低，吞吐量万级、MQ功能完备，管理界面非常好，社区活跃。缺：吞吐量较低，erlang语音开发不容易进行定制开发，集群动态扩展麻烦    </p>
+<p>RocketMQ（topic数量对吞吐量的影响小/支持大量topic）:接口简单易用，吞吐量大，分布式扩展方便，支持大规模的topic、支持复杂的业务场景，可以基于源码进行定制开发。缺：接口不是按照标准JMS规范走的，有的系统迁移要修改大量的代码，技术有被抛弃的风险</p>
 <ul>
 <li>谈一谈HTTP1.0、HTTP1.1与HTTP2.0的区别<br>HTTP1.0与HTTP1.1的主要区别</li>
 </ul>
@@ -288,29 +304,172 @@
 <li><p>服务器推送<br> 当我们对支持HTTP2.0的web server请求数据的时候，服务器会顺便把一些客户端需要的资源一起推送到客户端，免得客户端再次创建连接发送请求到服务器端获取。这种方式非常合适加载静态资源。</p>
 <pre><code>服务器端推送的这些资源其实存在客户端的某处地方，客户端直接从本地加载这些资源就可以了，不用走网络，速度自然是快很多的。服务端推送过来的资源，会统一放在一个网络与http缓存之间的一个地方，在这里可以理解为“本地”。当客户端把index.html解析完以后，会向本地请求这个资源。由于资源已经本地化，所以这个请求的速度非常快，这也是服务端推送性能优势的体现之一。</code></pre><h2 id="第三部分"><a href="#第三部分" class="headerlink" title="第三部分"></a>第三部分</h2></li>
 </ol>
-<p>1、HashMap中key存整数123,和存字符串“123”，哪个更好？说明理由？</p>
-<p>HashMap只能是引用类型，所有是字符串“123” 。</p>
-<p>2、异常处理机制：throw和throws的区别？哪些异常适合抛出来？你是怎么处理异常的？比如IO异常和数据库异常是怎么处理的？</p>
-<p>3、泛型用过吗？说下你使用的场景？Java泛型是编译时还是运行时的特性？</p>
-<p>4、多线程使用场景？谈一下你对线程安全的理解？</p>
-<p>5、线程你是怎么用的？</p>
+<ul>
+<li>1、HashMap中key存整数123,和存字符串“123”，哪个更好？说明理由？</li>
+</ul>
+<p>HashMap只能是引用类型，因为String对象的hashCode()值是根据String对象的内容计算的，并不是根据对象的地址计算。设计 hashCode() 时最重要的因素就是对同一个对象调用 hashCode() 都应该产生相同的值</p>
+<ul>
+<li>2、异常处理机制：throw和throws的区别？哪些异常适合抛出来？你是怎么处理异常的？比如IO异常和数据库异常是怎么处理的？</li>
+</ul>
+<ol>
+<li>throw是真实抛出一个异常，一般写在代码块内部，throws是一种声明，表示可能会抛出一个异常，并不一定会发生，写在方法函数头</li>
+<li>throws 一般是检查型异常，如IOExcetion等，简单点说，编译的时候就有需要声明或捕获的异常，表示此方法不处理异常，而交给方法调用处进行处理 。throw 一般是抛出运行时异常（即该异常为RuntimeException的子类）。并且方法一般不需要throws Exception</li>
+<li>IO异常是检测型异常，检查型异常就一定要捕获</li>
+</ol>
+<ul>
+<li>3、泛型用过吗？说下你使用的场景？Java泛型是编译时还是运行时的特性？</li>
+</ul>
+<p>泛型：把类型明确的工作推迟到创建对象或调用方法的时候才去明确的特殊的类型<br>泛型只是在java的编译期会产生错误但是在java的运行期（已经生成字节码文件后）是会被擦除的，这个期间并没泛型的存在</p>
+<ul>
+<li>4、多线程使用场景？谈一下你对线程安全的理解？</li>
+</ul>
+<p>多线程处理后台任务，通常会使用定时器来开启后台线程处理，比如有些数据表的状态我需要定时去修改、我们搜索引擎里面的数据需要定时去采集、定时生成统计信息、定时清理上传的垃圾文件等。<br>多线程异步处理任务</p>
+<p>当我们需要处理一个耗时操作并且不要立刻知道处理结果时，我们可以开启后台线程异步处理该耗时操作，这样可以提高用户体验。<br>多线程分布式计算。当我们处理一个比较大的耗时任务时，我们可以将该任务切割成多个小的任务，然后开启多个线程同时处理这些小的任务比如下载操作可以使用多线程下载提高下载速度；清理文件时，开启多个线程，按目录并行处理等等。</p>
+<ul>
+<li>5、线程你是怎么用的？</li>
+</ul>
 <p>这个基本是要往线程池上靠，线程池的几种创建方式及参数等都要知道的</p>
 <p>6、知道线程通信吧？谈下线程通信的机制？</p>
-<p>7、Java 8 新特性有用过哪些？Stream有用过吗？</p>
-<p>8、谈下平时工作中mysql的优化经验？</p>
-<p>9、Explain查看Sql执行计划查出来有哪些字段？</p>
-<p>10、sql执行计划比较快但是实际sql执行比较慢，一般都是什么原因？</p>
-<p>11、有过分表分库的经验吗？</p>
-<p>12、springboot、springcloud项目中有使用过吗？</p>
-<p>13、Redis缓存有用过吗？你们项目中是怎么用的？</p>
-<p>14、说下缓存击穿和缓存雪崩？<br>缓存雪崩：是指在某一个时间段，缓存集中过期失效。<br>为对象进行分类，为不同的分类设置不同缓存周期。再为同一类分类加上一个随机因子。这样能尽可能分散缓存过期时间<br>15、Redis集群是如何搭建的？</p>
-<p>16、Redis分布式锁有用过吗？说下原理？</p>
-<p>17、说下ActiveMq消息机制？你们项目中是怎么用的？</p>
-<p>18、ActiveMq怎么保证消息可靠传输？或者说你们是怎么保证消息不丢失的？</p>
-<p>19、Mq挂了，怎么恢复消息？</p>
-<p>20、说下Nginx的基础配置？负载均衡怎么做的？</p>
-<p>21、Maven、Grandle、git有用过吗？</p>
-<p>22、有没有做过报表相关的业务？从数据采集、清洗、分析整理到输出？</p>
+<p>7、Java 8 新特性有用过哪些？Stream有用过吗？<br>Java8 函数式接口− 函数式接口(Functional Interface)就是一个有且仅有一个抽象方法，但是可以有多个非抽象方法的接口。函数式接口可以被隐式转换为 lambda 表达式。</p>
+<p>Lambda 表达式 − Lambda 允许把函数作为一个方法的参数（函数作为参数传递到方法中）。</p>
+<p>默认方法 − 默认方法就是一个在接口里面有了一个实现的方法。</p>
+<p>方法引用 − 方法引用提供了非常有用的语法，可以直接引用已有Java类或对象（实例）的方法或构造器。与lambda联合使用，方法引用可以使语言的构造更紧凑简洁，减少冗余代码。</p>
+<p>Stream API −可以让你以一种声明的方式处理数据，Stream 使用一种类似用 SQL 语句从数据库查询数据的直观方式来提供一种对 Java 集合运算和表达的高阶抽象。这种风格将要处理的元素集合看作一种流， 流在管道中传输， 并且可以在管道的节点上进行处理， 比如筛选， 排序，聚合等。<br>元素流在管道中经过中间操作（intermediate operation）的处理，最后由最终操作(terminal operation)得到前面处理的结果。<br>Date Time API − 加强对日期与时间的处理。<br>Optional 类 − Optional 类已经成为 Java 8 类库的一部分，用来解决空指针异常。</p>
+<ul>
+<li>8、谈下平时工作中mysql的优化经验？</li>
+</ul>
+<ol>
+<li>缓存。</li>
+<li>用LIMIT</li>
+<li>避免select*</li>
+<li>为每张表设置一个id作为其主键。这个id最好是一个int类型的，推荐使用unsigned，并将其设置为自动增加auto_increment</li>
+<li>使用enum而不是varchar。实际上，enum保存的是tinyint类型，但其显示为字符串。用这个字段来作一些选项列表就变得很合适了。比如“性别”、“状态”或“所属部门”字段等，你知道这些字段的值是固定且有限的，那么可以考虑使用enum。</li>
+<li>尽可能的使用not null。</li>
+<li>选择正确的存储引擎。myisam适合一些需要大量查询的应用。但其对于大量写操作并不是很好。因为它使用到的是表级锁，所以在你更新的时候，整张表都会被锁起来，试想一下，当你在更新某一行数据的时候，导致其他的行都无法被访问，这会不会  很难受呢。另外，myisam对于select count(*)这类操作的计算时很快的。而至于innodb而言，对于一些小的应用，它会比myisam还慢。它支持的是行级锁，于是写操作较多的时候，它会更加优秀。它还支持一些更高级的应用，比如说：事务。</li>
+<li>建立合适的索引</li>
+</ol>
+<ul>
+<li>9、Explain查看Sql执行计划查出来有哪些字段？</li>
+</ul>
+<p>我们写完一个sql语句，为了让它高性能地执行，一定要explain一下，查看一下它的执行计划。<br><img src="/2020/03/24/Java练习题/explain%E5%AD%97%E6%AE%B5.png" alt><br>其中最重要的字段为：id、type、key、rows、Extra<br>1、id：这是SELECT的查询序列号</p>
+<p>2、select_type：select_type就是select的类型，可以有以下几种：<br>    SIMPLE：简单SELECT(不使用UNION或子查询等)</p>
+<pre><code>PRIMARY：最外面的SELECT
+
+UNION：UNION中的第二个或后面的SELECT语句
+
+DEPENDENT UNION：UNION中的第二个或后面的SELECT语句，取决于外面的查询
+
+UNION RESULT：UNION的结果。
+
+SUBQUERY：子查询中的第一个SELECT
+
+DEPENDENT SUBQUERY：子查询中的第一个SELECT，取决于外面的查询
+
+DERIVED：导出表的SELECT(FROM子句的子查询)</code></pre><p>3、table：显示这一行的数据是关于哪张表的</p>
+<p>4、type：这列最重要，显示了连接使用了哪种类别,有无使用索引，是使用Explain命令分析性能瓶颈的关键项之一。<br>    结果值从好到坏依次是：</p>
+<pre><code>system &gt; const &gt; eq_ref &gt; ref &gt; fulltext &gt; ref_or_null &gt; index_merge &gt; unique_subquery &gt; index_subquery &gt; range &gt; index &gt; ALL
+
+一般来说，得保证查询至少达到range级别，最好能达到ref，否则就可能会出现性能问题。
+
+
+•system: const 的一种特例，表中只有一行数据
+•const: 当确定最多只会有一行匹配的时候，MySQL优化器会在查询前读取它而且只读取一次，因此非常快。使用主键查询往往就是 const 级别的，非常高效
+•eq_ref: 最多只返回一条符合条件的记录，通过使用在两个表有关联字段的时候
+•ref: 通过普通索引查询匹配的很多行时的类型
+•fulltext: 全文索引
+•ref_or_null: 跟 ref 类似的效果，不过多一个列不能 null 的条件
+•index_merge: 此连接类型表示使用了索引合并优化。在这种情况下，输出行中的 key 列包含使用的索引列表，key_len包含所用索引的最长 key 部分列表
+•unique_subquery: 在使用 in 查询的情况下会取代 eq_ref
+•range: 范围扫描，一个有限制的索引扫描。key 列显示使用了哪个索引。当使用=、 &lt;&gt;、&gt;、&gt;=、&lt;、&lt;=、IS NULL、&lt;=&gt;、BETWEEN 或者 IN 操作符，用常量比较关键字列时,可以使用 range
+•index: 类似全表扫描，只是扫描表的时候按照索引次序进行而不是行。主要优点就是避免了排序, 但是开销仍然非常大。如在Extra列看到Using index，说明正在使用覆盖索引，只扫描索引的数据，它比按索引次序全表扫描的开销要小很多
+•ALL: 全表扫描</code></pre><p>5、possible_keys：列指出MySQL能使用哪个索引在该表中找到行</p>
+<p>6、key：显示MySQL实际决定使用的键（索引）。如果没有选择索引，键是NULL</p>
+<p>7、key_len：显示MySQL决定使用的键长度。如果键是NULL，则长度为NULL。使用的索引的长度。在不损失精确性的情况下，长度越短越好</p>
+<p>8、ref：显示使用哪个列或常数与key一起从表中选择行。</p>
+<p>9、rows：显示MySQL认为它执行查询时必须检查的行数。</p>
+<p>10、Extra：包含MySQL解决查询的详细信息，也是关键参考项之一。<br>    Distinct<br>    一旦MYSQL找到了与行相联合匹配的行，就不再搜索了</p>
+<pre><code>Not exists
+MYSQL 优化了LEFT JOIN，一旦它找到了匹配LEFT JOIN标准的行，就不再搜索了
+
+Range checked for each
+
+Record（index map:#）
+没有找到理想的索引，因此对于从前面表中来的每一 个行组合，MYSQL检查使用哪个索引，并用它来从表中返回行。这是使用索引的最慢的连接之一
+
+Using filesort
+看 到这个的时候，查询就需要优化了。MYSQL需要进行额外的步骤来发现如何对返回的行排序。它根据连接类型以及存储排序键值和匹配条件的全部行的行指针来 排序全部行
+
+Using index
+列数据是从仅仅使用了索引中的信息而没有读取实际的行动的表返回的，这发生在对表 的全部的请求列都是同一个索引的部分的时候
+
+Using temporary
+看到这个的时候，查询需要优化了。这 里，MYSQL需要创建一个临时表来存储结果，这通常发生在对不同的列集进行ORDER BY上，而不是GROUP BY上
+
+Using where
+使用了WHERE从句来限制哪些行将与下一张表匹配或者是返回给用户。如果不想返回表中的全部行，并且连接类型ALL或index， 这就会发生，或者是查询有问题</code></pre><p>当type 显示为 “index” 时，并且Extra显示为“Using Index”， 表明使用了覆盖索引。</p>
+<ul>
+<li><p>10、sql执行计划比较快但是实际sql执行比较慢，一般都是什么原因？</p>
+</li>
+<li><p>11、有过分表分库的经验吗？<br>分表：减少单表单的记录条数，实现减少查询所要的时间，提高数据库的吞吐。拆分后表的数量一般为2的n次方。大部分数据都是与用户关联的，因此，用户id是最常用的分表字段。因为大部分查询都需要带上用户id，这样既不影响查询，又能够使数据较为均衡地分布到各个表中<br>分库：对数据库进行拆分，从而提高数据库写入能力。</p>
+</li>
+</ul>
+<p>分库分表的策略比前面的仅分库或者仅分表的策略要更为复杂，一种分库分表的路由策略如下：<br>    1. 中间变量 = user_id % (分库数量 * 每个库的表数量)</p>
+<pre><code>2. 库 = 取整数 (中间变量 / 每个库的表数量)
+
+3. 表 = 中间变量 % 每个库的表数量</code></pre><p>同样采用user_id作为路由字段，首先使用user_id 对库数量*每个库表的数量取模，得到一个中间变量；然后使用中间变量除以每个库表的数量，取整，便得到对应的库；而中间变量对每个库表的数量取模，即得到对应的表。</p>
+<p>分库分表策略详细过程如下：<br>假设将原来的单库单表order拆分成256个库，每个库包含1024个表，那么按照前面所提到的路由策略，对于user_id=262145 的访问，路由的计算过程如下：</p>
+<ol>
+<li><p>中间变量 = 262145 % (256 * 1024) = 1</p>
+</li>
+<li><p>库 = 取整 (1/1024) = 0</p>
+</li>
+<li><p>表 = 1 % 1024 = 1<br>这就意味着，对于user_id=262145 的订单记录的查询和修改，将被路由到第0个库的第1个order_1表中执行</p>
+</li>
+</ol>
+<ul>
+<li>12、springboot、springcloud项目中有使用过吗？</li>
+</ul>
+<ul>
+<li><p>13、Redis缓存有用过吗？你们项目中是怎么用的？<br>Redis缓存可以有效减少用户与数据库的交互。token</p>
+</li>
+<li><p>14、说下缓存击穿和缓存雪崩？</p>
+</li>
+</ul>
+<p>缓存击穿 ： 缓存中的key一般设有过期时间，如果某个key过期了，恰在这个时候，有大量的并发请求访问这个key，则这些请求都会到达DB,导致DB瞬间压力过大，压垮DB。 </p>
+<p>解决方案：<br>1.设置互斥锁，mutex。当缓存失效时不时立即去访问数据库，而是使用缓存工具的操作成功带返回值的操作，比如redis的setnx（set if not exit），memcache的add，利用setnx实现锁的效果。 </p>
+<p>缺点：可能造成死锁，或线程池阻塞 </p>
+<p>2.提前使用互斥锁 </p>
+<p>redist的超时时间是timeout1，value的超时时间是timeout2,timeout2 &lt; timeout1。 当timeout2超时时，延长timeout2的时间。并重新设置到redis中。 </p>
+<p>3.永远不过期 不设置过期时间。<br>把过期时间设到value里，如果快要过期了，通过一个后台异步线程进行缓存的构建，也就是逻辑过期。<br>缓存穿透 ： 指有人用数据库中不存在的某个key访问，数据库中没有该key值，自然缓存中也不会有，该请求会直接到数据库。如果对该key的并发访问量过大，则会压垮数据库。<br>解决方案： </p>
+<ol>
+<li><p>采用过滤器，把所有数据库中不可能存在的数据hash到一张大的bitmap中，如果key在数据库中不存在，将会被bitmap拦截。 </p>
+</li>
+<li><p>对查出为空的key，也在缓存中简历key value对，只是过期时间设的短一点，比如5minetes。<br>缓存雪崩<br>定义： 指缓存中大量的数据在同一时间失效，这时有大量的请求会被直接转到数据库，造成数据库的压力过大。<br>解决方案：</p>
+</li>
+<li><p>加锁，加队列，如mq，保证缓存的单线程写，避免key失效时，大量并发到达数据库。</p>
+</li>
+<li><p>把缓存失效时间错开。比如在原有失效时间上加一个随机值，比如1-5分钟，这样失效时间的重复率降低，降低集体失效的概率。<br>总结<br>缓存雪崩是大量key同时失效事件，而缓存击穿和缓存穿透都是都是单个key失效，大量请求访问该key；不同的是缓存击穿，key对应的value值存在于数据库中，而缓存穿透的key, value不存在数据库中，可能被用来恶意攻击。</p>
+</li>
+</ol>
+<ul>
+<li><p>15、Redis集群是如何搭建的？</p>
+</li>
+<li><p>16、Redis分布式锁有用过吗？说下原理？</p>
+</li>
+<li><p>17、说下ActiveMq消息机制？你们项目中是怎么用的？</p>
+</li>
+<li><p>18、ActiveMq怎么保证消息可靠传输？或者说你们是怎么保证消息不丢失的？</p>
+</li>
+<li><p>19、Mq挂了，怎么恢复消息？</p>
+</li>
+<li><p>20、说下Nginx的基础配置？负载均衡怎么做的？</p>
+</li>
+<li><p>21、Maven、Grandle、git有用过吗？</p>
+</li>
+<li><p>22、有没有做过报表相关的业务？从数据采集、清洗、分析整理到输出？</p>
+</li>
+</ul>
+<p>用生成日志的方法，而不是操作数据库</p>
 <h2 id="第四部分"><a href="#第四部分" class="headerlink" title="第四部分"></a>第四部分</h2><p>面向对象的特征有哪些方面？</p>
 <p>访问修饰符的区别</p>
 <p>String是基本数据类型吗？</p>
@@ -335,8 +494,7 @@
 <p>Servlet的运行过程？</p>
 <p>转发和重定向的区别</p>
 <p>JSP有哪些内置对象？作用分别是什么？</p>
-<p>加密解密算法有哪些？</p>
-<p>解决高并发与高负债有哪些方法</p>
+<p>加密解密算法有哪些？<br>MD5<br>解决高并发与高负载有哪些方法</p>
 <p>Spring中@Autowire与@Resource的区别</p>
 <p>SpringMVC有哪些组件</p>
 <p>@autowire和@RequestingMapping 的作用？</p>
@@ -599,6 +757,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">java基础</a>
               </li>
              
@@ -612,10 +774,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
               </li>
              
               <li class="article-tag-list-item">
