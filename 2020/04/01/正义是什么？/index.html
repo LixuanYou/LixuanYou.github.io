@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>doGetBean()方法分析 | 游理轩的博客</title>
+  <title>正义是什么？ | 游理轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在AbstractBeanFactory中的doGetBean()方法分析">
-<meta name="keywords" content="技术,spring源码">
+  <meta name="description" content="罗翔老师关于正义的哲学思辨，解开了我心中多年疑惑，重塑了我的价值观；罗翔老师的用词是驳斥而不是驳倒，所以当然可以有其他看法。一下是原文，共勉之： 我们所有的法律都要朝着善良去解释，都要朝着正义去解释，当然这里有一个基本性的问题：这个世界上存在正义吗？正义是人的发明还是人的发现？正义是主观的还是客观的？有很多人认为正义是主观的，正义是人类的一种设计。如果你持有这种观点，其实你就根本性的取消了正义这个">
+<meta name="keywords" content="随笔">
 <meta property="og:type" content="article">
-<meta property="og:title" content="doGetBean()方法分析">
-<meta property="og:url" content="http://yoursite.com/2020/03/06/doGetBean()方法分析/index.html">
+<meta property="og:title" content="正义是什么？">
+<meta property="og:url" content="http://yoursite.com/2020/04/01/正义是什么？/index.html">
 <meta property="og:site_name" content="游理轩的博客">
-<meta property="og:description" content="在AbstractBeanFactory中的doGetBean()方法分析">
+<meta property="og:description" content="罗翔老师关于正义的哲学思辨，解开了我心中多年疑惑，重塑了我的价值观；罗翔老师的用词是驳斥而不是驳倒，所以当然可以有其他看法。一下是原文，共勉之： 我们所有的法律都要朝着善良去解释，都要朝着正义去解释，当然这里有一个基本性的问题：这个世界上存在正义吗？正义是人的发明还是人的发现？正义是主观的还是客观的？有很多人认为正义是主观的，正义是人类的一种设计。如果你持有这种观点，其实你就根本性的取消了正义这个">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-23T11:52:12.378Z">
+<meta property="og:updated_time" content="2020-04-01T02:01:49.768Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="doGetBean()方法分析">
-<meta name="twitter:description" content="在AbstractBeanFactory中的doGetBean()方法分析">
+<meta name="twitter:title" content="正义是什么？">
+<meta name="twitter:description" content="罗翔老师关于正义的哲学思辨，解开了我心中多年疑惑，重塑了我的价值观；罗翔老师的用词是驳斥而不是驳倒，所以当然可以有其他看法。一下是原文，共勉之： 我们所有的法律都要朝着善良去解释，都要朝着正义去解释，当然这里有一个基本性的问题：这个世界上存在正义吗？正义是人的发明还是人的发现？正义是主观的还是客观的？有很多人认为正义是主观的，正义是人类的一种设计。如果你持有这种观点，其实你就根本性的取消了正义这个">
   
     <link rel="alternative" href="/atom.xml" title="游理轩的博客" type="application/atom+xml">
   
@@ -155,211 +155,34 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-doGetBean()方法分析" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-正义是什么？" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      doGetBean()方法分析
+      正义是什么？
     </h1>
   
 
         
-        <a href="/2020/03/06/doGetBean()方法分析/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:28:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+        <a href="/2020/04/01/正义是什么？/" class="archive-article-date">
+  	<time datetime="2020-04-01T02:00:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="在AbstractBeanFactory中的doGetBean-方法分析"><a href="#在AbstractBeanFactory中的doGetBean-方法分析" class="headerlink" title="在AbstractBeanFactory中的doGetBean()方法分析"></a>在AbstractBeanFactory中的doGetBean()方法分析</h1><a id="more"></a>
-<pre><code>    protected &lt;T&gt; T doGetBean(final String name, @Nullable final Class&lt;T&gt; requiredType,
-        @Nullable final Object[] args, boolean typeCheckOnly) throws BeansException {
-    //FactoryBean获取自身实例时要加一个&amp;符号，这行代码是去除&amp;符号
-    final String beanName = transformedBeanName(name);
-    Object bean;
+        <p>罗翔老师关于正义的哲学思辨，解开了我心中多年疑惑，重塑了我的价值观；罗翔老师的用词是驳斥而不是驳倒，所以当然可以有其他看法。一下是原文，共勉之：</p>
+<p>我们所有的法律都要朝着善良去解释，都要朝着正义去解释，当然这里有一个基本性的问题：这个世界上存在正义吗？正义是人的发明还是人的发现？正义是主观的还是客观的？有很多人认为正义是主观的，正义是人类的一种设计。如果你持有这种观点，其实你就根本性的取消了正义这个概念。因为正义既然只是人的设计，那此一时彼一时也，当然这是人类历史最古老的争论。早在古希腊柏拉图时代就探讨过，人类社会有没有正义这一问题，当时有三派观点：</p>
+<p>柏拉图假苏格拉底之口认为，正义是客观存在的。色拉叙马霍斯认为，正义简直搞笑，只是相对的，没有绝对的，也没有绝对的错，强权即真理。持怀疑论，我不知道有没有正义，也许有也许没有，我表示怀疑。但在我个人看来，在理想国中，柏拉图以非常严谨的逻辑彻底驳斥了相对主义，正义一定是客观存在的，用我个人理解，至少在逻辑上，经验上，类比上，我们认为正义一定是客观存在的。</p>
+<p>首先，从逻辑上，我们是不是经常会感觉有些事情不正义？有没有这种感觉？当你认为一件事不正义的时候，一定在逻辑上有一个反对面，叫正义。因为如果没有正义这个概念，那你认为一件事情不正义的话是毫无意义的。如果我们认为一件事不公平，那一定有与它相对应的公平这个概念。当你认为这个世界没有绝对的对错时，那么你在逻辑上就已经犯下了一个重大谬论，因为当你认为没有什么是绝对的对错时，这个观点本身就是绝对的，你本身就在主张一种绝对的观点。</p>
+<p>其次，从经验上，在经验上，就如刚才所提，我们每个人都会经验到一些不正义的事情，我们内心深处都渴望有正义概念的存在。人的所有的感觉一定有其所投射的客观对象，我渴了，一定有水存在；我饿了，一定有食物的存在；我有性欲，一定有性欲所指向的对象。那么人类为什么有对公平的感觉，因为一定存在一个公平所指向的对象，否则这种感觉是没有意义的。</p>
+<p>最后，类比上，我一直在思考一个问题，大家能画出圆这个概念吗，你能画出一个完美的圆吗，大家觉得完美的圆这个概念存在吗？圆这个概念是人的发明还是认得发现？是主观的还是客观的？是客观的，但所有人画的圆都是不圆的，用任何仪器所画的圆都是不圆的，但是圆这个概念是存在的。我们不断地追求一个完美的圆，但我们在现实中永远画不出完美的圆，我们画不出完美的圆不代表圆这个概念不存在，因为它是我们前进的方向。我们虽然看不到正义，但不代表正义这概念不存在，它依然是我们前进的方向。</p>
+<p>除了以上三种理论之外，还有认识论可以说明正义是客观存在的。有很多人陷入一种怀疑主义，认为世界上可能没有正义。那我问大家一个问题，大家所有的认识论来源于“理性”还是来源于“相信”？怀疑主义是理性时代的咒诅。大家去过南极洲吗？这世界上有南极洲吗？你凭什么认为有？真的客观存在吗？你去过吗？是否有可能是身边的人组织了大大的阴谋骗你们说世界上有南极洲。我国历史上有秦朝吗？你凭什么认为有？你去过吗？司马迁写得史记会不会是骗你的呢？因此，如果你持怀疑主义的立场，你所有的认识论都是不稳固的，理性不是唯一的认识论依据。此外，若你的认识论基础是怀疑主义，你一定要思考一个逻辑上的问题：你所怀疑的一切难道不是值得怀疑的吗？我们人类所有的思考其实都是建立在相信的基础上，我们相信存在正义，而正义一定是客观存在的。</p>
 
-    // Eagerly check singleton cache for manually registered singletons.
-    /**
-     * @author: LixuanYou
-     * @date: 15:56 2019/12/17
-     * 这个在getSingleton方法在初始化的时候会调用，在getBean的时候也会调用
-     * 也就是说Spring在初始化的时候先获取这个对象
-     * 判断这个对象是否被实例化好了（与一般情况下为空）
-     *
-     * 检查缓存中或者实例工厂中是否有对应实例
-     * 为什么首先会用这段代码
-     * 因为在创建单例bean的时候会存在依赖注入的情况，而且创建依赖的时候要避免循环依赖
-     * Spring创建bean的原则是不会等bean创建完成就会将创建bean的ObjectFactory提早曝光
-     * 就是将ObjectFactory加入缓存中，一旦有下一个bean创建时候需要依赖上一个bean则直接使用ObjectFactory
-     */
-    //直接尝试从缓存中或者singletonFactory中的ObjectFactory中获取
-    Object sharedInstance = getSingleton(beanName);
-    if (sharedInstance != null &amp;&amp; args == null) {
-        if (logger.isTraceEnabled()) {
-            if (isSingletonCurrentlyInCreation(beanName)) {
-                logger.trace(&quot;Returning eagerly cached instance of singleton bean &apos;&quot; + beanName +
-                        &quot;&apos; that is not fully initialized yet - a consequence of a circular reference&quot;);
-            }
-            else {
-                logger.trace(&quot;Returning cached instance of singleton bean &apos;&quot; + beanName + &quot;&apos;&quot;);
-            }
-        }
-        //返回对应的实例，有的时候存在诸如BeanFactory的情况并不是直接返回实例本身而是返回指定方法返回实例
-        bean = getObjectForBeanInstance(sharedInstance, name, beanName, null);
-    }
-
-    else {
-        // Fail if we&apos;re already creating this bean instance:
-        // We&apos;re assumably within a circular reference.
-        //只有在单例情况下才会解决循环依赖
-        if (isPrototypeCurrentlyInCreation(beanName)) {
-            throw new BeanCurrentlyInCreationException(beanName);
-        }
-
-        // Check if bean definition exists in this factory.
-        BeanFactory parentBeanFactory = getParentBeanFactory();
-        //如果BeanDefinitionMap中也就是在所有已经加载的类中不包括beanName则尝试从parentBeanFactory中检测
-        if (parentBeanFactory != null &amp;&amp; !containsBeanDefinition(beanName)) {
-            // Not found -&gt; check parent.
-            String nameToLookup = originalBeanName(name);
-            if (parentBeanFactory instanceof AbstractBeanFactory) {
-                return ((AbstractBeanFactory) parentBeanFactory).doGetBean(
-                        nameToLookup, requiredType, args, typeCheckOnly);
-            }
-            //到BeanFactory中去寻找
-            else if (args != null) {
-                // Delegation to parent with explicit args.
-                return (T) parentBeanFactory.getBean(nameToLookup, args);
-            }
-            else if (requiredType != null) {
-                // No args -&gt; delegate to standard getBean method.
-                return parentBeanFactory.getBean(nameToLookup, requiredType);
-            }
-            else {
-                return (T) parentBeanFactory.getBean(nameToLookup);
-            }
-        }
-        //如果不仅仅是做类型检测则是创建bean，这里要进行记录
-        if (!typeCheckOnly) {
-            markBeanAsCreated(beanName);
-        }
-        //将存储XML文件的GenericBeanDefinition转化为RootBeanDefinition
-        //如果指定BeanName是子Bean的话同时会合并父类Bean的相关属性
-
-        try {
-            final RootBeanDefinition mbd = getMergedLocalBeanDefinition(beanName);
-            checkMergedBeanDefinition(mbd, beanName, args);
-
-            // 确保当前bean依赖的bean的初始化。
-            String[] dependsOn = mbd.getDependsOn();
-            //如果存在依赖则需要递归实例化依赖的Bean
-            if (dependsOn != null) {
-                for (String dep : dependsOn) {
-                    if (isDependent(beanName, dep)) {
-                        throw new BeanCreationException(mbd.getResourceDescription(), beanName,
-                                &quot;Circular depends-on relationship between &apos;&quot; + beanName + &quot;&apos; and &apos;&quot; + dep + &quot;&apos;&quot;);
-                    }
-                    //将依赖调用缓存
-                    registerDependentBean(dep, beanName);
-                    try {
-                        getBean(dep);
-                    }
-                    catch (NoSuchBeanDefinitionException ex) {
-                        throw new BeanCreationException(mbd.getResourceDescription(), beanName,
-                                &quot;&apos;&quot; + beanName + &quot;&apos; depends on missing bean &apos;&quot; + dep + &quot;&apos;&quot;, ex);
-                    }
-                }
-            }
-
-            //实例化依赖的Bean以后可以mbd本身（MergedLocalBeanDefinition）
-            if (mbd.isSingleton()) {
-                sharedInstance = getSingleton(beanName, () -&gt; {
-                    try {
-                        return createBean(beanName, mbd, args);
-                    }
-                    catch (BeansException ex) {
-                        // Explicitly remove instance from singleton cache: It might have been put there
-                        // eagerly by the creation process, to allow for circular reference resolution.
-                        // Also remove any beans that received a temporary reference to the bean.
-                        destroySingleton(beanName);
-                        throw ex;
-                    }
-                });
-                bean = getObjectForBeanInstance(sharedInstance, name, beanName, mbd);
-            }
-
-            else if (mbd.isPrototype()) {
-                // It&apos;s a prototype -&gt; create a new instance.
-                Object prototypeInstance = null;
-                try {
-                    beforePrototypeCreation(beanName);
-                    prototypeInstance = createBean(beanName, mbd, args);
-                }
-                finally {
-                    afterPrototypeCreation(beanName);
-                }
-                bean = getObjectForBeanInstance(prototypeInstance, name, beanName, mbd);
-            }
-
-            else {
-                //指定Socope上实例化Bean
-                String scopeName = mbd.getScope();
-                final Scope scope = this.scopes.get(scopeName);
-                if (scope == null) {
-                    throw new IllegalStateException(&quot;No Scope registered for scope name &apos;&quot; + scopeName + &quot;&apos;&quot;);
-                }
-                try {
-                    /*这里用Lambda指代new ObjectFactory&lt;Object&gt;(){
-                        public Object getObject()throws BeanException
-                     }*/
-                    Object scopedInstance = scope.get(beanName, () -&gt; {
-                        beforePrototypeCreation(beanName);
-                        try {
-                            return createBean(beanName, mbd, args);
-                        }
-                        finally {
-                            afterPrototypeCreation(beanName);
-                        }
-                    });
-                    bean = getObjectForBeanInstance(scopedInstance, name, beanName, mbd);
-                }
-                catch (IllegalStateException ex) {
-                    throw new BeanCreationException(beanName,
-                            &quot;Scope &apos;&quot; + scopeName + &quot;&apos; is not active for the current thread; consider &quot; +
-                            &quot;defining a scoped proxy for this bean if you intend to refer to it from a singleton&quot;,
-                            ex);
-                }
-            }
-        }
-        catch (BeansException ex) {
-            cleanupAfterBeanCreationFailure(beanName);
-            throw ex;
-        }
-    }
-
-    // 检查所需的类型是否与实际bean实例的类型匹配。
-    if (requiredType != null &amp;&amp; !requiredType.isInstance(bean)) {
-        try {
-            T convertedBean = getTypeConverter().convertIfNecessary(bean, requiredType);
-            if (convertedBean == null) {
-                throw new BeanNotOfRequiredTypeException(name, requiredType, bean.getClass());
-            }
-            return convertedBean;
-        }
-        catch (TypeMismatchException ex) {
-            if (logger.isTraceEnabled()) {
-                logger.trace(&quot;Failed to convert bean &apos;&quot; + name + &quot;&apos; to required type &apos;&quot; +
-                        ClassUtils.getQualifiedName(requiredType) + &quot;&apos;&quot;, ex);
-            }
-            throw new BeanNotOfRequiredTypeException(name, requiredType, bean.getClass());
-        }
-    }
-    return (T) bean;
-}</code></pre>
       
 
       
@@ -393,11 +216,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
@@ -453,7 +272,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/06/doGetBean()方法分析/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/01/正义是什么？/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -467,18 +286,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/10/REST/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          REST
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/03/06/DefaultListableBeanFactory/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">DefaultListableBeanFactory继承结构</div>
+    <a href="/2020/03/31/poem/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">诗集不定期更新</div>
       <i class="icon-circle-right"></i>
     </a>
   

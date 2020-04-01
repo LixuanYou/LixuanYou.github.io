@@ -57,7 +57,7 @@
 			
 				<li><a href="/tags/技术/">技术文章</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔与诗集</a></li>
+				<li><a href="/tags/随笔/">诗集随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -135,7 +135,7 @@
 				
 					<li style="width: 50%"><a href="/tags/技术/">技术文章</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔与诗集</a></li>
+					<li style="width: 50%"><a href="/tags/随笔/">诗集随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -151,6 +151,93 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-redisSDS字符串" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/24/redisSDS字符串/">redisSDS字符串</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/24/redisSDS字符串/" class="archive-article-date">
+  	<time datetime="2020-03-24T01:54:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SDS与C字符串的区别"><a href="#SDS与C字符串的区别" class="headerlink" title="SDS与C字符串的区别"></a>SDS与C字符串的区别</h2><ul>
+<li><p>SDS的属性</p>
+<p>  free: 表示SDS的未使用空间<br>  len: 表示这个SDS字符串的长度<br>  buf: 是一个char类型的数组</p>
+</li>
+</ul>
+<p>区别在于：</p>
+<ul>
+<li><p>获取字符串的复杂度：C字符串必须遍历整个字符串，对遇到的每个字符进行计数，直到遇到代表字符串结尾的空字符为止，SDS只要访问len属性，就可以立即知道SDS的长度。</p></li></ul>
+        
+          <a class="article-more-a" href="/2020/03/24/redisSDS字符串/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/24/redisSDS字符串/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-日志与异常统一管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -890,92 +977,6 @@
 
 
   
-    <article id="post-redis服务器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/06/redis服务器/">redis服务器</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/06/redis服务器/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:23:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="redis服务器"><a href="#redis服务器" class="headerlink" title="redis服务器"></a>redis服务器</h1><h2 id="服务器处理命令请求的执行过程"><a href="#服务器处理命令请求的执行过程" class="headerlink" title="服务器处理命令请求的执行过程"></a>服务器处理命令请求的执行过程</h2><p>命令请求的执行过程：<br>发送、读取命令请求</p>
-<ol start="3">
-<li>命令执行器<br> 查找命令实现<br> 执行预备操作（单机模式下的10种服务器向客户端返回错误的情况）<br> 调用命令的实现函数：执行的命令在cmd，参数在argv[0],参数个数在argc中，所以实现命令函数只需要一个指向客户端状态的指针作为参数即可<br> 执行后续工作：四种情况</li>
-<li>将命令回复发送给客户端</li>
-<li>客户端接收并打印命令回复</li>
-</ol>
-<h2 id="ServerCron函数"><a href="#ServerCron函数" class="headerlink" title="ServerCron函数"></a>ServerCron函数</h2>
-        
-          <a class="article-more-a" href="/2020/03/06/redis服务器/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/06/redis服务器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1089,11 +1090,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color2">技术，数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">技术，数据库</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
