@@ -8,20 +8,21 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Java练习题 | 游理轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第一部分 Java中的几种基本类型，各占多少字节？  byte:1字节 默认0 -128–127short：2字节 默认0 取值-32758–32767int：4字节 默认0 取值-2147483648-2147483647long：8字节 默认0char：2字节float：4字节double：8字节boolean： 4字节  抽象类和接口的区别？  抽象类只能被继承一次，但是可以实现多个接口接口">
+  <meta name="description" content="第一部分 Java中的几种基本类型，各占多少字节？  byte:1字节 默认0 -128–127 short：2字节 默认0 取值-32758–32767 int：4字节 默认0 取值-2147483648-2147483647 long：8字节 默认0 char：2字节 float：4字节 double：8字节 boolean： 4字节  抽象类和接口的区别？  一个类只能继承（extends）">
 <meta name="keywords" content="技术,练习题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java练习题">
 <meta property="og:url" content="http://yoursite.com/2020/03/24/Java练习题/index.html">
 <meta property="og:site_name" content="游理轩的博客">
-<meta property="og:description" content="第一部分 Java中的几种基本类型，各占多少字节？  byte:1字节 默认0 -128–127short：2字节 默认0 取值-32758–32767int：4字节 默认0 取值-2147483648-2147483647long：8字节 默认0char：2字节float：4字节double：8字节boolean： 4字节  抽象类和接口的区别？  抽象类只能被继承一次，但是可以实现多个接口接口">
+<meta property="og:description" content="第一部分 Java中的几种基本类型，各占多少字节？  byte:1字节 默认0 -128–127 short：2字节 默认0 取值-32758–32767 int：4字节 默认0 取值-2147483648-2147483647 long：8字节 默认0 char：2字节 float：4字节 double：8字节 boolean： 4字节  抽象类和接口的区别？  一个类只能继承（extends）">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2020/03/24/Java练习题/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB.PNG">
 <meta property="og:image" content="http://yoursite.com/2020/03/24/Java练习题/explain%E5%AD%97%E6%AE%B5.png">
-<meta property="og:updated_time" content="2020-04-01T01:46:30.436Z">
+<meta property="og:image" content="http://yoursite.com/2020/03/24/Java练习题/JVM%E5%8A%A0%E8%BD%BDclass.png">
+<meta property="og:updated_time" content="2020-04-07T04:14:40.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java练习题">
-<meta name="twitter:description" content="第一部分 Java中的几种基本类型，各占多少字节？  byte:1字节 默认0 -128–127short：2字节 默认0 取值-32758–32767int：4字节 默认0 取值-2147483648-2147483647long：8字节 默认0char：2字节float：4字节double：8字节boolean： 4字节  抽象类和接口的区别？  抽象类只能被继承一次，但是可以实现多个接口接口">
+<meta name="twitter:description" content="第一部分 Java中的几种基本类型，各占多少字节？  byte:1字节 默认0 -128–127 short：2字节 默认0 取值-32758–32767 int：4字节 默认0 取值-2147483648-2147483647 long：8字节 默认0 char：2字节 float：4字节 double：8字节 boolean： 4字节  抽象类和接口的区别？  一个类只能继承（extends）">
 <meta name="twitter:image" content="http://yoursite.com/2020/03/24/Java练习题/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB.PNG">
   
     <link rel="alternative" href="/atom.xml" title="游理轩的博客" type="application/atom+xml">
@@ -181,20 +182,32 @@
         <h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><ul>
 <li>Java中的几种基本类型，各占多少字节？</li>
 </ul>
-<p>byte:1字节 默认0 -128–127<br>short：2字节 默认0 取值-32758–32767<br>int：4字节 默认0 取值-2147483648-2147483647<br>long：8字节 默认0<br><em>char：2字节</em><br>float：4字节<br>double：8字节<br>boolean： 4字节</p>
+<p>byte:1字节 默认0 -128–127</p>
+<p>short：2字节 默认0 取值-32758–32767</p>
+<p>int：4字节 默认0 取值-2147483648-2147483647</p>
+<p>long：8字节 默认0</p>
+<p><em>char：2字节</em></p>
+<p>float：4字节</p>
+<p>double：8字节</p>
+<p>boolean： 4字节</p>
 <ul>
 <li>抽象类和接口的区别？</li>
 </ul>
-<p>抽象类只能被继承一次，但是可以实现多个接口<br>接口和抽象类必须实现其中的所有方法。抽象类中可以有非抽象的方法。<br>接口中的常量必须用 public static final修饰，并且需要给出初始值。所以实现类不能重新定义，也不能改变其值。<br>接口中的方法只能用public abstract修饰<br><img src="/2020/03/24/Java练习题/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB.PNG" alt="抽象类和接口的区别"></p>
+<p>一个类只能继承（extends）一个抽象类，但是可以实现(implements)多个接口</p>
+<p>接口和抽象类必须实现其中的所有方法。抽象类中可以有非抽象的方法。</p>
+<p>接口中的常量必须用 public static final修饰，并且需要给出初始值。所以实现类不能重新定义，也不能改变其值。</p>
+<p>接口中的方法只能用public abstract修饰</p>
+<p><img src="/2020/03/24/Java练习题/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB.PNG" alt="抽象类和接口的区别"></p>
 <a id="more"></a>
+
 <ul>
 <li>HashMap rehash的过程</li>
 </ul>
-<p>HashMap通过键值对的key来计算哈希码，不同的额对象可能有相同的哈希码，这种现象称为哈希冲突，HashMap中有一个bucket称为桶位数组，通过哈希码确定所在的bucket的位置，HashMap还通过链表的方式，将拥有相同哈希码的对象关联起来</p>
+<p>HashMap通过键值对的key来计算哈希码，不同的对象可能有相同的哈希码，这种现象称为哈希冲突，HashMap中有一个bucket称为桶位数组，通过哈希码确定所在的bucket的位置，HashMap还通过链表的方式，将拥有相同哈希码的对象链接起来。当hash表中的负载因子达到负载极限的时候就要开始rehash。默认的负载因子大小为0.75，也就是说，当一个map填满了75%的bucket时候，和其它集合类(如ArrayList等)一样，将会创建原来HashMap大小的两倍的bucket数组，来重新调整map的大小，并将原来的对象放入新的bucket数组中。这个过程叫作rehashing</p>
 <ul>
 <li>介绍一下JVM内存结构</li>
 </ul>
-<p>栈、堆、方法区，在栈中的数据采用的是后进先出的方式，堆采用先进先出的方式，在栈中的数据是私有的用而堆中的数据是公有的</p>
+<p>JVM分三大部分：类装载器子系统、运行时数据区、执行引擎<br>在运行时数据区：堆、栈、方法区、程序计数器等<br>程序计数器：是线程的私有内存，所占空间很小，可以看作是当前线程所执行字节码的行号指示器，指向下一个将要执行的指令代码，由执行引擎来读取下一条指令。<br>栈：中的数据采用的是后进先出的方式，<br>堆：采用先进先出的方式，在栈中的数据是私有的用而堆中的数据是公有的</p>
 <ul>
 <li><p>LinkedBlocking 和SynchronousQueue区别</p>
 </li>
@@ -205,10 +218,11 @@
 </ul>
 <p>首先数据库的引擎要支持事务比如Innodb，其次Spring并不直接管理事务，而是提供多种事务管理器，Spring事务管理器的接口是org.springframework.transaction.PlatformTransactionManager，通过这个接口，Spring为各个平台如JDBC、Hibernate等都提供了对应的事务管理器，但是具体的实现就是各个平台自己的事情了。PlatformTransactionManager接口主要定义了getTransaction(TransactionDefinition definition)、commit()、rollback()方法</p>
 <ul>
-<li><p>讲一讲MySQL Innodb索引结构<br>MySQL Innodb索引的底层用的是B+树，MySQL先在索引上按值查找然后返回所有包含该值的数据行，索引包含一个或者多个列的值，多个值的时候顺序很重要，因为MySQL只能用索引的“最左前缀列”创建。 Btree：Balance Tree类似二叉树 存储的是（索引列值，指向子节点数据行的指针）全键值键值范围或者键前缀查找（最左前缀查找）B+tree在叶子节点存储所有索引和数据，非叶子节点不存储数据，做叶子节点的索引的冗余。叶子节点之间还有指针连接提高区间访问的性能</p>
-</li>
-<li><p>HTTP报文由那几部分组成？GET和POST有什么区别</p>
-</li>
+<li>讲一讲MySQL Innodb索引结构</li>
+</ul>
+<p>MySQL Innodb索引的底层用的是B+树，MySQL先在索引上按值查找然后返回所有包含该值的数据行，索引包含一个或者多个列的值，多个值的时候顺序很重要，因为MySQL只能用索引的“最左前缀列”创建。 Btree：Balance Tree类似二叉树 存储的是（索引列值，指向子节点数据行的指针）全键值键值范围或者键前缀查找（最左前缀查找）B+tree在叶子节点存储所有索引和数据，非叶子节点不存储数据，做叶子节点的索引的冗余。叶子节点之间还有指针连接提高区间访问的性能</p>
+<ul>
+<li>HTTP报文由那几部分组成？GET和POST有什么区别</li>
 </ul>
 <p>HTTP报文由报文首部和报文主体构成，中间由一个空行分隔。get可以向服务器获取资源，post可以向服务器发送资源。</p>
 <ul>
@@ -457,61 +471,228 @@ Using where
 <ol>
 <li>修改配置文件redis.conf（端口号，持久化，节点过期时间，开启集群等）</li>
 <li>在服务器上创建节点配置文件夹mkdir 7001 7002 7003 7004 7005 7006</li>
+<li>再将redis.conf修改端口后复制到上一步的目录中</li>
 <li>在服务器上创建集群目录mkdir rediscluster</li>
-<li></li>
-<li>用命令Cluster Meet <ip><port>将节点组成集群</port></ip></li>
+<li>启动Redis后创建集群，cluster create  ip1:port1 ip2:port2 … </li>
 </ol>
 <ul>
-<li><p>16、Redis分布式锁有用过吗？说下原理？</p>
+<li><p>16、Redis分布式锁有用过吗？说下原理？<br>分布式系统要访问共享资源，为了避免并发访问资源带来错误，我们为共享资源添加一把锁，让各个访问互斥，保证并发访问的安全性，这就是使用分布式锁的原因。<br>redis中使用分布式锁很简单，只要使用setnx指令对某个key上锁就行：<br>  setnx lock test //上锁<br>  del lock test   //解锁<br>当某个key没有被占用的时候，setnx指令会返回1，否则返回0，这就是Redis中分布式锁的使用原理。当然我们还可以在上锁之后使用expire指令给锁设置过期时间。存在一个问题：如果程序不是用del解锁而是靠设置过期时间那么程序在执行setnx后设置过期时间前挂掉，那么这个锁就永远不释放。<br>  set lock test ex 5 nx<br>  ex：设置键的过期时间，5秒之内持有锁<br>  nx：当key（test）不存在时创建这个锁<br>Redis 2.8版本中加入了set指令的扩展参数，使得setnx指令和expire指令能够同时执行<br>还存在的问题：<br>Redis 的分布式锁不能解决超时问题，如果在加锁和释放锁之间的逻辑执行的太长，以至于超出了锁的超时限制，就会出现问题。因为这时候锁过期了，第二个线程重新持有了这把锁，但是紧接着第一个线程执行完了业务逻辑，就把锁给释放了，第三个线程就会在第二个线程逻辑执行完之间拿到了锁。为了避免这个问题，Redis 分布式锁不要用于较长时间的任务。</p>
 </li>
 <li><p>17、说下ActiveMq消息机制？你们项目中是怎么用的？</p>
 </li>
-<li><p>18、ActiveMq怎么保证消息可靠传输？或者说你们是怎么保证消息不丢失的？</p>
+<li><p>18、ActiveMq怎么保证消息可靠传输？或者说你们是怎么保证消息不丢失的？<br>消息丢失可能会发生在三个地方<br>producer——&gt;broker——&gt;consumer</p>
 </li>
-<li><p>19、Mq挂了，怎么恢复消息？</p>
-</li>
+</ul>
+<ol>
+<li>生产者将消息在传入调度者broker过程中丢失</li>
+<li>broker挂掉，内存中消息丢失</li>
+<li>消费者收到消息，但没处理就挂掉，broker以为消息已经被处理，造成消息丢失</li>
+</ol>
+<p>解决方案：</p>
+<ol>
+<li>在生产者设置confirm 模式，生产的消息都会分配一个唯一的 id，然后如果写入了 RabbitMQ 中，RabbitMQ 会给你回传一个 ack 消息，告诉你说这个消息 ok 了。如果 RabbitMQ 没能处理这个消息，会回调你的一个 nack 接口，告诉你这个消息接收失败，你可以重试。而且你可以结合这个机制自己在内存里维护每个消息 id 的状态，如果超过一定时间还没接收到这个消息的回调，那么你可以重发。          另外一种不推荐叫做事务功能就是生产者发送数据之前开启 RabbitMQ 事务channel.txSelect，然后发送消息，如果消息没有成功被 RabbitMQ 接收到，那么生产者会收到异常报错，此时就可以回滚事务channel.txRollback，然后重试发送消息；如果收到了消息，那么可以提交事务channel.txCommit。</li>
+<li>开启 RabbitMQ 的持久化，就是消息写入之后会持久化到磁盘，哪怕是 RabbitMQ 自己挂了，恢复之后会自动读取之前存储的数据，一般数据不会丢。</li>
+<li>关闭自动ack确认机制，如果消费者没处理完就不会产生ack，那么MQ会把这个消息分配给别的 消费者去处理</li>
+</ol>
+<ul>
+<li>19、Mq挂了，怎么恢复消息？</li>
+<li>为了防止rabbitmq挂掉弄丢了数据，这个你必须开启rabbitmq的持久化，就是消息写入之后会持久化到磁盘，哪怕是rabbitmq自己挂了，恢复之后会自动读取之前存储的数据，一般数据不会丢。除非极其罕见的是，rabbitmq还没持久化，自己就挂了，可能导致少量数据会丢失的，但是这个概率较小。</li>
+</ul>
+<p>　　设置持久化有两个步骤，第一个是创建queue的时候将其设置为持久化的，这样就可以保证rabbitmq持久化queue的元数据，但是不会持久化queue里的数据；第二个是发送消息的时候将消息的deliveryMode设置为2，就是将消息设置为持久化的，此时rabbitmq就会将消息持久化到磁盘上去。必须要同时设置这两个持久化才行，rabbitmq哪怕是挂了，再次重启，也会从磁盘上重启恢复queue，恢复这个queue里的数据。</p>
+<p>　　而且持久化可以跟生产者那边的confirm机制配合起来，只有消息被持久化到磁盘之后，才会通知生产者ack了，所以哪怕是在持久化到磁盘之前，rabbitmq挂了，数据丢了，生产者收不到ack，你也是可以自己重发的。</p>
+<p>　　若生产者那边的confirm机制未开启的情况下，哪怕是你给rabbitmq开启了持久化机制，也有一种可能，就是这个消息写到了rabbitmq中，但是还没来得及持久化到磁盘上，结果不巧，此时rabbitmq挂了，就会导致内存里的一点点数据会丢失。</p>
+<ul>
 <li><p>20、说下Nginx的基础配置？负载均衡怎么做的？</p>
 </li>
-<li><p>21、Maven、Grandle、git有用过吗？</p>
+<li><p>21、Maven、Gradle、git有用过吗？<br>Git：分布式版本控制工具<br>  （1）代码托管：将最新代码推送到远程服务器，也可克隆到本地<br>  （2）分支管理：master（git默认主分支）、stable（用来发布，管理着多个稳定的版本）、develop（就是我们日常开发的分支）、release分支作为预发布分支<br>  （3）多人协同工作模式：<br>Maven：项目管理<br>  作用：<br>  （1）在核心配置文件pom.xml中添加dependency节点自动下载jar包。<br>  （2）配置的jar包本身可能会包含依赖的jar，Maven会把这些依赖的jar包也都下载下来<br>  （3）热部署、热编译。在项目运行时，修改代码能直接被服务器接受，就不需要重新启动服务器或者重新部署代码<br>Gradle:<br>  Gradle集合了Ant和Maven的优点，Ant可以自动化打包逻辑，用xml文件的形式自动运行，Maven也可以自动化打包，并且可以帮助下载jar包，但Maven打包逻辑定制比较麻烦。Gradle既能够自动化打包，又能自己编写脚本，并且编写的脚本比ant好用</p>
 </li>
 <li><p>22、有没有做过报表相关的业务？从数据采集、清洗、分析整理到输出？</p>
 </li>
 </ul>
 <p>用生成日志的方法，而不是操作数据库</p>
-<h2 id="第四部分"><a href="#第四部分" class="headerlink" title="第四部分"></a>第四部分</h2><p>面向对象的特征有哪些方面？</p>
-<p>访问修饰符的区别</p>
-<p>String是基本数据类型吗？</p>
-<p>float f=3.4是否正确？int和Integer有什么区别？Math.round(11.5)/Math.round(-11.5)为多少？</p>
-<p>switch是否能用在byte上，是否能作用在long、string上</p>
-<p>用最有效的方法计算2乘以8</p>
-<p>数组有没有length()方法？String呢？</p>
-<p>构造器是否可以重写？</p>
-<p>两个对象值相同（x.equals(y)==true）,但是有不同的hashcode 对吗？</p>
-<p>string和stringbuilder、stringbuffer的区别？</p>
-<p>描述一下JVM加载class文件的原理机制</p>
-<p>java中会存在内存泄漏吗，简单描述</p>
-<p>GC是什么，为什么要GC</p>
-<p>String s=new String(“xyz”),一共创建了几个字符串对象</p>
-<p>Java中final关键字的用法？</p>
-<p>怎么样将GB2312编码的字符串转换为ISO-8859-1编码的字符串？</p>
-<p>列出一些你常见的运行时异常？</p>
-<p>List、Map、Set三个接口存取元素时，各有什么特点？</p>
-<p>编写多线程的程序有几种实现方式？</p>
-<p>简述一下n你了解的设计模式？</p>
-<p>用Java写一个冒泡排序</p>
-<p>Servlet的运行过程？</p>
-<p>转发和重定向的区别</p>
-<p>JSP有哪些内置对象？作用分别是什么？</p>
-<p>加密解密算法有哪些？<br>MD5<br>解决高并发与高负载有哪些方法</p>
-<p>Spring中@Autowire与@Resource的区别</p>
-<p>SpringMVC有哪些组件</p>
-<p>@autowire和@RequestingMapping 的作用？</p>
-<p>什么是SpringBoot？为什么要用SpringBoot，核心配置文件是什么？</p>
-<p>jpa和hibernate的区别有哪些？</p>
-<p>zookeeper有几种部署模式？</p>
+<h2 id="第四部分"><a href="#第四部分" class="headerlink" title="第四部分"></a>第四部分</h2><ul>
+<li>面向对象的特征有哪些方面？</li>
+</ul>
+<p>多态、继承、封装</p>
+<ul>
+<li><p>访问修饰符的区别</p>
+</li>
+<li><p>String是基本数据类型吗？<br>不是，是引用类型</p>
+</li>
+<li><p>float f=3.4是否正确？int和Integer有什么区别？Math.round(11.5)/Math.round(-11.5)为多少？<br>错误，int是基本数据类型，Integer是包装类型，分别是12、-11</p>
+</li>
+<li><p>switch是否能用在byte上，是否能作用在long、string上</p>
+</li>
+</ul>
+<ol>
+<li>switch可以作用于char、byte、short、int基本数据类型</li>
+<li>switch可以作用于char、byte、short、int对应的包装类</li>
+<li>switch不可以作用于long、double、float、boolean，包括他们的包装类</li>
+<li>switch在JDK1.7后可以作用在String类型</li>
+<li>switch在JDK1.5后可以作用于枚举类型</li>
+</ol>
+<ul>
+<li>用最有效的方法计算2乘以8<br>将一个数左移n位，等价于这个数乘以2的n次方，而2乘以8其实就是2乘以2的三次方，所以只需要将2左移3位即可。并且位运算cpu是直接支持的，效率最高。综上所诉2乘以8最有效的方法是2&lt;&lt;3</li>
+<li>数组有没有length()方法？String呢？</li>
+</ul>
+<ol>
+<li>数组是没有length（）这个方法的，但是有length这个属性，可以计算数组的长度</li>
+<li>String是有length（）这个方法的，用来计算字符串的长度。</li>
+<li>size()可以查看泛型有多少元素</li>
+</ol>
+<ul>
+<li>构造器是否可以重写？</li>
+</ul>
+<p>构造器就是构造方法，能够被重载（同类中不同参数列表的构造器），不能够被重写（子类使用super方法可以调用）。不能被继承，因为能够调用，但是不能重写。</p>
+<ul>
+<li>两个对象值相同（x.equals(y)==true）,但是有不同的hashcode 对吗？<br>不对，如果两个对象x和y满足x.equals(y) == true，它们的哈希码应当相同。Java对于eqauls方法和hashCode方法是这样规定的：</li>
+</ul>
+<ol>
+<li>如果两个对象相同（equals方法返回true），那么它们的hashCode值一定要相同</li>
+<li>如果两个对象的hashCode相同，对象并不一定相同。<br>equals方法必须满足：</li>
+<li>自反性（x.equals(x)必须返回true）</li>
+<li>对称性（x.equals(y)返回true时，y.equals(x)也必须返回true）</li>
+<li>传递性（x.equals(y)和y.equals(z)都返回true时，x.equals(z)也必须返回true）</li>
+<li>一致性（当x和y引用的对象信息没有被修改时，多次调用x.equals(y)应该得到同样的返回值），而且对于任何非null值的引用x，x.equals(null)必须返回false。<br>实现高质量的equals方法的诀窍包括：1. 使用==操作符检查”参数是否为这个对象的引用”；2. 使用instanceof操作符检查”参数是否为正确的类型”；3. 对于类中的关键属性，检查参数传入对象的属性是否与之相匹配；4. 编写完equals方法后，问自己它是否满足对称性、传递性、一致性；5. 重写equals时总是要重写hashCode；6. 不要将equals方法参数中的Object对象替换为其他的类型，在重写时不要忘掉@Override注解。</li>
+</ol>
+<ul>
+<li><p>string和stringbuilder、stringbuffer的区别？<br>操作string字符串对象，每次都是新建一个对象，然后执行操作<br>stringbuilder和stringbuffer都在对象原来的基础上执行操作<br>stringbuilder适合单线程<br>stringbuffer线程安全适合多线程</p>
+</li>
+<li><p>描述一下JVM加载class文件的原理机制<br>JVM将类加载过程分为三个步骤：装载（Load），链接（Link）和初始化(Initialize)链接又分为三个步骤，如下图所示：<br><img src="/2020/03/24/Java练习题/JVM%E5%8A%A0%E8%BD%BDclass.png" alt><br>1) 装载：查找并加载类的二进制数据；<br>2)链接：<br>验证：确保被加载类的正确性；<br>准备：为类的静态变量分配内存，并将其初始化为默认值；<br>解析：把类中的符号引用转换为直接引用；<br>3)初始化：为类的静态变量赋予正确的初始值；</p>
+</li>
+<li><p>java中会存在内存泄漏吗，简单描述<br>Java中存在内存泄漏、内存溢出统称OOM,<br>内存溢出:指当需要为对象分配内存的时候，得不到足够的内存来分配<br>内存泄漏:是对象在申请到内存后，使用完了之后却无法释放掉这部分内存，最终会导致OutOfMemoryError。<br>内存泄漏的根本原因是泄漏对象到GCRoot存在引用链，一般可以作为GCRoot的有虚拟机栈中的对象，类的静态属性、常量。最早的时候，判断一个对象是否“死亡”使用的是引用计数的方法——给对象添加一个引用计数器，每当有一个地方引用它时，计数器值加1；当引用失效时，计数器值就减1；任何时刻计数器为0的对象就是不可能再被使用。但是，这个方法有一个明显的缺陷，那就是如果两个本该被GC的对象之间互相引用，造成双方均无法被GC。<br>改进算法为可达性分析算法——通过一系列的称为“GC Root”的对象作为起始点，从这些节点开始向下搜索，搜索所经过的路径称为引用链，当一个对象到GC Root没有任何引用链相连时，则证明此对象是不可用的，是可以被GC掉的。</p>
+</li>
+<li><p>GC是什么，为什么要GC</p>
+</li>
+<li><p>String s=new String(“xyz”),一共创建了几个字符串对象？<br>两个对象，一个是静态区的”xyz”，一个是用new创建在堆上的对象。<br>这个答案应该是一个或者两个吧，如果静态区中存在存在hello是new String(“hello”)只会在堆中创建对象吧，str2指向堆中才造成了str1==str2为false，不能认为new String(“hello”)中的hello也是重新创建的</p>
+</li>
+<li><p>Java中final关键字的用法？<br>1、final修饰类<br>被final修饰的类不能被继承，因此final类的成员方法也不能被覆写，被final关键字修饰的类没有子类，因此类的实现细节也无法改变，无法被扩展。final类中的所有成员方法都会被隐式地指定为final方法，final类中的成员变量可以根据需要设为final。</p>
+</li>
+</ul>
+<p>2、final修饰方法<br>一个类中的方法如果被final关键字修饰，则其子类无法覆写该方法，只能被子类继承。如果父类中的某个方法不想被其子类所覆写，可将该方法定义为final类型，另外，父类中的私有方法（即被private关键字修饰的方法）也不允许被子类所覆写，所以父类中被private关键字修饰的方法默认为final类型，被final关键字修饰的方法有如下特质：</p>
+<p>该方法被锁定，可以防止任何继承类修改它的意义和实现；<br>高效。编译器在遇到调用final方法时候会转入内嵌机制，大大提高执行效率;<br>另外，使用final修饰的静态方法在其所属类的子类中不能被隐藏(hide)；</p>
+<p>3、final修饰变量</p>
+<p>final这个关键字的含义是“这是无法改变的”或者“终态的”；那么为什么要阻止改变呢？<br>java语言的发明者可能由于两个目的而阻止改变:<br>A.效率问题：<br>jdk中的某些类的某些方法，是不允许被用户覆盖的，设计者可能认为，所用方法已经是最好的方法，<br> 用户私自覆盖，或是由于疏忽而覆盖，就会影响JVM或是系统的系能；<br>B.设计所需：<br>众所周知，有些情况必须使用final关键字，比如方法中的匿名内部类的参数传递。<br>有人说final变量在赋值后就不可变，<br>那么这个不变到底指的是什么呢？<br>这个不变指的是引用，是地址，而所引用的对象的内容仍然是可变的。<br>就是说，这个final变量永远指向某个对象，是一个常量指针，而不是指向常量的指针。<br>（1）被final关键字修饰的基本数据类型，则其数值一旦在初始化之后便不能更改;<br>（2）如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象,但该引用所指向的对象的内容是可以发生变化的。原因为：引用数据类型存储的引用对象在堆内存中的地址，final修饰引用类型之后，要求该引用指向的堆内存空间（或者说该引用存储的堆内存地址）不能改变。<br>当用final修饰类的非静态成员变量时，成员变量的初始化有两种方式：<br>（3）在声明时进行初始化<br>（4）在声明变量时可以不进行初始化，该变量被称为blank final,即final空白，但是要在这个变量所在的类的所有的构造方法中对这个变量赋初值。<br>当用final修饰类的静态成员变量时，静态成员变量的初始化方式也有两种：<br>（5）在声明时进行初始化<br>（6）在静态初始化块中进行初始化<br>当用final修饰接口的静态变量时，其初始化方式只有一种：<br>（7）在声明时进行初始化<br>当用final修饰局部成员变量时，只需要保证在使用之前被初始化赋值即可。<br>总之，被final关键字修饰的变量在声明时可以不进行初始化，但必须保证该变量在使用之前被初始化，一旦被初始化赋值之后，就不能再被重新赋值了。<br>4、final修饰参数<br>当方法参数为final类型时，你可以读取使用该参数，但是无法改变该参数的值。该变量在方法调用时被创建，同时初始化为对应实参值，在方法体(body)执行结束前，其值不能改变。用final关键字修饰的基本数据类型的参数，其参数值无法改变，用final关键字修饰的引用数据类型，无法是该引用指向其他对象或再次赋值为null，但可以使用该引用改变引用对象的内容。final用于修饰参数的目的并非防止在调用的方法内部对参数的操作改变方法外部对应变量的值，只是防止在该方法内对该参数进行重新赋值操作，影响该参数传递时的初始值。而且将方法中的参数用final关键字修饰并不能防止从方法外部所传递的参数的值的内容不被改变。具体可参考final修饰引用数据类型的解释。</p>
+<ul>
+<li>怎么样将GB2312编码的字符串转换为ISO-8859-1编码的字符串？</li>
+</ul>
+<p>JAVA有一个public String(byte bytes[], Charset charset)函数可以用指定字节数组和编码来构造字符串。一个public byte[] getBytes(Charset charset)函数把字符串按指定编码来得到字节数组。可以用这两个函数来实现编码转换。<br>    String s1 = “你好”;<br>    String s2 = new String(s1.getBytes(“GB2312”), “ISO-8859-1”);</p>
+<ul>
+<li><p>列出一些你常见的运行时异常？<br>数组下标越界异常、空指针异常、类装换异常、数据存储异常、缓冲区溢出异常</p>
+</li>
+<li><p>List、Map、Set三个接口存取元素时，各有什么特点？<br>List与Set都是单列元素的集合，它们有一个功共同的父接口Collection。</p>
+</li>
+</ul>
+<p>Set里面不允许有重复的元素，</p>
+<p>存元素：add方法有一个boolean的返回值，当集合中没有某个元素，此时add方法可成功加入该元素时，则返回true；当集合含有与某个元素equals相等的元素时，此时add方法无法加入该元素，返回结果为false。<br>取元素：没法说取第几个，只能以Iterator接口取得所有的元素，再逐一遍历各个元素。</p>
+<p>List表示有先后顺序的集合，</p>
+<p>存元素：多次调用add(Object)方法时，每次加入的对象按先来后到的顺序排序，也可以插队，即调用add(int index,Object)方法，就可以指定当前对象在集合中的存放位置。<br>取元素：方法1：Iterator接口取得所有，逐一遍历各个元素</p>
+<pre><code>方法2：调用get(index i)来明确说明取第几个。</code></pre><p>Map是双列的集合，存放用put方法:put(obj key,obj value)，每次存储时，要存储一对key/value，不能存储重复的key，这个重复的规则也是按equals比较相等。</p>
+<p>取元素：用get(Object key)方法根据key获得相应的value。</p>
+<pre><code>也可以获得所有的key的集合，还可以获得所有的value的集合，
+
+还可以获得key和value组合成的Map.Entry对象的集合。</code></pre><p>List以特定次序来持有元素，可有重复元素。Set 无法拥有重复元素,内部排序。Map 保存key-value值，value可多值。</p>
+<ul>
+<li>编写多线程的程序有几种实现方式？</li>
+</ul>
+<ol>
+<li><p>继承Thread类，重写run函数</p>
+</li>
+<li><p>实现Runnable接口，重写run函数</p>
+</li>
+<li><p>实现Callable接口，重写call函数</p>
+<p> Callable和Runnable有几点不同:<br> （1）Callable规定的方法是call()，而Runnable规定的方法是run().<br> （2）Callable的任务执行后可返回值，而Runnable的任务是不能返回值的<br> （3）call()方法可抛出异常，而run()方法是不能抛出异常的。<br> （4）运行Callable任务可拿到一个Future对象，Future表示异步计算的结果。它提供了检查计算是否完成的方法,以等待计算的完成,并检索计算的结果.通过Future对象可了解任务执行情况,可取消任务的执行,还可获取任务执行的结果</p>
+</li>
+<li><p>线程池</p>
+</li>
+</ol>
+<ul>
+<li><p>简述一下你了解的设计模式？</p>
+</li>
+<li><p>工厂模式：工厂类可以根据条件生成不同的子类实例，这些子类有一个公共的抽象父类并且实现了相同的方法，但是这些方法针对不同的数据进行了不同的操作（多态方法）。当得到子类的实例后，开发人员可以调用基类中的方法而不必考虑到底返回的是哪一个子类的实例。</p>
+</li>
+<li><p>代理模式：给一个对象提供一个代理对象，并由代理对象控制原对象的引用。实际开发中，按照使用目的的不同，代理可以分为：远程代理、虚拟代理、保护代理、Cache代理、防火墙代理、同步化代理、智能引用代理。</p>
+</li>
+<li><p>适配器模式：把一个类的接口变换成客户端所期待的另一种接口，从而使原本因接口不匹配而无法在一起使用的类能够一起工作。</p>
+</li>
+<li><p>模板方法模式：提供一个抽象类，将部分逻辑以具体方法或构造器的形式实现，然后声明一些抽象方法来迫使子类实现剩余的逻辑。不同的子类可以以不同的方式实现这些抽象方法（多态实现），从而实现不同的业务逻辑。</p>
+</li>
+</ul>
+<ul>
+<li><p>用Java写一个冒泡排序<br>sort()伪代码<br>array.length-i-1:每次循环数组下标都是从0开始，i下标后面已经排序的个数就得多减1，总结就是i增多少，j的循环位置减多少<br>  for(i=0;i&lt;array.length-1;i++){</p>
+<pre><code>for(j=0;j&lt;array.length-i-1,j++){
+    if(array[j]&gt;array[j+1]){
+        int temp=array[j];
+        array[j]=array[j+1];
+        array[j+i]=temp;
+    }
+}</code></pre><p>  }<br>主方法伪代码：<br>  int[] arr=new int[]{6,5,4,3,2,1};<br>  arr.sort();</p>
+</li>
+<li><p>Servlet的运行过程？<br>Servlet执行过程：程序第一次访问，会调用servlet的init()方法初始化(只执行一次)，每次程序执行都会根据请求调用doGet()或者doPost()方法，程序停止（停止tomcat）调用destory()方法。</p>
+</li>
+<li><p>转发和重定向的区别</p>
+</li>
+<li><p>JSP有哪些内置对象？作用分别是什么？<br>内置对象有九种，<br>page:<br>context:<br>Exception:<br>out:</p>
+</li>
+<li><p>加密解密算法有哪些？<br>MD5</p>
+</li>
+<li><p>解决高并发与高负载有哪些方法</p>
+</li>
+<li><p>Spring中@Autowire与@Resource的区别</p>
+</li>
+</ul>
+<ol>
+<li>@Resource和@Autowired都可以用来装配bean，都可以用于字段或setter方法。</li>
+<li>@Autowired默认按类型装配，默认情况下必须要求依赖对象必须存在，如果要允许null值，可以设置它的required属性为false。</li>
+<li>@Resource默认按名称装配，当找不到与名称匹配的bean时才按照类型进行装配。名称可以通过name属性指定，如果没有指定name属性，当注解写在字段上时，默认取字段名，当注解写在setter方法上时，默认取属性名进行装配。</li>
+</ol>
+<ul>
+<li>SpringMVC有哪些组件</li>
+</ul>
+<ol>
+<li>前端控制器组件（DispatcherServlet） </li>
+<li>处理器组件（Controller） </li>
+<li>处理器映射器组件（HandlerMapping） </li>
+<li>处理器适配器组件（HandlerAdapter） </li>
+<li>拦截器组件（HandlerInterceptor） </li>
+<li>视图解析器组件（ViewResolver） </li>
+<li>视图组件（View） </li>
+<li>数据转换组件（DataBinder） </li>
+<li>消息转换器组件（HttpMessageConverter）</li>
+</ol>
+<ul>
+<li><p>@autowire和@RequestingMapping 的作用？</p>
+</li>
+<li><p>什么是SpringBoot？为什么要用SpringBoot，核心配置文件是什么？</p>
+</li>
+<li><p>jpa和hibernate的区别有哪些？<br>Java Persistence API是一种数据持久化规范，Hibernate是ORM关系映射框架，Hibernate是JPA的一种实现</p>
+</li>
+<li><p>zookeeper有几种部署模式？<br>zookeeper是什么：是一个分布式的，开放源码的分布式应用程序协调服务，是google chubby的开源实现，是Hadoop和hbase的重要组件。他是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护，域名服务，分布式同步，组服务等<br>zookeeper都有哪些功能<br>集群管理：监控节点存活状态、运行请求等<br>主节点选举：主节点挂掉只会可以从备用的节点开始新一轮选举，主节点选举说的就是这个选举的过程，使用zookeeper可以协助完成这个过程。<br>分布式锁：zookeeper提供两种锁：独享锁、共享锁。独享锁即一次只能有一个线程使用资源，共享锁是读锁共享，读写互斥，即可以有多线线程同时读同一个资源，如果要使用写锁也只能有一个线程使用。zookeeper可以对分布式锁进行控制。<br>命名服务：在分布式系统中，通过使用命名服务，客户端能够根据指定名字来获取资源或者服务的地址，提供者等信息。<br>zookeeper有几种部署模式<br>单机部署：一台集群上运行<br>集群部署：多台集群运行<br>伪集群部署：一台集群启动多个zookeeper实例运行</p>
+</li>
+</ul>
 <h2 id="第五部分"><a href="#第五部分" class="headerlink" title="第五部分"></a>第五部分</h2><p>BeanFactory与FactoryBean的区别？<br>BeanFactory是个bean 工厂，是一个工厂类(接口)， 它负责生产和管理bean的一个工厂<br>是ioc 容器最底层的接口，是个ioc容器，是spring用来管理和装配普通bean的ioc容器（这些bean成为普通bean）。<br>FactoryBean是个bean，在IOC容器的基础上给Bean的实现加上了一个简单工厂模式和装饰模式，<br>是一个可以生产对象和装饰对象的工厂bean，由spring管理后，生产的对象是由getObject()方法决定的（从容器中获取到的对象不是“ FactoryBeanTest ” 对象）。</p>
 <p>lambda的底层接口是什么？</p>
 <p>函数式编程的优缺点是什么？<br>由于所有的数据都是不可变的，所以所有的变量在程序运行期间都是一直存在的，非常占用运行资源。同时由于函数式的先天性设计导致性能一直不够。虽然现代的函数式编程语言使用了很多技巧比如惰性计算等来优化运行速度，但是始终无法与面向对象的程序相比，当然面向对象程序的速度也不够快。    </p>
+<h2 id="第六部分"><a href="#第六部分" class="headerlink" title="第六部分"></a>第六部分</h2><p>1、    Oracle是怎样分页的？（5分）<br>select * from table limit (start-1)*limit,limit; 其中 start 是页码，limit 是每页显示的<br>select rownum，字段1，字段2 from 表名 where rownum&lt; 数字。<br>2、    简述oracle中 dml、ddl、dcl的使用。（5分）<br>DML：数据操作语言，SQL中处理数据等操作统称为数据操纵语言<br>       它们是SELECT、UPDATE、INSERT、DELETE，就象它的名字一样，这4条命令是用来对数据库里的数据进行操作的语言，不修改表的结构，只修改表的内容<br>需要commit 才能真正被执行<br>DDL：数据定义语言，用于定义和管理 SQL 数据库中的所有对象的语言</p>
+<pre><code>DDL比DML要多，主要的命令有CREATE、ALTER、DROP等，DDL主要是用在定义或改变表（TABLE）的结构，数据类型，表之间的链接和约束等初始化工作上，他们大多在建立表时使用</code></pre><p>DCL：数据控制语言，用来授予或回收访问数据库的某种特权，并控制数据库操纵事务发生的时间及效果，对数据库实行监视等</p>
+<p>3、    Oracle数据库union和union all的区别。（5分）<br>union: 对两个结果集进行并集操作, 不包括重复行, 同时进行默认规则的排序;<br>union all: 对两个结果集进行并集操作, 包括重复行, 即所有的结果全部显示, 不管是不是重复;</p>
+<p>4、    rowid，rownum的定义。（5分）<br>rownum是根据sql查询出的结果给每行分配一个逻辑编号，所以你的sql不同也就会导致最终rownum不同<br>rowid是物理结构上的，在每条记录insert到数据库中时，都会有一个唯一的物理记录 </p>
+<p>5、    请说明数据库主键、外键的作用。（5分）<br>主键保证了数据的唯一性，外键保证了数据的一致性。<br>主键是能确定一条记录的唯一标识,身份证号是主键。<br>外键用于与另一张表的关联。是能确定另一张表记录的字段，用于保持数据的一致性。比如，A表中的一个字段，是B表的主键，那他就可以是A表的外键。</p>
+<p>6、    说说oracle中的经常使用到得函数（10个以上）。（5分）<br>To_char是把日期或数字转换为字符串<br>To_date是把字符串转换为数据库中得日期类型<br>TO_NUMBER函数将字符转换为数字<br>trim函数是用来删除给定字符串或者给定数字中的头部或者尾部的给定字符<br>max<br>最大值<br>min<br>最小值<br>count，<br>列总和<br>sum，<br>相加总和<br>avg<br>计算平均值</p>
+<p>7、    怎样创建索引，索引使用的原则，有什么优点和缺点。（15分）<br>8、    创建索引可以大大提高系统的性能，优点:<br>第一，通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。<br>第二，可以大大加快数据的检索速度，这也是创建索引的最主要的原因。<br>第三，可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。<br>第四，在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。<br>第五，通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。 </p>
+<p>第一，创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加。<br>第二，索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大。<br>第三，当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护速度。 </p>
+<p>9、    什么是存储过程？和函数有什么区别？ （10分）<br>存储过程（Stored Procedure）是一组为了完成特定功能的SQL 语句集，经过第一次编译后再次调用不需要再次编译，用户通过指定存储过程的名字,参数来执行它。<br>函数只能返回一个变量的限制。而存储过程可以返回多个。　　<br>　　函数是可以嵌入在sql中使用的,可以在select中调用，而存储过程要让sql的query 可以执行， 需要把 mysql_real_connect 的最后一个参数设置为CLIENT_MULTI_STATEMENTS。<br>　　函数限制比较多，比如不能用临时表，只能用表变量．还有一些函数都不可用等等．而存储过程的限制相对就比较少。 </p>
+<p>10、    如何写出高性能的SQL语句？（15分）</p>
+<p>11、    以下是学生信息表S_Table：<br>S_ID<br>学号    C_ID<br>课程号    Gender<br>性别（0男1女）    S_Name<br>姓名    C_Name<br>课程名    Score<br>分数    Class<br>班级<br>201103001    1    0    韩飞    软件工程    78    1<br>201103001    2    0    韩飞    计算机原理    69    1<br>201103002    1    1    杨梅    软件工程    57    1<br>201103002    2    1    杨梅    计算机原理    98    1<br>……    ……    ……    ……    ……    ……    ……<br>1)    查询出所有分数大于等于60的男同学的学号、姓名、课程号、课程名。（10分）<br>select tblstudent.StuId,tblstudent.StuName from tblstudent where<br>tblstudent.StuId NOT IN<br>(<br>select  tblscore.StuId from tblscore where tblstudent.StuId=tblscore.StuId AND tblscore.Score&gt;60)</p>
+<p>select S_Table.S_ID, S_Table.C_ID, S_Table.S_Name, S_Table.C_Name from S_Table groud  by S_Name Min(Score)&gt;=60</p>
+<p>2)    查询出平均成绩高于班级1平均分的所有学生的班级及人员数目。（20分）<br>SELECT c_name,COUNT(*) from<br>(SELECT S1. class,  S1.s_name,  S1.”c_name”,  S1.”score” from “s_table” s1,<br>(SELECT “c_name”,(“AVG”(“score”)) a  from “s_table” GROUP BY “c_name”) s2<br>WHERE S1.”c_name”=S2.”c_name”<br>ADN S1.”score”&gt;=S2.”A”)<br>GROUP BY “c_name”;</p>
+<p>四、    Java基础题（100分）<br>1、    以下哪个方法用于定义线程的执行体？（5分）<br>A、 start()    B、init()    C、run()    D、synchronized()<br>2、    以下哪个关键字可以用来为对象加互斥锁？（5分）<br>A、transient    B、static    C、 serialize    D、synchronized<br>3、    以下关于构造函数的描述错误的是。（5分）<br>A、构造函数的返回类型只能是void型。<br>B、构造函数是类的一种特殊函数，它的方法名必须与类名相同。<br>C、构造函数的主要作用是完成对类的对象的初始化工作。<br>D、一般在创建新对象时，系统会自动调用构造函数。<br>4、    执行完以下代码int [ ]  x = new int[10]；后，以下哪项说明是正确的。（5分）<br>A、x[9]为0    B、x[9]未定义    C、x[10]为0    D、x[0]为空<br>5、    在Java中用什么关键字修饰的方法可以直接通过类名来调用？（5分）<br>A、static    B、final    C、private    D、void<br>6、    请简述Session的特点有哪些？（5分）</p>
+<p>7、    请简述Request，Response 的作用及常用的方法。（10分）<br>Request对象里面包含了所有访问时发起的请求的所有参数，Response对象则包含了你请求之后服务器给你的所有的响应信息。通过这两个参数你可以获得很多HTTP访问中的参数信息。<br>setAttribute()在Request域中存储数据/ getParameter()获取指定请求参数值</p>
+<p>setContentType()告知浏览器数据类型/ sendRedirect()重定向<br>8、    HashMap和Hashtable有什么区别。（15分）</p>
+<p>9、    String和StringBuffer、StringBuilder区别。（15分）</p>
+<p>10、    final，finally，finalize()区别？（15分）</p>
+<p>11、    搭建一个SpringMVC+MyBatis的工程，需要配置那些主要文件？（15分）</p>
+<p>五、    编程语言题（100分）<br>1、    下面一段代码中，执行后i和j的值分别是什么？（5分）<br>int i = 1;<br>int j;<br>j = i++;<br>A、1,1    B、1,2    C、2,2    D、2,1<br>2、    阅读以下代码，输出结果应该是。（10分）<br>import javA、io.<em>;<br>import javA、util.</em>;<br>public class foo{<br>public static void main (String[] args){<br>String s;<br>System.out.println(“s=” + s);<br>}<br>}<br>A、代码得到编译，并输出“s=”。<br>B、代码得到编译，并输出“s=null”。<br>C、由于String s没有初始化，代码不能编译通过。<br>D、代码得到编译，但捕获到 NullPointException异常。<br>3、    编译运行以下程序后，关于输出结果的说明正确的是。（10分）<br>public  class   Conditional{<br>public  static  void  main(String  args[ ]){<br>int  x=4;<br>         System.out.println(“value  is  “+ ((x&gt;4) ? 99.9:9));<br>}<br>}<br>A、输出结果为：value  is  9。<br>B、输出结果为：value  is  9.0。<br>C、出结果为：value  is  99.9。<br>D、编译错误。<br>4、    下面代码的输出结果是。（15分）<br>A、13423    B、24313    C、14323    D、13243<br>public class test {<br>public static String output = “”;<br>    public static void foo(int i) {<br>try {<br>            if(i==1) {throw new Exception ();<br>}<br>            output += “1”;<br>        }<br>        catch(Exception e) {<br>        output += “2”;<br>        return;<br>}<br>        finally {<br>        output += “3”;<br>        }<br>        output += “4”;<br>}<br>public static void main (String args[]) {<br>foo(0);<br>        foo(1);<br>            System.out.print(output)；<br>}<br>}</p>
 
       
 
@@ -769,19 +950,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">技术，数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -793,11 +962,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">技术，数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">java基础</a>
               </li>
              
               <li class="article-tag-list-item">
