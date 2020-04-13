@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/24/Java练习题/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB.PNG">
 <meta property="og:image" content="http://yoursite.com/2020/03/24/Java练习题/explain%E5%AD%97%E6%AE%B5.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/24/Java练习题/JVM%E5%8A%A0%E8%BD%BDclass.png">
-<meta property="og:updated_time" content="2020-04-09T02:51:39.239Z">
+<meta property="og:updated_time" content="2020-04-10T12:26:49.729Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java练习题">
 <meta name="twitter:description" content="第一部分 Java中的几种基本类型，各占多少字节？  byte:1字节 默认0 -128–127 short：2字节 默认0 取值-32758–32767 int：4字节 默认0 取值-2147483648-2147483647 long：8字节 默认0 char：2字节 float：4字节 double：8字节 boolean： 4字节  抽象类和接口的区别？  一个类只能继承（extends）">
@@ -207,11 +207,12 @@
 <ul>
 <li>介绍一下JVM内存结构</li>
 </ul>
-<p>JVM分三大部分：类装载器子系统、运行时数据区、执行引擎<br>在运行时数据区：堆、栈、方法区、程序计数器等<br>程序计数器：是线程的私有内存，所占空间很小，可以看作是当前线程所执行字节码的行号指示器，指向下一个将要执行的指令代码，由执行引擎来读取下一条指令。<br>栈：中的数据采用的是后进先出的方式，<br>堆：采用先进先出的方式，在栈中的数据是私有的用而堆中的数据是公有的</p>
+<p>JVM分三大部分：类装载器子系统、运行时数据区、执行引擎<br>在运行时数据区：堆、栈、方法区、程序计数器等<br>程序计数器：是线程的私有内存，所占空间很小，可以看作是当前线程所执行字节码的行号指示器，指向下一个将要执行的指令代码，由执行引擎来读取下一条指令。</p>
+<p>栈：栈是后进先出的，因为入栈和弹栈出栈都是对栈顶元素进行操作的。栈是线程私有的，他的生命周期与线程相同。每个线程都会分配一个栈的空间，即每个线程拥有独立的栈空间。<br>堆：采用先进先出的方式，在栈中的数据是私有的用而堆中的数据是公有的，堆是Java虚拟机所管理的内存中最大的一块存储区域。堆内存被所有线程共享。主要存放使用new关键字创建的对象，所有对象的实例以及数组都要在堆上分配。<br>方法区：同Java堆一样是被所有线程共享的区间，用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码。更具体的说，静态变量+常量+类信息（版本、方法、字段等）+运行时常量池存在方法区中。常量池是方法区的一部分。</p>
 <p>-ArrayBlcokingQueue LinkedBlocking 和SynchronousQueue区别</p>
-<p>SynchronousQueue是无界的，是一种无缓冲的等待队列，但是由于该Queue本身的特性，在某次添加元素后必须等待其他线程取走后才能继续添加；可以认为SynchronousQueue是一个缓存值为1的阻塞队列，但是 isEmpty()方法永远返回是true，remainingCapacity() 方法永远返回是0，remove()和removeAll() 方法永远返回是false，iterator()方法永远返回空，peek()方法永远返回null。 声明一个SynchronousQueue有两种不同的方式，它们之间有着不太一样的行为。公平模式和非公平模式的区别:如果采用公平模式：SynchronousQueue会采用公平锁，并配合一个FIFO队列来阻塞多余的生产者和消费者，从而体系整体的公平策略；但如果是非公平模式（SynchronousQueue默认）：SynchronousQueue采用非公平锁，同时配合一个LIFO队列来管理多余的生产者和消费者，而后一种模式，如果生产者和消费者的处理速度有差距，则很容易出现饥渴的情况，即可能有某些生产者或者是消费者的数据永远都得不到处理。</p>
-<p>LinkedBlockingQueue是无界的，是一个无界缓存的等待队列。基于链表的阻塞队列，内部维持着一个数据缓冲队列（该队列由链表构成）。当生产者往队列中放入一个数据时，队列会从生产者手中获取数据，并缓存在队列内部，而生产者立即返回；只有当队列缓冲区达到最大值缓存容量时（LinkedBlockingQueue可以通过构造函数指定该值），才会阻塞生产者队列，直到消费者从队列中消费掉一份数据，生产者线程会被唤醒，反之对于消费者这端的处理也基于同样的原理。<br>LinkedBlockingQueue之所以能够高效的处理并发数据，还因为其对于生产者端和消费者端分别采用了独立的锁来控制数据同步，这也意味着在高并发的情况下生产者和消费者可以并行地操作队列中的数据，以此来提高整个队列的并发性能。</p>
-<p>ArrayListBlockingQueue是有界的，是一个有界缓存的等待队列。基于数组的阻塞队列，同LinkedBlockingQueue类似，内部维持着一个定长数据缓冲队列（该队列由数组构成）。ArrayBlockingQueue内部还保存着两个整形变量，分别标识着队列的头部和尾部在数组中的位置。ArrayBlockingQueue在生产者放入数据和消费者获取数据，都是共用同一个锁对象，由此也意味着两者无法真正并行运行，这点尤其不同于LinkedBlockingQueue<em>；按照实现原理来分析，ArrayBlockingQueue完全可以采用分离锁，从而实现生产者和消费者操作的完全并行运行。Doug Lea之所以没这样去做，也许是因为ArrayBlockingQueue的数据写入和获取操作已经足够轻巧，以至于引入独立的锁机制，除了给代码带来额外的复杂性外，其在性能上完全占不到任何便宜。 ArrayBlockingQueue和LinkedBlockingQueue间还有一个明显的不同之处在于，</em>前者在插入或删除元素时不会产生或销毁任何额外的对象实例，而后者则会生成一个额外的Node节点对象。这在长时间内需要高效并发地处理大批量数据的系统中，其对于GC的影响还是存在一定的区别。<br>ArrayBlockingQueue和LinkedBlockingQueue是两个最普通、最常用的阻塞队列，一般情况下，处理多线程间的生产者消费者问题，使用这两个类足以</p>
+<p>ArrayListBlockingQueue是用数组实现的有界阻塞队列，内部维持着一个由数组构成的定长数据缓冲队列。ArrayBlockingQueue内部还保存着两个整形变量，分别标识着队列的头部和尾部在数组中的位置。ArrayBlockingQueue在生产者放入数据和消费者获取数据，都是共用<strong>同一个锁对象</strong>，由此也意味着两者无法真正并行运行。ArrayBlockingQueue和LinkedBlockingQueue间还有一个明显的不同之处在于，*前者在插入或删除元素时不会产生或销毁任何额外的对象实例，而后者则会生成一个额外的Node节点对象。这在长时间内需要高效并发地处理大批量数据的系统中，其对于GC的影响还是存在一定的区别。</p>
+<p>LinkedBlockingQueue是一个用链表实现的有界阻塞队列，内部维持着一个由链表构成的数据缓冲队列。当生产者往队列中放入一个数据时，队列会从生产者手中获取数据，并缓存在队列内部，而生产者立即返回；只有当队列缓冲区达到最大值缓存容量时，才会阻塞生产者队列，直到消费者从队列中消费掉一份数据，生产者线程会被唤醒，反之对于消费者这端的处理也基于同样的原理。LinkedBlockingQueue之所以能够高效的处理并发数据，还因为其对于生产者端和消费者端<strong>分别采用了独立的锁</strong>来控制数据同步，这也意味着在高并发的情况下生产者和消费者可以并行地操作队列中的数据，以此来提高整个队列的并发性能。</p>
+<p>SynchronousQueue没有容量，是无缓冲等待队列，是一个不存储元素的阻塞队列，会将任务直接交给消费者，特性是put操作和take操作必须是互相唤醒的，所以在某次添加元素后必须等待其他线程取走后才能继续添加。 声明一个SynchronousQueue有两种不同的方式。公平模式和非公平模式的区别:如果采用公平模式：SynchronousQueue会采用公平锁，并配合一个FIFO（先进先出）队列来阻塞多余的生产者和消费者，从而体系整体的公平策略。非公平模式（默认）：SynchronousQueue采用非公平锁，同时配合一个LIFO队列来管理多余的生产者和消费者，而后一种模式，如果生产者和消费者的处理速度有差距，则很容易出现饥渴的情况，即可能有某些生产者或者是消费者的数据永远都得不到处理。</p>
 <ul>
 <li>什么是SpringIOC/DI</li>
 </ul>
@@ -219,7 +220,7 @@
 <ul>
 <li>spring 怎么实现数据库事务</li>
 </ul>
-<p>首先数据库的引擎要支持事务比如Innodb，其次Spring并不直接管理事务，而是提供多种事务管理器，Spring事务管理器的接口是org.springframework.transaction.PlatformTransactionManager，通过这个接口，Spring为各个平台如JDBC、Hibernate等都提供了对应的事务管理器，但是具体的实现就是各个平台自己的事情了。PlatformTransactionManager接口主要定义了getTransaction(TransactionDefinition definition)、commit()、rollback()方法</p>
+<p>首先数据库的引擎要支持事务比如Innodb，其次Spring并不直接管理事务，而是提供多种事务管理器，Spring事务管理器的接口是org.springframework.transaction.PlatformTransactionManager，通过这个接口，Spring为各个平台如JDBC、Hibernate等都提供了对应的事务管理器，但是具体的实现就是各个平台自己的事情了。PlatformTransactionManager接口主要定义了getTransaction(TransactionDefinition definition)、commit()、rollback()方法，在使用的时候用@Transaction或者xml配置文件声明事务</p>
 <ul>
 <li>讲一讲MySQL Innodb索引结构</li>
 </ul>
@@ -227,7 +228,7 @@
 <ul>
 <li>HTTP报文由那几部分组成？GET和POST有什么区别</li>
 </ul>
-<p>HTTP报文由报文首部和报文主体构成，中间由一个空行分隔。get可以向服务器获取资源，post可以向服务器发送资源。</p>
+<p>HTTP报文由报文首部和报文主体构成，中间由一个空行分隔。报文首部是 客户端或服务器端需处理的请求或响应的内容及属性， 可以传递额外的重要信息。报文首部 包括请求行和请求头部，报文主体主要包含应被发送的数据。<br>get可以向服务器获取资源，post可以向服务器发送资源。<br>get请求会被浏览器主动缓存，而post不会<br>get传递参数有大小限制，post没有<br>post参数传输更安全，get的参数会明文显示在URL上</p>
 <ul>
 <li>TCP的流量控制（滑动窗口）、拥塞控制是什么？</li>
 </ul>
@@ -241,37 +242,33 @@
 <h2 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h2><ul>
 <li>String、StringBuilder、StringBuffer的区别？</li>
 </ul>
-<p>可变性</p>
-<p>String 用字符数组来保存字符串并用final修饰，所以string是常量，值不可变的类。stringbuffer和stringbuilder都是继承自abstractStringbuilder类，abstractStringbuilder也是使用字符数组来保存字符串的，但是没有使用final修饰，所以对象是可变的。</p>
-<p>线程安全</p>
-<p>而stringbuffer对方法加入了同步锁或者对调用的方法加入了同步锁，所以是线程安全的。而StringBuilder没有对方法加锁，所以是线程不安全的。</p>
-<p>性能</p>
-<p>String，对于string的操作，每次新增字符串，都是生成一个新的string对象，指针会指向新的string对象地址。Stringbuffer每次操作都是对stringbuffer对象本身的操作，不会产生新的对象，相对会在性能上优于string，而stringbuilder在性能上，会比使用stringbuffer提升10-15%的性能的提升。</p>
+<p>可变性：String 用字符数组来保存字符串并用final修饰，所以string是常量，值不可变的类（联系到hashcode）。stringbuffer和stringbuilder都是继承自abstractStringbuilder类，abstractStringbuilder也是使用字符数组来保存字符串的，但是没有使用final修饰，所以对象是可变的。</p>
+<p>线程安全:stringbuffer对方法加入了同步锁，所以是线程安全的。而StringBuilder没有对方法加锁，所以是线程不安全的。</p>
+<p>性能:对于string的操作，每次新增字符串，都是生成一个新的string对象，指针会指向新的string对象地址。Stringbuffer每次操作都是对stringbuffer对象本身的操作，不会产生新的对象，相对会在性能上优于string，而stringbuilder在性能上，会比使用stringbuffer提升10-15%的性能的提升。</p>
 <p>使用过程中：对于少量字符的操作，string操作更方便。对于单线程的字符串操作stringbuilder更快。而对于多线程的字符串操作，stringbuffer更安全。</p>
 <ul>
 <li>讲一讲你理解的nio和bio的区别</li>
 </ul>
+<p>NIO：同步非阻塞式IO，服务器实现模式为多个<strong>请求</strong>建立一个线程，即客服端发送的连接请求都会注册到<strong>多路复用器</strong>上，多路复用器轮询到有IO请求时才启动一个线程进行处理。NIO和BIO最大的区别就是只需要开启一个线程就可以处理来自多个客户端的IO事件</p>
 <p>BIO：同步阻塞式IO，服务器实现模式为每一个<strong>连接</strong>都建立一个线程，即客户端有连接请求时，服务器端就需要启动一个线程进行处理，如果连接不做任何事情，会造成不必要的线程开销，可以通过线程池机制改善。<br>    BIO原理<br>    单线程：同步阻塞式IO在while循环中服务端会调用accept方法等待接收客户端的连接请求，一旦接收到一个连接请求，就可以建立通信套接字，在这个通信套接字上进行读写操作，此时不能接收其他客户端的连接请求，只能等待同当前连接的客户端的操作执行完成。</p>
-<pre><code>多线程：如果BIO要能够同时处理多个客户端请求，就必须使用多线程，即每次accept阻塞等待来自客户端请求，一旦受到连接请求就建立通信套接字，同时开启一个新的线程来出炉这个套接字的数据读写请求，然后又立刻继续accept等待其他客户端连接请求，即为每个客户端请求都单独创建一个线程来单独处理</code></pre><p>NIO：同步非阻塞式IO，服务器实现模式为多个<strong>请求</strong>建立一个线程，即客服端发送的连接请求都会注册到<strong>多路复用器</strong>上，多路复用器轮询到有IO请求时才启动一个线程进行处理。NIO和BIO最大的区别就是只需要开启一个线程就可以处理来自多个客户端的IO事件<br>AIO：异步非阻塞，服务器实现模式为一个有效请求一个线程，客户端的IO请求都是由OS先完成了再通知服务器应用区启动线程进行处理。</p>
+<pre><code>多线程：如果BIO要能够同时处理多个客户端请求，就必须使用多线程，即每次accept阻塞等待来自客户端请求，一旦受到连接请求就建立通信套接字，同时开启一个新的线程来出炉这个套接字的数据读写请求，然后又立刻继续accept等待其他客户端连接请求，即为每个客户端请求都单独创建一个线程来单独处理</code></pre><p>AIO：异步非阻塞，服务器实现模式为一个有效请求一个线程，客户端的IO请求都是由OS先完成了再通知服务器应用区启动线程进行处理。</p>
 <ul>
-<li><p>volatile和synchronize的区别<br> 1）volatile本质是告诉JVM当前变量在寄存器中的值是不确定的，需要从主存中读取。synchronized则是锁定当前变量，只有当前线程可以访问该变量，其它线程被阻塞。</p>
+<li><p>volatile和synchronize的区别（synchronized与Lock、ReentrantLock(这两个都是手动加锁和适用代码块)）</p>
+<p> 1）volatile本质是告诉JVM当前变量在寄存器中的值是不确定的，需要从主存中读取。synchronized则是锁定当前变量，只有当前线程可以访问该变量，其它线程被阻塞。</p>
 <p> 2）volatile仅能使用在变量级别，synchronized则可以使用在变量、方法。</p>
-<p> 3）volatile仅能实现变量修改的可见性，而synchronized则可以保证变量修改的可见性和原子性。《Java编程思想》上说，定义long或double时，如果使用volatile关键字(简单的赋值与返回操作)，就会获得原子性。(常规状态下，这两个变量由于其长度，其操作不是原子的)</p>
-<p> 4）volatile不会造成线程阻塞，synchronized会造成线程阻塞。</p>
-<p> 5）使用volatile而不是synchronized的唯一安全情况是类中只有一个可变的域。</p>
+<p> 3）volatile仅能实现变量修改的可见性，而synchronized则可以保证变量修改的可见性和原子性。</p>
+<p>  《Java编程思想》上说，定义long或double时，如果使用volatile关键字(简单的赋值与返回操作)，就会获得原子性。(常规状态下，这两个变量由于其长度，其操作不是原子的)</p>
+<p> 4）volatile不会造成线程阻塞，synchronized可能会造成线程阻塞。</p>
 </li>
-<li><p>#介绍一个你比较熟悉的GC算法，Java常用启动参数有哪些？</p>
+<li><p>介绍一个你比较熟悉的GC算法，Java常用启动参数有哪些？</p>
 </li>
 </ul>
-<p>GC：垃圾回收站，是将java的无用的堆对象进行清理，释放内存，以免发生内存泄露。在介绍java回收站前，首先介绍下几种回收机制</p>
-<p>　　1. 引用计数：</p>
-<p>　　当一个对象A被其他对象B引用时，对象A引用+1，断开引用则-1，GC工作时，会检查所有对象中的引用计数，如果为0则代表要清除，&gt;0则表示有其他对象引用不能清除。这种机制有一个致命缺点，就是当两个对象互引用时，在遍历时可能会发生这两个对象引数永远不为0，则永远不会被删除。此机制java从不使用。</p>
-<p>　　2. 停止-复制：</p>
-<p>　　程序暂停运行，启动GC，GC从堆或静态存储区开始遍历所有对象，判断对象是否“活”的对象，如果是活不删除，反之删除。判断是否“活”就是判断该对象是否有被其他对象引用，从链上去查找。当是活对象时，GC会从另外堆里开避一个大空间，然后将活对象复制一份到新空间里，在复制时按着紧密排列，同时更新所有引用地址为新的地址，不活对象原封不动。遍历完后，再遍历一次，这次是将不活的对象彻底给删除。</p>
+<p>GC：垃圾回收站，是将java的无用的堆对象进行清理，释放内存，以免发生内存泄露。在介绍java回收站前，首先介绍下几种回收机制<br>引用计数算法：给每个对象一个引用计数器，每当有其他对象引用它时，计数器就会加1；当引用失效时，计数器的值就会减1；任何时刻计数器的值为0的对象就会被回收。这种机制有一个致命缺点，就是当两个对象互引用时，在遍历时可能会发生这两个对象引数永远不为0，则永远不会被删除。Java不用而Python有用到。</p>
+<p>可达性分析法：“GC Roots”的对象为起点，从这些节点开始向下搜索，搜索走过的路径称为引用链，当一个对象到GC Roots没有任何引用链相连，就会被回收。</p>
+<p>停止-复制算法：程序暂停运行，启动GC，GC从堆或静态存储区开始遍历所有对象，判断对象是否“活”的对象，如果是活不删除，反之删除。判断是否“活”就是判断该对象是否有被其他对象引用，从链上去查找。当是活对象时，GC会从另外堆里开避一个大空间，然后将活对象复制一份到新空间里，在复制时按着紧密排列，同时更新所有引用地址为新的地址，不活对象原封不动。遍历完后，再遍历一次，这次是将不活的对象彻底给删除。</p>
 <p>　　优点：所有对象能够重新紧密排列，不会出现内存碎片，这对以后创建对象能提供更快的效率。</p>
 <p>　　缺点：占用的内存空间大，要原对象的2倍空间；这种模式无论如何所有活的对象都要复制一份，假设遍历到最后，对象很稳定，只出现少量垃圾对象或者根本没垃圾对象，这时已经做了复制工作，浪费了资源。</p>
-<p>　　3. 标记-删除：</p>
-<p>　　程序暂停运行，启动GC，GC从堆或静态存储区开始遍历所有对象，判断对象是否“活”的对象，如果是活不删除，反之删除。判断是否“活”就是判断该对象是否有被其他对象引用，从链上去查找。当是活对象时，会给对象给个标记符号，死对象则不标记，遍历完后，第二次遍历时，只保留标记的对象，把所有没标记的对象都删除。</p>
+<p>标记-删除算法：程序暂停运行，启动GC，GC从堆或静态存储区开始遍历所有对象，判断对象是否为“活”的对象，如果是活不删除，反之删除。判断是否“活”就是判断该对象是否有被其他对象引用，从链上去查找。当是活对象时，会给对象给个标记符号，死对象则不标记，遍历完后，第二次遍历时，只保留标记的对象，把所有没标记的对象都删除。</p>
 <p>　　以上第2和第3种都是要遍历两次，而且都是最后一次才执行真正删除，比起第1种来说要慢很多，因为要遍历2次，尤其是第2种，还要复制动作，但这2种归避了第1种的致命缺点。</p>
 <p>　　早期的jvm采用的是标记-删除模式，继java5后，jvm采用自适应技术，就是根据自身状态情况，在”停止-复制“和”标记-删除“自动切换以达到最快效率。在第1遍历时，如果确定对象需要回收，则会先执行对象的finalize()方法。</p>
 <ul>
@@ -280,9 +277,9 @@
 <p>Executors 是一个Java中的工具类。提供<strong>工厂方法</strong>来创建不同类型的线程池。常用方法有以下几个：</p>
 <p>newSingleThreadExecutor()创建一个单线程化的Executor。只会用唯一的工作线程执行任务保证任务按指定顺序(FIFO,LIFO,优先级)执行。<br>newFiexedThreadPool(int Threads)：创建一个定长线程池。可控制线程最大并发数，超出的线程会在队列中等待。<br>newCachedThreadPool()：创建一个可缓存的线程池。如果线程池长度超过处理需要，可灵活回收空闲线程，如果没有可回收的空闲线程，则新建线程<br>newScheduledThreadPool(int corePoolSize)创建一个定长线程池。支持定时及周期性的任务执行。</p>
 <pre><code>ExecutorService executor = Executors.newFixedThreadPool(nThreads) ;</code></pre><p>但是阿里巴巴Java开发手册中明确提到不允许使用Executors创建线程池，因为使用Executors创建线程池可能会导致OOM(Out Of Memory ,内存溢出)原因是Fixed和Single允许队列长度为Integer.Max_value，可能会堆积大量请求。Cached与Scheduled允许创建的线程数量为Integer.Max_value，可能会创建大量线程</p>
-<p>ThreadPoolExecutor是线程池的真正实现,通过构造方法的一系列参数,来构成不同配置的线程池在创建的同时，给BlockQueue指定容量就可以了。<br>    private static ExecutorService executor = new ThreadPoolExecutor(10, 10,60L, TimeUnit.SECONDS,new ArrayBlockingQueue(10));<br>还可以使用其他开源类库apache，guava提供的ThreadFactoryBuilder来创建线程池</p>
+<p>ThreadPoolExecutor是线程池的真正实现,直接调用ThreadPoolExecutor的构造函数来自己创建线程池，在创建的同时用BlockQueue指定想要的线程容量。<br>    private static ExecutorService executor = new ThreadPoolExecutor(10, 10,60L, TimeUnit.SECONDS,new ArrayBlockingQueue(10));<br>还可以使用其他开源类库apache，guava提供的ThreadFactoryBuilder来创建线程池</p>
 <ul>
-<li><p>SpringAOP是什么？有什么用？<br>面向对象编程有一些弊端，比如当我们需要为多个不具有继承关系的对象引入一个公共行为，例如日志,权限验证,事务等功能时，只能在在每个对象里引用公共行为，这样做不便于维护，而且有大量重复代码。<br>AOP是面向切面编程的意思，在使用面向切面编程时，我们仍然在一个地方定义通用功能，但是可以通过声明的方式定义这个功能要以何种方式在何处应用，而无需修改受影响的类。比如在工作中用Spring做日志，事务，安全验证</p>
+<li><p>SpringAOP是什么？有什么用？<br>面向对象编程有一些弊端，比如当我们需要为多个不具有继承关系的对象引入一个公共行为，例如日志,权限验证,事务等功能时，只能在在每个对象里引用公共行为，这样做不便于维护，而且有大量重复代码。<br>AOP是面向切面编程的意思，在使用面向切面编程时，我们仍然在一个地方定义通用功能，但是可以通过声明的方式定义这个功能要以何种方式在何处应用，而无需修改受影响的类。</p>
 </li>
 <li><p>springcloud有哪些主要组件？讲一下用处</p>
 </li>
@@ -291,9 +288,9 @@
 <ul>
 <li>MySQL聚集索引和覆盖索引是什么？</li>
 </ul>
-<p>聚集索引（主键索引）：聚集索引就是按照每张表的主键构造一个B+树，同时叶子节点中存放的即为整张表的记录数据。聚集索引的叶子节点称为数据页，聚集索引的这个特性决定了索引组织表中的数据也是索引的一部分。<br>非聚集索引：非聚集索引和聚集索引一样， 同样是采用平衡树作为索引的数据结构。索引树结构中各节点的值来自于表中的索引字段， 假如给user表的name字段加上索引，那么索引就是由name字段中的值构成，在数据改变时， DBMS需要一直维护索引结构的正确性。如果给表中多个字段加上索引 ， 那么就会出现多个独立的索引结构，每个索引（非聚集索引）互相之间不存在关联。区别在于， 通过聚集索引可以查到需要数据， 而通过非聚集索引可以查到记录对应的主键值 ， 再使用主键值通过聚集索引查找到需要的数据。</p>
-<p>覆盖索引：如果一个索引包含所有需要查询的字段的值，我们就称之为“覆盖索引”。因此不需要通过主键ID值的查找数据行的真实所在， 直接取得叶节点中name的值返回即可。</p>
-<p>个人理解：非聚集索引就是一般常用的索引，索引树的根节点是表的主键。聚集索引就是主键组成的树，根节点是数据库真实数据的位置。</p>
+<p>聚集索引（主键索引）：数据行在磁盘上的物理顺序与列值（一般是主键的那一列）的顺序相同，一个表中只能拥有一个聚集索引。聚集索引的叶子节点称为数据页，叶子节点中存放的即为表记录的数据。</p>
+<p>覆盖索引：如果一个索引包含所有需要查询的字段的值，称之为“覆盖索引”。查询语句的执行只用从索引中就能够取得，不必从数据表中读取。</p>
+<p>非聚集索引：索引的逻辑顺序与磁盘上行的物理存储顺序不同，一个表中可以拥有多个非聚集索引。非聚集索引叶节点仍然是索引节点，只是有一个指针指向对应的数据块，此如果使用非聚集索引查询，而查询列中包含了其他该索引没有覆盖的列，那么他还要进行第二次的查询，查询节点上对应的数据行的数据。</p>
 <ul>
 <li>讲一讲你比较熟悉的消息队列？有什么优缺点？</li>
 </ul>
@@ -334,14 +331,14 @@
 <ul>
 <li>1、HashMap中key存整数123,和存字符串“123”，哪个更好？说明理由？</li>
 </ul>
-<p>HashMap只能是引用类型，因为String对象的hashCode()值是根据String对象的内容计算的，并不是根据对象的地址计算。设计 hashCode() 时最重要的因素就是对同一个对象调用 hashCode() 都应该产生相同的值</p>
+<p>HashMap只能是引用类型，String用字符数组保存字符串并用final修饰，对象本身是不会发生变化，所以String对象的hashCode()值是根据String对象的内容计算的，并不是根据对象的地址计算。设计 hashCode() 时最重要的因素就是对同一个对象调用 hashCode() 都应该产生相同的值</p>
 <ul>
 <li>2、异常处理机制：throw和throws的区别？哪些异常适合抛出来？你是怎么处理异常的？比如IO异常和数据库异常是怎么处理的？</li>
 </ul>
 <ol>
 <li>throw是真实抛出一个异常，一般写在代码块内部，throws是一种声明，表示可能会抛出一个异常，并不一定会发生，写在方法函数头</li>
-<li>throws 一般是检查型异常，如IOExcetion等，简单点说，编译的时候就有需要声明或捕获的异常，表示此方法不处理异常，而交给方法调用处进行处理 。throw 一般是抛出运行时异常（即该异常为RuntimeException的子类）。并且方法一般不需要throws Exception</li>
-<li>IO异常是检测型异常，检查型异常就一定要捕获</li>
+<li>throws 一般是检查型异常，如IOExcetion等，简单点说，编译的时候就有需要声明或捕获的异常，表示此方法不处理异常，而交给方法调用处进行处理 。throw 一般是抛出运行时异常（即该异常为RuntimeException的子类）。并且方法一般不需要抛出（1/0）</li>
+<li>IO异常是检测型异常，检查型异常就一定要捕获（编译器出红线）</li>
 </ol>
 <ul>
 <li><h3 id="3、泛型用过吗？说下你使用的场景？Java泛型是编译时还是运行时的特性？"><a href="#3、泛型用过吗？说下你使用的场景？Java泛型是编译时还是运行时的特性？" class="headerlink" title="###3、泛型用过吗？说下你使用的场景？Java泛型是编译时还是运行时的特性？"></a>###3、泛型用过吗？说下你使用的场景？Java泛型是编译时还是运行时的特性？</h3></li>
@@ -551,7 +548,10 @@ Using where
 <li>switch在JDK1.5后可以作用于枚举类型</li>
 </ol>
 <ul>
-<li>用最有效的方法计算2乘以8<br>将一个数左移n位，等价于这个数乘以2的n次方，而2乘以8其实就是2乘以2的三次方，所以只需要将2左移3位即可。并且位运算cpu是直接支持的，效率最高。综上所诉2乘以8最有效的方法是2&lt;&lt;3</li>
+<li>用最有效的方法计算2乘以8</li>
+</ul>
+<p>将一个数左移n位，等价于这个数乘以2的n次方，而2乘以8其实就是2乘以2的三次方，所以只需要将2左移3位即可。并且位运算cpu是直接支持的，效率最高。综上所诉2乘以8最有效的方法是2&lt;&lt;3</p>
+<ul>
 <li>数组有没有length()方法？String呢？</li>
 </ul>
 <ol>
@@ -564,8 +564,9 @@ Using where
 </ul>
 <p>构造器就是构造方法，能够被重载（同类中不同参数列表的构造器），不能够被重写（子类使用super方法可以调用）。不能被继承，因为能够调用，但是不能重写。</p>
 <ul>
-<li>两个对象值相同（x.equals(y)==true）,但是有不同的hashcode 对吗？<br>不对，如果两个对象x和y满足x.equals(y) == true，它们的哈希码应当相同。Java对于eqauls方法和hashCode方法是这样规定的：</li>
+<li>两个对象值相同（x.equals(y)==true）,但是有不同的hashcode 对吗？</li>
 </ul>
+<p>不对，如果两个对象x和y满足x.equals(y) == true，它们的哈希码应当相同。Java对于eqauls方法和hashCode方法是这样规定的：</p>
 <ol>
 <li>如果两个对象相同（equals方法返回true），那么它们的hashCode值一定要相同</li>
 <li>如果两个对象的hashCode相同，对象并不一定相同。<br>equals方法必须满足：</li>
@@ -575,33 +576,40 @@ Using where
 <li>一致性（当x和y引用的对象信息没有被修改时，多次调用x.equals(y)应该得到同样的返回值），而且对于任何非null值的引用x，x.equals(null)必须返回false。<br>实现高质量的equals方法的诀窍包括：1. 使用==操作符检查”参数是否为这个对象的引用”；2. 使用instanceof操作符检查”参数是否为正确的类型”；3. 对于类中的关键属性，检查参数传入对象的属性是否与之相匹配；4. 编写完equals方法后，问自己它是否满足对称性、传递性、一致性；5. 重写equals时总是要重写hashCode；6. 不要将equals方法参数中的Object对象替换为其他的类型，在重写时不要忘掉@Override注解。</li>
 </ol>
 <ul>
-<li><p>string和stringbuilder、stringbuffer的区别？<br>操作string字符串对象，每次都是新建一个对象，然后执行操作<br>stringbuilder和stringbuffer都在对象原来的基础上执行操作<br>stringbuilder适合单线程<br>stringbuffer线程安全适合多线程</p>
-</li>
-<li><p>描述一下JVM加载class文件的原理机制<br>JVM将类加载过程分为三个步骤：装载（Load），链接（Link）和初始化(Initialize)链接又分为三个步骤，如下图所示：<br><img src="/2020/03/24/Java练习题/JVM%E5%8A%A0%E8%BD%BDclass.png" alt><br>1) 装载：查找并加载类的二进制数据；<br>2)链接：<br>验证：确保被加载类的正确性；<br>准备：为类的静态变量分配内存，并将其初始化为默认值；<br>解析：把类中的符号引用转换为直接引用；<br>3)初始化：为类的静态变量赋予正确的初始值；</p>
-</li>
-<li><p>java中会存在内存泄漏吗，简单描述<br>Java中存在内存泄漏、内存溢出统称OOM,<br>内存溢出:指当需要为对象分配内存的时候，得不到足够的内存来分配<br>内存泄漏:是对象在申请到内存后，使用完了之后却无法释放掉这部分内存，最终会导致OutOfMemoryError。<br>内存泄漏的根本原因是泄漏对象到GCRoot存在引用链，一般可以作为GCRoot的有虚拟机栈中的对象，类的静态属性、常量。最早的时候，判断一个对象是否“死亡”使用的是引用计数的方法——给对象添加一个引用计数器，每当有一个地方引用它时，计数器值加1；当引用失效时，计数器值就减1；任何时刻计数器为0的对象就是不可能再被使用。但是，这个方法有一个明显的缺陷，那就是如果两个本该被GC的对象之间互相引用，造成双方均无法被GC。<br>改进算法为可达性分析算法——通过一系列的称为“GC Root”的对象作为起始点，从这些节点开始向下搜索，搜索所经过的路径称为引用链，当一个对象到GC Root没有任何引用链相连时，则证明此对象是不可用的，是可以被GC掉的。</p>
-</li>
-<li><p>GC是什么，为什么要GC</p>
-</li>
-<li><p>String s=new String(“xyz”),一共创建了几个字符串对象？<br>两个对象，一个是静态区的”xyz”，一个是用new创建在堆上的对象。<br>这个答案应该是一个或者两个吧，如果静态区中存在存在hello是new String(“hello”)只会在堆中创建对象吧，str2指向堆中才造成了str1==str2为false，不能认为new String(“hello”)中的hello也是重新创建的</p>
-</li>
-<li><h3 id="Java中final关键字的用法？"><a href="#Java中final关键字的用法？" class="headerlink" title="Java中final关键字的用法？"></a>Java中final关键字的用法？</h3><p>1、final修饰类<br>被final修饰的类不能被继承，因此final类的成员方法也不能被重写，被final关键字修饰的类没有子类，因此类的实现细节也无法改变，无法被扩展。final类中的所有成员方法都会被隐式地指定为final方法。</p>
-</li>
+<li>描述一下JVM加载class文件的原理机制</li>
 </ul>
-<p>2、final修饰方法<br>一个类中的方法如果被final关键字修饰，则其子类无法重写该方法，只能被子类继承。如果父类中的某个方法不想被其子类所覆写，可将该方法定义为final类型，另外，父类中的私有方法（即被private关键字修饰的方法）也不允许被子类所重写，所以父类中被private关键字修饰的方法默认为final类型，被final关键字修饰的方法有如下特质：</p>
-<p>该方法被锁定，可以防止任何继承类修改它的意义和实现；<br>高效。编译器在遇到调用final方法时候会转入内嵌机制，大大提高执行效率;<br>另外，使用final修饰的静态方法在其所属类的子类中不能被隐藏(hide)；</p>
-<p>3、final修饰变量</p>
-<p>final这个关键字的含义是“这是无法改变的”或者“终态的”；那么为什么要阻止改变呢？<br>java语言的发明者可能由于两个目的而阻止改变:<br>A.效率问题：<br>jdk中的某些类的某些方法，是不允许被用户覆盖的，设计者可能认为，所用方法已经是最好的方法，<br> 用户私自覆盖，或是由于疏忽而覆盖，就会影响JVM或是系统的系能；<br>B.设计所需：<br>众所周知，有些情况必须使用final关键字，比如方法中的匿名内部类的参数传递。<br>有人说final变量在赋值后就不可变，<br>那么这个不变到底指的是什么呢？<br>这个不变指的是引用，是地址，而所引用的对象的内容仍然是可变的。<br>就是说，这个final变量永远指向某个对象，是一个常量指针，而不是指向常量的指针。<br>（1）被final关键字修饰的基本数据类型，则其数值一旦在初始化之后便不能更改;<br>（2）如果是引用类型的变量，则在对其初始化之后便不能再让其指向另一个对象,但该引用所指向的对象的内容是可以发生变化的。原因为：引用数据类型存储的引用对象在堆内存中的地址，final修饰引用类型之后，要求该引用指向的堆内存空间（或者说该引用存储的堆内存地址）不能改变。<br>当用final修饰类的非静态成员变量时，成员变量的初始化有两种方式：<br>（3）在声明时进行初始化<br>（4）在声明变量时可以不进行初始化，该变量被称为blank final,即final空白，但是要在这个变量所在的类的所有的构造方法中对这个变量赋初值。<br>当用final修饰类的静态成员变量时，静态成员变量的初始化方式也有两种：<br>（5）在声明时进行初始化<br>（6）在静态初始化块中进行初始化<br>当用final修饰接口的静态变量时，其初始化方式只有一种：<br>（7）在声明时进行初始化<br>当用final修饰局部成员变量时，只需要保证在使用之前被初始化赋值即可。<br>总之，被final关键字修饰的变量在声明时可以不进行初始化，但必须保证该变量在使用之前被初始化，一旦被初始化赋值之后，就不能再被重新赋值了。<br>4、final修饰参数<br>当方法参数为final类型时，你可以读取使用该参数，但是无法改变该参数的值。该变量在方法调用时被创建，同时初始化为对应实参值，在方法体(body)执行结束前，其值不能改变。用final关键字修饰的基本数据类型的参数，其参数值无法改变，用final关键字修饰的引用数据类型，无法是该引用指向其他对象或再次赋值为null，但可以使用该引用改变引用对象的内容。final用于修饰参数的目的并非防止在调用的方法内部对参数的操作改变方法外部对应变量的值，只是防止在该方法内对该参数进行重新赋值操作，影响该参数传递时的初始值。而且将方法中的参数用final关键字修饰并不能防止从方法外部所传递的参数的值的内容不被改变。具体可参考final修饰引用数据类型的解释。</p>
+<p>JVM将类加载过程分为三个步骤：装载（Load），链接（Link）和初始化(Initialize)链接又分为三个步骤，如下图所示：<br><img src="/2020/03/24/Java练习题/JVM%E5%8A%A0%E8%BD%BDclass.png" alt><br>1) 装载：查找并加载类的二进制数据；<br>2)链接：<br>验证：确保被加载类的正确性；<br>准备：为类的静态变量分配内存，并将其初始化为默认值；<br>解析：把类中的符号引用转换为直接引用；<br>3)初始化：为类的静态变量赋予正确的初始值；</p>
+<ul>
+<li>java中会存在内存泄漏吗，简单描述</li>
+</ul>
+<p>Java中存在内存泄漏、内存溢出统称OOM,<br>内存溢出:指当需要为对象分配内存的时候，得不到足够的内存来分配<br>内存泄漏:是对象在申请到内存后，使用完了之后却无法释放掉这部分内存，最终会导致OutOfMemoryError。<br>内存泄漏的根本原因是泄漏对象到GCRoot存在引用链，一般可以作为GCRoot的有虚拟机栈中的对象，类的静态属性、常量。最早的时候，判断一个对象是否“死亡”使用的是引用计数的方法——给对象添加一个引用计数器，每当有一个地方引用它时，计数器值加1；当引用失效时，计数器值就减1；任何时刻计数器为0的对象就是不可能再被使用。但是，这个方法有一个明显的缺陷，那就是如果两个本该被GC的对象之间互相引用，造成双方均无法被GC。<br>改进算法为可达性分析算法——通过一系列的称为“GC Root”的对象作为起始点，从这些节点开始向下搜索，搜索所经过的路径称为引用链，当一个对象到GC Root没有任何引用链相连时，则证明此对象是不可用的，是可以被GC掉的。</p>
+<ul>
+<li>GC是什么，为什么要GC</li>
+</ul>
+<p>GC是垃圾回收机制，如果创建一个对象在堆中而没有被引用就应该被回收。如果没有GC机制会导致OOM错误。</p>
+<ul>
+<li>String s=new String(“xyz”),一共创建了几个字符串对象？</li>
+</ul>
+<p>两个对象，一个是静态区的”xyz”，一个是用new创建在堆上的对象。<br>这个答案应该是一个或者两个吧，如果静态区中存在存在hello是new String(“hello”)只会在堆中创建对象吧，str2指向堆中才造成了str1==str2为false，不能认为new String(“hello”)中的hello也是重新创建的<br>-### Java中final关键字的用法？</p>
+<p>final关键字容易与finalize()方法搞混，后者是在Object类中定义的方法，是在垃圾回收之前被JVM调用的方法。</p>
+<p>1、final修饰类。被final修饰的类不能被继承，因此final类的成员方法也不能被重写，被final关键字修饰的类没有子类，因此类的实现细节也无法改变，无法被扩展。final类中的所有成员方法都会被隐式地指定为final方法。<br>2、final修饰方法。一个类中的方法如果被final关键字修饰，则其子类无法重写该方法，只能被子类继承。<br>3、final修饰变量。需要保证在使用之前被初始化赋值。一旦被初始化赋值之后，就不能再被重新赋值了。<br>4、final修饰参数。防止在该方法内对该参数进行重新赋值操作，影响该形数传递时的初始值。</p>
+<p><em>final用于修饰参数的目的不是防止在调用的方法内部对参数的操作改变方法外部对应变量的值<br>而且将方法中的参数用final关键字修饰并不能防止从方法外部所传递的参数的值的内容不被改变。具体可参考final修饰引用数据类型的解释。</em></p>
 <ul>
 <li>怎么样将GB2312编码的字符串转换为ISO-8859-1编码的字符串？</li>
 </ul>
 <p>Java有一个public String(byte bytes[], Charset charset)函数可以用指定字节数组和编码来构造字符串。一个public byte[] getBytes(Charset charset)函数把字符串按指定编码来得到字节数组。可以用这两个函数来实现编码转换。<br>    String s1 = “你好”;<br>    String s2 = new String(s1.getBytes(“GB2312”), “ISO-8859-1”);</p>
 <ul>
-<li><p>列出一些你常见的运行时异常？<br>数组下标越界异常、空指针异常、类装换异常、数据存储异常、缓冲区溢出异常</p>
-</li>
-<li><p>List、Map、Set三个接口存取元素时，各有什么特点？<br>List与Set都是单列元素的集合，它们有一个功共同的父接口Collection。</p>
+<li><p>列出一些你常见的运行时异常？</p>
+<pre><code>ERROR</code></pre><p>  Threadable-                非受检查异常（运行时异常）</p>
+<pre><code>Exception-
+            受检查异常（编译器变红 try catch finally）</code></pre><p>这些异常会通过编译，控制台报错</p>
 </li>
 </ul>
+<p>数组下标越界异常、空指针异常、类装换异常、数组存储异常、缓存区溢出异常</p>
+<ul>
+<li>List、Map、Set三个接口存取元素时，各有什么特点？</li>
+</ul>
+<p>List与Set都是单列元素的集合，它们有一个功共同的父接口Collection。</p>
 <p>Set里面不允许有重复的元素，</p>
 <p>存元素：add方法有一个boolean的返回值，当集合中没有某个元素，此时add方法可成功加入该元素时，则返回true；当集合含有与某个元素equals相等的元素时，此时add方法无法加入该元素，返回结果为false。<br>取元素：没法说取第几个，只能以Iterator接口取得所有的元素，再逐一遍历各个元素。</p>
 <p>List表示有先后顺序的集合，</p>
@@ -684,11 +692,16 @@ Using where
 </li>
 <li><p>什么是SpringBoot？为什么要用SpringBoot，核心配置文件是什么？</p>
 </li>
-<li><p>jpa和hibernate的区别有哪些？<br>Java Persistence API是一种数据持久化规范，Hibernate是ORM关系映射框架，Hibernate是JPA的一种实现</p>
-</li>
-<li><p>zookeeper有几种部署模式？<br>zookeeper是什么：是一个分布式的，开放源码的分布式应用程序协调服务，是google chubby的开源实现，是Hadoop和hbase的重要组件。他是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护，域名服务，分布式同步，组服务等<br>zookeeper都有哪些功能<br>集群管理：监控节点存活状态、运行请求等<br>主节点选举：主节点挂掉只会可以从备用的节点开始新一轮选举，主节点选举说的就是这个选举的过程，使用zookeeper可以协助完成这个过程。<br>分布式锁：zookeeper提供两种锁：独享锁、共享锁。独享锁即一次只能有一个线程使用资源，共享锁是读锁共享，读写互斥，即可以有多线线程同时读同一个资源，如果要使用写锁也只能有一个线程使用。zookeeper可以对分布式锁进行控制。<br>命名服务：在分布式系统中，通过使用命名服务，客户端能够根据指定名字来获取资源或者服务的地址，提供者等信息。<br>zookeeper有几种部署模式<br>单机部署：一台集群上运行<br>集群部署：多台集群运行<br>伪集群部署：一台集群启动多个zookeeper实例运行</p>
-</li>
 </ul>
+<p>是Spring组件一站式解决方案，主要是简化了使用Spring的难度<br>Spring Boot 有两种类型的配置文件，application和bootstrap文件。Spring Boot会自动加载classpath目前下的这两个文件，文件格式为properties或者yml格式。</p>
+<ul>
+<li>jpa和hibernate的区别有哪些？</li>
+</ul>
+<p>Java Persistence API是一种数据持久化规范，Hibernate是ORM关系映射框架，Hibernate是JPA的一种实现</p>
+<ul>
+<li>zookeeper有几种部署模式？</li>
+</ul>
+<p>zookeeper是什么：是一个分布式的，开放源码的分布式应用程序协调服务，是google chubby的开源实现，是Hadoop和hbase的重要组件。他是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护，域名服务，分布式同步，组服务等<br>zookeeper都有哪些功能<br>集群管理：监控节点存活状态、运行请求等<br>主节点选举：主节点挂掉只会可以从备用的节点开始新一轮选举，主节点选举说的就是这个选举的过程，使用zookeeper可以协助完成这个过程。<br>分布式锁：zookeeper提供两种锁：独享锁、共享锁。独享锁即一次只能有一个线程使用资源，共享锁是读锁共享，读写互斥，即可以有多线线程同时读同一个资源，如果要使用写锁也只能有一个线程使用。zookeeper可以对分布式锁进行控制。<br>命名服务：在分布式系统中，通过使用命名服务，客户端能够根据指定名字来获取资源或者服务的地址，提供者等信息。<br>zookeeper有几种部署模式<br>单机部署：一台集群上运行<br>集群部署：多台集群运行<br>伪集群部署：一台集群启动多个zookeeper实例运行</p>
 <h2 id="第五部分"><a href="#第五部分" class="headerlink" title="第五部分"></a>第五部分</h2><p>BeanFactory与FactoryBean的区别？<br>BeanFactory是个bean 工厂，是一个工厂类(接口)， 它负责生产和管理bean的一个工厂<br>是ioc 容器最底层的接口，是个ioc容器，是spring用来管理和装配普通bean的ioc容器（这些bean成为普通bean）。<br>FactoryBean是个bean，在IOC容器的基础上给Bean的实现加上了一个简单工厂模式和装饰模式，<br>是一个可以生产对象和装饰对象的工厂bean，由spring管理后，生产的对象是由getObject()方法决定的（从容器中获取到的对象不是“ FactoryBeanTest ” 对象）。</p>
 <p>lambda的底层接口是什么？</p>
 <p>函数式编程的优缺点是什么？<br>由于所有的数据都是不可变的，所以所有的变量在程序运行期间都是一直存在的，非常占用运行资源。同时由于函数式的先天性设计导致性能一直不够。虽然现代的函数式编程语言使用了很多技巧比如惰性计算等来优化运行速度，但是始终无法与面向对象的程序相比，当然面向对象程序的速度也不够快。    </p>
@@ -945,6 +958,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">java基础</a>
               </li>
              
@@ -961,10 +978,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">spring源码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
@@ -973,15 +986,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
