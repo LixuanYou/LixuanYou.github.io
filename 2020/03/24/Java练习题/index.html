@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/24/Java练习题/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB.PNG">
 <meta property="og:image" content="http://yoursite.com/2020/03/24/Java练习题/explain%E5%AD%97%E6%AE%B5.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/24/Java练习题/JVM%E5%8A%A0%E8%BD%BDclass.png">
-<meta property="og:updated_time" content="2020-04-14T10:21:12.508Z">
+<meta property="og:updated_time" content="2020-04-14T10:51:43.816Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java练习题">
 <meta name="twitter:description" content="第一部分 Java中的几种基本类型，各占多少字节？  byte:1字节 默认0 -128–127 short：2字节 默认0 取值-32758–32767 int：4字节 默认0 取值-2147483648-2147483647 long：8字节 默认0 char：2字节 float：4字节 double：8字节 boolean： 4字节  抽象类和接口的区别？  一个类只能继承（extends）">
@@ -360,7 +360,7 @@
 <li>使用volatile关键字，基于 volatile 关键字来实现线程间相互通信是使用共享内存的思想，大致意思就是多个线程同时监听一个变量，当这个变量发生变化的时候，线程能够感知并执行相应的业务。这也是最简单的一种实现方式</li>
 <li>使用Object类提供了线程间通信的方法：wait()、notify()、notifyaAl()方法</li>
 <li>使用 ReentrantLock 结合 Condition</li>
-<li>使用阻塞队列</li>
+<li>使用阻塞队列，在设置核心线程和最大线程后，利用阻塞队列特性比如同步阻塞队列，特性是take和put相互唤醒，所以在某次添加任务后必须等待其他线程取走后才能继续添加。</li>
 </ol>
 <p>7、Java 8 新特性有用过哪些？Stream有用过吗？</p>
 <p>Java8 函数式接口− 函数式接口(Functional Interface)就是一个有且仅有一个抽象方法，但是可以有多个非抽象方法的接口。函数式接口可以被隐式转换为 lambda 表达式。</p>
@@ -591,11 +591,11 @@ private          *</code></pre><ul>
 <ul>
 <li>描述一下JVM加载class文件的原理机制</li>
 </ul>
-<p>JVM将类加载过程分为三个步骤：装载（Load），链接（Link）和初始化(Initialize)链接又分为三个步骤，如下图所示：<br><img src="/2020/03/24/Java练习题/JVM%E5%8A%A0%E8%BD%BDclass.png" alt><br>1) 装载：查找并加载类的二进制数据；<br>2)链接：<br>验证：确保被加载类的正确性；<br>准备：为类的静态变量分配内存，并将其初始化为默认值；<br>解析：把类中的符号引用转换为直接引用；<br>3)初始化：为类的静态变量赋予正确的初始值；</p>
+<p>JVM将类加载过程分为三个步骤：装载（Load），链接（Link）和初始化(Initialize)链接又分为三个步骤，如下图所示：<br><img src="/2020/03/24/Java练习题/JVM%E5%8A%A0%E8%BD%BDclass.png" alt><br>1) 装载：查找并加载类的二进制数据；<br>2)链接：验证：确保被加载类的正确性；准备：为类的静态变量分配内存，并将其初始化为默认值；解析：把类中的符号引用转换为直接引用；<br>3)初始化：为类的静态变量赋予正确的初始值；</p>
 <ul>
 <li>java中会存在内存泄漏吗，简单描述</li>
 </ul>
-<p>Java中存在内存泄漏、内存溢出统称OOM,<br>内存溢出:指当需要为对象分配内存的时候，得不到足够的内存来分配<br>内存泄漏:是对象在申请到内存后，使用完了之后却无法释放掉这部分内存，最终会导致OutOfMemoryError。<br>内存泄漏的根本原因是泄漏对象到GCRoot存在引用链，一般可以作为GCRoot的有虚拟机栈中的对象，类的静态属性、常量。最早的时候，判断一个对象是否“死亡”使用的是引用计数的方法——给对象添加一个引用计数器，每当有一个地方引用它时，计数器值加1；当引用失效时，计数器值就减1；任何时刻计数器为0的对象就是不可能再被使用。但是，这个方法有一个明显的缺陷，那就是如果两个本该被GC的对象之间互相引用，造成双方均无法被GC。<br>改进算法为可达性分析算法——通过一系列的称为“GC Root”的对象作为起始点，从这些节点开始向下搜索，搜索所经过的路径称为引用链，当一个对象到GC Root没有任何引用链相连时，则证明此对象是不可用的，是可以被GC掉的。</p>
+<p>Java中存在内存泄漏、内存溢出统称OOM,内存溢出:指当需要为对象分配内存的时候，得不到足够的内存来分配。内存泄漏:是对象在申请到内存后，使用完了之后却无法释放掉这部分内存，最终会导致OutOfMemoryError。<br>内存泄漏的根本原因是泄漏对象到GCRoot存在引用链，一般可以作为GCRoot的有虚拟机栈中的对象，类的静态属性、常量。最早的时候，判断一个对象是否“死亡”使用的是引用计数的方法——给对象添加一个引用计数器，每当有一个地方引用它时，计数器值加1；当引用失效时，计数器值就减1；任何时刻计数器为0的对象就是不可能再被使用。但是，这个方法有一个明显的缺陷，那就是如果两个本该被GC的对象之间互相引用，造成双方均无法被GC。<br>改进算法为可达性分析算法——通过一系列的称为“GC Root”的对象作为起始点，从这些节点开始向下搜索，搜索所经过的路径称为引用链，当一个对象到GC Root没有任何引用链相连时，则证明此对象是不可用的，是可以被GC掉的。</p>
 <ul>
 <li>GC是什么，为什么要GC</li>
 </ul>
@@ -640,17 +640,15 @@ Threadable    -            非受检查异常（运行时异常）
 </li>
 </ol>
 <ul>
-<li><p>简述一下你了解的设计模式？</p>
-</li>
-<li><p>工厂模式：工厂类可以根据条件生成不同的子类实例，这些子类有一个公共的抽象父类并且实现了相同的方法，但是这些方法针对不同的数据进行了不同的操作（多态方法）。当得到子类的实例后，开发人员可以调用基类中的方法而不必考虑到底返回的是哪一个子类的实例。</p>
-</li>
-<li><p>代理模式：给一个对象提供一个代理对象，并由代理对象控制原对象的引用。实际开发中，按照使用目的的不同，代理可以分为：远程代理、虚拟代理、保护代理、Cache代理、防火墙代理、同步化代理、智能引用代理。</p>
-</li>
-<li><p>适配器模式：把一个类的接口变换成客户端所期待的另一种接口，从而使原本因接口不匹配而无法在一起使用的类能够一起工作。</p>
-</li>
-<li><p>模板方法模式：提供一个抽象类，将部分逻辑以具体方法或构造器的形式实现，然后声明一些抽象方法来迫使子类实现剩余的逻辑。不同的子类可以以不同的方式实现这些抽象方法（多态实现），从而实现不同的业务逻辑。</p>
-</li>
+<li>简述一下你了解的设计模式？</li>
 </ul>
+<ol>
+<li>观察者模式：定义对象之间的一对多依赖，当一个对象改变时，其他所有的依赖者都会收到通知并更新</li>
+<li>外观模式：提供统一的接口，该接口用来访问子系统中的其他接口。实现</li>
+<li>单例模式：这种模式涉及到单一的类。该类负责创建自己的对象，同时确保只有一个对象被创建。这个类提供了一种访问其唯一的对象的方式，可以直接访问而不需要实例化该类的对象。</li>
+<li>工厂模式：定义一个用于创建对象的接口，让子类决定实例化哪一个类</li>
+<li>抽象工厂模式：为具有相互依赖的对象提供一个接口，而且无需指定他们的具体类</li>
+</ol>
 <ul>
 <li><p>用Java写一个冒泡排序<br>sort()伪代码<br>array.length-i-1:每次循环数组下标都是从0开始，i下标后面已经排序的个数就得多减1，总结就是i增多少，j的循环位置减多少<br>  for(i=0;i&lt;array.length-1;i++){</p>
 <pre><code>for(j=0;j&lt;array.length-i-1,j++){
@@ -972,15 +970,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">java基础</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">技术，数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
