@@ -6,26 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>消息队列的特点 | 游理轩的博客</title>
+  <title>SpringBean生命周期与循环依赖 | 游理轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本章博客是上中华石衫老师的网课后写的 消息队列的使用场景即优点常见的应用场景：解耦、异步、削峰  解耦解耦：可以在多个系统之间进行解耦，将原本通过网络之间的调用的方式改为使用MQ进行消息的异步通讯，只要该操作不是需要同步的，就可以改为使用MQ进行不同系统之间的联系，这样项目之间不会存在耦合，系统之间不会产生太大的影响，就算一个系统挂了，也只是消息挤压在MQ里面没人进行消费而已，不会对其他的系统产生">
-<meta name="keywords" content="技术,消息队列">
+  <meta name="description" content="Spring Bean 的生命周期（实例化-初始化-使用-销毁）在《Spring源码深度分析》一书中实例化Bean的流程在org.springframework.beans.factory.support.AbstractBeanFactory#getBean方法他其实是空壳方法真正干活的是org.springframework.beans.factory.support.AbstractBean">
+<meta name="keywords" content="技术,spring源码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="消息队列的特点">
-<meta property="og:url" content="http://yoursite.com/2020/03/30/消息队列的特点/index.html">
+<meta property="og:title" content="SpringBean生命周期与循环依赖">
+<meta property="og:url" content="http://yoursite.com/2020/04/20/SpringBean生命周期与循环依赖/index.html">
 <meta property="og:site_name" content="游理轩的博客">
-<meta property="og:description" content="本章博客是上中华石衫老师的网课后写的 消息队列的使用场景即优点常见的应用场景：解耦、异步、削峰  解耦解耦：可以在多个系统之间进行解耦，将原本通过网络之间的调用的方式改为使用MQ进行消息的异步通讯，只要该操作不是需要同步的，就可以改为使用MQ进行不同系统之间的联系，这样项目之间不会存在耦合，系统之间不会产生太大的影响，就算一个系统挂了，也只是消息挤压在MQ里面没人进行消费而已，不会对其他的系统产生">
+<meta property="og:description" content="Spring Bean 的生命周期（实例化-初始化-使用-销毁）在《Spring源码深度分析》一书中实例化Bean的流程在org.springframework.beans.factory.support.AbstractBeanFactory#getBean方法他其实是空壳方法真正干活的是org.springframework.beans.factory.support.AbstractBean">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2020/03/30/消息队列的特点/%E8%A7%A3%E8%80%A6%E5%89%8D.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/30/消息队列的特点/%E8%A7%A3%E8%80%A6%E5%90%8E.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/30/消息队列的特点/%E4%B8%8D%E4%BD%BF%E7%94%A8MQ%E7%9A%84%E6%83%85%E5%86%B5.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/30/消息队列的特点/%E4%BD%BF%E7%94%A8MQ%E7%9A%84%E6%83%85%E5%86%B5.png">
-<meta property="og:image" content="http://yoursite.com/2020/03/30/消息队列的特点/%E4%BD%BF%E7%94%A8MQ%E8%BF%9B%E8%A1%8C%E5%89%8A%E5%B3%B0.png">
-<meta property="og:updated_time" content="2020-03-30T07:09:03.991Z">
+<meta property="og:image" content="http://yoursite.com/2020/04/20/SpringBean生命周期与循环依赖/SpringBean%E6%B5%81%E7%A8%8B.png">
+<meta property="og:updated_time" content="2020-04-20T11:36:39.250Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="消息队列的特点">
-<meta name="twitter:description" content="本章博客是上中华石衫老师的网课后写的 消息队列的使用场景即优点常见的应用场景：解耦、异步、削峰  解耦解耦：可以在多个系统之间进行解耦，将原本通过网络之间的调用的方式改为使用MQ进行消息的异步通讯，只要该操作不是需要同步的，就可以改为使用MQ进行不同系统之间的联系，这样项目之间不会存在耦合，系统之间不会产生太大的影响，就算一个系统挂了，也只是消息挤压在MQ里面没人进行消费而已，不会对其他的系统产生">
-<meta name="twitter:image" content="http://yoursite.com/2020/03/30/消息队列的特点/%E8%A7%A3%E8%80%A6%E5%89%8D.png">
+<meta name="twitter:title" content="SpringBean生命周期与循环依赖">
+<meta name="twitter:description" content="Spring Bean 的生命周期（实例化-初始化-使用-销毁）在《Spring源码深度分析》一书中实例化Bean的流程在org.springframework.beans.factory.support.AbstractBeanFactory#getBean方法他其实是空壳方法真正干活的是org.springframework.beans.factory.support.AbstractBean">
+<meta name="twitter:image" content="http://yoursite.com/2020/04/20/SpringBean生命周期与循环依赖/SpringBean%E6%B5%81%E7%A8%8B.png">
   
     <link rel="alternative" href="/atom.xml" title="游理轩的博客" type="application/atom+xml">
   
@@ -161,50 +157,124 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-消息队列的特点" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-SpringBean生命周期与循环依赖" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      消息队列的特点
+      SpringBean生命周期与循环依赖
     </h1>
   
 
         
-        <a href="/2020/03/30/消息队列的特点/" class="archive-article-date">
-  	<time datetime="2020-03-30T02:07:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-30</time>
+        <a href="/2020/04/20/SpringBean生命周期与循环依赖/" class="archive-article-date">
+  	<time datetime="2020-04-20T12:28:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本章博客是上中华石衫老师的网课后写的</p>
-<h3 id="消息队列的使用场景即优点"><a href="#消息队列的使用场景即优点" class="headerlink" title="消息队列的使用场景即优点"></a>消息队列的使用场景即优点</h3><p>常见的应用场景：解耦、异步、削峰</p>
-<ol>
-<li>解耦<br>解耦：可以在多个系统之间进行解耦，将原本通过网络之间的调用的方式改为使用MQ进行消息的异步通讯，只要该操作不是需要同步的，就可以改为使用MQ进行不同系统之间的联系，这样项目之间不会存在耦合，系统之间不会产生太大的影响，就算一个系统挂了，也只是消息挤压在MQ里面没人进行消费而已，不会对其他的系统产生影响。<a id="more"></a>
-<img src="/2020/03/30/消息队列的特点/%E8%A7%A3%E8%80%A6%E5%89%8D.png" alt><br><img src="/2020/03/30/消息队列的特点/%E8%A7%A3%E8%80%A6%E5%90%8E.png" alt></li>
-<li>异步<br>异步：加入一个操作涉及到好几个步骤，这些步骤之间不需要同步完成，比如客户去创建了一个订单，还要去客户轨迹系统添加一条轨迹、去库存系统更新库存、去客户系统修改客户的状态等等。这样如果这个系统都直接进行调用，那么将会产生大量的时间，这样对于客户是无法接收的；并且像添加客户轨迹这种操作是不需要去同步操作的，如果使用MQ将客户创建订单时，将后面的轨迹、库存、状态等信息的更新全都放到MQ里面然后去异步操作，这样就可加快系统的访问速度，提供更好的客户体验。<br><img src="/2020/03/30/消息队列的特点/%E4%B8%8D%E4%BD%BF%E7%94%A8MQ%E7%9A%84%E6%83%85%E5%86%B5.png" alt="不使用MQ的情况"><br><img src="/2020/03/30/消息队列的特点/%E4%BD%BF%E7%94%A8MQ%E7%9A%84%E6%83%85%E5%86%B5.png" alt="使用MQ的情况"></li>
-<li>削峰<br>削峰：一个系统访问流量有高峰时期，也有低峰时期，比如说，中午整点有一个抢购活动等等。比如系统平时流量并不高，一秒钟只有100多个并发请求，系统处理没有任何压力，一切风平浪静，到了某个抢购活动时间，系统并发访问了剧增，比如达到了每秒5000个并发请求，而我们的系统每秒只能处理2000个请求，那么由于流量太大，我们的系统、数据库可能就会崩溃。这时如果使用MQ进行流量削峰，将用户的大量消息直接放到MQ里面，然后我们的系统去按自己的最大消费能力去消费这些消息，就可以保证系统的稳定，只是可能要跟进业务逻辑，给用户返回特定页面或者稍后通过其他方式通知其结果。<br><img src="/2020/03/30/消息队列的特点/%E4%BD%BF%E7%94%A8MQ%E8%BF%9B%E8%A1%8C%E5%89%8A%E5%B3%B0.png" alt="使用MQ进行削峰.png"></li>
-</ol>
-<p>优点：</p>
+        <h2 id="Spring-Bean-的生命周期（实例化-初始化-使用-销毁）"><a href="#Spring-Bean-的生命周期（实例化-初始化-使用-销毁）" class="headerlink" title="Spring Bean 的生命周期（实例化-初始化-使用-销毁）"></a>Spring Bean 的生命周期（实例化-初始化-使用-销毁）</h2><h2 id="在《Spring源码深度分析》一书中"><a href="#在《Spring源码深度分析》一书中" class="headerlink" title="在《Spring源码深度分析》一书中"></a>在《Spring源码深度分析》一书中</h2><h3 id="实例化Bean的流程"><a href="#实例化Bean的流程" class="headerlink" title="实例化Bean的流程"></a>实例化Bean的流程</h3><p>在org.springframework.beans.factory.support.AbstractBeanFactory#getBean方法他其实是空壳方法真正干活的是<br>org.springframework.beans.factory.support.AbstractBeanFactory#doGetBean，这分为一下九个步骤</p>
 <ul>
-<li><p>1、对结构复杂、设计系统多的操作进行解耦操作，降低系统的操作复杂度、降低系统的维护成本。</p>
+<li>1解析Bean的别名，例如FactoryBean获取自身实例时要加一个&amp;符号，transformedBeanName(name)可以去除&amp;符号</li>
+<li>2尝试去缓存池中获取对象（第一次创建Bean缓存池中没有对象），（3）如果存在就可以跳过以下步骤开始实例化bean，调用的是getObjectForBeanInstance()</li>
+<li>4如果出现循环依赖再判断Bean是不是单例的，原型的就抛出异常</li>
+<li>5判断容器是否有父工厂如果存在就由父工厂加载</li>
+<li>6合并父类Bean定义检查Bean定义是否是抽象的</li>
+<li>7做dependsOn的依赖检查获取依赖的bean对象</li>
+<li>8针对不同的scope调用createbean()创建bean。调用getSingleton()方法再用beforeSigletonCreation标识当前Bean正在被创建</li>
+<li>9类型转换。<a id="more"></a>
+第八步中针对不同Scope的bean调用 createBean()创建Bean的流程最为重要,</li>
+</ul>
+<p>createBean方法分为四步：</p>
+<ul>
+<li>（1）根据设置的class属性或者根据className来解析Class。</li>
+<li>（2）对override属性进行标记及验证。<br>  在 Spring 的配置里面根本就没有诸如override-method之类的配置，但是在Spring配置中是存在lookup-method和replace-method的，而这两个配置的加载其实就是将配置统一存放在BeanDefinition中的methodOverrides属性里，而这个函数的操作其实也就是针对于这两个配置的。</li>
+<li>（3）resolveBeforeInstantiation(beanName, mbd)在这个方法中应用了两种后处理器、</li>
+</ul>
+<pre><code>1)应用实例化前的后处理器applyBeanPostProcessorsBeforeInstantiation
+    将AbsractBeanDefinition转换为BeanWrapper前的处理。给子类一个修改BeanDefinition的机会，也就是说当程序经过这个方法后，bean可能已经不是我们认为的bean了，而是或许成为了一个经过处理的代理bean，可能是通过cglib生成的，也可能是通过其它技术生成的
+2)应用初始化后的后处理器applyBeanPostProcessorsAfterInitialization</code></pre><ul>
+<li>（4）创建bean交给doGetBean处理</li>
+</ul>
+<p>当经历过 resolveBeforeInstantiation 方法后，程序有两个选择，如果创建了代理或者说重写了InstantiationAwareBeanPostProcessor 的 postProcessBeforeInstantiation 方法并在方法 postProcess BeforeInstantiation中改变了bean，则直接返回就可以了，否则需要进行常规bean的创建。而这常规bean的创建就是在doCreateBean中完成的。<br>org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#doCreateBean<br>这个函数主要做了一下工作：</p>
+<ul>
+<li><p>（1）如果是单例则需要首先清除缓存。</p>
 </li>
-<li><p>2、对一个可以进行异步操作的一些系统操作进行异步，减小操作的响应时间，提供更好的用户体验。</p>
+<li><p>（2）实例化bean，将BeanDefinition转换为BeanWrapper。instanceWrapper = createBeanInstance(beanName, mbd, args);<br>转换是一个复杂的过程，但是我们可以尝试概括大致的功能，如下所示。如果存在工厂方法（RootBeanDefinition中有factoryMethodName属性、配置文件中配置了factory-method）则使用工厂方法进行实例化。一个类有多个构造函数，每个构造函数都有不同的参数（根据用户指定的explicitArgs参数判断、缓存中获取、配置文件获取。），所以需要根据参数的个数锁定构造函数并进行实例化。如果既不存在工厂方法也不存在带有参数的构造函数，则使用默认的构造函数进行bean的实例化。</p>
 </li>
-<li><p>3、可对高流量进行削峰，保证系统的平稳运行。<br>缺点：</p>
+<li><p>（3）MergedBeanDefinitionPostProcessor的应用。bean合并后处理，Autowired注解正是通过此方法实现诸如类型的<strong>预</strong>解析。</p>
 </li>
+<li><p>（4）依赖处理。<br>在Spring中会有循环依赖的情况，例如，当A中含有B的属性，而B中又含有A的属性时就会构成一个循环依赖，此时如果A和B都是单例，那么在Spring中的处理方式就是当创建B的时候，涉及自动注入A的步骤时，并不是直接去再次创建A，而是通过放入缓存中的ObjectFactory来创建实例，这样就解决了循环依赖的问题。</p>
+</li>
+<li><p>（5）属性填充。将所有属性填充至bean的实例中。autowireByName、autowireBytype</p>
+</li>
+<li><p>（6）循环依赖检查。<br>笔记的下面有提到过，在Sping中解决循环依赖只对单例有效，而对于prototype的bean，Spring没有好的解决办法，唯一要做的就是抛出异常。在这个步骤里面会检测已经加载的 bean 是否已经出现了依赖循环，并判断是否需要抛出异常。</p>
+</li>
+<li><p>（7）注册DisposableBean。<br>如果配置了destroy-method，这里需要注册以便于在销毁时候调用。</p>
+</li>
+<li><p>（8）完成创建并返回。<br>可以看到上面的步骤非常的繁琐，每一步骤都使用了大量的代码来完成其功能，最复杂也是最难以理解的当属循环依赖的处理，在真正进入doCreateBean前我们有必要先了解下循环依赖。</p>
+<h3 id="初始化流程"><a href="#初始化流程" class="headerlink" title="初始化流程"></a>初始化流程</h3><p>在bean配置时有一个init-method的属性，这个属性的作用是在bean实例化前调用init-method指定的方法来根据用户业务进行相应的实例化。我们现在就已经进入这个方法了，首先看一下这个方法的执行位置，Spring中程序已经执行过bean的实例化，并且进行了属性的填充，而就在这时将会调用用户设定的初始化方法。<br>  initializeBean(final String beanName, final Object bean, RootBeanDefinition mbd)<br>这个函数主要目的是初始化用户自定义的init方法,其次是激活Aware方法然后是应用BeanPostProcessor后处理器</p>
+<h3 id="Bean销毁流程"><a href="#Bean销毁流程" class="headerlink" title="Bean销毁流程"></a>Bean销毁流程</h3><p>Spring中不但提供了对于初始化方法的扩展入口，同样也提供了销毁方法的扩展入口，对于销毁方法的扩展，除了我们熟知的配置属性destroy-method方法外，用户还可以注册后处理器DestructionAwareBeanPostProcessor来统一处理bean的销毁方法</p>
+<h3 id="实例化小结"><a href="#实例化小结" class="headerlink" title="实例化小结"></a>实例化小结</h3></li>
+<li><p>（1）转换对应beanName。<br>或许很多人不理解转换对应 beanName 是什么意思，传入的参数 name 不就是 beanName吗？其实不是，这里传入的参数可能是别名，也可能是 FactoryBean，所以需要进行一系列的解析，这些解析内容包括如下内容。去除FactoryBean的修饰符，也就是如果name=”&amp;aa”，那么会首先去除&amp;而使name=”aa”。取指定alias所表示的最终beanName，例如别名A指向名称为B的bean则返回B；若别名A指向别名B，别名B又指向名称为C的bean则返回C。</p>
+</li>
+<li><p>（2）尝试从缓存中加载单例。<br>单例在Spring的同一个容器内只会被创建一次，后续再获取bean，就直接从单例缓存中获取了。当然这里也只是尝试加载，首先尝试从缓存中加载，如果加载不成功则再次尝试从singletonFactories中加载。因为在创建单例bean的时候会存在依赖注入的情况，而在创建依赖的时候为了避免循环依赖，在Spring中创建bean的原则是不等bean创建完成就会将创建bean的ObjectFactory提早曝光加入到缓存中，一旦下一个bean创建时候需要依赖上一个bean则直接使用ObjectFactory（后面章节会对循环依赖重点讲解）。</p>
+</li>
+<li><p>（3）bean的实例化。<br>如果从缓存中得到了bean的原始状态，则需要对bean进行实例化。这里有必要强调一下，缓存中记录的只是最原始的bean 状态，并不一定是我们最终想要的bean。举个例子，假如我们需要对工厂bean进行处理，那么这里得到的其实是工厂bean的初始状态，但是我们真正需要的是工厂bean中定义的factory-method方法中返回的bean，而getObjectForBeanInstance就是完成这个工作的，后续会详细讲解。</p>
+</li>
+<li><p>（4）原型模式的依赖检查。<br>只有在单例情况下才会尝试解决循环依赖，如果存在A中有B的属性，B中有A的属性，那么当依赖注入的时候，就会产生当A还未创建完的时候因为对于B的创建再次返回创建A，造成循环依赖，也就是情况：isPrototypeCurrentlyInCreation(beanName)判断true。</p>
+</li>
+<li><p>（5）检测parentBeanFactory。<br>从代码上看，如果缓存没有数据的话直接转到父类工厂上去加载了，这是为什么呢？<br>可能读者忽略了一个很重要的判断条件：parentBeanFactory != null &amp;&amp; !containsBean Definition (beanName)，parentBeanFactory != null。parentBeanFactory如果为空，则其他一切都是浮云，这个没什么说的，但是!containsBeanDefinition(beanName)就比较重要了，它是在检测如果当前加载的XML配置文件中不包含beanName所对应的配置，就只能到parentBeanFactory去尝试下了，然后再去递归的调用getBean方法。</p>
+</li>
+<li><p>（6）将存储XML配置文件的GernericBeanDefinition转换为RootBeanDefinition。<br>因为从XML配置文件中读取到的Bean信息是存储在GernericBeanDefinition中的，但是所有的Bean 后续处理都是针对于RootBeanDefinition 的，所以这里需要进行一个转换，转换的同时如果父类bean不为空的话，则会一并合并父类的属性。</p>
+</li>
+<li><p>（7）寻找依赖。<br>因为 bean 的初始化过程中很可能会用到某些属性，而某些属性很可能是动态配置的，并且配置成依赖于其他的bean，那么这个时候就有必要先加载依赖的bean，所以，在Spring 的加载顺寻中，在初始化某一个bean的时候首先会初始化这个bean所对应的依赖。</p>
+</li>
+<li><p>（8）针对不同的scope进行bean的创建。<br>我们都知道，在Spring中存在着不同的scope，其中默认的是singleton，但是还有些其他的配置诸如prototype、request之类的。在这个步骤中，Spring会根据不同的配置进行不同的实例化策略。</p>
+</li>
+<li><p>（9）类型转换。<br>程序到这里返回bean后已经基本结束了，通常对该方法的调用参数requiredType是为空的，但是可能会存在这样的情况，返回的 bean 其实是个 String，但是 requiredType 却传入 Integer类型，那么这时候本步骤就会起作用了，它的功能是将返回的bean转换为requiredType所指定的类型。当然，String转换为Integer是最简单的一种转换，在Spring中提供了各种各样的转换器，用户也可以自己扩展转换器来满足需求。<br>经过上面的步骤后bean的加载就结束</p>
+<h2 id="在《Spring-In-Action》一书中"><a href="#在《Spring-In-Action》一书中" class="headerlink" title="在《Spring In Action》一书中"></a>在《Spring In Action》一书中</h2></li>
 </ul>
 <ol>
-<li>系统可用性降低<br>系统引入的外部依赖越多,系统越脆弱。每一个依赖出问题都会导致整个系统的崩溃。</li>
-<li>系统复杂度提高<br>需要考虑MQ的各种情况，比如：消息的重复消费、消息丢失、保证消费顺序等等……</li>
-<li>一致性问题<br>A 系统处理完了直接返回成功了，人都以为你这个请求就成功了；但是问题是，要是 BCD 三个系统那里，BD 两个系统写库成功了，结果 C 系统写库失败了，咋整？你这数据就不一致了。</li>
+<li>Spring对bean进行实例化；</li>
+<li>Spring将值和bean的引用注入到bean对应的属性中；</li>
+<li>如果bean实现了BeanNameAware接口，Spring将bean的ID传递给setBean-Name()方法；</li>
+<li>如果bean实现了BeanFactoryAware接口，Spring将调用setBeanFactory()方法，将 BeanFactory容器实例传入；</li>
+<li>如果bean实现了ApplicationContextAware接口，Spring将调用setApplicationContext()方法，将bean所在的应用上下文的引用传入进来；</li>
+<li>如果bean实现了BeanPostProcessor接口，Spring将调用它们的post-ProcessBeforeInitialization()方法；</li>
+<li>如果bean实现了InitializingBean接口，Spring将调用它们的after-PropertiesSet()方法。类似地，如果bean使用init-method声明了初始化方法，该方法也会被调用；</li>
+<li>如果bean实现了BeanPostProcessor接口，Spring将调用它们的post-ProcessAfterInitialization()方法；</li>
+<li>此时，bean已经准备就绪，可以被应用程序使用了，它们将一直驻留在应用上下文中，直到该应用上下文被销毁；</li>
+<li>如果bean实现了DisposableBean接口，Spring将调用它的destroy()接口方法。同样，如果bean使用destroy-method声明了销毁方法，该方法也会被调用。</li>
 </ol>
-<p>rabbitMQ(延迟最低):性能极好、延时很低，吞吐量万级、MQ功能完备，管理界面非常好，社区活跃。缺：吞吐量较低，erlang语音开发不容易进行定制开发，集群动态扩展麻烦    </p>
-<p>RocketMQ（topic数量对吞吐量的影响小/支持大量topic）:接口简单易用，吞吐量大，分布式扩展方便，支持大规模的topic、支持复杂的业务场景，可以基于源码进行定制开发。缺：接口不是按照标准JMS规范走的，有的系统迁移要修改大量的代码，技术有被抛弃的风险</p>
+<p>#SpringBean流程图</p>
+<p><img src="/2020/04/20/SpringBean生命周期与循环依赖/SpringBean%E6%B5%81%E7%A8%8B.png" alt></p>
+<h1 id="IOC容器如何解决循环依赖的-那种循环依赖不能被解决-为什么？"><a href="#IOC容器如何解决循环依赖的-那种循环依赖不能被解决-为什么？" class="headerlink" title="IOC容器如何解决循环依赖的/那种循环依赖不能被解决/为什么？"></a>IOC容器如何解决循环依赖的/那种循环依赖不能被解决/为什么？</h1><h2 id="1-什么是循环依赖"><a href="#1-什么是循环依赖" class="headerlink" title="(1)什么是循环依赖?"></a>(1)什么是循环依赖?</h2><p>bean的实例化有如下三个步骤：</p>
+<pre><code>1、createBeanInstance ，生成原始对象
+2、popoulateBean，进行属性注入
+3、instantiateBean ，进行init-method初始化和后置处理</code></pre><p>由此，当生成A对象之后，此时还未进行属性注入，检测到A有B属性，调用getBean(B b)获取B，<br>开始进行B的实例化，B生成对象之后，进行属性注入，检测到B有A属性，这个时候，就产生了循环依赖。</p>
+<p>(2)什么样的循环依赖不能被解决？</p>
+<p>循环依赖分为单例的、构造方法的、原型的<br>构造器的循环依赖</p>
+<pre><code>由于此循环依赖是在对象实例化的时候进行的，也就是说这种依赖是无法像单例一样生成对象，那么这种循环依赖也只能通过抛出异常处理</code></pre><p>原型模式的循环依赖</p>
+<pre><code>由于原型模式不像单例一样会提供缓存来进行辅助存储未完整实例化的bean，故spring的处理也是直接抛出异常</code></pre><p>(3)为什么这样的循环依赖不能被解决？<br>单例的循环依赖用的是三级缓存解决<br>这三级缓存分别是：</p>
+<pre><code>singletonObjects：单例对象工厂的cache，这里存储的是完整实例化之后的bean
+singletonFactories：单例对象的ObjectFactory，该ObjectFactory返回的对象就是还未进行popoulateBean属性注入的原始Bean对象
+earlySingletonObjects：提前曝光的单例bean，就是已经本身还未进行属性注入的bean，已经作为其他的bean的属性注入到该bean中了，
+比如A还未进行属性注入，但是被B引用到了，注入到B中，此时就将A放到提前曝光的单例bean缓存earlySingletonObjects中。</code></pre><p>在循环依赖产生的过程中会调用getBean()方法再调用AbstractBeanFactory#doGetBean<br>doGetBean一共做了这么几件事：</p>
+<pre><code>1、在创建实例之前，记录正在创建状态，singletonsCurrentlyInCreation.add(beanName)
+2、创建实例，调用singletonFactory.getObject();
+3、移除正在创建状态，this.singletonsCurrentlyInCreation.remove(beanName)
+4、将该bean缓存到单例缓存容器， this.singletonObjects.put(beanName, singletonObject);并且从相关的辅助容器删除，如singletonFactories和earlySingletonObjects
+
+第2步中的：singletonFactory.getObject(),这里调用的是AbstractAutowireCapableBeanFactory.doCreateBean</code></pre><p>doCreateBean做了<br>1、实例化bean（实例包装器）</p>
+<pre><code>if (instanceWrapper == null) {
+          instanceWrapper = createBeanInstance(beanName, mbd, args);}</code></pre><p>2、如果当前允许循环依赖且当前bean是单例而且处于创建状态，将此单例的ObjectFactory加入到singletonFactories，且此factory返回的bean对象就是当前实例化好的bean<br>3、进行属性注入</p>
+<pre><code>populateBean(beanName, mbd, instanceWrapper);</code></pre><p>4、instantiateBean ，进行init-method初始化和后置处理</p>
+<p>从这里可以看出来，在pupulateBean之前，singletonFactories存储了该bean的factory，然后进行pupulateBean，发现B是A的属性，然后调用getBean(B)对B进行实例化，重复上面的步骤到B的属性注入环节，发现A是B的属性，这个时候，再次调用getBean(A),此时缓存中已经有了A了</p>
 
       
 
@@ -243,7 +313,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">消息队列</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
         		</li>
       		
 		</ul>
@@ -299,7 +369,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/30/消息队列的特点/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/20/SpringBean生命周期与循环依赖/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -313,18 +383,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/31/poem/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          诗集不定期更新
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/03/28/3月29日心情日记/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">心理画像分析</div>
+    <a href="/2020/04/20/日志与异常统一管理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">全局异常统一处理方案</div>
       <i class="icon-circle-right"></i>
     </a>
   

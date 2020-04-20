@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/24/Java练习题/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB.PNG">
 <meta property="og:image" content="http://yoursite.com/2020/03/24/Java练习题/explain%E5%AD%97%E6%AE%B5.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/24/Java练习题/JVM%E5%8A%A0%E8%BD%BDclass.png">
-<meta property="og:updated_time" content="2020-04-14T10:51:43.816Z">
+<meta property="og:updated_time" content="2020-04-20T06:54:11.013Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java练习题">
 <meta name="twitter:description" content="第一部分 Java中的几种基本类型，各占多少字节？  byte:1字节 默认0 -128–127 short：2字节 默认0 取值-32758–32767 int：4字节 默认0 取值-2147483648-2147483647 long：8字节 默认0 char：2字节 float：4字节 double：8字节 boolean： 4字节  抽象类和接口的区别？  一个类只能继承（extends）">
@@ -591,7 +591,8 @@ private          *</code></pre><ul>
 <ul>
 <li>描述一下JVM加载class文件的原理机制</li>
 </ul>
-<p>JVM将类加载过程分为三个步骤：装载（Load），链接（Link）和初始化(Initialize)链接又分为三个步骤，如下图所示：<br><img src="/2020/03/24/Java练习题/JVM%E5%8A%A0%E8%BD%BDclass.png" alt><br>1) 装载：查找并加载类的二进制数据；<br>2)链接：验证：确保被加载类的正确性；准备：为类的静态变量分配内存，并将其初始化为默认值；解析：把类中的符号引用转换为直接引用；<br>3)初始化：为类的静态变量赋予正确的初始值；</p>
+<p>JVM将类加载过程分为三个步骤：装载（Load），链接（Link）和初始化(Initialize)链接又分为三个步骤，如下图所示：<br><img src="/2020/03/24/Java练习题/JVM%E5%8A%A0%E8%BD%BDclass.png" alt></p>
+<p>1) 装载：查找并加载类的二进制数据；<br>2)链接：验证：确保被加载类的正确性；准备：为类的静态变量分配内存，并将其初始化为默认值；解析：把类中的符号引用转换为直接引用；<br>3)初始化：为类的静态变量赋予正确的初始值；</p>
 <ul>
 <li>java中会存在内存泄漏吗，简单描述</li>
 </ul>
@@ -710,9 +711,31 @@ Threadable    -            非受检查异常（运行时异常）
 <li>zookeeper有几种部署模式？</li>
 </ul>
 <p>zookeeper是什么：是一个分布式的，开放源码的分布式应用程序协调服务，是google chubby的开源实现，是Hadoop和hbase的重要组件。他是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护，域名服务，分布式同步，组服务等<br>zookeeper都有哪些功能<br>集群管理：监控节点存活状态、运行请求等<br>主节点选举：主节点挂掉只会可以从备用的节点开始新一轮选举，主节点选举说的就是这个选举的过程，使用zookeeper可以协助完成这个过程。<br>分布式锁：zookeeper提供两种锁：独享锁、共享锁。独享锁即一次只能有一个线程使用资源，共享锁是读锁共享，读写互斥，即可以有多线线程同时读同一个资源，如果要使用写锁也只能有一个线程使用。zookeeper可以对分布式锁进行控制。<br>命名服务：在分布式系统中，通过使用命名服务，客户端能够根据指定名字来获取资源或者服务的地址，提供者等信息。<br>zookeeper有几种部署模式<br>单机部署：一台集群上运行<br>集群部署：多台集群运行<br>伪集群部署：一台集群启动多个zookeeper实例运行</p>
-<h2 id="第五部分"><a href="#第五部分" class="headerlink" title="第五部分"></a>第五部分</h2><p>BeanFactory与FactoryBean的区别？<br>BeanFactory是个bean 工厂，是一个工厂类(接口)， 它负责生产和管理bean的一个工厂<br>是ioc 容器最底层的接口，是个ioc容器，是spring用来管理和装配普通bean的ioc容器（这些bean成为普通bean）。<br>FactoryBean是个bean，在IOC容器的基础上给Bean的实现加上了一个简单工厂模式和装饰模式，<br>是一个可以生产对象和装饰对象的工厂bean，由spring管理后，生产的对象是由getObject()方法决定的（从容器中获取到的对象不是“ FactoryBeanTest ” 对象）。</p>
-<p>lambda的底层接口是什么？</p>
+<h2 id="第五部分"><a href="#第五部分" class="headerlink" title="第五部分"></a>第五部分</h2><ul>
+<li>BeanFactory与FactoryBean的区别？</li>
+</ul>
+<p>BeanFactory是个bean 工厂，是一个工厂类(接口)， 它负责生产和管理bean的一个工厂<br>是ioc 容器最底层的接口，是个ioc容器，是spring用来管理和装配普通bean的ioc容器（这些bean成为普通bean）。<br>FactoryBean是个bean，在IOC容器的基础上给Bean的实现加上了一个简单工厂模式和装饰模式，<br>是一个可以生产对象和装饰对象的工厂bean，由spring管理后，生产的对象是由getObject()方法决定的（从容器中获取到的对象不是“ FactoryBeanTest ” 对象）。</p>
+<ul>
+<li>lambda的底层接口是什么？</li>
+</ul>
 <p>函数式编程的优缺点是什么？<br>由于所有的数据都是不可变的，所以所有的变量在程序运行期间都是一直存在的，非常占用运行资源。同时由于函数式的先天性设计导致性能一直不够。虽然现代的函数式编程语言使用了很多技巧比如惰性计算等来优化运行速度，但是始终无法与面向对象的程序相比，当然面向对象程序的速度也不够快。    </p>
+<ul>
+<li>SpringMVC请求参数拦截？</li>
+</ul>
+<p>SpringMVC 拦截器是实现HandlerInterceptor处理程序拦截器接口的pojo类，里面有三个实现方法，分别是：</p>
+<p>//拦截前处理<br>public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {}</p>
+<p>//拦截后处理<br>public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {}</p>
+<p>//全部完成后处理<br>public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {}</p>
+<p>楼主的需求，应该有个法则可以找到。那就是uri里的可变值必定有对应的方法参数，因此可通过preHandle方法里的handler取到各参数值。这不就解决了吗？<br>SpringMVC拦截</p>
+<ul>
+<li>SQL查重 去重？</li>
+</ul>
+<p>查重语句：(group by 查重)，用分组的方法计算哪些数据的个数&gt;1</p>
+<pre><code>SELECT user_id,count(*) as num FROM 表名 WHERE 条件  GROUP BY user_id HAVING count(*)&gt;1;</code></pre><p>去重语句：(row_number over()去重)</p>
+<pre><code>select user_id,create_date,row_number() over(partition by user_id order by create_date desc) as date_n FROM 表名 WHERE date_n=1 AND 条件;  </code></pre><p>distinct方法用来查询不重复记录的条数</p>
+<p>Redis在项目中如何使用</p>
+<p>Mybatis怎么用的</p>
+<p>SpringAOP如何使用</p>
 
       
 

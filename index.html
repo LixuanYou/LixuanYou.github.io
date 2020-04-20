@@ -152,6 +152,333 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SpringBean生命周期与循环依赖" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/20/SpringBean生命周期与循环依赖/">SpringBean生命周期与循环依赖</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/20/SpringBean生命周期与循环依赖/" class="archive-article-date">
+  	<time datetime="2020-04-20T12:28:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Spring-Bean-的生命周期（实例化-初始化-使用-销毁）"><a href="#Spring-Bean-的生命周期（实例化-初始化-使用-销毁）" class="headerlink" title="Spring Bean 的生命周期（实例化-初始化-使用-销毁）"></a>Spring Bean 的生命周期（实例化-初始化-使用-销毁）</h2><h2 id="在《Spring源码深度分析》一书中"><a href="#在《Spring源码深度分析》一书中" class="headerlink" title="在《Spring源码深度分析》一书中"></a>在《Spring源码深度分析》一书中</h2><h3 id="实例化Bean的流程"><a href="#实例化Bean的流程" class="headerlink" title="实例化Bean的流程"></a>实例化Bean的流程</h3><p>在org.springframework.beans.factory.support.AbstractBeanFactory#getBean方法他其实是空壳方法真正干活的是<br>org.springframework.beans.factory.support.AbstractBeanFactory#doGetBean，这分为一下九个步骤</p>
+<ul>
+<li>1解析Bean的别名，例如FactoryBean获取自身实例时要加一个&amp;符号，transformedBeanName(name)可以去除&amp;符号</li>
+<li>2尝试去缓存池中获取对象（第一次创建Bean缓存池中没有对象），（3）如果存在就可以跳过以下步骤开始实例化bean，调用的是getObjectForBeanInstance()</li>
+<li>4如果出现循环依赖再判断Bean是不是单例的，原型的就抛出异常</li>
+<li>5判断容器是否有父工厂如果存在就由父工厂加载</li>
+<li>6合并父类Bean定义检查Bean定义是否是抽象的</li>
+<li>7做dependsOn的依赖检查获取依赖的bean对象</li>
+<li>8针对不同的scope调用createbean()创建bean。调用getSingleton()方法再用beforeSigletonCreation标识当前Bean正在被创建</li>
+<li>9类型转换。</li></ul>
+        
+          <a class="article-more-a" href="/2020/04/20/SpringBean生命周期与循环依赖/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/20/SpringBean生命周期与循环依赖/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-日志与异常统一管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/20/日志与异常统一管理/">全局异常统一处理方案</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/20/日志与异常统一管理/" class="archive-article-date">
+  	<time datetime="2020-04-20T12:04:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="全局异常处理"><a href="#全局异常处理" class="headerlink" title="全局异常处理"></a>全局异常处理</h2><p>在spring 3.2中，新增了@ControllerAdvice 注解，可以用于定义@ExceptionHandler、@InitBinder、@ModelAttribute，并应用到所有@RequestMapping中基于@ControllerAdvice注解的全局异常统一处理只能针对于Controller层的异常，意思是只能捕获到Controller层的异常，在service层或者其他层面的异常都不能捕获。</p>
+<p>全局异常统一处理方案</p>
+        
+          <a class="article-more-a" href="/2020/04/20/日志与异常统一管理/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/20/日志与异常统一管理/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-4月20日心情日记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/20/4月20日心情日记/">4月20日心情日记</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/20/4月20日心情日记/" class="archive-article-date">
+  	<time datetime="2020-04-20T11:33:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>毕业大半年，紧张的神经终于可以放松一下了，4月20日是个值得纪念的日子，愉快的日子无酒作伴甚是无趣，那就请身边人吃个饭。春风得意马蹄急，一日看尽长安花。<br>她们家也就晓雨能陪我喝酒聊天。她的酒量在女性中是翘楚，其实在此之前没有那个女人能和我通宵痛饮，这一点对你来说她是特别的。在6个小时的长谈中聊得很愉快，时间过得好快，阿姨都生气了，O(∩_∩)O哈哈~阿姨对不起sorry。在这期间我做了三个小测试，Mirror测试、服从性测试和construct future测试，可以证明她对你的好感度有提升，潜意识做不了假的，她的人品是很不错的这个朋友是可以交的，但是你的“真实之眼”说，对于她还有看不透彻的地方，或许不是你想的那么单纯。<br>我有一双“真实之眼”。轻易可以识破谎言，“真实之眼”让我不在意一个人的外表，说真的高尚的灵魂真的是太难遇到了，与我灵魂频率相同的又是少之又少，陈思霖你算一个。我偶尔还是想念你。我在你闺蜜哪里看到你的近况，读研究生的你，脸上学生特有的青涩还在啊。我们曾经牵过手，一起看过电影，一起旅游，一起素食，一起看过演唱会，一起合计着用100块钱过周末…….我知道今后的世界不会再有“我们”发生，愿你今后有良人相伴。三年后你可别过得太惨，我可憋着一口气等着呢！我心思深，控制欲强，今后找女朋友肯定是往结婚方向走的。我非常希望有个温馨的家，这需要双方用心构建。<br>认识了一位姑娘。在古风民乐社上认识的，会古筝和六弦琴，英语口语超厉害还会画画，和我一样喜欢的画家是席勒，她写唐诗我写宋词。这里要警告你一下，你不会傻到王者荣耀改个名建立个情侣关系就能得出什么结论吧？幼稚啊你！你又不是一见钟情爱好者，现在你看到的她全都是优点，缺点没找到一个，昏了头瞎了眼。多接触一段时间，两个人在一起时间久了所有缺点都会一览无遗，你做好包容她一切的准备了吗？恋爱中解决不了的问题结婚后更不可能解决这个简单的道理你不知道？</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/20/4月20日心情日记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-消息队列的特点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/20/消息队列的特点/">消息队列的特点</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/20/消息队列的特点/" class="archive-article-date">
+  	<time datetime="2020-04-20T02:07:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本章博客是上中华石衫老师的网课后写的</p>
+<h3 id="消息队列的使用场景即优点"><a href="#消息队列的使用场景即优点" class="headerlink" title="消息队列的使用场景即优点"></a>消息队列的使用场景即优点</h3><p>常见的应用场景：解耦、异步、削峰</p>
+<ol>
+<li>解耦<br>解耦：可以在多个系统之间进行解耦，将原本通过网络之间的调用的方式改为使用MQ进行消息的异步通讯，只要该操作不是需要同步的，就可以改为使用MQ进行不同系统之间的联系，这样项目之间不会存在耦合，系统之间不会产生太大的影响，就算一个系统挂了，也只是消息挤压在MQ里面没人进行消费而已，不会对其他的系统产生影响。</li></ol>
+        
+          <a class="article-more-a" href="/2020/04/20/消息队列的特点/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">消息队列</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/20/消息队列的特点/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-正义是什么？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -275,89 +602,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/31/poem/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-消息队列的特点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/30/消息队列的特点/">消息队列的特点</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/30/消息队列的特点/" class="archive-article-date">
-  	<time datetime="2020-03-30T02:07:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本章博客是上中华石衫老师的网课后写的</p>
-<h3 id="消息队列的使用场景即优点"><a href="#消息队列的使用场景即优点" class="headerlink" title="消息队列的使用场景即优点"></a>消息队列的使用场景即优点</h3><p>常见的应用场景：解耦、异步、削峰</p>
-<ol>
-<li>解耦<br>解耦：可以在多个系统之间进行解耦，将原本通过网络之间的调用的方式改为使用MQ进行消息的异步通讯，只要该操作不是需要同步的，就可以改为使用MQ进行不同系统之间的联系，这样项目之间不会存在耦合，系统之间不会产生太大的影响，就算一个系统挂了，也只是消息挤压在MQ里面没人进行消费而已，不会对其他的系统产生影响。</li></ol>
-        
-          <a class="article-more-a" href="/2020/03/30/消息队列的特点/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">消息队列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/30/消息队列的特点/">展开全文 >></a>
         </p>
       
 
@@ -671,265 +915,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/26/TCP/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-volatile与synchronized的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/26/volatile与synchronized的区别/">volatile与synchronized的区别</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/26/volatile与synchronized的区别/" class="archive-article-date">
-  	<time datetime="2020-03-26T07:49:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>volatile与synchronized的区别<br>1、锁提供了两种主要特性：互斥（mutual exclusion） 和可见性（visibility）。</p>
-<p>　　互斥即一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议，这样，一次就只有一个线程能够使用该共享数据。</p>
-<p>　　可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 —— 如果没有同步机制提供的这种可见性保证，线程看到的共享         变量可能是修改前的值或不一致的值，这将引发许多严重问题。（竞态条件）</p>
-        
-          <a class="article-more-a" href="/2020/03/26/volatile与synchronized的区别/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/26/volatile与synchronized的区别/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MySQL索引" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/25/MySQL索引/">MySQL索引</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/25/MySQL索引/" class="archive-article-date">
-  	<time datetime="2020-03-25T11:45:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本章博客是阅读《高性能MySQL》第三版的阅读笔记以及总结</p>
-<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p>MySQL官方文档：索引是帮助MySQL高效获取数据的数据结构</p>
-<h3 id="类型分类"><a href="#类型分类" class="headerlink" title="类型分类"></a>类型分类</h3><ol>
-<li>B-Tree索引：给你一个参考中值，比这个值大靠右，比这个值小靠左，那么树的高度就代表与磁盘交互的维度<br> 聚集索引，复合索引，前缀索引，唯一索引默认都是使用B+树索引<br> 大多数MySQL引擎都支持这种索引。Archive引擎是一个例外：5.1之前Archive不支持任何索引，直到5.1才开始支持单个自增列（AUTO_INCREMENT）的索引。<br> 所有值都是按顺序存储的，并且每一个叶子页到根的距离相同<br> 聚集索引是按表的主键构造的B+树，叶子节点存放的为整张表的行记录数据，每张表只能有一个聚集索引。优化器更倾向采用聚集索引。因为直接就能获取行数据。</li></ol>
-        
-          <a class="article-more-a" href="/2020/03/25/MySQL索引/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">技术，数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/25/MySQL索引/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java练习题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/24/Java练习题/">Java练习题</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/24/Java练习题/" class="archive-article-date">
-  	<time datetime="2020-03-24T08:29:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><ul>
-<li>Java中的几种基本类型，各占多少字节？</li>
-</ul>
-<p>byte:1字节 默认0 -128–127</p>
-<p>short：2字节 默认0 取值-32758–32767</p>
-<p>int：4字节 默认0 取值-2147483648-2147483647</p>
-<p>long：8字节 默认0</p>
-<p><em>char：2字节</em></p>
-<p>float：4字节</p>
-<p>double：8字节</p>
-<p>boolean： 4字节</p>
-<ul>
-<li>抽象类和接口的区别？</li>
-</ul>
-<p>一个类只能继承（extends）一个抽象类，但是可以实现(implements)多个接口</p>
-<p>接口和抽象类必须实现其中的所有方法。抽象类中可以有非抽象的方法。</p>
-<p>接口中的常量必须用 public static final修饰，并且需要给出初始值。所以实现类不能重新定义，也不能改变其值。</p>
-<p>接口中的方法只能用public abstract修饰</p>
-<p><img src="/2020/03/24/Java练习题/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB.PNG" alt="抽象类和接口的区别"></p>
-        
-          <a class="article-more-a" href="/2020/03/24/Java练习题/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">练习题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/24/Java练习题/">展开全文 >></a>
         </p>
       
 

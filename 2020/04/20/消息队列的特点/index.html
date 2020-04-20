@@ -6,15 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/4 | 游理轩的博客</title>
+  <title>消息队列的特点 | 游理轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="游理轩的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/04/index.html">
+  <meta name="description" content="本章博客是上中华石衫老师的网课后写的 消息队列的使用场景即优点常见的应用场景：解耦、异步、削峰  解耦解耦：可以在多个系统之间进行解耦，将原本通过网络之间的调用的方式改为使用MQ进行消息的异步通讯，只要该操作不是需要同步的，就可以改为使用MQ进行不同系统之间的联系，这样项目之间不会存在耦合，系统之间不会产生太大的影响，就算一个系统挂了，也只是消息挤压在MQ里面没人进行消费而已，不会对其他的系统产生">
+<meta name="keywords" content="技术,消息队列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="消息队列的特点">
+<meta property="og:url" content="http://yoursite.com/2020/04/20/消息队列的特点/index.html">
 <meta property="og:site_name" content="游理轩的博客">
+<meta property="og:description" content="本章博客是上中华石衫老师的网课后写的 消息队列的使用场景即优点常见的应用场景：解耦、异步、削峰  解耦解耦：可以在多个系统之间进行解耦，将原本通过网络之间的调用的方式改为使用MQ进行消息的异步通讯，只要该操作不是需要同步的，就可以改为使用MQ进行不同系统之间的联系，这样项目之间不会存在耦合，系统之间不会产生太大的影响，就算一个系统挂了，也只是消息挤压在MQ里面没人进行消费而已，不会对其他的系统产生">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2020/04/20/消息队列的特点/%E8%A7%A3%E8%80%A6%E5%89%8D.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/20/消息队列的特点/%E8%A7%A3%E8%80%A6%E5%90%8E.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/20/消息队列的特点/%E4%B8%8D%E4%BD%BF%E7%94%A8MQ%E7%9A%84%E6%83%85%E5%86%B5.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/20/消息队列的特点/%E4%BD%BF%E7%94%A8MQ%E7%9A%84%E6%83%85%E5%86%B5.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/20/消息队列的特点/%E4%BD%BF%E7%94%A8MQ%E8%BF%9B%E8%A1%8C%E5%89%8A%E5%B3%B0.png">
+<meta property="og:updated_time" content="2020-04-20T11:39:18.891Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="游理轩的博客">
+<meta name="twitter:title" content="消息队列的特点">
+<meta name="twitter:description" content="本章博客是上中华石衫老师的网课后写的 消息队列的使用场景即优点常见的应用场景：解耦、异步、削峰  解耦解耦：可以在多个系统之间进行解耦，将原本通过网络之间的调用的方式改为使用MQ进行消息的异步通讯，只要该操作不是需要同步的，就可以改为使用MQ进行不同系统之间的联系，这样项目之间不会存在耦合，系统之间不会产生太大的影响，就算一个系统挂了，也只是消息挤压在MQ里面没人进行消费而已，不会对其他的系统产生">
+<meta name="twitter:image" content="http://yoursite.com/2020/04/20/消息队列的特点/%E8%A7%A3%E8%80%A6%E5%89%8D.png">
   
     <link rel="alternative" href="/atom.xml" title="游理轩的博客" type="application/atom+xml">
   
@@ -150,158 +161,79 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-消息队列的特点" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/20/SpringBean生命周期与循环依赖/" class="archive-article-date">
-  	<time datetime="2020-04-20T12:28:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/20/SpringBean生命周期与循环依赖/">SpringBean生命周期与循环依赖</a>
+    <h1 class="article-title" itemprop="name">
+      消息队列的特点
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/20/日志与异常统一管理/" class="archive-article-date">
-  	<time datetime="2020-04-20T12:04:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/20/日志与异常统一管理/">全局异常统一处理方案</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/20/4月20日心情日记/" class="archive-article-date">
-  	<time datetime="2020-04-20T11:33:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/20/4月20日心情日记/">4月20日心情日记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/20/消息队列的特点/" class="archive-article-date">
+        
+        <a href="/2020/04/20/消息队列的特点/" class="archive-article-date">
   	<time datetime="2020-04-20T02:07:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/20/消息队列的特点/">消息队列的特点</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本章博客是上中华石衫老师的网课后写的</p>
+<h3 id="消息队列的使用场景即优点"><a href="#消息队列的使用场景即优点" class="headerlink" title="消息队列的使用场景即优点"></a>消息队列的使用场景即优点</h3><p>常见的应用场景：解耦、异步、削峰</p>
+<ol>
+<li>解耦<br>解耦：可以在多个系统之间进行解耦，将原本通过网络之间的调用的方式改为使用MQ进行消息的异步通讯，只要该操作不是需要同步的，就可以改为使用MQ进行不同系统之间的联系，这样项目之间不会存在耦合，系统之间不会产生太大的影响，就算一个系统挂了，也只是消息挤压在MQ里面没人进行消费而已，不会对其他的系统产生影响。<a id="more"></a>
+<img src="/2020/04/20/消息队列的特点/%E8%A7%A3%E8%80%A6%E5%89%8D.png" alt><br><img src="/2020/04/20/消息队列的特点/%E8%A7%A3%E8%80%A6%E5%90%8E.png" alt></li>
+<li>异步<br>异步：加入一个操作涉及到好几个步骤，这些步骤之间不需要同步完成，比如客户去创建了一个订单，还要去客户轨迹系统添加一条轨迹、去库存系统更新库存、去客户系统修改客户的状态等等。这样如果这个系统都直接进行调用，那么将会产生大量的时间，这样对于客户是无法接收的；并且像添加客户轨迹这种操作是不需要去同步操作的，如果使用MQ将客户创建订单时，将后面的轨迹、库存、状态等信息的更新全都放到MQ里面然后去异步操作，这样就可加快系统的访问速度，提供更好的客户体验。<br><img src="/2020/04/20/消息队列的特点/%E4%B8%8D%E4%BD%BF%E7%94%A8MQ%E7%9A%84%E6%83%85%E5%86%B5.png" alt="不使用MQ的情况"><br><img src="/2020/04/20/消息队列的特点/%E4%BD%BF%E7%94%A8MQ%E7%9A%84%E6%83%85%E5%86%B5.png" alt="使用MQ的情况"></li>
+<li>削峰<br>削峰：一个系统访问流量有高峰时期，也有低峰时期，比如说，中午整点有一个抢购活动等等。比如系统平时流量并不高，一秒钟只有100多个并发请求，系统处理没有任何压力，一切风平浪静，到了某个抢购活动时间，系统并发访问了剧增，比如达到了每秒5000个并发请求，而我们的系统每秒只能处理2000个请求，那么由于流量太大，我们的系统、数据库可能就会崩溃。这时如果使用MQ进行流量削峰，将用户的大量消息直接放到MQ里面，然后我们的系统去按自己的最大消费能力去消费这些消息，就可以保证系统的稳定，只是可能要跟进业务逻辑，给用户返回特定页面或者稍后通过其他方式通知其结果。<br><img src="/2020/04/20/消息队列的特点/%E4%BD%BF%E7%94%A8MQ%E8%BF%9B%E8%A1%8C%E5%89%8A%E5%B3%B0.png" alt="使用MQ进行削峰.png"></li>
+</ol>
+<p>优点：</p>
+<ul>
+<li><p>1、对结构复杂、设计系统多的操作进行解耦操作，降低系统的操作复杂度、降低系统的维护成本。</p>
+</li>
+<li><p>2、对一个可以进行异步操作的一些系统操作进行异步，减小操作的响应时间，提供更好的用户体验。</p>
+</li>
+<li><p>3、可对高流量进行削峰，保证系统的平稳运行。<br>缺点：</p>
+</li>
+</ul>
+<ol>
+<li>系统可用性降低<br>系统引入的外部依赖越多,系统越脆弱。每一个依赖出问题都会导致整个系统的崩溃。</li>
+<li>系统复杂度提高<br>需要考虑MQ的各种情况，比如：消息的重复消费、消息丢失、保证消费顺序等等……</li>
+<li>一致性问题<br>A 系统处理完了直接返回成功了，人都以为你这个请求就成功了；但是问题是，要是 BCD 三个系统那里，BD 两个系统写库成功了，结果 C 系统写库失败了，咋整？你这数据就不一致了。</li>
+</ol>
+<p>rabbitMQ(延迟最低):性能极好、延时很低，吞吐量万级、MQ功能完备，管理界面非常好，社区活跃。缺：吞吐量较低，erlang语音开发不容易进行定制开发，集群动态扩展麻烦    </p>
+<p>RocketMQ（topic数量对吞吐量的影响小/支持大量topic）:接口简单易用，吞吐量大，分布式扩展方便，支持大规模的topic、支持复杂的业务场景，可以基于源码进行定制开发。缺：接口不是按照标准JMS规范走的，有的系统迁移要修改大量的代码，技术有被抛弃的风险</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -317,57 +249,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/20/消息队列的特点/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/01/正义是什么？/" class="archive-article-date">
-  	<time datetime="2020-04-01T02:00:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/04/20/4月20日心情日记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          4月20日心情日记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/01/正义是什么？/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">正义是什么？</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/01/正义是什么？/">正义是什么？</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -390,8 +380,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
