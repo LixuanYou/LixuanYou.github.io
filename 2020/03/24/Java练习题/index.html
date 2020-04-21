@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/03/24/Java练习题/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB.PNG">
 <meta property="og:image" content="http://yoursite.com/2020/03/24/Java练习题/explain%E5%AD%97%E6%AE%B5.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/24/Java练习题/JVM%E5%8A%A0%E8%BD%BDclass.png">
-<meta property="og:updated_time" content="2020-04-20T06:54:11.013Z">
+<meta property="og:updated_time" content="2020-04-21T09:45:49.381Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java练习题">
 <meta name="twitter:description" content="第一部分 Java中的几种基本类型，各占多少字节？  byte:1字节 默认0 -128–127 short：2字节 默认0 取值-32758–32767 int：4字节 默认0 取值-2147483648-2147483647 long：8字节 默认0 char：2字节 float：4字节 double：8字节 boolean： 4字节  抽象类和接口的区别？  一个类只能继承（extends）">
@@ -218,9 +218,13 @@
 </ul>
 <p>IOC叫做依赖反转原则，DI叫做依赖注入。如果相互关联的对象的引用或者依赖关系由具体对象来完成会导致代码的高度耦合和可测试性降低，通常表现在对数据和方法的依赖上，在Spring中，这些依赖关系可以利用IOC容器完成对象的依赖注入，对象的依赖关系的管理被反转了，转到IOC容器中，这样对象之间的相互依赖关系由IOC容器进行管理，并且由IOC容器完成对象的依赖注入</p>
 <ul>
-<li>spring 怎么实现数据库事务</li>
+<li>SpringAOP是什么？有什么用？</li>
 </ul>
-<p>首先数据库的引擎要支持事务比如Innodb，其次Spring并不直接管理事务，而是提供多种事务管理器，Spring事务管理器的接口是org.springframework.transaction.PlatformTransactionManager，通过这个接口，Spring为各个平台如JDBC、Hibernate等都提供了对应的事务管理器，但是具体的实现就是各个平台自己的事情了。PlatformTransactionManager接口主要定义了getTransaction(TransactionDefinition definition)、commit()、rollback()方法，在使用的时候用@Transaction或者xml配置文件声明事务</p>
+<p>面向对象编程有一些弊端，比如当我们需要为多个不具有继承关系的对象引入一个公共行为，例如日志,权限验证,事务等功能时，只能在在每个对象里引用公共行为，这样做不便于维护，而且有大量重复代码。AOP是面向切面编程的意思，在使用面向切面编程时，我们仍然在一个地方定义通用功能，但是可以通过声明的方式定义这个功能要以何种方式在何处应用，而无需修改受影响的类。</p>
+<ul>
+<li>spring 怎么实现数据库事务（用AOP）</li>
+</ul>
+<p>首先数据库的引擎要支持事务比如Innodb，其次Spring并不直接管理事务，而是提供多种事务管理器，Spring事务管理器的接口是org.springframework.transaction.PlatformTransactionManager，通过这个接口，Spring为各个平台如JDBC、Hibernate等都提供了对应的事务管理器，<em>但是具体的实现就是各个平台自己的事情了</em>。PlatformTransactionManager接口主要定义了getTransaction(TransactionDefinition definition)、commit()、rollback()方法，在使用的时候用@Transaction或者xml配置文件声明事务</p>
 <ul>
 <li>讲一讲MySQL Innodb索引结构</li>
 </ul>
@@ -285,10 +289,7 @@
 <p>handler:当线程池达到最大线程容量，再有任务进来，将会采取拒绝策略，java提供了四种对超额任务的拒绝处理<br>ThreadPoolExecutor.AbortPolicy    ：丢弃任务并抛出RejectedExecutionException拒绝执行异常<br>ThreadPoolExecutor.DiscardPolicy：丢弃任务但不会抛出异常<br>ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务<br>ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务</p>
 <p>还可以使用其他开源类库apache，guava提供的ThreadFactoryBuilder来创建线程池</p>
 <ul>
-<li><p>SpringAOP是什么？有什么用？<br>面向对象编程有一些弊端，比如当我们需要为多个不具有继承关系的对象引入一个公共行为，例如日志,权限验证,事务等功能时，只能在在每个对象里引用公共行为，这样做不便于维护，而且有大量重复代码。AOP是面向切面编程的意思，在使用面向切面编程时，我们仍然在一个地方定义通用功能，但是可以通过声明的方式定义这个功能要以何种方式在何处应用，而无需修改受影响的类。</p>
-</li>
-<li><p>springcloud有哪些主要组件？讲一下用处</p>
-</li>
+<li>springcloud有哪些主要组件？讲一下用处</li>
 </ul>
 <p>5大常用组件<br>服务发现——Netflix Eureka<br>客服端负载均衡——Netflix Ribbon<br>断路器——Netflix Hystrix<br>服务网关——Netflix Zuul<br>分布式配置——Spring Cloud Config</p>
 <ul>
