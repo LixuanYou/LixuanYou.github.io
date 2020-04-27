@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>REST | 游理轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Request—&amp;gt;DispatcherServlet—&amp;gt;ControllerMapping—&amp;gt;Controller&amp;lt;—&amp;gt;ViewResolver&amp;lt;—&amp;gt;View&amp;lt;—&amp;gt;Cilent REST定义Rest就是将资源的状态以最适合服务端或者客户端的形式从服务器端转移到客户端REST资源通过URL进行识别和定位。REST的动作有CRUD分别为POST、G">
+  <meta name="description" content="Request—&amp;gt;DispatcherServlet—&amp;gt;ControllerMapping—&amp;gt;Controller&amp;lt;—&amp;gt;ViewResolver&amp;lt;—&amp;gt;View&amp;lt;—&amp;gt;Cilent  用户发送请求到前端控制器 前端控制器收到请求后调用处理器映射器 处理器映射器根据请求的URL找到具体的处理器名称，返回给前端控制器 前端控制器调用处理器适配器 处理器">
 <meta name="keywords" content="技术,SpringMVC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="REST">
 <meta property="og:url" content="http://yoursite.com/2020/03/10/REST/index.html">
 <meta property="og:site_name" content="游理轩的博客">
-<meta property="og:description" content="Request—&amp;gt;DispatcherServlet—&amp;gt;ControllerMapping—&amp;gt;Controller&amp;lt;—&amp;gt;ViewResolver&amp;lt;—&amp;gt;View&amp;lt;—&amp;gt;Cilent REST定义Rest就是将资源的状态以最适合服务端或者客户端的形式从服务器端转移到客户端REST资源通过URL进行识别和定位。REST的动作有CRUD分别为POST、G">
+<meta property="og:description" content="Request—&amp;gt;DispatcherServlet—&amp;gt;ControllerMapping—&amp;gt;Controller&amp;lt;—&amp;gt;ViewResolver&amp;lt;—&amp;gt;View&amp;lt;—&amp;gt;Cilent  用户发送请求到前端控制器 前端控制器收到请求后调用处理器映射器 处理器映射器根据请求的URL找到具体的处理器名称，返回给前端控制器 前端控制器调用处理器适配器 处理器">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-23T11:49:17.602Z">
+<meta property="og:updated_time" content="2020-04-23T12:21:50.495Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="REST">
-<meta name="twitter:description" content="Request—&amp;gt;DispatcherServlet—&amp;gt;ControllerMapping—&amp;gt;Controller&amp;lt;—&amp;gt;ViewResolver&amp;lt;—&amp;gt;View&amp;lt;—&amp;gt;Cilent REST定义Rest就是将资源的状态以最适合服务端或者客户端的形式从服务器端转移到客户端REST资源通过URL进行识别和定位。REST的动作有CRUD分别为POST、G">
+<meta name="twitter:description" content="Request—&amp;gt;DispatcherServlet—&amp;gt;ControllerMapping—&amp;gt;Controller&amp;lt;—&amp;gt;ViewResolver&amp;lt;—&amp;gt;View&amp;lt;—&amp;gt;Cilent  用户发送请求到前端控制器 前端控制器收到请求后调用处理器映射器 处理器映射器根据请求的URL找到具体的处理器名称，返回给前端控制器 前端控制器调用处理器适配器 处理器">
   
     <link rel="alternative" href="/atom.xml" title="游理轩的博客" type="application/atom+xml">
   
@@ -176,7 +176,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Request—&gt;DispatcherServlet—&gt;ControllerMapping—&gt;Controller&lt;—&gt;ViewResolver&lt;—&gt;View&lt;—&gt;Cilent</p>
-<h1 id="REST定义"><a href="#REST定义" class="headerlink" title="REST定义"></a>REST定义</h1><p>Rest就是将资源的状态以最适合服务端或者客户端的形式从服务器端转移到客户端<br>REST资源通过URL进行识别和定位。REST的动作有CRUD分别为POST、GET、PUT或PATCH、DELETE</p>
+<ol>
+<li>用户发送请求到前端控制器</li>
+<li>前端控制器收到请求后调用<em>处理器映射器</em></li>
+<li>处理器映射器根据请求的URL找到具体的处理器名称，返回给前端控制器</li>
+<li>前端控制器调用<em>处理器适配器</em></li>
+<li>处理器适配器适配后端控制器，返回模型和视图给前端控制器</li>
+<li>前端控制器调用视图解析器解析模型和视图，返回具体的view视图给前端控制器</li>
+<li>前端控制器对View进行视图渲染后响应用户<h1 id="REST定义"><a href="#REST定义" class="headerlink" title="REST定义"></a>REST定义</h1>Rest就是将资源的状态以最适合服务端或者客户端的形式从服务器端转移到客户端<br>REST资源通过URL进行识别和定位。REST的动作有CRUD分别为POST、GET、PUT或PATCH、DELETE</li>
+</ol>
 <p>内容协商（Content negotiation）：选择一个视图，它能够将模型渲染为呈现给客户端的表述形式；<br>消息转换器（Message conversion）：通过一个消息转换器将控制器所返回的对象转换为呈现给客户端的表述形式。</p>
 <h1 id="内容协商"><a href="#内容协商" class="headerlink" title="内容协商"></a>内容协商</h1><h2 id="确定请求的媒体类型"><a href="#确定请求的媒体类型" class="headerlink" title="确定请求的媒体类型"></a>确定请求的媒体类型</h2><a id="more"></a>
 <p>在控制器的处理方法完成时，通常会返回一个逻辑视图名。DispatcherServlet接下来会将视图的名字传递给一个视图解析器，要求它来帮助确定应该用哪个视图来渲染请求结果。<br>当要将视图名解析为能够产生资源表述的视图时，我们就有另外一个维度需要考虑了。视图不仅要匹配视图名，而且所选择的视图要适合客户端。如果客户端想要JSON，那么渲染HTML的视图就不行了——尽管视图名可能匹配。<br>客户端要什么样的表达方式可以通过内容协商视图解析器ContentNegotiatingViewResolver在Spring3.2之后推荐使用内容协商管理ContentNegotiationManager<br>使用内容协商管理ContentNegotiationManager方式有两种<br>        1.在XML中配置bean，ContentNegotiationManagerFactoryBean。例如，我们可能希望在XML中配置ContentNegotiationManager使用“application/json”作为默认的内容类型<br>        2.Java配置：继承WebMvcConfigurerAdapter并重载configureContentNegotiation()方法<br>ContentNegotiatingViewResolver的优劣<br>优势：它在Spring MVC之上构建了REST资源表述层，控制器代码无需修改<br>劣势：它只能决定资源该如何渲染到客户端，并没有涉及到客户端要发送什么样的表述给控制器使用</p>
