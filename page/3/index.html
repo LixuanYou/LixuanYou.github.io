@@ -152,6 +152,86 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Spring容器的功能扩展" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/13/Spring容器的功能扩展/">Spring容器的功能扩展</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/13/Spring容器的功能扩展/" class="archive-article-date">
+  	<time datetime="2020-03-13T00:12:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="本文是《Spring源码深度解析》的阅读笔记"><a href="#本文是《Spring源码深度解析》的阅读笔记" class="headerlink" title="本文是《Spring源码深度解析》的阅读笔记"></a>本文是《Spring源码深度解析》的阅读笔记</h1><p>ApplicationContext包含BeanFactory的所有功能。通常建议比 BeanFactory 优先，除非在一些限制的场合，比如字节长度对内存有很大的影响时（Applet）。refresh 函数中包含了几乎 ApplicationContext 中提供的全部功能，这12步是refresh函数的实现步骤：</p>
+        
+          <a class="article-more-a" href="/2020/03/13/Spring容器的功能扩展/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/13/Spring容器的功能扩展/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-REST" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -933,73 +1013,6 @@
 
 
   
-    <article id="post-关于random" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="关于math生成随机数"><a href="#关于math生成随机数" class="headerlink" title="关于math生成随机数"></a>关于math生成随机数</h1><h2 id="在JQuery中"><a href="#在JQuery中" class="headerlink" title="在JQuery中"></a>在JQuery中</h2><pre><code>math.floor(math.random()*7);//获取0-6随机数</code></pre><h2 id="java中"><a href="#java中" class="headerlink" title="java中"></a>java中</h2><pre><code>Random rand = new Random();
-//随机生成[0,1)之间的double类型的数据
-System.out.println(rand.nextDouble());
-
-//随机生成int类型允许范围之内的整型数据
-System.out.println(rand.nextInt());
-
-//随机生成[0,1)之间的float类型的数据
-System.out.println(rand.nextFloat());
-
-//随机生成false或者true
-System.out.println(rand.nextBoolean());
-
-//随机生成[0,10)之间的int类型的数据
-System.out.print(rand.nextInt(10));
-
-//随机生成[20,30)之间的int类型的数据
-System.out.print(20 + rand.nextInt(10));
-
-//随机生成[20,30)之间的int类型的数据（此种方法计算较为复杂）
-System.out.print(20 + (int) (rand.nextDouble() * 10));</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/06/关于random/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1113,11 +1126,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">技术，数据库</a>
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+                <a href="javascript:void(0)" class="js-tag color2">技术，数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1133,11 +1146,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+                <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
              
               <li class="article-tag-list-item">
