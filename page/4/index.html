@@ -152,6 +152,97 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-redisSentinel模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/redisSentinel模式/">redis Sentinel模式</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/06/redisSentinel模式/" class="archive-article-date">
+  	<time datetime="2020-03-06T03:18:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="启动并初始化Sentinel"><a href="#启动并初始化Sentinel" class="headerlink" title="启动并初始化Sentinel"></a>启动并初始化Sentinel</h2><pre><code>命令是 redis-sentinel/path/to/your/sentinel.conf
+      redis-server/path/to/your/sentinel.conf--sentinel
+（1）初始化服务器：sentinel不需要数据库结构实际上sentinel可以执行的命令只有七种
+（2）替换成sentinel专用代码：服务器端口（26736）、命令表（七种）
+（3）初始化sentinel状态
+        用sentinelState结构保存Sentinel功能有关的状态
+        服务器的一般状态用RedisServer结构保存
+（4）初始化sentinel的监视主服务器列表
+        在sentinel状态的master字典中保存被监视的主服务器信息
+        master字典：    键=主服务器名字 值=sentinelRedisInstance（被sentinel监视的redis服务器实例）
+（5）创建连向主服务器的网络连接
+    sentinel成为主服务器的客服端，分别创建命令连接和订阅连接（发布和订阅功能相关的信息不会保存在redis服务器里）</code></pre><h2 id="获取主服务器信息"><a href="#获取主服务器信息" class="headerlink" title="获取主服务器信息"></a>获取主服务器信息</h2>
+        
+          <a class="article-more-a" href="/2020/03/06/redisSentinel模式/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/06/redisSentinel模式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-幂等性问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
