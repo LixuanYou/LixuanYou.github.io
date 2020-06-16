@@ -152,6 +152,104 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Java练习题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/24/Java练习题/">Java练习题</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/24/Java练习题/" class="archive-article-date">
+  	<time datetime="2020-03-24T08:29:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><ul>
+<li>Java中的几种基本类型，各占多少字节？</li>
+</ul>
+<p>byte:1字节 默认0 -128–127</p>
+<p>short：2字节 默认0 取值-32758–32767</p>
+<p>int：4字节 默认0 取值-2147483648-2147483647</p>
+<p>long：8字节 默认0</p>
+<p><em>char：2字节</em></p>
+<p>float：4字节</p>
+<p>double：8字节</p>
+<p>boolean： 4字节</p>
+<ul>
+<li>抽象类和接口的区别？</li>
+</ul>
+<p>一个类只能继承（extends）一个抽象类，但是可以实现(implements)多个接口</p>
+<p>接口和抽象类必须实现其中的所有方法。抽象类中可以有非抽象的方法。</p>
+<p>接口中的常量必须用 public static final修饰，并且需要给出初始值。所以实现类不能重新定义，也不能改变其值。</p>
+<p>接口中的方法只能用public abstract修饰</p>
+<p><img src="/2020/03/24/Java练习题/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB.PNG" alt="抽象类和接口的区别"></p>
+        
+          <a class="article-more-a" href="/2020/03/24/Java练习题/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">练习题</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/24/Java练习题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-redisSDS字符串" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -916,95 +1014,6 @@
 
 
   
-    <article id="post-redis集群" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/06/redis集群/">redis集群</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/06/redis集群/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:19:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="redis集群"><a href="#redis集群" class="headerlink" title="redis集群"></a>redis集群</h1><pre><code>定义：是redis提供的分布式数据库方案，集群通过分片来进行数据共享，并提供复制和故障转移功能</code></pre><h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><pre><code>命令： Cluster Meet &lt;ip&gt;&lt;port&gt; 添加指定节点到node节点所在集群中
-（1）启动节点：通过cluster-enabled判断是否开启集群模式
-    运行在集群模式下的Redis服务器会继续使用所有单机模式中的服务器组件：
-    文件处理器、时间处理器、两种持久化、发布订阅、复制、Lua脚本
-（2）集群的数据结构
-    clusterNode：保存节点状态（创建时间、name、配置纪元、ip/port）
-    clusterLink:保存*连接节点*所需的有关信息，比如套接字描述符、输入输出缓冲区
-    clusterState：保存当前节点视角下，集群目前所处状态，如：集群是否在线、集群包含多少个节点、配置纪元
-（3）Cluster Meet 命令实现
-    客户端发送Cluster Meet给节点A，节点A在节点字典里创建一个集群节点结构保存节点B，A向B发送Meet命令，节点B在节点字典里创建一个集群节点结构保存节点A,B向A发送Pong命令，A收到以后发送一个PING命令给B，B由此知道节点A已经成功接收到自己发送的PONG消息。节点A通过Gossip协议将节点B的信息传播给集群中的其他节点</code></pre><h2 id="槽指派"><a href="#槽指派" class="headerlink" title="槽指派"></a>槽指派</h2>
-        
-          <a class="article-more-a" href="/2020/03/06/redis集群/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/06/redis集群/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1118,6 +1127,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
               </li>
              
@@ -1135,10 +1148,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
