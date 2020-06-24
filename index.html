@@ -152,6 +152,82 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-6月25日心情日记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/25/6月25日心情日记/">6月25日心情日记</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/25/6月25日心情日记/" class="archive-article-date">
+  	<time datetime="2020-06-24T17:42:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>读自己17年到19年的日记，感觉就和做梦一样，仿佛在读平行宇宙中另一个自己的人生，从无知少年一步一步成长，现在依旧少年感十足，愿这份赤子之心能够长存，愿你走过半生依旧还是少年。</p>
+<p>那条朋友圈她应该转发给你了吧！我在一点一点的擦掉你的痕迹，17年到19年所有朋友圈都删了。说忘记是假的，你的一个眼眸，嘴角的一个不寻常的弧度代表着什么我现在都还记得，你不经意的一句话我也记得。我本就是一个注重细节和第一印象的人，我只是不愿意再想起了。没什么大不了的，这就像出租车一样，乘客走了，司机把“空位”的牌子立起来，继续接收下一个乘客。</p>
+<p>今天在健身房，练湿两套衣服，教练真的狠，我被虐惨了，当初吃的有多么义无反顾现在就要多辛苦，希望在7月25日时体重瘦到160，哈哈哈你见过160斤的帅哥吗？那至少会比现在五官扭在一起看不见双眼皮强，能降到160也只是阶段性胜利。Spinnin’ Records厂牌音乐和深蹲很搭配。这家健身房还是很不错的，办了三年，一步一步来。蛋白粉、BCAA、维B维C、肌酸、谷氨酰胺都在路上了。一万五没了有点心疼钱。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/25/6月25日心情日记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-酒吧有真爱吗？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -842,95 +918,6 @@
 
 
   
-    <article id="post-SpringBean生命周期与循环依赖" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/SpringBean生命周期与循环依赖/">SpringBean生命周期与循环依赖</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/SpringBean生命周期与循环依赖/" class="archive-article-date">
-  	<time datetime="2020-04-20T12:28:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Spring-Bean-的生命周期（实例化-初始化-使用-销毁）"><a href="#Spring-Bean-的生命周期（实例化-初始化-使用-销毁）" class="headerlink" title="Spring Bean 的生命周期（实例化-初始化-使用-销毁）"></a>Spring Bean 的生命周期（实例化-初始化-使用-销毁）</h2><h2 id="在《Spring源码深度分析》一书中"><a href="#在《Spring源码深度分析》一书中" class="headerlink" title="在《Spring源码深度分析》一书中"></a>在《Spring源码深度分析》一书中</h2><h3 id="实例化Bean的流程"><a href="#实例化Bean的流程" class="headerlink" title="实例化Bean的流程"></a>实例化Bean的流程</h3><p>在org.springframework.beans.factory.support.AbstractBeanFactory#getBean方法他其实是空壳方法真正干活的是<br>org.springframework.beans.factory.support.AbstractBeanFactory#doGetBean，这分为一下九个步骤</p>
-<ul>
-<li>1解析Bean的别名，例如FactoryBean获取自身实例时要加一个&amp;符号，transformedBeanName(name)可以去除&amp;符号</li>
-<li>2尝试去缓存池中获取对象（第一次创建Bean缓存池中没有对象），（3）如果存在就可以跳过以下步骤开始实例化bean，调用的是getObjectForBeanInstance()</li>
-<li>4如果出现循环依赖再判断Bean是不是单例的，原型的就抛出异常</li>
-<li>5判断容器是否有父工厂如果存在就由父工厂加载</li>
-<li>6合并父类Bean定义检查Bean定义是否是抽象的</li>
-<li>7做dependsOn的依赖检查获取依赖的bean对象</li>
-<li>8针对不同的scope调用createbean()创建bean。调用getSingleton()方法再用beforeSigletonCreation标识当前Bean正在被创建</li>
-<li>9类型转换。</li></ul>
-        
-          <a class="article-more-a" href="/2020/04/20/SpringBean生命周期与循环依赖/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/SpringBean生命周期与循环依赖/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1040,11 +1027,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">技术，数据库</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color2">技术，数据库</a>
               </li>
              
               <li class="article-tag-list-item">

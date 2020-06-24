@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Spring容器的功能扩展 | 游理轩的博客</title>
+  <title>6月25日心情日记 | 游理轩的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文是《Spring源码深度解析》的阅读笔记ApplicationContext包含BeanFactory的所有功能。通常建议比 BeanFactory 优先，除非在一些限制的场合，比如字节长度对内存有很大的影响时（Applet）。refresh 函数中包含了几乎 ApplicationContext 中提供的全部功能，这12步是refresh函数的实现步骤：">
-<meta name="keywords" content="技术,spring源码">
+  <meta name="description" content="读自己17年到19年的日记，感觉就和做梦一样，仿佛在读平行宇宙中另一个自己的人生，从无知少年一步一步成长，现在依旧少年感十足，愿这份赤子之心能够长存，愿你走过半生依旧还是少年。 那条朋友圈她应该转发给你了吧！我在一点一点的擦掉你的痕迹，17年到19年所有朋友圈都删了。说忘记是假的，你的一个眼眸，嘴角的一个不寻常的弧度代表着什么我现在都还记得，你不经意的一句话我也记得。我本就是一个注重细节和第一印象">
+<meta name="keywords" content="随笔">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring容器的功能扩展">
-<meta property="og:url" content="http://yoursite.com/2020/03/13/Spring容器的功能扩展/index.html">
+<meta property="og:title" content="6月25日心情日记">
+<meta property="og:url" content="http://yoursite.com/2020/06/25/6月25日心情日记/index.html">
 <meta property="og:site_name" content="游理轩的博客">
-<meta property="og:description" content="本文是《Spring源码深度解析》的阅读笔记ApplicationContext包含BeanFactory的所有功能。通常建议比 BeanFactory 优先，除非在一些限制的场合，比如字节长度对内存有很大的影响时（Applet）。refresh 函数中包含了几乎 ApplicationContext 中提供的全部功能，这12步是refresh函数的实现步骤：">
+<meta property="og:description" content="读自己17年到19年的日记，感觉就和做梦一样，仿佛在读平行宇宙中另一个自己的人生，从无知少年一步一步成长，现在依旧少年感十足，愿这份赤子之心能够长存，愿你走过半生依旧还是少年。 那条朋友圈她应该转发给你了吧！我在一点一点的擦掉你的痕迹，17年到19年所有朋友圈都删了。说忘记是假的，你的一个眼眸，嘴角的一个不寻常的弧度代表着什么我现在都还记得，你不经意的一句话我也记得。我本就是一个注重细节和第一印象">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-23T11:53:15.575Z">
+<meta property="og:updated_time" content="2020-06-24T17:42:56.315Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring容器的功能扩展">
-<meta name="twitter:description" content="本文是《Spring源码深度解析》的阅读笔记ApplicationContext包含BeanFactory的所有功能。通常建议比 BeanFactory 优先，除非在一些限制的场合，比如字节长度对内存有很大的影响时（Applet）。refresh 函数中包含了几乎 ApplicationContext 中提供的全部功能，这12步是refresh函数的实现步骤：">
+<meta name="twitter:title" content="6月25日心情日记">
+<meta name="twitter:description" content="读自己17年到19年的日记，感觉就和做梦一样，仿佛在读平行宇宙中另一个自己的人生，从无知少年一步一步成长，现在依旧少年感十足，愿这份赤子之心能够长存，愿你走过半生依旧还是少年。 那条朋友圈她应该转发给你了吧！我在一点一点的擦掉你的痕迹，17年到19年所有朋友圈都删了。说忘记是假的，你的一个眼眸，嘴角的一个不寻常的弧度代表着什么我现在都还记得，你不经意的一句话我也记得。我本就是一个注重细节和第一印象">
   
     <link rel="alternative" href="/atom.xml" title="游理轩的博客" type="application/atom+xml">
   
@@ -155,93 +155,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Spring容器的功能扩展" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-6月25日心情日记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Spring容器的功能扩展
+      6月25日心情日记
     </h1>
   
 
         
-        <a href="/2020/03/13/Spring容器的功能扩展/" class="archive-article-date">
-  	<time datetime="2020-03-13T00:12:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
+        <a href="/2020/06/25/6月25日心情日记/" class="archive-article-date">
+  	<time datetime="2020-06-24T17:42:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="本文是《Spring源码深度解析》的阅读笔记"><a href="#本文是《Spring源码深度解析》的阅读笔记" class="headerlink" title="本文是《Spring源码深度解析》的阅读笔记"></a>本文是《Spring源码深度解析》的阅读笔记</h1><p>ApplicationContext包含BeanFactory的所有功能。通常建议比 BeanFactory 优先，除非在一些限制的场合，比如字节长度对内存有很大的影响时（Applet）。refresh 函数中包含了几乎 ApplicationContext 中提供的全部功能，这12步是refresh函数的实现步骤：</p>
-<a id="more"></a>
-<ul>
-<li><p>（1）初始化前的准备工作，例如对系统属性或者环境变量进行准备及验证。在某种情况下项目的使用需要读取某些系统变量，而这个变量的设置很可能会影响着系统的正确性，那么ClassPathXmlApplicationContext为我们提供的这个准备函数就显得非常必要，它可以在Spring启动的时候提前对必须的变量进行存在性验证。</p>
-</li>
-<li><p>（2）初始化BeanFactory，obtainFreshBeanFactory 方法从字面理解是获取 BeanFactory。ApplicationContext是对BeanFactory的功能上的扩展，不但包含了BeanFactory的全部功能更在其基础上添加了大量的扩展应用，那么obtainFreshBeanFactory正是实现BeanFactory的地方，也就是经过了这个函数后ApplicationContext就已经拥有了BeanFactory的全部功能。ClassPathXmlApplicationContext包含着BeanFactory所提供的一切特征，那么在这一步骤中将会复用 BeanFactory 中的配置文件读取解析及其他功能，这一步之后， ClassPathXmlApplicationContext 实际上就已经包含了 BeanFactory 所提供的功能，也就是可以进行Bean的提取等基础操作了。</p>
-</li>
-<li><p>（3）对BeanFactory进行各种功能填充。@Qualifier与@Autowired应该是大家非常熟悉的注解，那么这两个注解正是在这一步骤中增加的支持。</p>
-</li>
-<li><p>（4）子类覆盖方法做额外的处理。Spring之所以强大，为世人所推崇，除了它功能上为大家提供了便例外，还有一方面是它的完美架构，开放式的架构让使用它的程序员很容易根据业务需要扩展已经存在的功能。这种开放式的设计在 Spring 中随处可见，例如在本例中就提供了一个空的函数实现 postProcess BeanFactory来方便程序员在业务上做进一步扩展。</p>
-</li>
-<li><p>（5）激活各种BeanFactory处理器。</p>
-</li>
-<li><p>（6）注册拦截bean创建的bean处理器，这里只是注册，真正的调用是在getBean时候。</p>
-</li>
-<li><p>（7）为上下文初始化Message源，即对不同语言的消息体进行国际化处理。</p>
-</li>
-<li><p>（8）初始化应用消息广播器，并放入“applicationEventMulticaster”bean中。</p>
-</li>
-<li><p>（9）留给子类来初始化其他的bean。</p>
-</li>
-<li><p>（10）在所有注册的bean中查找 listener bean，注册到消息广播器中。</p>
-</li>
-<li><p>（11）初始化剩下的非延迟加载单例单实例（非惰性的）。在finishBeanFactoryInitialization 中完成</p>
-</li>
-<li><p>（12）完成刷新过程，通知生命周期处理器lifecycleProcessor刷新过程，同时发出Context RefreshEvent通知别人。</p>
-<h2 id="BeanFactory容器的扩展"><a href="#BeanFactory容器的扩展" class="headerlink" title="BeanFactory容器的扩展"></a>BeanFactory容器的扩展</h2><p>可以在基本容器的基础上，增加了是否允许Override同名称的不同定义的对象、是否允许bean之间存在循环依赖并提供了注解@Qualifier和@Autowired的支持。</p>
-<h2 id="ApplicationContext容器在功能上的扩展"><a href="#ApplicationContext容器在功能上的扩展" class="headerlink" title="ApplicationContext容器在功能上的扩展"></a>ApplicationContext容器在功能上的扩展</h2></li>
-<li><p>增加对SPEL语言的支持。</p>
-</li>
-<li><p>增加对属性编辑器的支持。</p>
-</li>
-<li><p>增加对一些内置类，比如EnvironmentAware、MessageSourceAware的信息注入。</p>
-</li>
-<li><p>设置了依赖功能可忽略的接口。</p>
-</li>
-<li><p>注册一些固定依赖的属性。</p>
-</li>
-<li><p>增加AspectJ的支持</p>
-</li>
-<li><p>将相关环境变量及属性注册以单例模式注册</p>
-</li>
-</ul>
-<ul>
-<li><p>在refresh的prepareRefresh函数有initPropertySources()，用户可以根据自身的需要重写 initPropertySources 方法，并在方法中进行个性化的属性处理及设置。</p>
-</li>
-<li><p>BeanFactoryPostProcessor接口跟BeanPostProcessor类似，可以对bean的定义（配置元数据）进行处理。也就是说，Spring IoC容器允许BeanFactoryPostProcessor在容器实际实例化任何其他的 bean 之前读取配置元数据，并有可能修改它。如果你愿意，你可以配置多个BeanFactoryPostProcessor。你还能通过设置“order”属性来控制BeanFactoryPostProcessor的执行次序（仅当BeanFactoryPostProcessor 实现了Ordered 接口时你才可以设置此属性，因此在实现BeanFactoryPostProcessor 时，就应当考虑实现 Ordered 接口）。</p>
-</li>
-<li><p>如果你想改变实际的 bean 实例（例如从配置元数据创建的对象），那么你最好使用BeanPostProcessor。同样地，BeanFactoryPostProcessor 的作用域范围是容器级的。它只和你所使用的容器有关。如果你在容器中定义一个 BeanFactoryPostProcessor，它仅仅对此容器中的bean进行后置处理。BeanFactoryPostProcessor不会对定义在另一个容器中的bean进行后置处理，即使这两个容器都是在同一层次上。在 Spring 中存在对于 BeanFactoryPostProcessor 的典型应用，比如PropertyPlaceholderConfigurer。BeanFactory中其实并没有实现BeanPostProcessor自动注册，通过手动注册并且还要还要实现对后处理器的激活操作才可以在bean的实例化阶段进行调用后处理器</p>
-<ul>
-<li>BeanPostProcessor 的处理与 BeanFactoryPostProcessor 的处理极为相似，区别在于，对于 BeanFactoryPostProcessor的处理要区分两种情况，一种方式是通过硬编码方式的处理，另一种是通过配置文件方式的处理。原因是。对于 BeanFactoryPostProcessor的处理，不但要实现注册功能，而且还要实现对后处理器的激活操作，所以需要载入配置中的定义，并进行激活；而对于BeanPostProcessor并不需要马上调用，再说，硬编码的方式实现的功能是将后处理器提取并调用，这里并不需要调用，当然不需要考虑硬编码的方式了，这里的功能只需要将配置文件的BeanPostProcessor提取出来并注册进入beanFactory就可以了。</li>
-</ul>
-</li>
-</ul>
-<h2 id="函数执行顺序"><a href="#函数执行顺序" class="headerlink" title="函数执行顺序"></a>函数执行顺序</h2><ul>
-<li>1、init-method方法，初始化bean的时候执行，可以针对某个具体的bean进行配置。init-method需要在applicationContext.xml配置文档中bean的定义里头写明。例如：这样，当TestBean在初始化的时候会执行TestBean中定义的init方法。</li>
-</ul>
-<ul>
-<li>2、afterPropertiesSet方法，初始化bean的时候执行，可以针对某个具体的bean进行配置。afterPropertiesSet 必须实现 InitializingBean接口。实现 InitializingBean接口必须实现afterPropertiesSet方法。</li>
-</ul>
-<ul>
-<li>3、BeanPostProcessor，针对所有Spring上下文中所有的bean，可以在配置文档applicationContext.xml中配置一个BeanPostProcessor，然后对所有的bean进行一个初始化之前和之后的代理。BeanPostProcessor接口中有两个方法： postProcessBeforeInitialization和postProcessAfterInitialization。 postProcessBeforeInitialization方法在bean初始化之前执行， postProcessAfterInitialization方法在bean初始化之后执行。</li>
-</ul>
-<ul>
-<li>实例化                    -&gt;                                                初始化</li>
-<li>postProcessBeanFactory-&gt;postProcessBeforeInitialization -&gt;afterPropertiesSet -&gt; init-method -&gt; postProcessAfterInitialization</li>
-</ul>
+        <p>读自己17年到19年的日记，感觉就和做梦一样，仿佛在读平行宇宙中另一个自己的人生，从无知少年一步一步成长，现在依旧少年感十足，愿这份赤子之心能够长存，愿你走过半生依旧还是少年。</p>
+<p>那条朋友圈她应该转发给你了吧！我在一点一点的擦掉你的痕迹，17年到19年所有朋友圈都删了。说忘记是假的，你的一个眼眸，嘴角的一个不寻常的弧度代表着什么我现在都还记得，你不经意的一句话我也记得。我本就是一个注重细节和第一印象的人，我只是不愿意再想起了。没什么大不了的，这就像出租车一样，乘客走了，司机把“空位”的牌子立起来，继续接收下一个乘客。</p>
+<p>今天在健身房，练湿两套衣服，教练真的狠，我被虐惨了，当初吃的有多么义无反顾现在就要多辛苦，希望在7月25日时体重瘦到160，哈哈哈你见过160斤的帅哥吗？那至少会比现在五官扭在一起看不见双眼皮强，能降到160也只是阶段性胜利。Spinnin’ Records厂牌音乐和深蹲很搭配。这家健身房还是很不错的，办了三年，一步一步来。蛋白粉、BCAA、维B维C、肌酸、谷氨酰胺都在路上了。一万五没了有点心疼钱。</p>
 
       
 
@@ -276,11 +212,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
@@ -336,7 +268,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/13/Spring容器的功能扩展/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/25/6月25日心情日记/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -350,18 +282,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/21/3月21心情日记/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          3月21心情日记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/03/10/REST/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">REST</div>
+    <a href="/2020/06/16/酒吧有真爱吗？/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">酒吧有真爱吗？</div>
       <i class="icon-circle-right"></i>
     </a>
   

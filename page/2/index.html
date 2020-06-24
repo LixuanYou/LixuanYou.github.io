@@ -152,6 +152,95 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SpringBean生命周期与循环依赖" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/20/SpringBean生命周期与循环依赖/">SpringBean生命周期与循环依赖</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/20/SpringBean生命周期与循环依赖/" class="archive-article-date">
+  	<time datetime="2020-04-20T12:28:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Spring-Bean-的生命周期（实例化-初始化-使用-销毁）"><a href="#Spring-Bean-的生命周期（实例化-初始化-使用-销毁）" class="headerlink" title="Spring Bean 的生命周期（实例化-初始化-使用-销毁）"></a>Spring Bean 的生命周期（实例化-初始化-使用-销毁）</h2><h2 id="在《Spring源码深度分析》一书中"><a href="#在《Spring源码深度分析》一书中" class="headerlink" title="在《Spring源码深度分析》一书中"></a>在《Spring源码深度分析》一书中</h2><h3 id="实例化Bean的流程"><a href="#实例化Bean的流程" class="headerlink" title="实例化Bean的流程"></a>实例化Bean的流程</h3><p>在org.springframework.beans.factory.support.AbstractBeanFactory#getBean方法他其实是空壳方法真正干活的是<br>org.springframework.beans.factory.support.AbstractBeanFactory#doGetBean，这分为一下九个步骤</p>
+<ul>
+<li>1解析Bean的别名，例如FactoryBean获取自身实例时要加一个&amp;符号，transformedBeanName(name)可以去除&amp;符号</li>
+<li>2尝试去缓存池中获取对象（第一次创建Bean缓存池中没有对象），（3）如果存在就可以跳过以下步骤开始实例化bean，调用的是getObjectForBeanInstance()</li>
+<li>4如果出现循环依赖再判断Bean是不是单例的，原型的就抛出异常</li>
+<li>5判断容器是否有父工厂如果存在就由父工厂加载</li>
+<li>6合并父类Bean定义检查Bean定义是否是抽象的</li>
+<li>7做dependsOn的依赖检查获取依赖的bean对象</li>
+<li>8针对不同的scope调用createbean()创建bean。调用getSingleton()方法再用beforeSigletonCreation标识当前Bean正在被创建</li>
+<li>9类型转换。</li></ul>
+        
+          <a class="article-more-a" href="/2020/04/20/SpringBean生命周期与循环依赖/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">spring源码</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/20/SpringBean生命周期与循环依赖/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-日志与异常统一管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -860,88 +949,6 @@
 
 
   
-    <article id="post-volatile与synchronized的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/26/volatile与synchronized的区别/">volatile与synchronized的区别</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/26/volatile与synchronized的区别/" class="archive-article-date">
-  	<time datetime="2020-03-26T07:49:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>volatile与synchronized的区别<br>1、锁提供了两种主要特性：互斥（mutual exclusion） 和可见性（visibility）。</p>
-<p>　　互斥即一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议，这样，一次就只有一个线程能够使用该共享数据。</p>
-<p>　　可见性要更加复杂一些，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的 —— 如果没有同步机制提供的这种可见性保证，线程看到的共享         变量可能是修改前的值或不一致的值，这将引发许多严重问题。（竞态条件）</p>
-        
-          <a class="article-more-a" href="/2020/03/26/volatile与synchronized的区别/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/26/volatile与synchronized的区别/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1051,11 +1058,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">技术，数据库</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color2">技术，数据库</a>
               </li>
              
               <li class="article-tag-list-item">
