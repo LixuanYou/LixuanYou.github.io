@@ -152,6 +152,87 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-TCP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/26/TCP/">TCP</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/26/TCP/" class="archive-article-date">
+  	<time datetime="2020-03-26T09:52:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本章博客转载地址为：<a href="https://blog.csdn.net/qq_38950316/article/details/81087809" target="_blank" rel="noopener">https://blog.csdn.net/qq_38950316/article/details/81087809</a></p>
+<p><img src="/2020/03/26/TCP/TCP%E6%8A%A5%E6%96%87.jpg" alt="TCP报文格式"></p>
+        
+          <a class="article-more-a" href="/2020/03/26/TCP/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/26/TCP/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-volatile与synchronized的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -890,92 +971,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/06/redis客户端/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-redis服务器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/06/redis服务器/">redis服务器</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/06/redis服务器/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:23:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="redis服务器"><a href="#redis服务器" class="headerlink" title="redis服务器"></a>redis服务器</h1><h2 id="服务器处理命令请求的执行过程"><a href="#服务器处理命令请求的执行过程" class="headerlink" title="服务器处理命令请求的执行过程"></a>服务器处理命令请求的执行过程</h2><p>命令请求的执行过程：<br>发送、读取命令请求</p>
-<ol start="3">
-<li>命令执行器<br> 查找命令实现<br> 执行预备操作（单机模式下的10种服务器向客户端返回错误的情况）<br> 调用命令的实现函数：执行的命令在cmd，参数在argv[0],参数个数在argc中，所以实现命令函数只需要一个指向客户端状态的指针作为参数即可<br> 执行后续工作：四种情况</li>
-<li>将命令回复发送给客户端</li>
-<li>客户端接收并打印命令回复</li>
-</ol>
-<h2 id="ServerCron函数"><a href="#ServerCron函数" class="headerlink" title="ServerCron函数"></a>ServerCron函数</h2>
-        
-          <a class="article-more-a" href="/2020/03/06/redis服务器/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/06/redis服务器/">展开全文 >></a>
         </p>
       
 
